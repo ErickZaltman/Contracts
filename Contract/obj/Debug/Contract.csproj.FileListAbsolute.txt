@@ -43,8 +43,10 @@ d:\vsp\hz\Contract\Contract\bin\Debug\es\DevExpress.Pdf.v16.1.Core.resources.dll
 d:\vsp\hz\Contract\Contract\bin\Debug\ja\DevExpress.Pdf.v16.1.Core.resources.dll
 d:\vsp\hz\Contract\Contract\bin\Debug\ru\DevExpress.Pdf.v16.1.Core.resources.dll
 d:\vsp\hz\Contract\Contract\obj\Debug\Contract.csprojResolveAssemblyReference.cache
-d:\vsp\hz\Contract\Contract\obj\Debug\Contract.Form1.resources
 d:\vsp\hz\Contract\Contract\obj\Debug\Contract.Properties.Resources.resources
 d:\vsp\hz\Contract\Contract\obj\Debug\Contract.csproj.GenerateResource.Cache
 d:\vsp\hz\Contract\Contract\obj\Debug\Contract.exe
 d:\vsp\hz\Contract\Contract\obj\Debug\Contract.pdb
+d:\vsp\hz\Contract\Contract\obj\Debug\Contract.Forms.Authorization.resources
+d:\vsp\hz\Contract\Contract\obj\Debug\Contract.exe.licenses
+d:\vsp\hz\Contract\Contract\obj\Debug\Contract.MainForm.resources

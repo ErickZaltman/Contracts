@@ -46,21 +46,21 @@ namespace Contract.DB
 
         public virtual ActivityKind ActivityKind { get; set; }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Files> Files { get; set; }
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<HistoryChanges> HistoryChanges { get; set; }
+        public virtual ContractCategory ContractCategory { get; set; }
 
         public virtual ContractExtension ContractExtension1 { get; set; }
 
         public virtual ContractExtensionPeriod ContractExtensionPeriod { get; set; }
 
-        public virtual ContractCategory ContractCategory { get; set; }
-
         public virtual Users Users { get; set; }
 
         public virtual Users Users1 { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Files> Files { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<HistoryChanges> HistoryChanges { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Signing> Signing { get; set; }

@@ -14,12 +14,12 @@ namespace Contract.DB
 
         public virtual DbSet<ActivityKind> ActivityKind { get; set; }
         public virtual DbSet<Contract> Contract { get; set; }
+        public virtual DbSet<ContractCategory> ContractCategory { get; set; }
         public virtual DbSet<ContractExtension> ContractExtension { get; set; }
         public virtual DbSet<ContractExtensionPeriod> ContractExtensionPeriod { get; set; }
         public virtual DbSet<Departments> Departments { get; set; }
         public virtual DbSet<Files> Files { get; set; }
         public virtual DbSet<HistoryChanges> HistoryChanges { get; set; }
-        public virtual DbSet<ContractCategory> ContractCategory { get; set; }
         public virtual DbSet<Permissions> Permissions { get; set; }
         public virtual DbSet<Signing> Signing { get; set; }
         public virtual DbSet<SupAgreement> SupAgreement { get; set; }
@@ -29,6 +29,11 @@ namespace Contract.DB
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<ContractCategory>()
+                .HasMany(e => e.Contract)
+                .WithOptional(e => e.ContractCategory)
+                .HasForeignKey(e => e.CategoryID);
+
             modelBuilder.Entity<ContractExtension>()
                 .HasMany(e => e.Contract)
                 .WithOptional(e => e.ContractExtension1)
@@ -43,11 +48,6 @@ namespace Contract.DB
                 .HasMany(e => e.Users1)
                 .WithOptional(e => e.Departments1)
                 .HasForeignKey(e => e.DepartmentID);
-
-            modelBuilder.Entity<ContractCategory>()
-                .HasMany(e => e.Contract)
-                .WithOptional(e => e.ContractCategory)
-                .HasForeignKey(e => e.CategoryID);
 
             modelBuilder.Entity<Permissions>()
                 .HasMany(e => e.UserPermissions)

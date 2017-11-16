@@ -18,10 +18,6 @@ namespace Contract
         private void initFormSettings()
         {
             dbContext = new DBModel();
-            dbContext.Database.Initialize(false);
-            dbContext.Contract.Load();
-
-
         }
         public MainForm()
         {

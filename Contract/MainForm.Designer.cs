@@ -106,6 +106,7 @@
             this.gvMain.Name = "gvMain";
             this.gvMain.OptionsBehavior.Editable = false;
             this.gvMain.OptionsView.ShowGroupPanel = false;
+            this.gvMain.OptionsView.ShowIndicator = false;
             this.gvMain.OptionsView.ShowPreviewRowLines = DevExpress.Utils.DefaultBoolean.False;
             // 
             // MainForm

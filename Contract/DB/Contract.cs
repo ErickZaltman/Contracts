@@ -56,7 +56,7 @@ namespace Contract.DB
 
         public virtual ContractExtensionPeriod ContractExtensionPeriod { get; set; }
 
-        public virtual OrderCategory OrderCategory { get; set; }
+        public virtual ContractCategory ContractCategory { get; set; }
 
         public virtual Users Users { get; set; }
 

@@ -6,11 +6,11 @@ namespace Contract.DB
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    [Table("OrderCategory")]
-    public partial class OrderCategory
+    [Table("ContractCategory")]
+    public partial class ContractCategory
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public OrderCategory()
+        public ContractCategory()
         {
             Contract = new HashSet<Contract>();
         }

@@ -19,7 +19,7 @@ namespace Contract.DB
         public virtual DbSet<Departments> Departments { get; set; }
         public virtual DbSet<Files> Files { get; set; }
         public virtual DbSet<HistoryChanges> HistoryChanges { get; set; }
-        public virtual DbSet<OrderCategory> OrderCategory { get; set; }
+        public virtual DbSet<ContractCategory> ContractCategory { get; set; }
         public virtual DbSet<Permissions> Permissions { get; set; }
         public virtual DbSet<Signing> Signing { get; set; }
         public virtual DbSet<SupAgreement> SupAgreement { get; set; }
@@ -44,9 +44,9 @@ namespace Contract.DB
                 .WithOptional(e => e.Departments1)
                 .HasForeignKey(e => e.DepartmentID);
 
-            modelBuilder.Entity<OrderCategory>()
+            modelBuilder.Entity<ContractCategory>()
                 .HasMany(e => e.Contract)
-                .WithOptional(e => e.OrderCategory)
+                .WithOptional(e => e.ContractCategory)
                 .HasForeignKey(e => e.CategoryID);
 
             modelBuilder.Entity<Permissions>()

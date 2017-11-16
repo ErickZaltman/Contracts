@@ -46,13 +46,19 @@ namespace Contract
 
         private void nbiContracts_ItemChanged(object sender, EventArgs e)
         {
-            var contractsBindingSource = dbContext.Contract.Select(x => new { x.ID, x.Number, x.CategoryID }).ToList();
-            gridControl1.DataSource = contractsBindingSource;
+          
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-           
+            
+        }
+
+        private void nbiContracts_LinkPressed(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e)
+        {
+            var contractsBindingSource = dbContext.Contract.Select(x => new { x.ID, x.Number, x.ContractCategory.Name, x.Theme, x.Summ, x.Users.Surname}).ToList();
+            gridControl1.DataSource = contractsBindingSource;
+            gvMain.Columns["ID"].Visible = false;
         }
     }
 }

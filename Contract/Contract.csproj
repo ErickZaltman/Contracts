@@ -74,7 +74,7 @@
     <Compile Include="DB\Departments.cs" />
     <Compile Include="DB\Files.cs" />
     <Compile Include="DB\HistoryChanges.cs" />
-    <Compile Include="DB\OrderCategory.cs" />
+    <Compile Include="DB\ContractCategory.cs" />
     <Compile Include="DB\Permissions.cs" />
     <Compile Include="DB\Signing.cs" />
     <Compile Include="DB\SupAgreement.cs" />

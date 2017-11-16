@@ -23,16 +23,12 @@ namespace Contract
         {
             initFormSettings();
             InitializeComponent();
-            
-
-
         }
         public MainForm(string userLogin)
         {
             initFormSettings();
             InitializeComponent();
             currentUserLogin = userLogin;
-            
         }
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
@@ -54,7 +50,7 @@ namespace Contract
         {
             var contractsBindingSource = dbContext.Contract.Select(x => new { x.ID, x.Number, x.ContractCategory.Name, x.Theme, x.Summ, x.Users.Surname}).ToList();
             gridControl1.DataSource = contractsBindingSource;
-            gvMain.Columns["ID"].Visible = false;
+            gvMain.Columns["ID"].Visible  = false;          
         }
     }
 }

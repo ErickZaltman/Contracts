@@ -106,6 +106,7 @@
             this.gvMain.Name = "gvMain";
             this.gvMain.OptionsBehavior.Editable = false;
             this.gvMain.OptionsView.ShowGroupPanel = false;
+            this.gvMain.OptionsView.ShowIndicator = false;
             this.gvMain.OptionsView.ShowPreviewRowLines = DevExpress.Utils.DefaultBoolean.False;
             // 
             // MainForm
@@ -116,6 +117,7 @@
             this.Controls.Add(this.gridControl1);
             this.Controls.Add(this.navBarControl1);
             this.Name = "MainForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.navBarControl1)).EndInit();

@@ -35,10 +35,11 @@
             this.nbiAdditions = new DevExpress.XtraNavBar.NavBarItem();
             this.nbiAttachments = new DevExpress.XtraNavBar.NavBarItem();
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
-            this.gvMain = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gvContracts = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.navBarControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gvMain)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gvContracts)).BeginInit();
             this.SuspendLayout();
             // 
             // navBarControl1
@@ -51,7 +52,7 @@
             this.nbiSupAgreements,
             this.nbiAdditions,
             this.nbiAttachments});
-            this.navBarControl1.Location = new System.Drawing.Point(13, 13);
+            this.navBarControl1.Location = new System.Drawing.Point(12, 33);
             this.navBarControl1.Name = "navBarControl1";
             this.navBarControl1.OptionsNavPane.ExpandedWidth = 140;
             this.navBarControl1.Size = new System.Drawing.Size(140, 300);
@@ -92,28 +93,49 @@
             // 
             // gridControl1
             // 
-            this.gridControl1.Location = new System.Drawing.Point(177, 13);
-            this.gridControl1.MainView = this.gvMain;
+            this.gridControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.gridControl1.Location = new System.Drawing.Point(177, 33);
+            this.gridControl1.MainView = this.gvContracts;
             this.gridControl1.Name = "gridControl1";
-            this.gridControl1.Size = new System.Drawing.Size(493, 300);
+            this.gridControl1.Size = new System.Drawing.Size(420, 381);
             this.gridControl1.TabIndex = 1;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gvMain});
+            this.gvContracts});
             // 
-            // gvMain
+            // gvContracts
             // 
-            this.gvMain.GridControl = this.gridControl1;
-            this.gvMain.Name = "gvMain";
-            this.gvMain.OptionsBehavior.Editable = false;
-            this.gvMain.OptionsView.ShowGroupPanel = false;
-            this.gvMain.OptionsView.ShowIndicator = false;
-            this.gvMain.OptionsView.ShowPreviewRowLines = DevExpress.Utils.DefaultBoolean.False;
+            this.gvContracts.GridControl = this.gridControl1;
+            this.gvContracts.Name = "gvContracts";
+            this.gvContracts.OptionsBehavior.Editable = false;
+            this.gvContracts.OptionsView.ShowGroupPanel = false;
+            this.gvContracts.OptionsView.ShowIndicator = false;
+            this.gvContracts.OptionsView.ShowPreviewRowLines = DevExpress.Utils.DefaultBoolean.False;
+            this.gvContracts.RowCellClick += new DevExpress.XtraGrid.Views.Grid.RowCellClickEventHandler(this.gvContracts_RowCellClick);
+            // 
+            // simpleButton1
+            // 
+            this.simpleButton1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.simpleButton1.Location = new System.Drawing.Point(616, 33);
+            this.simpleButton1.Name = "simpleButton1";
+            this.simpleButton1.Size = new System.Drawing.Size(123, 381);
+            this.simpleButton1.TabIndex = 2;
+            this.simpleButton1.Text = "simpleButton1";
             // 
             // MainForm
             // 
+            this.AllowMdiBar = true;
+            this.Appearance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(235)))), ((int)(((byte)(236)))), ((int)(((byte)(239)))));
+            this.Appearance.BackColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.Appearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.Appearance.Options.UseBackColor = true;
+            this.Appearance.Options.UseBorderColor = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(751, 440);
+            this.Controls.Add(this.simpleButton1);
             this.Controls.Add(this.gridControl1);
             this.Controls.Add(this.navBarControl1);
             this.Name = "MainForm";
@@ -122,7 +144,7 @@
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.navBarControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gvMain)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gvContracts)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -136,7 +158,8 @@
         private DevExpress.XtraNavBar.NavBarItem nbiAdditions;
         private DevExpress.XtraNavBar.NavBarItem nbiAttachments;
         private DevExpress.XtraGrid.GridControl gridControl1;
-        private DevExpress.XtraGrid.Views.Grid.GridView gvMain;
+        private DevExpress.XtraGrid.Views.Grid.GridView gvContracts;
+        private DevExpress.XtraEditors.SimpleButton simpleButton1;
     }
 }
 

@@ -50,7 +50,13 @@ namespace Contract
         {
             var contractsBindingSource = dbContext.Contract.Select(x => new { x.ID, x.Number, x.ContractCategory.Name, x.Theme, x.Summ, x.Users.Surname}).ToList();
             gridControl1.DataSource = contractsBindingSource;
-            gvMain.Columns["ID"].Visible  = false;          
+            gvContracts.Columns["ID"].Visible  = false;          
+        }
+
+        private void gvContracts_RowCellClick(object sender, DevExpress.XtraGrid.Views.Grid.RowCellClickEventArgs e)
+        {
+            Forms.ContractForm tmpForm = new Forms.ContractForm();
+            tmpForm.Show();
         }
     }
 }

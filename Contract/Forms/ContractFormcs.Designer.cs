@@ -50,18 +50,11 @@
             this.deContractDateEnd = new DevExpress.XtraEditors.DateEdit();
             this.beContractual = new DevExpress.XtraEditors.ButtonEdit();
             this.cbeContractExtension = new DevExpress.XtraEditors.ComboBoxEdit();
-            this.xtraTabControl1 = new DevExpress.XtraTab.XtraTabControl();
-            this.xtraTabPage1 = new DevExpress.XtraTab.XtraTabPage();
-            this.xtraTabPage2 = new DevExpress.XtraTab.XtraTabPage();
-            this.tabPane1 = new DevExpress.XtraBars.Navigation.TabPane();
             this.tabNavigationPage1 = new DevExpress.XtraBars.Navigation.TabNavigationPage();
             this.tabNavigationPage2 = new DevExpress.XtraBars.Navigation.TabNavigationPage();
-            this.tabNavigationPage3 = new DevExpress.XtraBars.Navigation.TabNavigationPage();
+            this.tabPane1 = new DevExpress.XtraBars.Navigation.TabPane();
+            this.tabNavigationPage = new DevExpress.XtraBars.Navigation.TabNavigationPage();
             this.tabNavigationPage4 = new DevExpress.XtraBars.Navigation.TabNavigationPage();
-            this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             ((System.ComponentModel.ISupportInitialize)(this.beDepartment.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.beContractCategory.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.deContractDateStart.Properties.CalendarTimeProperties)).BeginInit();
@@ -70,11 +63,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.deContractDateEnd.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.beContractual.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbeContractExtension.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).BeginInit();
-            this.xtraTabControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tabPane1)).BeginInit();
             this.tabPane1.SuspendLayout();
-            this.tabControl1.SuspendLayout();
+            this.tabNavigationPage.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -98,7 +89,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(14, 111);
+            this.label3.Location = new System.Drawing.Point(7, 16);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(106, 13);
             this.label3.TabIndex = 3;
@@ -107,7 +98,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(863, 114);
+            this.label4.Location = new System.Drawing.Point(474, 15);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(57, 13);
             this.label4.TabIndex = 4;
@@ -116,7 +107,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(1059, 114);
+            this.label5.Location = new System.Drawing.Point(627, 96);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(23, 13);
             this.label5.TabIndex = 5;
@@ -125,7 +116,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(863, 144);
+            this.label6.Location = new System.Drawing.Point(474, 45);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(67, 13);
             this.label6.TabIndex = 6;
@@ -134,7 +125,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(14, 222);
+            this.label7.Location = new System.Drawing.Point(7, 120);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(72, 13);
             this.label7.TabIndex = 7;
@@ -143,7 +134,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(14, 530);
+            this.label8.Location = new System.Drawing.Point(474, 101);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(78, 13);
             this.label8.TabIndex = 8;
@@ -152,7 +143,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(14, 503);
+            this.label9.Location = new System.Drawing.Point(474, 74);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(42, 13);
             this.label9.TabIndex = 9;
@@ -168,7 +159,7 @@
             // 
             // tbContractTheme
             // 
-            this.tbContractTheme.Location = new System.Drawing.Point(126, 108);
+            this.tbContractTheme.Location = new System.Drawing.Point(129, 13);
             this.tbContractTheme.Multiline = true;
             this.tbContractTheme.Name = "tbContractTheme";
             this.tbContractTheme.Size = new System.Drawing.Size(305, 93);
@@ -176,14 +167,14 @@
             // 
             // tbContractNote
             // 
-            this.tbContractNote.Location = new System.Drawing.Point(95, 527);
+            this.tbContractNote.Location = new System.Drawing.Point(564, 98);
             this.tbContractNote.Name = "tbContractNote";
             this.tbContractNote.Size = new System.Drawing.Size(100, 21);
             this.tbContractNote.TabIndex = 16;
             // 
             // tbSumm
             // 
-            this.tbSumm.Location = new System.Drawing.Point(95, 500);
+            this.tbSumm.Location = new System.Drawing.Point(564, 71);
             this.tbSumm.Name = "tbSumm";
             this.tbSumm.Size = new System.Drawing.Size(100, 21);
             this.tbSumm.TabIndex = 17;
@@ -234,7 +225,7 @@
             // deContractDateStart
             // 
             this.deContractDateStart.EditValue = null;
-            this.deContractDateStart.Location = new System.Drawing.Point(953, 112);
+            this.deContractDateStart.Location = new System.Drawing.Point(564, 13);
             this.deContractDateStart.Name = "deContractDateStart";
             this.deContractDateStart.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -246,7 +237,7 @@
             // deContractDateEnd
             // 
             this.deContractDateEnd.EditValue = null;
-            this.deContractDateEnd.Location = new System.Drawing.Point(1088, 112);
+            this.deContractDateEnd.Location = new System.Drawing.Point(699, 13);
             this.deContractDateEnd.Name = "deContractDateEnd";
             this.deContractDateEnd.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -257,7 +248,7 @@
             // 
             // beContractual
             // 
-            this.beContractual.Location = new System.Drawing.Point(126, 222);
+            this.beContractual.Location = new System.Drawing.Point(129, 117);
             this.beContractual.Name = "beContractual";
             this.beContractual.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton()});
@@ -266,50 +257,12 @@
             // 
             // cbeContractExtension
             // 
-            this.cbeContractExtension.Location = new System.Drawing.Point(953, 141);
+            this.cbeContractExtension.Location = new System.Drawing.Point(564, 42);
             this.cbeContractExtension.Name = "cbeContractExtension";
             this.cbeContractExtension.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.cbeContractExtension.Size = new System.Drawing.Size(235, 20);
             this.cbeContractExtension.TabIndex = 30;
-            // 
-            // xtraTabControl1
-            // 
-            this.xtraTabControl1.Location = new System.Drawing.Point(592, 221);
-            this.xtraTabControl1.Name = "xtraTabControl1";
-            this.xtraTabControl1.SelectedTabPage = this.xtraTabPage1;
-            this.xtraTabControl1.Size = new System.Drawing.Size(300, 300);
-            this.xtraTabControl1.TabIndex = 31;
-            this.xtraTabControl1.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
-            this.xtraTabPage1,
-            this.xtraTabPage2});
-            // 
-            // xtraTabPage1
-            // 
-            this.xtraTabPage1.Name = "xtraTabPage1";
-            this.xtraTabPage1.Size = new System.Drawing.Size(294, 272);
-            this.xtraTabPage1.Text = "xtraTabPage1";
-            // 
-            // xtraTabPage2
-            // 
-            this.xtraTabPage2.Name = "xtraTabPage2";
-            this.xtraTabPage2.Size = new System.Drawing.Size(294, 272);
-            this.xtraTabPage2.Text = "xtraTabPage2";
-            // 
-            // tabPane1
-            // 
-            this.tabPane1.Controls.Add(this.tabNavigationPage3);
-            this.tabPane1.Controls.Add(this.tabNavigationPage4);
-            this.tabPane1.Location = new System.Drawing.Point(257, 323);
-            this.tabPane1.Name = "tabPane1";
-            this.tabPane1.Pages.AddRange(new DevExpress.XtraBars.Navigation.NavigationPageBase[] {
-            this.tabNavigationPage3,
-            this.tabNavigationPage4});
-            this.tabPane1.RegularSize = new System.Drawing.Size(300, 150);
-            this.tabPane1.SelectedPage = this.tabNavigationPage3;
-            this.tabPane1.Size = new System.Drawing.Size(300, 150);
-            this.tabPane1.TabIndex = 0;
-            this.tabPane1.Text = "tabPane1";
             // 
             // tabNavigationPage1
             // 
@@ -323,93 +276,64 @@
             this.tabNavigationPage2.Name = "tabNavigationPage2";
             this.tabNavigationPage2.Size = new System.Drawing.Size(75, 23);
             // 
-            // tabNavigationPage3
+            // tabPane1
             // 
-            this.tabNavigationPage3.Caption = "tabNavigationPage3";
-            this.tabNavigationPage3.Name = "tabNavigationPage3";
-            this.tabNavigationPage3.Size = new System.Drawing.Size(282, 105);
+            this.tabPane1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tabPane1.Controls.Add(this.tabNavigationPage);
+            this.tabPane1.Controls.Add(this.tabNavigationPage4);
+            this.tabPane1.Location = new System.Drawing.Point(12, 106);
+            this.tabPane1.Name = "tabPane1";
+            this.tabPane1.Pages.AddRange(new DevExpress.XtraBars.Navigation.NavigationPageBase[] {
+            this.tabNavigationPage,
+            this.tabNavigationPage4});
+            this.tabPane1.RegularSize = new System.Drawing.Size(1244, 519);
+            this.tabPane1.SelectedPage = this.tabNavigationPage4;
+            this.tabPane1.Size = new System.Drawing.Size(1244, 519);
+            this.tabPane1.TabIndex = 31;
+            this.tabPane1.Text = "tabPane1";
+            // 
+            // tabNavigationPage
+            // 
+            this.tabNavigationPage.Caption = "tabNavigationPage3";
+            this.tabNavigationPage.Controls.Add(this.tbContractTheme);
+            this.tabNavigationPage.Controls.Add(this.cbeContractExtension);
+            this.tabNavigationPage.Controls.Add(this.label3);
+            this.tabNavigationPage.Controls.Add(this.deContractDateEnd);
+            this.tabNavigationPage.Controls.Add(this.deContractDateStart);
+            this.tabNavigationPage.Controls.Add(this.beContractual);
+            this.tabNavigationPage.Controls.Add(this.tbSumm);
+            this.tabNavigationPage.Controls.Add(this.label7);
+            this.tabNavigationPage.Controls.Add(this.tbContractNote);
+            this.tabNavigationPage.Controls.Add(this.label4);
+            this.tabNavigationPage.Controls.Add(this.label6);
+            this.tabNavigationPage.Controls.Add(this.label9);
+            this.tabNavigationPage.Controls.Add(this.label8);
+            this.tabNavigationPage.Controls.Add(this.label5);
+            this.tabNavigationPage.Name = "tabNavigationPage";
+            this.tabNavigationPage.Size = new System.Drawing.Size(1226, 474);
             // 
             // tabNavigationPage4
             // 
             this.tabNavigationPage4.Caption = "tabNavigationPage4";
             this.tabNavigationPage4.Name = "tabNavigationPage4";
-            this.tabNavigationPage4.Size = new System.Drawing.Size(282, 105);
+            this.tabNavigationPage4.Size = new System.Drawing.Size(1226, 474);
             // 
-            // tabControl1
-            // 
-            this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Location = new System.Drawing.Point(481, 49);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(200, 100);
-            this.tabControl1.TabIndex = 32;
-            // 
-            // tabPage1
-            // 
-            this.tabPage1.Location = new System.Drawing.Point(4, 22);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(192, 74);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "tabPage1";
-            this.tabPage1.UseVisualStyleBackColor = true;
-            // 
-            // tabPage2
-            // 
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(192, 74);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "tabPage2";
-            this.tabPage2.UseVisualStyleBackColor = true;
-            // 
-            // tableLayoutPanel1
-            // 
-            this.tableLayoutPanel1.ColumnCount = 2;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(683, 11);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 2;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(200, 100);
-            this.tableLayoutPanel1.TabIndex = 33;
-            // 
-            // tbContractDate
+            // ContractForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1268, 622);
-            this.Controls.Add(this.tableLayoutPanel1);
-            this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.tabPane1);
-            this.Controls.Add(this.xtraTabControl1);
-            this.Controls.Add(this.cbeContractExtension);
-            this.Controls.Add(this.beContractual);
-            this.Controls.Add(this.deContractDateEnd);
-            this.Controls.Add(this.deContractDateStart);
             this.Controls.Add(this.beContractCategory);
             this.Controls.Add(this.beDepartment);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.textBox8);
-            this.Controls.Add(this.tbSumm);
-            this.Controls.Add(this.tbContractNote);
-            this.Controls.Add(this.tbContractTheme);
             this.Controls.Add(this.tbContractNumber);
-            this.Controls.Add(this.label9);
-            this.Controls.Add(this.label8);
-            this.Controls.Add(this.label7);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Name = "tbContractDate";
+            this.Name = "ContractForm";
             this.Text = "Договор №";
             this.Load += new System.EventHandler(this.tbContractDate_Load);
             ((System.ComponentModel.ISupportInitialize)(this.beDepartment.Properties)).EndInit();
@@ -420,11 +344,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.deContractDateEnd.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.beContractual.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cbeContractExtension.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl1)).EndInit();
-            this.xtraTabControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.tabPane1)).EndInit();
             this.tabPane1.ResumeLayout(false);
-            this.tabControl1.ResumeLayout(false);
+            this.tabNavigationPage.ResumeLayout(false);
+            this.tabNavigationPage.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -454,17 +377,10 @@
         private DevExpress.XtraEditors.DateEdit deContractDateEnd;
         private DevExpress.XtraEditors.ButtonEdit beContractual;
         private DevExpress.XtraEditors.ComboBoxEdit cbeContractExtension;
-        private DevExpress.XtraTab.XtraTabControl xtraTabControl1;
-        private DevExpress.XtraTab.XtraTabPage xtraTabPage1;
-        private DevExpress.XtraTab.XtraTabPage xtraTabPage2;
-        private DevExpress.XtraBars.Navigation.TabPane tabPane1;
         private DevExpress.XtraBars.Navigation.TabNavigationPage tabNavigationPage1;
         private DevExpress.XtraBars.Navigation.TabNavigationPage tabNavigationPage2;
-        private DevExpress.XtraBars.Navigation.TabNavigationPage tabNavigationPage3;
+        private DevExpress.XtraBars.Navigation.TabPane tabPane1;
+        private DevExpress.XtraBars.Navigation.TabNavigationPage tabNavigationPage;
         private DevExpress.XtraBars.Navigation.TabNavigationPage tabNavigationPage4;
-        private System.Windows.Forms.TabControl tabControl1;
-        private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.TabPage tabPage2;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
     }
 }

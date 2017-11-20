@@ -15,11 +15,15 @@ namespace Contract.Forms
     {
         private string type;
         private DB.DBModel dbContext;
-        public SelectInfoForm(string type, DB.DBModel dbContext)
+
+        private getIDFromForm d;
+ 
+        public SelectInfoForm(string type, DB.DBModel dbContext, getIDFromForm sender)
         {
             
             InitializeComponent();
             this.Text = type;
+            d = sender;
             this.type = type;
             this.dbContext = dbContext;
             FillGV();
@@ -58,6 +62,21 @@ namespace Contract.Forms
         public SelectInfoForm()
         {
             InitializeComponent();
+        }
+
+        private void SelectInfoForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            
+        }
+
+        private void gridView1_RowClick(object sender, DevExpress.XtraGrid.Views.Grid.RowClickEventArgs e)
+        {
+            if (e.Clicks > 1)
+            {
+                d((int)gridView1.GetRowCellValue(e.RowHandle, "ID"),type);
+                DialogResult = DialogResult.OK;
+                Close();
+            }
         }
     }
 }

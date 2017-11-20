@@ -11,7 +11,10 @@ using System.Text;
 using System.Windows.Forms;
 
 namespace Contract
+    
 {
+    
+
     public partial class MainForm : DevExpress.XtraEditors.XtraForm
     {
         private void hui()

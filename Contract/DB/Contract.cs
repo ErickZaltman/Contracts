@@ -29,10 +29,13 @@ namespace Contract.DB
 
         [StringLength(50)]
         public string Theme { get; set; }
+        public string Note { get; set; }
 
         public DateTime? StartDate { get; set; }
 
         public DateTime? EndDate { get; set; }
+
+        public DateTime? Date { get; set; }
 
         public int? ContractualID { get; set; }
 

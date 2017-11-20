@@ -1,4 +1,5 @@
 ﻿using Contract.DB;
+using DevExpress.XtraGrid.Views.Grid;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,6 +14,11 @@ namespace Contract
 {
     public partial class MainForm : DevExpress.XtraEditors.XtraForm
     {
+        private void hui()
+        {
+            MessageBox.Show("hui");
+        }
+
         private string currentUserLogin;
         private DBModel dbContext;
         private void initFormSettings()
@@ -55,8 +61,27 @@ namespace Contract
 
         private void gvContracts_RowCellClick(object sender, DevExpress.XtraGrid.Views.Grid.RowCellClickEventArgs e)
         {
-            Forms.ContractForm tmpForm = new Forms.ContractForm();
-            tmpForm.Show();
+           
+            //MessageBox.Show(e.CellValue.ToString());
+            //Forms.ContractForm tmpForm = new Forms.ContractForm();
+            //tmpForm.Show();
+            
+        }
+
+        private void gvContracts_DoubleClick(object sender, EventArgs e)
+        {
+            MessageBox.Show( ((GridView)sender).GetSelectedRows()[0].ToString() );
+            
+        }
+
+        private void gvContracts_RowClick(object sender, RowClickEventArgs e)
+        {
+            if (e.Clicks > 1)
+            {
+                Forms.ContractForm tmpForm = new Forms.ContractForm(dbContext, (int)gvContracts.GetRowCellValue(e.RowHandle, "ID"));
+                tmpForm.Show();
+            }
+                
         }
     }
 }

@@ -41,7 +41,6 @@
             this.tbContractTheme = new System.Windows.Forms.TextBox();
             this.tbContractNote = new System.Windows.Forms.TextBox();
             this.tbSumm = new System.Windows.Forms.TextBox();
-            this.textBox8 = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.beDepartment = new DevExpress.XtraEditors.ButtonEdit();
@@ -55,6 +54,8 @@
             this.tabPane1 = new DevExpress.XtraBars.Navigation.TabPane();
             this.tabNavigationPage = new DevExpress.XtraBars.Navigation.TabNavigationPage();
             this.tabNavigationPage4 = new DevExpress.XtraBars.Navigation.TabNavigationPage();
+            this.tabNavigationPage3 = new DevExpress.XtraBars.Navigation.TabNavigationPage();
+            this.deDate = new DevExpress.XtraEditors.DateEdit();
             ((System.ComponentModel.ISupportInitialize)(this.beDepartment.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.beContractCategory.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.deContractDateStart.Properties.CalendarTimeProperties)).BeginInit();
@@ -66,6 +67,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.tabPane1)).BeginInit();
             this.tabPane1.SuspendLayout();
             this.tabNavigationPage.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.deDate.Properties.CalendarTimeProperties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.deDate.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -179,13 +182,6 @@
             this.tbSumm.Size = new System.Drawing.Size(100, 21);
             this.tbSumm.TabIndex = 17;
             // 
-            // textBox8
-            // 
-            this.textBox8.Location = new System.Drawing.Point(281, 13);
-            this.textBox8.Name = "textBox8";
-            this.textBox8.Size = new System.Drawing.Size(100, 21);
-            this.textBox8.TabIndex = 18;
-            // 
             // label10
             // 
             this.label10.AutoSize = true;
@@ -282,11 +278,13 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tabPane1.Controls.Add(this.tabNavigationPage);
             this.tabPane1.Controls.Add(this.tabNavigationPage4);
+            this.tabPane1.Controls.Add(this.tabNavigationPage3);
             this.tabPane1.Location = new System.Drawing.Point(12, 106);
             this.tabPane1.Name = "tabPane1";
             this.tabPane1.Pages.AddRange(new DevExpress.XtraBars.Navigation.NavigationPageBase[] {
             this.tabNavigationPage,
-            this.tabNavigationPage4});
+            this.tabNavigationPage4,
+            this.tabNavigationPage3});
             this.tabPane1.RegularSize = new System.Drawing.Size(1244, 519);
             this.tabPane1.SelectedPage = this.tabNavigationPage4;
             this.tabPane1.Size = new System.Drawing.Size(1244, 519);
@@ -295,7 +293,7 @@
             // 
             // tabNavigationPage
             // 
-            this.tabNavigationPage.Caption = "tabNavigationPage3";
+            this.tabNavigationPage.Caption = "Основная информация";
             this.tabNavigationPage.Controls.Add(this.tbContractTheme);
             this.tabNavigationPage.Controls.Add(this.cbeContractExtension);
             this.tabNavigationPage.Controls.Add(this.label3);
@@ -315,21 +313,39 @@
             // 
             // tabNavigationPage4
             // 
-            this.tabNavigationPage4.Caption = "tabNavigationPage4";
+            this.tabNavigationPage4.Caption = "Согласования";
             this.tabNavigationPage4.Name = "tabNavigationPage4";
             this.tabNavigationPage4.Size = new System.Drawing.Size(1226, 474);
+            // 
+            // tabNavigationPage3
+            // 
+            this.tabNavigationPage3.Caption = "Вложения";
+            this.tabNavigationPage3.Name = "tabNavigationPage3";
+            this.tabNavigationPage3.Size = new System.Drawing.Size(1226, 474);
+            // 
+            // deDate
+            // 
+            this.deDate.EditValue = null;
+            this.deDate.Location = new System.Drawing.Point(281, 13);
+            this.deDate.Name = "deDate";
+            this.deDate.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.deDate.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.deDate.Size = new System.Drawing.Size(100, 20);
+            this.deDate.TabIndex = 32;
             // 
             // ContractForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1268, 622);
+            this.Controls.Add(this.deDate);
             this.Controls.Add(this.tabPane1);
             this.Controls.Add(this.beContractCategory);
             this.Controls.Add(this.beDepartment);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.label10);
-            this.Controls.Add(this.textBox8);
             this.Controls.Add(this.tbContractNumber);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -348,6 +364,8 @@
             this.tabPane1.ResumeLayout(false);
             this.tabNavigationPage.ResumeLayout(false);
             this.tabNavigationPage.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.deDate.Properties.CalendarTimeProperties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.deDate.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -368,7 +386,6 @@
         private System.Windows.Forms.TextBox tbContractTheme;
         private System.Windows.Forms.TextBox tbContractNote;
         private System.Windows.Forms.TextBox tbSumm;
-        private System.Windows.Forms.TextBox textBox8;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label11;
         private DevExpress.XtraEditors.ButtonEdit beDepartment;
@@ -382,5 +399,7 @@
         private DevExpress.XtraBars.Navigation.TabPane tabPane1;
         private DevExpress.XtraBars.Navigation.TabNavigationPage tabNavigationPage;
         private DevExpress.XtraBars.Navigation.TabNavigationPage tabNavigationPage4;
+        private DevExpress.XtraBars.Navigation.TabNavigationPage tabNavigationPage3;
+        private DevExpress.XtraEditors.DateEdit deDate;
     }
 }

@@ -44,26 +44,29 @@ namespace Contract.Forms
             tbContractTheme.Text = currContract.Theme;
             tbAuthor.Text = currContract.Users.Surname;
 
-
-            beContractCategory.Text = currContract.ContractCategory.Name;
-            beContractual.Text = currContract.Users1.Surname + " " + currContract.Users1.FirstName[0] + ". " + currContract.Users1.SecondName[0] + ".";
-            beDepartment.Text = currContract.Departments.Name;
-
-
-
             deDate.DateTime = (DateTime)currContract.Date;
             deContractDateEnd.DateTime = (DateTime)currContract.EndDate;
             deContractDateStart.DateTime = (DateTime)currContract.StartDate;
 
+            lueDepartment.Properties.DisplayMember = "Text";
+            lueDepartment.Properties.ValueMember = "Value";
+            lueDepartment.Properties.DataSource = dbContext.Departments.Select(x => new { Value = x.ID, Text = x.Name }).ToArray();
+            lueDepartment.EditValue = currContract.DepartmentID;
+
+            lueContractual.Properties.DisplayMember = "Text";
+            lueContractual.Properties.ValueMember = "Value";
+            lueContractual.Properties.DataSource = dbContext.Users.Select(x => new { Value = x.ID, Text = x.Surname + " " + x.FirstName.Substring(0,1) + "." + x.SecondName.Substring(0, 1) +"." }).ToArray();
+            lueContractual.EditValue = currContract.ContractualID;
+
             lueExtensions.Properties.DisplayMember = "Text";
             lueExtensions.Properties.ValueMember = "Value";
             lueExtensions.Properties.DataSource = dbContext.ContractExtension.Select(x => new { Value = x.ID, Text = x.Name }).ToArray();
-            lueExtensions.EditValue = currContract.ContractExtension1.ID;
+            lueExtensions.EditValue = currContract.ContractExtension;
 
             lueContractCategory.Properties.DisplayMember = "Text";
             lueContractCategory.Properties.ValueMember = "Value";
             lueContractCategory.Properties.DataSource = dbContext.ContractCategory.Select(x => new { Value = x.ID, Text = x.Name }).ToArray();
-            lueContractCategory.EditValue = currContract.ContractCategory.ID;
+            lueContractCategory.EditValue = currContract.CategoryID;
         }
         private void fillControls()
         {
@@ -71,34 +74,36 @@ namespace Contract.Forms
 
         }
 
-
-        private void tbContractDate_Load(object sender, EventArgs e)
+        private void lueContractCategory_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
         {
+            if (e.Button.Index == 1)
+            {
+                Forms.SelectInfoForm tmpForm = new SelectInfoForm("Category", dbContext);
+
+                tmpForm.ShowDialog();
+            }
 
         }
 
-        
-
-        private void beContractCategory_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        private void lueDepartment_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
         {
-            SelectInfoForm tmpForm = new SelectInfoForm("Category", dbContext);
-            
-            tmpForm.ShowDialog();
+            if (e.Button.Index == 1)
+            {
+                Forms.SelectInfoForm tmpForm = new SelectInfoForm("Departments", dbContext);
+
+                tmpForm.ShowDialog();
+            }
 
         }
 
-        private void beContractual_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        private void lueContractual_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
         {
-            SelectInfoForm tmpForm = new SelectInfoForm("Users", dbContext);
+            if (e.Button.Index == 1)
+            {
+                Forms.SelectInfoForm tmpForm = new SelectInfoForm("Users", dbContext);
 
-            tmpForm.ShowDialog();
-        }
-
-        private void beDepartment_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
-        {
-            SelectInfoForm tmpForm = new SelectInfoForm("Departments", dbContext);
-
-            tmpForm.ShowDialog();
+                tmpForm.ShowDialog();
+            }
         }
     }
 }

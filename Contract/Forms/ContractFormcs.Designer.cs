@@ -61,6 +61,8 @@
             this.lueContractCategory = new DevExpress.XtraEditors.LookUpEdit();
             this.deDate = new DevExpress.XtraEditors.DateEdit();
             this.lueDepartment = new DevExpress.XtraEditors.LookUpEdit();
+            this.chPeriod = new DevExpress.XtraEditors.CheckEdit();
+            this.lookUpEdit1 = new DevExpress.XtraEditors.LookUpEdit();
             ((System.ComponentModel.ISupportInitialize)(this.deContractDateStart.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.deContractDateStart.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.deContractDateEnd.Properties.CalendarTimeProperties)).BeginInit();
@@ -74,6 +76,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.deDate.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.deDate.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lueDepartment.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chPeriod.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lookUpEdit1.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -115,7 +119,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(627, 96);
+            this.label5.Location = new System.Drawing.Point(160, 294);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(23, 13);
             this.label5.TabIndex = 5;
@@ -142,7 +146,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(474, 101);
+            this.label8.Location = new System.Drawing.Point(7, 299);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(78, 13);
             this.label8.TabIndex = 8;
@@ -151,7 +155,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(474, 74);
+            this.label9.Location = new System.Drawing.Point(7, 272);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(42, 13);
             this.label9.TabIndex = 9;
@@ -175,14 +179,14 @@
             // 
             // tbContractNote
             // 
-            this.tbContractNote.Location = new System.Drawing.Point(564, 98);
+            this.tbContractNote.Location = new System.Drawing.Point(97, 296);
             this.tbContractNote.Name = "tbContractNote";
             this.tbContractNote.Size = new System.Drawing.Size(100, 21);
             this.tbContractNote.TabIndex = 16;
             // 
             // tbSumm
             // 
-            this.tbSumm.Location = new System.Drawing.Point(564, 71);
+            this.tbSumm.Location = new System.Drawing.Point(97, 269);
             this.tbSumm.Name = "tbSumm";
             this.tbSumm.Size = new System.Drawing.Size(100, 21);
             this.tbSumm.TabIndex = 17;
@@ -208,7 +212,7 @@
             // deContractDateStart
             // 
             this.deContractDateStart.EditValue = null;
-            this.deContractDateStart.Location = new System.Drawing.Point(564, 13);
+            this.deContractDateStart.Location = new System.Drawing.Point(583, 12);
             this.deContractDateStart.Name = "deContractDateStart";
             this.deContractDateStart.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -220,7 +224,7 @@
             // deContractDateEnd
             // 
             this.deContractDateEnd.EditValue = null;
-            this.deContractDateEnd.Location = new System.Drawing.Point(699, 13);
+            this.deContractDateEnd.Location = new System.Drawing.Point(718, 12);
             this.deContractDateEnd.Name = "deContractDateEnd";
             this.deContractDateEnd.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -263,6 +267,8 @@
             // tnpMainInfo
             // 
             this.tnpMainInfo.Caption = "Основная информация";
+            this.tnpMainInfo.Controls.Add(this.lookUpEdit1);
+            this.tnpMainInfo.Controls.Add(this.chPeriod);
             this.tnpMainInfo.Controls.Add(this.lueContractual);
             this.tnpMainInfo.Controls.Add(this.label12);
             this.tnpMainInfo.Controls.Add(this.tbAuthor);
@@ -281,6 +287,7 @@
             this.tnpMainInfo.Controls.Add(this.lueExtensions);
             this.tnpMainInfo.Name = "tnpMainInfo";
             this.tnpMainInfo.Size = new System.Drawing.Size(1226, 474);
+            this.tnpMainInfo.Paint += new System.Windows.Forms.PaintEventHandler(this.tnpMainInfo_Paint);
             // 
             // lueContractual
             // 
@@ -302,7 +309,7 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(474, 129);
+            this.label12.Location = new System.Drawing.Point(7, 327);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(42, 13);
             this.label12.TabIndex = 32;
@@ -310,7 +317,7 @@
             // 
             // tbAuthor
             // 
-            this.tbAuthor.Location = new System.Drawing.Point(564, 126);
+            this.tbAuthor.Location = new System.Drawing.Point(97, 324);
             this.tbAuthor.Name = "tbAuthor";
             this.tbAuthor.ReadOnly = true;
             this.tbAuthor.Size = new System.Drawing.Size(100, 21);
@@ -318,7 +325,7 @@
             // 
             // lueExtensions
             // 
-            this.lueExtensions.Location = new System.Drawing.Point(564, 45);
+            this.lueExtensions.Location = new System.Drawing.Point(583, 44);
             this.lueExtensions.Name = "lueExtensions";
             this.lueExtensions.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -389,6 +396,29 @@
             this.lueDepartment.TabIndex = 35;
             this.lueDepartment.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.lueDepartment_ButtonClick);
             // 
+            // chPeriod
+            // 
+            this.chPeriod.Location = new System.Drawing.Point(477, 70);
+            this.chPeriod.Name = "chPeriod";
+            this.chPeriod.Properties.Caption = "Периодичность:";
+            this.chPeriod.Size = new System.Drawing.Size(107, 19);
+            this.chPeriod.TabIndex = 37;
+            // 
+            // lookUpEdit1
+            // 
+            this.lookUpEdit1.Location = new System.Drawing.Point(583, 69);
+            this.lookUpEdit1.Name = "lookUpEdit1";
+            this.lookUpEdit1.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.lookUpEdit1.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Value", "Value", 20, DevExpress.Utils.FormatType.None, "", false, DevExpress.Utils.HorzAlignment.Default),
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Text", "Наименование")});
+            this.lookUpEdit1.Properties.PopupSizeable = false;
+            this.lookUpEdit1.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
+            this.lookUpEdit1.ShowToolTips = false;
+            this.lookUpEdit1.Size = new System.Drawing.Size(235, 20);
+            this.lookUpEdit1.TabIndex = 38;
+            // 
             // ContractForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -420,6 +450,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.deDate.Properties.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.deDate.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lueDepartment.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chPeriod.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lookUpEdit1.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -457,5 +489,7 @@
         private DevExpress.XtraEditors.LookUpEdit lueContractCategory;
         private DevExpress.XtraEditors.LookUpEdit lueDepartment;
         private DevExpress.XtraEditors.LookUpEdit lueContractual;
+        private DevExpress.XtraEditors.LookUpEdit lookUpEdit1;
+        private DevExpress.XtraEditors.CheckEdit chPeriod;
     }
 }

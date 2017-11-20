@@ -247,7 +247,7 @@
             // 
             // tabPane1
             // 
-            this.tabPane1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            this.tabPane1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tabPane1.Controls.Add(this.tnpMainInfo);
             this.tabPane1.Controls.Add(this.tnpSigning);
@@ -287,7 +287,6 @@
             this.tnpMainInfo.Controls.Add(this.lueExtensions);
             this.tnpMainInfo.Name = "tnpMainInfo";
             this.tnpMainInfo.Size = new System.Drawing.Size(1226, 474);
-            this.tnpMainInfo.Paint += new System.Windows.Forms.PaintEventHandler(this.tnpMainInfo_Paint);
             // 
             // lueContractual
             // 

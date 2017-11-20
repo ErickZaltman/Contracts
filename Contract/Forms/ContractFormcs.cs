@@ -89,7 +89,13 @@ namespace Contract.Forms
         }
         private void getID(int ID, string type)
         {
-            MessageBox.Show(ID + " " + type);
+            switch (type)
+            {
+                case "Category": lueContractCategory.EditValue = ID; break;
+                case "Users": lueContractual.EditValue = ID; break;
+                case "Departments": lueDepartment.EditValue = ID; break;
+
+            }
         }
 
         private void lueContractCategory_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
@@ -97,7 +103,6 @@ namespace Contract.Forms
             if (e.Button.Index == 1)
             {
                 Forms.SelectInfoForm tmpForm = new SelectInfoForm("Category", dbContext, getID);
-                tmpForm.Parent = this;
 
                 tmpForm.ShowDialog();
             }

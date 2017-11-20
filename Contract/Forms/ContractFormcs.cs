@@ -36,7 +36,6 @@ namespace Contract.Forms
 
             currContract = dbContext.Contract.Where(x => x.ID == id).ToList()[0];
 
-
             Text += currContract.Number + " от " + currContract.Date.ToString();
 
             tbContractNumber.Text = currContract.Number;
@@ -45,22 +44,26 @@ namespace Contract.Forms
             tbContractTheme.Text = currContract.Theme;
             tbAuthor.Text = currContract.Users.Surname;
 
+
             beContractCategory.Text = currContract.ContractCategory.Name;
             beContractual.Text = currContract.Users1.Surname + " " + currContract.Users1.FirstName[0] + ". " + currContract.Users1.SecondName[0] + ".";
             beDepartment.Text = currContract.Departments.Name;
+
+
 
             deDate.DateTime = (DateTime)currContract.Date;
             deContractDateEnd.DateTime = (DateTime)currContract.EndDate;
             deContractDateStart.DateTime = (DateTime)currContract.StartDate;
 
             lueExtensions.Properties.DisplayMember = "Text";
-            lueExtensions.Properties.ValueMember = "Values";
+            lueExtensions.Properties.ValueMember = "Value";
             lueExtensions.Properties.DataSource = dbContext.ContractExtension.Select(x => new { Value = x.ID, Text = x.Name }).ToArray();
+            lueExtensions.EditValue = currContract.ContractExtension1.ID;
 
-
-            hzhz.DisplayMember = "Text";
-            hzhz.ValueMember = "Values";            
-            hzhz.DataSource = dbContext.ContractExtension.Select(x => new { Value = x.ID, Text = x.Name }).ToArray();
+            lueContractCategory.Properties.DisplayMember = "Text";
+            lueContractCategory.Properties.ValueMember = "Value";
+            lueContractCategory.Properties.DataSource = dbContext.ContractCategory.Select(x => new { Value = x.ID, Text = x.Name }).ToArray();
+            lueContractCategory.EditValue = currContract.ContractCategory.ID;
         }
         private void fillControls()
         {

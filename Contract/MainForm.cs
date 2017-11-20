@@ -25,11 +25,13 @@ namespace Contract
         {
             dbContext = new DBModel();
         }
+
         public MainForm()
         {
             initFormSettings();
             InitializeComponent();
         }
+
         public MainForm(string userLogin)
         {
             initFormSettings();
@@ -59,15 +61,6 @@ namespace Contract
             gvContracts.Columns["ID"].Visible  = false;          
         }
 
-        private void gvContracts_RowCellClick(object sender, DevExpress.XtraGrid.Views.Grid.RowCellClickEventArgs e)
-        {
-           
-            //MessageBox.Show(e.CellValue.ToString());
-            //Forms.ContractForm tmpForm = new Forms.ContractForm();
-            //tmpForm.Show();
-            
-        }
-
         private void gvContracts_DoubleClick(object sender, EventArgs e)
         {
             MessageBox.Show( ((GridView)sender).GetSelectedRows()[0].ToString() );
@@ -80,13 +73,7 @@ namespace Contract
             {
                 Forms.ContractForm tmpForm = new Forms.ContractForm(dbContext, (int)gvContracts.GetRowCellValue(e.RowHandle, "ID"));
                 tmpForm.Show();
-            }
-                
+            }      
         }
     }
 }
-
-
-
-
-//ghhg

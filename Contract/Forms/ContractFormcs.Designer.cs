@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject1 = new DevExpress.Utils.SerializableAppearanceObject();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -52,13 +53,13 @@
             this.tabNavigationPage2 = new DevExpress.XtraBars.Navigation.TabNavigationPage();
             this.tabPane1 = new DevExpress.XtraBars.Navigation.TabPane();
             this.tnpMainInfo = new DevExpress.XtraBars.Navigation.TabNavigationPage();
+            this.label12 = new System.Windows.Forms.Label();
+            this.tbAuthor = new System.Windows.Forms.TextBox();
+            this.lueExtensions = new DevExpress.XtraEditors.LookUpEdit();
             this.tnpSigning = new DevExpress.XtraBars.Navigation.TabNavigationPage();
             this.tnpAttachments = new DevExpress.XtraBars.Navigation.TabNavigationPage();
             this.deDate = new DevExpress.XtraEditors.DateEdit();
-            this.tbAuthor = new System.Windows.Forms.TextBox();
-            this.label12 = new System.Windows.Forms.Label();
-            this.hzhz = new System.Windows.Forms.ComboBox();
-            this.lueExtensions = new DevExpress.XtraEditors.LookUpEdit();
+            this.lueContractCategory = new DevExpress.XtraEditors.LookUpEdit();
             ((System.ComponentModel.ISupportInitialize)(this.beDepartment.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.beContractCategory.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.deContractDateStart.Properties.CalendarTimeProperties)).BeginInit();
@@ -69,9 +70,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.tabPane1)).BeginInit();
             this.tabPane1.SuspendLayout();
             this.tnpMainInfo.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.lueExtensions.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.deDate.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.deDate.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lueExtensions.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lueContractCategory.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -291,7 +293,6 @@
             // tnpMainInfo
             // 
             this.tnpMainInfo.Caption = "Основная информация";
-            this.tnpMainInfo.Controls.Add(this.hzhz);
             this.tnpMainInfo.Controls.Add(this.label12);
             this.tnpMainInfo.Controls.Add(this.tbAuthor);
             this.tnpMainInfo.Controls.Add(this.tbContractTheme);
@@ -307,9 +308,42 @@
             this.tnpMainInfo.Controls.Add(this.label9);
             this.tnpMainInfo.Controls.Add(this.label8);
             this.tnpMainInfo.Controls.Add(this.label5);
+            this.tnpMainInfo.Controls.Add(this.lueContractCategory);
             this.tnpMainInfo.Controls.Add(this.lueExtensions);
             this.tnpMainInfo.Name = "tnpMainInfo";
             this.tnpMainInfo.Size = new System.Drawing.Size(1226, 474);
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(474, 129);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(42, 13);
+            this.label12.TabIndex = 32;
+            this.label12.Text = "Автор:";
+            // 
+            // tbAuthor
+            // 
+            this.tbAuthor.Location = new System.Drawing.Point(564, 126);
+            this.tbAuthor.Name = "tbAuthor";
+            this.tbAuthor.ReadOnly = true;
+            this.tbAuthor.Size = new System.Drawing.Size(100, 21);
+            this.tbAuthor.TabIndex = 31;
+            // 
+            // lueExtensions
+            // 
+            this.lueExtensions.Location = new System.Drawing.Point(564, 45);
+            this.lueExtensions.Name = "lueExtensions";
+            this.lueExtensions.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.lueExtensions.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Value", "Value", 20, DevExpress.Utils.FormatType.None, "", false, DevExpress.Utils.HorzAlignment.Default),
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Text", "Наименование")});
+            this.lueExtensions.Properties.PopupSizeable = false;
+            this.lueExtensions.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
+            this.lueExtensions.ShowToolTips = false;
+            this.lueExtensions.Size = new System.Drawing.Size(235, 20);
+            this.lueExtensions.TabIndex = 34;
             // 
             // tnpSigning
             // 
@@ -335,41 +369,21 @@
             this.deDate.Size = new System.Drawing.Size(100, 20);
             this.deDate.TabIndex = 32;
             // 
-            // tbAuthor
+            // lueContractCategory
             // 
-            this.tbAuthor.Location = new System.Drawing.Point(564, 126);
-            this.tbAuthor.Name = "tbAuthor";
-            this.tbAuthor.ReadOnly = true;
-            this.tbAuthor.Size = new System.Drawing.Size(100, 21);
-            this.tbAuthor.TabIndex = 31;
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(474, 129);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(42, 13);
-            this.label12.TabIndex = 32;
-            this.label12.Text = "Автор:";
-            // 
-            // hzhz
-            // 
-            this.hzhz.FormattingEnabled = true;
-            this.hzhz.Location = new System.Drawing.Point(821, 45);
-            this.hzhz.Name = "hzhz";
-            this.hzhz.Size = new System.Drawing.Size(301, 21);
-            this.hzhz.TabIndex = 33;
-            // 
-            // lueExtensions
-            // 
-            this.lueExtensions.Location = new System.Drawing.Point(564, 45);
-            this.lueExtensions.Name = "lueExtensions";
-            this.lueExtensions.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.lueExtensions.Properties.PopupSizeable = false;
-            this.lueExtensions.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
-            this.lueExtensions.Size = new System.Drawing.Size(235, 20);
-            this.lueExtensions.TabIndex = 34;
+            this.lueContractCategory.Location = new System.Drawing.Point(477, 170);
+            this.lueContractCategory.Name = "lueContractCategory";
+            this.lueContractCategory.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo),
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Ellipsis, "...", -1, true, true, false, DevExpress.XtraEditors.ImageLocation.MiddleCenter, null, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject1, "", null, null, true)});
+            this.lueContractCategory.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Value", "Value", 20, DevExpress.Utils.FormatType.None, "", false, DevExpress.Utils.HorzAlignment.Default),
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Text", "Наименование")});
+            this.lueContractCategory.Properties.PopupSizeable = false;
+            this.lueContractCategory.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
+            this.lueContractCategory.ShowToolTips = false;
+            this.lueContractCategory.Size = new System.Drawing.Size(235, 20);
+            this.lueContractCategory.TabIndex = 34;
             // 
             // ContractForm
             // 
@@ -386,7 +400,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "ContractForm";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Договор №";
             this.Load += new System.EventHandler(this.tbContractDate_Load);
             ((System.ComponentModel.ISupportInitialize)(this.beDepartment.Properties)).EndInit();
@@ -400,9 +414,10 @@
             this.tabPane1.ResumeLayout(false);
             this.tnpMainInfo.ResumeLayout(false);
             this.tnpMainInfo.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.lueExtensions.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.deDate.Properties.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.deDate.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lueExtensions.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lueContractCategory.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -439,7 +454,7 @@
         private DevExpress.XtraEditors.DateEdit deDate;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.TextBox tbAuthor;
-        private System.Windows.Forms.ComboBox hzhz;
         private DevExpress.XtraEditors.LookUpEdit lueExtensions;
+        private DevExpress.XtraEditors.LookUpEdit lueContractCategory;
     }
 }

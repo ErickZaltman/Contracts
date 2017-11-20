@@ -45,6 +45,11 @@ namespace Contract.DB
                 .HasForeignKey(e => e.ContractExtensionTime);
 
             modelBuilder.Entity<Departments>()
+                .HasMany(e => e.Contract)
+                .WithOptional(e => e.Departments)
+                .HasForeignKey(e => e.DepartmentID);
+
+            modelBuilder.Entity<Departments>()
                 .HasMany(e => e.Users1)
                 .WithOptional(e => e.Departments1)
                 .HasForeignKey(e => e.DepartmentID);

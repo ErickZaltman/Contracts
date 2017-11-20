@@ -44,6 +44,13 @@ namespace Contract.DB
 
         public int? ContractExtensionTime { get; set; }
 
+        [StringLength(50)]
+        public string Note { get; set; }
+
+        public DateTime? Date { get; set; }
+
+        public int? DepartmentID { get; set; }
+
         public virtual ActivityKind ActivityKind { get; set; }
 
         public virtual ContractCategory ContractCategory { get; set; }
@@ -51,6 +58,8 @@ namespace Contract.DB
         public virtual ContractExtension ContractExtension1 { get; set; }
 
         public virtual ContractExtensionPeriod ContractExtensionPeriod { get; set; }
+
+        public virtual Departments Departments { get; set; }
 
         public virtual Users Users { get; set; }
 

@@ -11,6 +11,7 @@ namespace Contract.DB
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Departments()
         {
+            Contract = new HashSet<Contract>();
             Users1 = new HashSet<Users>();
         }
 
@@ -22,6 +23,9 @@ namespace Contract.DB
         public int? Parent { get; set; }
 
         public int? HeadID { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Contract> Contract { get; set; }
 
         public virtual Users Users { get; set; }
 

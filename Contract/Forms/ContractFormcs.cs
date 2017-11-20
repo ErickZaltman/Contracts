@@ -27,6 +27,7 @@ namespace Contract.Forms
             this.dbContext = dbContext;
             this.contractID = contractID;
             fillControls();
+            fillExistingContract(contractID);
 
         }
         private void fillExistingContract(int id)
@@ -42,15 +43,27 @@ namespace Contract.Forms
             tbContractNote.Text = currContract.Note;
             tbSumm.Text = currContract.Summ.ToString();
             tbContractTheme.Text = currContract.Theme;
+            tbAuthor.Text = currContract.Users.Surname;
+
+            beContractCategory.Text = currContract.ContractCategory.Name;
+            beContractual.Text = currContract.Users1.Surname + " " + currContract.Users1.FirstName[0] + ". " + currContract.Users1.SecondName[0] + ".";
+            beDepartment.Text = currContract.Departments.Name;
 
             deDate.DateTime = (DateTime)currContract.Date;
             deContractDateEnd.DateTime = (DateTime)currContract.EndDate;
             deContractDateStart.DateTime = (DateTime)currContract.StartDate;
 
+            lueExtensions.Properties.DisplayMember = "Text";
+            lueExtensions.Properties.ValueMember = "Values";
+            lueExtensions.Properties.DataSource = dbContext.ContractExtension.Select(x => new { Value = x.ID, Text = x.Name }).ToArray();
+
+
+            hzhz.DisplayMember = "Text";
+            hzhz.ValueMember = "Values";            
+            hzhz.DataSource = dbContext.ContractExtension.Select(x => new { Value = x.ID, Text = x.Name }).ToArray();
         }
         private void fillControls()
         {
-            MessageBox.Show(contractID.ToString());
 
 
         }
@@ -59,6 +72,30 @@ namespace Contract.Forms
         private void tbContractDate_Load(object sender, EventArgs e)
         {
 
+        }
+
+        
+
+        private void beContractCategory_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            SelectInfoForm tmpForm = new SelectInfoForm("Category", dbContext);
+            
+            tmpForm.ShowDialog();
+
+        }
+
+        private void beContractual_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            SelectInfoForm tmpForm = new SelectInfoForm("Users", dbContext);
+
+            tmpForm.ShowDialog();
+        }
+
+        private void beDepartment_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            SelectInfoForm tmpForm = new SelectInfoForm("Departments", dbContext);
+
+            tmpForm.ShowDialog();
         }
     }
 }

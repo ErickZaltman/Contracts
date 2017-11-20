@@ -12,7 +12,7 @@ using DevExpress.XtraEditors;
 namespace Contract.Forms
 {
     public delegate void getIDFromForm(int ID, string type);
-    public partial class luePeriod : DevExpress.XtraEditors.XtraForm
+    public partial class ContractForm : DevExpress.XtraEditors.XtraForm
     {
         private int returnID;
         private DB.DBModel dbContext;
@@ -31,12 +31,12 @@ namespace Contract.Forms
             }
         }
 
-        public luePeriod(DB.DBModel dbContext)
+        public ContractForm(DB.DBModel dbContext)
         {
             InitializeComponent();
 
         }
-        public luePeriod(DB.DBModel dbContext, int contractID)
+        public ContractForm(DB.DBModel dbContext, int contractID)
         {
             InitializeComponent();
             this.dbContext = dbContext;
@@ -89,12 +89,7 @@ namespace Contract.Forms
         }
         private void getID(int ID, string type)
         {
-            switch (type)
-            {
-                case "Category": lueContractCategory.EditValue = ID; break;
-                case "Users": lueContractual.EditValue = ID; break;
-                case "Departments": lueDepartment.EditValue = ID; break;
-            }
+            MessageBox.Show(ID + " " + type);
         }
 
         private void lueContractCategory_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
@@ -102,6 +97,7 @@ namespace Contract.Forms
             if (e.Button.Index == 1)
             {
                 Forms.SelectInfoForm tmpForm = new SelectInfoForm("Category", dbContext, getID);
+                tmpForm.Parent = this;
 
                 tmpForm.ShowDialog();
             }
@@ -128,11 +124,6 @@ namespace Contract.Forms
 
                 tmpForm.ShowDialog();
             }
-        }
-
-        private void tnpMainInfo_Paint(object sender, PaintEventArgs e)
-        {
-
         }
     }
 }

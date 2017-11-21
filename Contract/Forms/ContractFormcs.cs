@@ -17,6 +17,7 @@ namespace Contract.Forms
         private int returnID;
         private DB.DBModel dbContext;
         private int contractID;
+        private DB.Contract currContract;
 
         public int ReturnID
         {
@@ -48,8 +49,7 @@ namespace Contract.Forms
         }
         private void fillExistingContract(int id)
         {
-            DB.Contract currContract = new DB.Contract();
-
+            currContract = new DB.Contract();
             currContract = dbContext.Contract.Where(x => x.ID == id).ToList()[0];
 
             Text += currContract.Number + " от " + currContract.Date.ToString();
@@ -66,8 +66,8 @@ namespace Contract.Forms
 
             lueDepartment.EditValue = currContract.DepartmentID;
             lueContractual.EditValue = currContract.ContractualID;
-            lueExtensions.EditValue = currContract.ContractExtension;
-            lueExtensionPeriod.EditValue = currContract.ContractExtensionTime;
+            lueExtensions.EditValue = currContract.ContractExtensionID;
+            lueExtensionPeriod.EditValue = currContract.ContractExtensionTimeID;
             lueContractCategory.EditValue = currContract.CategoryID;
             lueActivityKind.EditValue = currContract.ActivityKindID;
         }
@@ -75,28 +75,27 @@ namespace Contract.Forms
         {
             lueDepartment.Properties.DisplayMember = "Text";
             lueDepartment.Properties.ValueMember = "Value";
-            lueDepartment.Properties.DataSource = dbContext.Departments.Select(x => new { Value = x.ID, Text = x.Name }).ToArray();
+            lueDepartment.Properties.DataSource = dbContext.Departments.Select(x => new { Value = x.ID, Text = x.Name }).ToList();
 
             lueContractual.Properties.DisplayMember = "Text";
             lueContractual.Properties.ValueMember = "Value";
-            lueContractual.Properties.DataSource = dbContext.Users.Select(x => new { Value = x.ID, Text = x.Surname + " " + x.FirstName.Substring(0, 1) + "." + x.SecondName.Substring(0, 1) + "." }).ToArray();
+            lueContractual.Properties.DataSource = dbContext.Users.Select(x => new { Value = x.ID, Text = x.Surname + " " + x.FirstName.Substring(0, 1) + "." + x.SecondName.Substring(0, 1) + "." }).ToList();
 
             lueExtensions.Properties.DisplayMember = "Text";
             lueExtensions.Properties.ValueMember = "Value";
-            lueExtensions.Properties.DataSource = dbContext.ContractExtension.Select(x => new { Value = x.ID, Text = x.Name }).ToArray();
+            lueExtensions.Properties.DataSource = dbContext.ContractExtension.Select(x => new { Value = x.ID, Text = x.Name }).ToList();
 
             lueExtensionPeriod.Properties.DisplayMember = "Text";
             lueExtensionPeriod.Properties.ValueMember = "Value";
-            lueExtensionPeriod.Properties.DataSource = dbContext.ContractExtensionPeriod.Select(x => new { Value = x.ID, Text = x.Name }).ToArray();
+            lueExtensionPeriod.Properties.DataSource = dbContext.ContractExtensionPeriod.Select(x => new { Value = x.ID, Text = x.Name }).ToList();
 
             lueContractCategory.Properties.DisplayMember = "Text";
             lueContractCategory.Properties.ValueMember = "Value";
-            lueContractCategory.Properties.DataSource = dbContext.ContractCategory.Select(x => new { Value = x.ID, Text = x.Name }).ToArray();
+            lueContractCategory.Properties.DataSource = dbContext.ContractCategory.Select(x => new { Value = x.ID, Text = x.Name }).ToList();
 
             lueActivityKind.Properties.DisplayMember = "Text";
             lueActivityKind.Properties.ValueMember = "Value";
-            lueActivityKind.Properties.DataSource = dbContext.ActivityKind.Select(x => new { Value = x.ID, Text = x.Name }).ToArray();
-
+            lueActivityKind.Properties.DataSource = dbContext.ActivityKind.Select(x => new { Value = x.ID, Text = x.Name }).ToList();
         }
         private void getID(int ID, string type)
         {
@@ -140,6 +139,26 @@ namespace Contract.Forms
 
                 tmpForm.ShowDialog();
             }
+        }
+
+        private void sbSaveChanges_Click(object sender, EventArgs e)
+        {
+            if (lueContractCategory.Text != "" && currContract.CategoryID != (int)lueContractCategory.EditValue)
+                currContract.CategoryID = (int)lueContractCategory.EditValue;
+            if (lueDepartment.Text != "" && currContract.DepartmentID != (int)lueDepartment.EditValue)
+                currContract.DepartmentID = (int)lueDepartment.EditValue;
+            if (lueContractual.Text != "" && currContract.ContractualID != (int)lueContractual.EditValue)
+                currContract.ContractualID = (int)lueContractual.EditValue;
+            if (lueActivityKind.Text != "" && currContract.ActivityKindID != (int)lueActivityKind.EditValue)
+                currContract.ActivityKindID = (int)lueActivityKind.EditValue;
+            if (lueExtensions.Text != "" && currContract.ContractExtensionID != (int)lueExtensions.EditValue)
+                currContract.ContractExtensionID = (int)lueExtensions.EditValue;
+            if (lueExtensionPeriod.Text != "" && currContract.ContractExtensionTimeID != (int)lueExtensionPeriod.EditValue)
+                currContract.ContractExtensionTimeID = (int)lueExtensionPeriod.EditValue;
+            if (tbSumm.Text != "" && currContract.Summ != Convert.ToDouble(tbSumm.Text))
+                currContract.Summ = Convert.ToDouble(tbSumm.Text);
+
+            dbContext.SaveChanges();
         }
     }
 }

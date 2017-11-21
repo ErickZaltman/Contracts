@@ -157,6 +157,8 @@ namespace Contract.Forms
                 currContract.ContractExtensionTimeID = (int)lueExtensionPeriod.EditValue;
             if (tbSumm.Text != "" && currContract.Summ != Convert.ToDouble(tbSumm.Text))
                 currContract.Summ = Convert.ToDouble(tbSumm.Text);
+            if (tbContractNote.Text != "" && currContract.Note != tbContractNote.Text)
+                currContract.Note = tbContractNote.Text;
 
             dbContext.SaveChanges();
         }

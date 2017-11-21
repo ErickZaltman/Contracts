@@ -34,6 +34,7 @@ namespace Contract.Forms
         public ContractForm(DB.DBModel dbContext)
         {
             InitializeComponent();
+            fillControls();
 
         }
         public ContractForm(DB.DBModel dbContext, int contractID)
@@ -66,7 +67,9 @@ namespace Contract.Forms
             lueDepartment.EditValue = currContract.DepartmentID;
             lueContractual.EditValue = currContract.ContractualID;
             lueExtensions.EditValue = currContract.ContractExtension;
+            lueExtensionPeriod.EditValue = currContract.ContractExtensionTime;
             lueContractCategory.EditValue = currContract.CategoryID;
+            lueActivityKind.EditValue = currContract.ActivityKindID;
         }
         private void fillControls()
         {
@@ -82,9 +85,17 @@ namespace Contract.Forms
             lueExtensions.Properties.ValueMember = "Value";
             lueExtensions.Properties.DataSource = dbContext.ContractExtension.Select(x => new { Value = x.ID, Text = x.Name }).ToArray();
 
+            lueExtensionPeriod.Properties.DisplayMember = "Text";
+            lueExtensionPeriod.Properties.ValueMember = "Value";
+            lueExtensionPeriod.Properties.DataSource = dbContext.ContractExtensionPeriod.Select(x => new { Value = x.ID, Text = x.Name }).ToArray();
+
             lueContractCategory.Properties.DisplayMember = "Text";
             lueContractCategory.Properties.ValueMember = "Value";
             lueContractCategory.Properties.DataSource = dbContext.ContractCategory.Select(x => new { Value = x.ID, Text = x.Name }).ToArray();
+
+            lueActivityKind.Properties.DisplayMember = "Text";
+            lueActivityKind.Properties.ValueMember = "Value";
+            lueActivityKind.Properties.DataSource = dbContext.ActivityKind.Select(x => new { Value = x.ID, Text = x.Name }).ToArray();
 
         }
         private void getID(int ID, string type)

@@ -424,6 +424,7 @@
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Text", "Наименование")});
             this.lueContractCategory.Properties.PopupFilterMode = DevExpress.XtraEditors.PopupFilterMode.Contains;
             this.lueContractCategory.Properties.PopupSizeable = false;
+            this.lueContractCategory.Properties.SearchMode = DevExpress.XtraEditors.Controls.SearchMode.OnlyInPopup;
             this.lueContractCategory.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
             this.lueContractCategory.ShowToolTips = false;
             this.lueContractCategory.Size = new System.Drawing.Size(255, 20);

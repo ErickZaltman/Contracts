@@ -64,6 +64,12 @@ namespace Contract.Forms
             gridControl1.DataSource = dbContext.Contractors.Select(x => new { x.ID, x.Name }).ToList();
             gridView1.Columns["ID"].Visible = false;
         }
+
+        private void FillGVActivities()
+        {
+            gridControl1.DataSource = dbContext.Contractors.Select(x => new { x.ID, x.Name }).ToList();
+            gridView1.Columns["ID"].Visible = false;
+        }
         public SelectInfoForm()
         {
             InitializeComponent();

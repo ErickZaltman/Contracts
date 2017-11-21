@@ -36,6 +36,7 @@
             this.nbiAttachments = new DevExpress.XtraNavBar.NavBarItem();
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
             this.gvContracts = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.nbiAgreementsDocs = new DevExpress.XtraNavBar.NavBarItem();
             ((System.ComponentModel.ISupportInitialize)(this.navBarControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvContracts)).BeginInit();
@@ -50,22 +51,25 @@
             this.nbiContracts,
             this.nbiSupAgreements,
             this.nbiAdditions,
-            this.nbiAttachments});
-            this.navBarControl1.Location = new System.Drawing.Point(12, 33);
+            this.nbiAttachments,
+            this.nbiAgreementsDocs});
+            this.navBarControl1.Location = new System.Drawing.Point(2, 33);
             this.navBarControl1.Name = "navBarControl1";
-            this.navBarControl1.OptionsNavPane.ExpandedWidth = 140;
-            this.navBarControl1.Size = new System.Drawing.Size(140, 300);
+            this.navBarControl1.OptionsNavPane.ExpandedWidth = 185;
+            this.navBarControl1.Size = new System.Drawing.Size(185, 300);
             this.navBarControl1.TabIndex = 0;
             this.navBarControl1.Text = "navBarControl1";
             // 
             // navBarGroup1
             // 
             this.navBarGroup1.Caption = "navBarGroup1";
+            this.navBarGroup1.Expanded = true;
             this.navBarGroup1.ItemLinks.AddRange(new DevExpress.XtraNavBar.NavBarItemLink[] {
             new DevExpress.XtraNavBar.NavBarItemLink(this.nbiContracts),
             new DevExpress.XtraNavBar.NavBarItemLink(this.nbiSupAgreements),
             new DevExpress.XtraNavBar.NavBarItemLink(this.nbiAdditions),
-            new DevExpress.XtraNavBar.NavBarItemLink(this.nbiAttachments)});
+            new DevExpress.XtraNavBar.NavBarItemLink(this.nbiAttachments),
+            new DevExpress.XtraNavBar.NavBarItemLink(this.nbiAgreementsDocs)});
             this.navBarGroup1.Name = "navBarGroup1";
             // 
             // nbiContracts
@@ -78,23 +82,26 @@
             // 
             this.nbiSupAgreements.Caption = "Доп. соглашения";
             this.nbiSupAgreements.Name = "nbiSupAgreements";
+            this.nbiSupAgreements.Visible = false;
             // 
             // nbiAdditions
             // 
             this.nbiAdditions.Caption = "Приложения";
             this.nbiAdditions.Name = "nbiAdditions";
+            this.nbiAdditions.Visible = false;
             // 
             // nbiAttachments
             // 
             this.nbiAttachments.Caption = "Вложения";
             this.nbiAttachments.Name = "nbiAttachments";
+            this.nbiAttachments.Visible = false;
             // 
             // gridControl1
             // 
             this.gridControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.gridControl1.Location = new System.Drawing.Point(177, 33);
+            this.gridControl1.Location = new System.Drawing.Point(193, 33);
             this.gridControl1.MainView = this.gvContracts;
             this.gridControl1.Name = "gridControl1";
             this.gridControl1.Size = new System.Drawing.Size(543, 450);
@@ -111,6 +118,11 @@
             this.gvContracts.OptionsView.ShowIndicator = false;
             this.gvContracts.OptionsView.ShowPreviewRowLines = DevExpress.Utils.DefaultBoolean.False;
             this.gvContracts.RowClick += new DevExpress.XtraGrid.Views.Grid.RowClickEventHandler(this.gvContracts_RowClick);
+            // 
+            // nbiAgreementsDocs
+            // 
+            this.nbiAgreementsDocs.Caption = "Договора на согласовании";
+            this.nbiAgreementsDocs.Name = "nbiAgreementsDocs";
             // 
             // MainForm
             // 
@@ -146,6 +158,7 @@
         private DevExpress.XtraNavBar.NavBarItem nbiAttachments;
         private DevExpress.XtraGrid.GridControl gridControl1;
         private DevExpress.XtraGrid.Views.Grid.GridView gvContracts;
+        private DevExpress.XtraNavBar.NavBarItem nbiAgreementsDocs;
     }
 }
 

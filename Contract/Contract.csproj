@@ -67,6 +67,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="cs\com.cs" />
     <Compile Include="DB\ActivityKind.cs" />
     <Compile Include="DB\Contract.cs" />
     <Compile Include="DB\ContractCategory.cs" />

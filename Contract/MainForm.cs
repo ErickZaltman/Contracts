@@ -64,7 +64,7 @@ namespace Contract
 
         private void nbiContracts_LinkPressed(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e)
         {
-            var contractsBindingSource = dbContext.Contract.Select(x => new { x.ID, x.Number, x.ContractCategory.Name, x.Theme, x.Summ, x.Users.Surname}).ToList();
+            var contractsBindingSource = dbContext.Contract.Select(x => new { x.ID, x.Number, Category = x.ContractCategory.Name , x.Theme, x.Summ, x.Users.Surname}).ToList();
             gridControl1.DataSource = contractsBindingSource;
             gvContracts.Columns["ID"].Visible  = false;          
         }

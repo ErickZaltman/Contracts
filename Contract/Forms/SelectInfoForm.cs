@@ -36,6 +36,7 @@ namespace Contract.Forms
                 case "Category": FillGVCategory(); Text = "Выберите категорию"; break;
                 case "Users": FillGVUsers(); Text = ":"; break;
                 case "Departments": FillGVDepartments(); Text = ":"; break;
+                case "Contractors": FillGVContractors(); Text = ":"; break;
 
                 default: MessageBox.Show("Y"); break;
             }
@@ -55,6 +56,12 @@ namespace Contract.Forms
         private void FillGVDepartments()
         {
             gridControl1.DataSource = dbContext.Departments.Select(x => new { x.ID, x.Name }).ToList();
+            gridView1.Columns["ID"].Visible = false;
+        }
+
+        private void FillGVContractors()
+        {
+            gridControl1.DataSource = dbContext.Contractors.Select(x => new { x.ID, x.Name }).ToList();
             gridView1.Columns["ID"].Visible = false;
         }
         public SelectInfoForm()

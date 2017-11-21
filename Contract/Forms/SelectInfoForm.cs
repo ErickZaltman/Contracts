@@ -20,7 +20,6 @@ namespace Contract.Forms
  
         public SelectInfoForm(string type, DB.DBModel dbContext, getIDFromForm sender)
         {
-            
             InitializeComponent();
             this.Text = type;
             d = sender;
@@ -51,7 +50,6 @@ namespace Contract.Forms
         private void FillGVUsers()
         {
             gridControl1.DataSource = dbContext.Users.Select(x => new {x.ID, Name =  x.Surname +  " " +  x.FirstName.Substring(0,1) + ". " + x.SecondName.Substring(0, 1) + "." }).ToList();
-            //gridControl1.DataSource = dbContext.Users.Select(x => new {x.ID, Name =  x.Surname + " " + x.FirstName[0] + ". " + x.SecondName[0]+ "."}).ToList();
             gridView1.Columns["ID"].Visible = false;
         }
         private void FillGVDepartments()

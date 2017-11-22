@@ -18,5 +18,6 @@ namespace Contract
         public static TableName Departments { get { return new TableName("Departments"); } }
         public static TableName Activities { get { return new TableName("Activities"); } }
 
+        //hz
     }
 }

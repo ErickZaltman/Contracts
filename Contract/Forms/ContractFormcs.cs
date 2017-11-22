@@ -76,6 +76,7 @@ namespace Contract.Forms
             lueExtensionPeriod.EditValue = currContract.ContractExtensionTimeID;
             lueContractCategory.EditValue = currContract.CategoryID;
             lueActivityKind.EditValue = currContract.ActivityKindID;
+            lueContractors.EditValue = currContract.ContractorID;
         }
         private void fillControls()
         {
@@ -98,6 +99,10 @@ namespace Contract.Forms
             lueContractCategory.Properties.DisplayMember = "Text";
             lueContractCategory.Properties.ValueMember = "Value";
             lueContractCategory.Properties.DataSource = dbContext.ContractCategory.Select(x => new { Value = x.ID, Text = x.Name }).ToList();
+
+            lueContractors.Properties.DisplayMember = "Text";
+            lueContractors.Properties.ValueMember = "Value";
+            lueContractors.Properties.DataSource = dbContext.Contractors.Select(x => new { Value = x.ID, Text = x.Name }).ToList();
 
             lueActivityKind.Properties.DisplayMember = "Text";
             lueActivityKind.Properties.ValueMember = "Value";
@@ -189,6 +194,16 @@ namespace Contract.Forms
             dbContext.SaveChanges();
 
             uc();
+        }
+
+        private void lueContractors_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            if (e.Button.Index == 1)
+            {
+                Forms.SelectInfoForm tmpForm = new SelectInfoForm("Contractors", dbContext, getID);
+
+                tmpForm.ShowDialog();
+            }
         }
     }
 }

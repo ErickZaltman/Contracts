@@ -17,6 +17,8 @@ namespace Contract.DB
         public virtual DbSet<ContractCategory> ContractCategory { get; set; }
         public virtual DbSet<ContractExtension> ContractExtension { get; set; }
         public virtual DbSet<ContractExtensionPeriod> ContractExtensionPeriod { get; set; }
+        public virtual DbSet<Contractors> Contractors { get; set; }
+        public virtual DbSet<ContractorType> ContractorType { get; set; }
         public virtual DbSet<Departments> Departments { get; set; }
         public virtual DbSet<Files> Files { get; set; }
         public virtual DbSet<HistoryChanges> HistoryChanges { get; set; }
@@ -38,6 +40,16 @@ namespace Contract.DB
                 .HasMany(e => e.Contract)
                 .WithOptional(e => e.ContractExtensionPeriod)
                 .HasForeignKey(e => e.ContractExtensionTimeID);
+
+            modelBuilder.Entity<Contractors>()
+                .HasMany(e => e.Contract)
+                .WithOptional(e => e.Contractors)
+                .HasForeignKey(e => e.ContractorID);
+
+            modelBuilder.Entity<ContractorType>()
+                .HasMany(e => e.Contractors)
+                .WithOptional(e => e.ContractorType)
+                .HasForeignKey(e => e.TypeID);
 
             modelBuilder.Entity<Departments>()
                 .HasMany(e => e.Contract)

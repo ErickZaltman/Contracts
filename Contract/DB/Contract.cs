@@ -20,6 +20,8 @@ namespace Contract.DB
 
         public int ID { get; set; }
 
+        public int? ContractorID { get; set; }
+
         [StringLength(50)]
         public string Number { get; set; }
 
@@ -58,6 +60,8 @@ namespace Contract.DB
         public virtual ContractExtension ContractExtension { get; set; }
 
         public virtual ContractExtensionPeriod ContractExtensionPeriod { get; set; }
+
+        public virtual Contractors Contractors { get; set; }
 
         public virtual Departments Departments { get; set; }
 

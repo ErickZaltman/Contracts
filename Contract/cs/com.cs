@@ -16,6 +16,7 @@ namespace Contract
         public static TableName Users { get { return new TableName("Users"); } }
         public static TableName Contractors { get { return new TableName("Contractors"); } }
         public static TableName Departments { get { return new TableName("Departments"); } }
+        public static TableName Activities { get { return new TableName("Activities"); } }
 
     }
 }

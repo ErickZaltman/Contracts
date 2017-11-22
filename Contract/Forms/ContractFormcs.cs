@@ -189,17 +189,17 @@ namespace Contract.Forms
         {
             if (lueContractCategory.Text != "" && lueContractCategory.EditValue!= null && currContract.CategoryID != (int)lueContractCategory.EditValue)
                 currContract.CategoryID = (int)lueContractCategory.EditValue;
-            if (lueDepartment.Text != "" && currContract.DepartmentID != (int)lueDepartment.EditValue)
+            if (lueDepartment.Text != "" && lueDepartment.EditValue != null && currContract.DepartmentID != (int)lueDepartment.EditValue)
                 currContract.DepartmentID = (int)lueDepartment.EditValue;
-            if (lueContractual.Text != "" && currContract.ContractualID != (int)lueContractual.EditValue)
+            if (lueContractual.Text != "" && lueContractual.EditValue != null && currContract.ContractualID != (int)lueContractual.EditValue)
                 currContract.ContractualID = (int)lueContractual.EditValue;
-            if (lueActivityKind.Text != "" && currContract.ActivityKindID != (int)lueActivityKind.EditValue)
+            if (lueActivityKind.Text != "" && lueActivityKind.EditValue != null && currContract.ActivityKindID != (int)lueActivityKind.EditValue)
                 currContract.ActivityKindID = (int)lueActivityKind.EditValue;
-            if (lueExtensions.Text != "" && currContract.ContractExtensionID != (int)lueExtensions.EditValue)
+            if (lueExtensions.Text != "" && lueExtensions.EditValue != null && currContract.ContractExtensionID != (int)lueExtensions.EditValue)
                 currContract.ContractExtensionID = (int)lueExtensions.EditValue;
-            if (lueContractors.Text != "" && currContract.ContractorID != (int)lueContractors.EditValue)
+            if (lueContractors.Text != "" && lueContractors.EditValue != null && currContract.ContractorID != (int)lueContractors.EditValue)
                 currContract.ContractorID = (int)lueContractors.EditValue;
-            if (lueExtensionPeriod.Text != "" && currContract.ContractExtensionTimeID != (int)lueExtensionPeriod.EditValue)
+            if (lueExtensionPeriod.Text != "" && lueExtensionPeriod.EditValue != null && currContract.ContractExtensionTimeID != (int)lueExtensionPeriod.EditValue)
                 currContract.ContractExtensionTimeID = (int)lueExtensionPeriod.EditValue;
             if (tbSumm.Text != "" && currContract.Summ != Convert.ToDouble(tbSumm.Text))
                 currContract.Summ = Convert.ToDouble(tbSumm.Text);

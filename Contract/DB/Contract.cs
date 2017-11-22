@@ -53,6 +53,8 @@ namespace Contract.DB
 
         public int? DepartmentID { get; set; }
 
+        public bool? OnAgreement { get; set; }
+
         public virtual ActivityKind ActivityKind { get; set; }
 
         public virtual ContractCategory ContractCategory { get; set; }

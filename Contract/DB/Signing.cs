@@ -17,8 +17,12 @@ namespace Contract.DB
 
         public DateTime? Date { get; set; }
 
+        public DateTime? DeadlineTime { get; set; }
+
         [StringLength(50)]
         public string Note { get; set; }
+
+        public bool? IsAgreed { get; set; }
 
         public virtual Contract Contract { get; set; }
 

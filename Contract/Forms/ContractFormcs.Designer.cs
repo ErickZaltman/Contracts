@@ -63,6 +63,8 @@
             this.tbAuthor = new System.Windows.Forms.TextBox();
             this.lueExtensions = new DevExpress.XtraEditors.LookUpEdit();
             this.tnpSigning = new DevExpress.XtraBars.Navigation.TabNavigationPage();
+            this.gcAgreements = new DevExpress.XtraGrid.GridControl();
+            this.gvAgreements = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.tnpAttachments = new DevExpress.XtraBars.Navigation.TabNavigationPage();
             this.lueContractCategory = new DevExpress.XtraEditors.LookUpEdit();
             this.deDate = new DevExpress.XtraEditors.DateEdit();
@@ -70,6 +72,8 @@
             this.sbSaveChanges = new DevExpress.XtraEditors.SimpleButton();
             this.label14 = new System.Windows.Forms.Label();
             this.lueContractors = new DevExpress.XtraEditors.LookUpEdit();
+            this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.deContractDateStart.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.deContractDateStart.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.deContractDateEnd.Properties.CalendarTimeProperties)).BeginInit();
@@ -82,6 +86,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.chPeriod.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lueContractual.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lueExtensions.Properties)).BeginInit();
+            this.tnpSigning.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gcAgreements)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gvAgreements)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lueContractCategory.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.deDate.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.deDate.Properties)).BeginInit();
@@ -404,8 +411,26 @@
             // tnpSigning
             // 
             this.tnpSigning.Caption = "Согласования";
+            this.tnpSigning.Controls.Add(this.gcAgreements);
             this.tnpSigning.Name = "tnpSigning";
             this.tnpSigning.Size = new System.Drawing.Size(1226, 474);
+            // 
+            // gcAgreements
+            // 
+            this.gcAgreements.Location = new System.Drawing.Point(4, 4);
+            this.gcAgreements.MainView = this.gvAgreements;
+            this.gcAgreements.Name = "gcAgreements";
+            this.gcAgreements.Size = new System.Drawing.Size(1219, 375);
+            this.gcAgreements.TabIndex = 0;
+            this.gcAgreements.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gvAgreements});
+            // 
+            // gvAgreements
+            // 
+            this.gvAgreements.GridControl = this.gcAgreements;
+            this.gvAgreements.Name = "gvAgreements";
+            this.gvAgreements.OptionsView.ShowGroupPanel = false;
+            this.gvAgreements.OptionsView.ShowIndicator = false;
             // 
             // tnpAttachments
             // 
@@ -498,11 +523,32 @@
             this.lueContractors.TabIndex = 38;
             this.lueContractors.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.lueContractors_ButtonClick);
             // 
+            // simpleButton1
+            // 
+            this.simpleButton1.Location = new System.Drawing.Point(938, 15);
+            this.simpleButton1.Name = "simpleButton1";
+            this.simpleButton1.Size = new System.Drawing.Size(164, 23);
+            this.simpleButton1.TabIndex = 39;
+            this.simpleButton1.Text = "Отправить на согласование";
+            this.simpleButton1.Click += new System.EventHandler(this.simpleButton1_Click);
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(864, 69);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 40;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // ContractForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1268, 622);
+            this.Controls.Add(this.button1);
+            this.Controls.Add(this.simpleButton1);
             this.Controls.Add(this.label14);
             this.Controls.Add(this.lueContractors);
             this.Controls.Add(this.sbSaveChanges);
@@ -531,6 +577,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.chPeriod.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lueContractual.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lueExtensions.Properties)).EndInit();
+            this.tnpSigning.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.gcAgreements)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gvAgreements)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lueContractCategory.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.deDate.Properties.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.deDate.Properties)).EndInit();
@@ -580,5 +629,9 @@
         private DevExpress.XtraEditors.SimpleButton sbSaveChanges;
         private System.Windows.Forms.Label label14;
         private DevExpress.XtraEditors.LookUpEdit lueContractors;
+        private DevExpress.XtraEditors.SimpleButton simpleButton1;
+        private DevExpress.XtraGrid.GridControl gcAgreements;
+        private DevExpress.XtraGrid.Views.Grid.GridView gvAgreements;
+        private System.Windows.Forms.Button button1;
     }
 }

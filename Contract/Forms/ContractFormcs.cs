@@ -34,12 +34,7 @@ namespace Contract.Forms
             }
         }
 
-        public ContractForm(DB.DBModel dbContext)
-        {
-            InitializeComponent();
-            fillControls();
-
-        }
+        
         public ContractForm(DB.DBModel dbContext, int contractID, UpdateContracts updateContracts)
         {
             InitializeComponent();
@@ -47,7 +42,14 @@ namespace Contract.Forms
             this.contractID = contractID;
             this.uc = updateContracts;
             fillControls();
-            fillExistingContract(contractID);
+            
+            if (contractID == 0)
+            {
+                currContract = new DB.Contract();
+            }else
+            {
+                fillExistingContract(contractID);
+            }
 
         }
         private void fillExistingContract(int id)
@@ -77,6 +79,12 @@ namespace Contract.Forms
             lueContractCategory.EditValue = currContract.CategoryID;
             lueActivityKind.EditValue = currContract.ActivityKindID;
             lueContractors.EditValue = currContract.ContractorID;
+
+
+            if(currContract.OnAgreement == true)
+            {
+                FillAgreemenst();
+            }
         }
         private void fillControls()
         {
@@ -156,7 +164,30 @@ namespace Contract.Forms
 
         private void sbSaveChanges_Click(object sender, EventArgs e)
         {
-            if (lueContractCategory.Text != "" && currContract.CategoryID != (int)lueContractCategory.EditValue)
+            SaveContracChanges();
+        }
+
+
+        private void checkNullLUE()
+        {
+            foreach(var tmpLue in Controls)
+            {
+                if (tmpLue.GetType() == typeof(LookUpEdit))
+                {
+                    MessageBox.Show((tmpLue as LookUpEdit).Name + ";" + (tmpLue as LookUpEdit).EditValue);
+                }
+            }
+            foreach (var tmpLue in tnpMainInfo.Controls)
+            {
+                if (tmpLue.GetType() == typeof(LookUpEdit))
+                {
+                    MessageBox.Show((tmpLue as LookUpEdit).Name + ";" + (tmpLue as LookUpEdit).EditValue);
+                }
+            }
+        }
+        private void SaveContracChanges()
+        {
+            if (lueContractCategory.Text != "" && lueContractCategory.EditValue!= null && currContract.CategoryID != (int)lueContractCategory.EditValue)
                 currContract.CategoryID = (int)lueContractCategory.EditValue;
             if (lueDepartment.Text != "" && currContract.DepartmentID != (int)lueDepartment.EditValue)
                 currContract.DepartmentID = (int)lueDepartment.EditValue;
@@ -179,15 +210,15 @@ namespace Contract.Forms
 
             if (deDate.Text == "")
                 currContract.Date = null;
-            else 
+            else
                 if (currContract.Date != Convert.ToDateTime(deDate.Text))
-                    currContract.Date = Convert.ToDateTime(deDate.Text);
+                currContract.Date = Convert.ToDateTime(deDate.Text);
 
             if (deContractDateEnd.Text == "")
                 currContract.EndDate = null;
-            else 
+            else
                 if (currContract.EndDate != Convert.ToDateTime(deContractDateEnd.Text))
-                    currContract.EndDate = Convert.ToDateTime(deContractDateEnd.Text);
+                currContract.EndDate = Convert.ToDateTime(deContractDateEnd.Text);
 
             if (deContractDateStart.Text == "")
                 currContract.StartDate = null;
@@ -195,8 +226,13 @@ namespace Contract.Forms
                 if (currContract.StartDate != Convert.ToDateTime(deContractDateStart.Text))
                 currContract.StartDate = Convert.ToDateTime(deContractDateStart.Text);
 
-            dbContext.SaveChanges();
+            if(this.contractID == 0)
+            {
+                dbContext.Contract.Add(currContract);
+                contractID = currContract.ID;
 
+            }
+            dbContext.SaveChanges();
             uc();
         }
 
@@ -218,6 +254,42 @@ namespace Contract.Forms
 
                 tmpForm.ShowDialog();
             }
+        }
+
+        private void SendContractToSigning()
+        {
+
+            foreach (var user in dbContext.AgreementSignList.Select(x => x.ID).ToList())
+            {
+                DB.Signing tmpSigning = new DB.Signing();
+                tmpSigning.UserID = user;
+                tmpSigning.ContractID = currContract.ID;
+                tmpSigning.DeadlineTime = DateTime.Now.AddDays(5);
+                tmpSigning.IsAgreed = false;
+                dbContext.Signing.Add(tmpSigning);
+                
+            }
+            dbContext.SaveChanges();
+        }
+
+        private void FillAgreemenst()
+        {
+            gcAgreements.DataSource = dbContext.Signing.Where(x => x.ContractID == currContract.ID).ToList();
+            gvAgreements.Columns["ID"].Visible = false;
+        }
+        private void simpleButton1_Click(object sender, EventArgs e)
+        {
+            SaveContracChanges();
+
+            currContract.OnAgreement = true;
+            SendContractToSigning();
+
+            FillAgreemenst();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            checkNullLUE();
         }
     }
 }

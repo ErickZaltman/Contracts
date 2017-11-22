@@ -13,6 +13,7 @@ namespace Contract.DB
         }
 
         public virtual DbSet<ActivityKind> ActivityKind { get; set; }
+        public virtual DbSet<AgreementSignList> AgreementSignList { get; set; }
         public virtual DbSet<Contract> Contract { get; set; }
         public virtual DbSet<ContractCategory> ContractCategory { get; set; }
         public virtual DbSet<ContractExtension> ContractExtension { get; set; }
@@ -65,6 +66,11 @@ namespace Contract.DB
                 .HasMany(e => e.UserPermissions)
                 .WithOptional(e => e.Permissions)
                 .HasForeignKey(e => e.PermissionID);
+
+            modelBuilder.Entity<Users>()
+                .HasMany(e => e.AgreementSignList)
+                .WithOptional(e => e.Users)
+                .HasForeignKey(e => e.UserID);
 
             modelBuilder.Entity<Users>()
                 .HasMany(e => e.Contract)

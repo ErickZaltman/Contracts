@@ -17,7 +17,22 @@ namespace Contract.Properties
     internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase
     {
 
+        static int currentUserID;
+
         private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
+
+        public static int CurrentUserID
+        {
+            get
+            {
+                return currentUserID;
+            }
+
+            set
+            {
+                currentUserID = value;
+            }
+        }
 
         public static Settings Default
         {

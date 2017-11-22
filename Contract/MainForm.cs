@@ -12,14 +12,17 @@ using System.Windows.Forms;
 
 namespace Contract
 {
+
+    
     public delegate void UpdateContracts();
     public partial class MainForm : DevExpress.XtraEditors.XtraForm
     {
-        private string currentUserLogin;
         private DBModel dbContext;
         private void initFormSettings()
         {
             dbContext = new DBModel();
+            tsslUserName.Text = dbContext.Users.Where(y => y.ID == Properties.Settings.CurrentUserID).Select(x => new { Name = x.Surname + " " + x.FirstName.Substring(0, 1) + ". " 
+                + x.SecondName.Substring(0, 1) + "." }).ToList()[0].Name;
         }
 
         public MainForm()
@@ -32,11 +35,12 @@ namespace Contract
 
         }
 
-        public MainForm(string userLogin)
+        public MainForm(int userID)
         {
             InitializeComponent();
             initFormSettings();
-            currentUserLogin = userLogin;
+            Properties.Settings.CurrentUserID = userID;
+            
         }
 
         public void updateContracts()

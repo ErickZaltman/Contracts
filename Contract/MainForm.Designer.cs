@@ -38,9 +38,12 @@
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
             this.gvContracts = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.tsslUserName = new System.Windows.Forms.ToolStripStatusLabel();
             ((System.ComponentModel.ISupportInitialize)(this.navBarControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvContracts)).BeginInit();
+            this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // navBarControl1
@@ -136,6 +139,21 @@
             this.simpleButton1.Text = "Новый Договор";
             this.simpleButton1.Click += new System.EventHandler(this.simpleButton1_Click);
             // 
+            // statusStrip1
+            // 
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsslUserName});
+            this.statusStrip1.Location = new System.Drawing.Point(0, 487);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(904, 22);
+            this.statusStrip1.TabIndex = 3;
+            this.statusStrip1.Text = "statusStrip1";
+            // 
+            // tsslUserName
+            // 
+            this.tsslUserName.Name = "tsslUserName";
+            this.tsslUserName.Size = new System.Drawing.Size(0, 17);
+            // 
             // MainForm
             // 
             this.AllowMdiBar = true;
@@ -147,6 +165,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(904, 509);
+            this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.simpleButton1);
             this.Controls.Add(this.gridControl1);
             this.Controls.Add(this.navBarControl1);
@@ -157,7 +176,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.navBarControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvContracts)).EndInit();
+            this.statusStrip1.ResumeLayout(false);
+            this.statusStrip1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -173,6 +195,8 @@
         private DevExpress.XtraGrid.Views.Grid.GridView gvContracts;
         private DevExpress.XtraNavBar.NavBarItem nbiAgreementsDocs;
         private DevExpress.XtraEditors.SimpleButton simpleButton1;
+        private System.Windows.Forms.StatusStrip statusStrip1;
+        private System.Windows.Forms.ToolStripStatusLabel tsslUserName;
     }
 }
 

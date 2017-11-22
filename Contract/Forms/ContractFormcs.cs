@@ -225,6 +225,8 @@ namespace Contract.Forms
             else
                 if (currContract.StartDate != Convert.ToDateTime(deContractDateStart.Text))
                 currContract.StartDate = Convert.ToDateTime(deContractDateStart.Text);
+            currContract.AuthorID = Properties.Settings.CurrentUserID;
+
 
             if(this.contractID == 0)
             {

@@ -37,12 +37,14 @@
             this.nbiAgreementsDocs = new DevExpress.XtraNavBar.NavBarItem();
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
             this.gvContracts = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gvAgreements = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.tsslUserName = new System.Windows.Forms.ToolStripStatusLabel();
             ((System.ComponentModel.ISupportInitialize)(this.navBarControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvContracts)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gvAgreements)).BeginInit();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -117,7 +119,8 @@
             this.gridControl1.Size = new System.Drawing.Size(543, 450);
             this.gridControl1.TabIndex = 1;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
-            this.gvContracts});
+            this.gvContracts,
+            this.gvAgreements});
             // 
             // gvContracts
             // 
@@ -128,6 +131,15 @@
             this.gvContracts.OptionsView.ShowIndicator = false;
             this.gvContracts.OptionsView.ShowPreviewRowLines = DevExpress.Utils.DefaultBoolean.False;
             this.gvContracts.RowClick += new DevExpress.XtraGrid.Views.Grid.RowClickEventHandler(this.gvContracts_RowClick);
+            // 
+            // gvAgreements
+            // 
+            this.gvAgreements.GridControl = this.gridControl1;
+            this.gvAgreements.Name = "gvAgreements";
+            this.gvAgreements.OptionsBehavior.Editable = false;
+            this.gvAgreements.OptionsView.ShowGroupPanel = false;
+            this.gvAgreements.OptionsView.ShowIndicator = false;
+            this.gvAgreements.RowClick += new DevExpress.XtraGrid.Views.Grid.RowClickEventHandler(this.gvAgreements_RowClick);
             // 
             // simpleButton1
             // 
@@ -176,6 +188,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.navBarControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvContracts)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gvAgreements)).EndInit();
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -197,6 +210,7 @@
         private DevExpress.XtraEditors.SimpleButton simpleButton1;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel tsslUserName;
+        private DevExpress.XtraGrid.Views.Grid.GridView gvAgreements;
     }
 }
 

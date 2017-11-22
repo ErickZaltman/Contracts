@@ -231,10 +231,10 @@ namespace Contract.Forms
             if(this.contractID == 0)
             {
                 dbContext.Contract.Add(currContract);
-                contractID = currContract.ID;
-
+                
             }
             dbContext.SaveChanges();
+            contractID = currContract.ID;
             uc();
         }
 

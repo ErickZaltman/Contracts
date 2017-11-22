@@ -45,8 +45,29 @@ namespace Contract
 
         public void updateContracts()
         {
-            var contractsBindingSource = dbContext.Contract.Select(x => new { x.ID, x.Number, Category =  x.ContractCategory.Name, x.Theme, x.Summ, x.Users.Surname }).ToList();
+            gridControl1.DataSource = null;
+            gridControl1.MainView = gvContracts;
+
+
+            var contractsBindingSource = dbContext.Contract.Select(x => new
+            {
+                x.ID,
+                x.Number,
+                Category = x.ContractCategory.Name,
+                x.Theme,
+                x.Summ,
+                Name = x.Users.Surname + " " + x.Users.FirstName.Substring(0, 1) + "." + x.Users.SecondName.Substring(0, 1) + "."
+            }).ToList();
             gridControl1.DataSource = contractsBindingSource;
+
+            gvContracts.Columns["ID"].Visible = false;
+
+            gvContracts.Columns["Number"].Caption = "Номер договора";
+            gvContracts.Columns["Category"].Caption = "Категория договора";
+            gvContracts.Columns["Theme"].Caption = "Предмет договора";
+            gvContracts.Columns["Summ"].Caption = "Сумма договора";
+            gvContracts.Columns["Name"].Caption = "Автор";
+
         }
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
@@ -66,8 +87,7 @@ namespace Contract
 
         private void nbiContracts_LinkPressed(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e)
         {
-            gridControl1.DataSource = dbContext.Contract.Select(x => new { x.ID, x.Number, Category = x.ContractCategory.Name, x.Theme, x.Summ, x.Users.Surname }).ToList();
-            gvContracts.Columns["ID"].Visible  = false;          
+            updateContracts();                  
         }
 
         private void gvContracts_DoubleClick(object sender, EventArgs e)
@@ -87,16 +107,52 @@ namespace Contract
 
         private void nbiAgreementsDocs_LinkPressed(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e)
         {
-            gridControl1.DataSource = dbContext.Contract.Where(y => y.OnAgreement == true).Select(x => new { x.ID, x.Number, x.Theme, x.Users.Surname }).ToList();
-            gvContracts.Columns["ID"].Visible = false;
+            updateAgreements();
 
         }
 
+        private void updateAgreements()
+        {
+            gridControl1.DataSource = null;
+            gridControl1.MainView = gvAgreements;
+            var contractsBindingSource = dbContext.Signing.Where(x => x.UserID == Properties.Settings.CurrentUserID).Select(x => new {
+                x.ID,
+                x.ContractID,
+                x.Contract.Number,
+                x.Contract.Theme,
+                Name = x.Contract.Users.Surname + " " + x.Contract.Users.FirstName.Substring(0, 1) + "." + x.Contract.Users.SecondName.Substring(0, 1) + ".",
+                x.IsAgreed
+            }).ToList();
+            gridControl1.DataSource = contractsBindingSource;
+            
+            gvAgreements.Columns["ID"].Visible = false;
+            gvAgreements.Columns["ContractID"].Visible = false;
+            gvAgreements.Columns["IsAgreed"].Caption = "Согласовано";
+            gvAgreements.Columns["Number"].Caption = "Номер договора";
+            gvAgreements.Columns["Theme"].Caption = "Предмет договора";
+            gvAgreements.Columns["Name"].Caption = "Автор";
+
+
+
+
+
+        }
         private void simpleButton1_Click(object sender, EventArgs e)
         {
             Forms.ContractForm tmpForm = new Forms.ContractForm(dbContext,0, updateContracts);
             tmpForm.Show();
         }
+
+        private void gvAgreements_RowClick(object sender, RowClickEventArgs e)
+        {
+            if (e.Clicks > 1)
+            {
+                Forms.SigningForm tmpForm = new Forms.SigningForm(dbContext, (int)gvAgreements.GetRowCellValue(e.RowHandle,"ID"), (int)gvAgreements.GetRowCellValue(e.RowHandle, "ContractID"), updateAgreements);
+                tmpForm.Show();
+            }
+        }
+
+        
     }
 }
 

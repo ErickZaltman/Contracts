@@ -101,6 +101,12 @@
     <Compile Include="Forms\SelectInfoForm.Designer.cs">
       <DependentUpon>SelectInfoForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\SigningForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\SigningForm.Designer.cs">
+      <DependentUpon>SigningForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -120,6 +126,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\SelectInfoForm.resx">
       <DependentUpon>SelectInfoForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SigningForm.resx">
+      <DependentUpon>SigningForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>

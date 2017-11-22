@@ -38,9 +38,9 @@ namespace Contract
         public MainForm(int userID)
         {
             InitializeComponent();
-            initFormSettings();
             Properties.Settings.CurrentUserID = userID;
-            
+            initFormSettings();
+
         }
 
         public void updateContracts()

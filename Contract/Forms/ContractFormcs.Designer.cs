@@ -315,6 +315,7 @@
             this.lueActivityKind.ShowToolTips = false;
             this.lueActivityKind.Size = new System.Drawing.Size(305, 20);
             this.lueActivityKind.TabIndex = 40;
+            this.lueActivityKind.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.lueActivityKind_ButtonClick);
             // 
             // label13
             // 

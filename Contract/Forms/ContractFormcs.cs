@@ -11,7 +11,7 @@ using DevExpress.XtraEditors;
 
 namespace Contract.Forms
 {
-    public delegate void getIDFromForm(int ID, string type);
+    public delegate void getIDFromForm(int ID, Tables type);
     public partial class ContractForm : DevExpress.XtraEditors.XtraForm
     {
         private int returnID;
@@ -108,13 +108,15 @@ namespace Contract.Forms
             lueActivityKind.Properties.ValueMember = "Value";
             lueActivityKind.Properties.DataSource = dbContext.ActivityKind.Select(x => new { Value = x.ID, Text = x.Name }).ToList();
         }
-        private void getID(int ID, string type)
+        private void getIDSelectedItemID(int ID, Tables type)
         {
             switch (type)
             {
-                case "Category": lueContractCategory.EditValue = ID; break;
-                case "Users": lueContractual.EditValue = ID; break;
-                case "Departments": lueDepartment.EditValue = ID; break;
+                case Tables.Category: lueContractCategory.EditValue = ID; break;
+                case Tables.Users: lueContractual.EditValue = ID; break;
+                case Tables.Departments: lueDepartment.EditValue = ID; break;
+                case Tables.ActivityKinds: lueActivityKind.EditValue = ID; break;
+                case Tables.Contractors: lueContractors.EditValue = ID; break;
 
             }
         }
@@ -123,7 +125,7 @@ namespace Contract.Forms
         {
             if (e.Button.Index == 1)
             {
-                Forms.SelectInfoForm tmpForm = new SelectInfoForm("Category", dbContext, getID);
+                Forms.SelectInfoForm tmpForm = new SelectInfoForm(Tables.Category, dbContext, getIDSelectedItemID);
 
                 tmpForm.ShowDialog();
             }
@@ -135,7 +137,7 @@ namespace Contract.Forms
         {
             if (e.Button.Index == 1)
             {
-                Forms.SelectInfoForm tmpForm = new SelectInfoForm("Departments", dbContext, getID);
+                Forms.SelectInfoForm tmpForm = new SelectInfoForm(Tables.Departments, dbContext, getIDSelectedItemID);
 
                 tmpForm.ShowDialog();
             }
@@ -146,7 +148,7 @@ namespace Contract.Forms
         {
             if (e.Button.Index == 1)
             {
-                Forms.SelectInfoForm tmpForm = new SelectInfoForm("Users", dbContext, getID);
+                Forms.SelectInfoForm tmpForm = new SelectInfoForm(Tables.Users, dbContext, getIDSelectedItemID);
 
                 tmpForm.ShowDialog();
             }
@@ -164,6 +166,8 @@ namespace Contract.Forms
                 currContract.ActivityKindID = (int)lueActivityKind.EditValue;
             if (lueExtensions.Text != "" && currContract.ContractExtensionID != (int)lueExtensions.EditValue)
                 currContract.ContractExtensionID = (int)lueExtensions.EditValue;
+            if (lueContractors.Text != "" && currContract.ContractorID != (int)lueContractors.EditValue)
+                currContract.ContractorID = (int)lueContractors.EditValue;
             if (lueExtensionPeriod.Text != "" && currContract.ContractExtensionTimeID != (int)lueExtensionPeriod.EditValue)
                 currContract.ContractExtensionTimeID = (int)lueExtensionPeriod.EditValue;
             if (tbSumm.Text != "" && currContract.Summ != Convert.ToDouble(tbSumm.Text))
@@ -200,7 +204,17 @@ namespace Contract.Forms
         {
             if (e.Button.Index == 1)
             {
-                Forms.SelectInfoForm tmpForm = new SelectInfoForm("Contractors", dbContext, getID);
+                Forms.SelectInfoForm tmpForm = new SelectInfoForm(Tables.Contractors, dbContext, getIDSelectedItemID);
+
+                tmpForm.ShowDialog();
+            }
+        }
+
+        private void lueActivityKind_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            if (e.Button.Index == 1)
+            {
+                Forms.SelectInfoForm tmpForm = new SelectInfoForm(Tables.ActivityKinds, dbContext, getIDSelectedItemID);
 
                 tmpForm.ShowDialog();
             }

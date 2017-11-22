@@ -14,16 +14,17 @@ namespace Contract.Forms
     public partial class SelectInfoForm : DevExpress.XtraEditors.XtraForm
     {
         private string type;
+        private Tables table;
         private DB.DBModel dbContext;
 
         private getIDFromForm d;
  
-        public SelectInfoForm(string type, DB.DBModel dbContext, getIDFromForm sender)
+        public SelectInfoForm(Tables table, DB.DBModel dbContext, getIDFromForm sender)
         {
             InitializeComponent();
             this.Text = type;
             d = sender;
-            this.type = type;
+            this.table = table;
             this.dbContext = dbContext;
             FillGV();
         }
@@ -31,12 +32,13 @@ namespace Contract.Forms
 
         private void FillGV()
         {
-            switch (this.type)
+            switch (this.table)
             {
-                case "Category": FillGVCategory(); Text = "Выберите категорию"; break;
-                case "Users": FillGVUsers(); Text = ":"; break;
-                case "Departments": FillGVDepartments(); Text = ":"; break;
-                case "Contractors": FillGVContractors(); Text = ":"; break;
+                case Tables.Category: FillGVCategory(); Text = "Выберите категорию"; break;
+                case Tables.Users: FillGVUsers(); Text = ":"; break;
+                case Tables.Departments: FillGVDepartments(); Text = ":"; break;
+                case Tables.Contractors: FillGVContractors(); Text = ":"; break;
+                case Tables.ActivityKinds: FillGVActivityKinds(); Text = ":"; break;
 
                 default: MessageBox.Show("Y"); break;
             }
@@ -65,9 +67,9 @@ namespace Contract.Forms
             gridView1.Columns["ID"].Visible = false;
         }
 
-        private void FillGVActivities()
+        private void FillGVActivityKinds()
         {
-            gridControl1.DataSource = dbContext.Contractors.Select(x => new { x.ID, x.Name }).ToList();
+            gridControl1.DataSource = dbContext.ActivityKind.Select(x => new { x.ID, x.Name }).ToList();
             gridView1.Columns["ID"].Visible = false;
         }
         public SelectInfoForm()
@@ -84,7 +86,7 @@ namespace Contract.Forms
         {
             if (e.Clicks > 1)
             {
-                d((int)gridView1.GetRowCellValue(e.RowHandle, "ID"),type);
+                d((int)gridView1.GetRowCellValue(e.RowHandle, "ID"),table);
                 DialogResult = DialogResult.OK;
                 Close();
             }

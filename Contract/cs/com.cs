@@ -1,3 +1,4 @@
+﻿<<<<<<< HEAD
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,6 +19,6 @@ namespace Contract
         public static TableName Departments { get { return new TableName("Departments"); } }
         public static TableName Activities { get { return new TableName("Activities"); } }
 
-        //hz
+        //hzagdss
     }
 }

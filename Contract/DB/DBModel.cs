@@ -27,6 +27,7 @@ namespace Contract.DB
         public virtual DbSet<Signing> Signing { get; set; }
         public virtual DbSet<SupAgreement> SupAgreement { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
+        public virtual DbSet<TaxesType> TaxesType { get; set; }
         public virtual DbSet<UserPermissions> UserPermissions { get; set; }
         public virtual DbSet<Users> Users { get; set; }
 
@@ -43,6 +44,10 @@ namespace Contract.DB
                 .HasForeignKey(e => e.ContractExtensionTimeID);
 
             modelBuilder.Entity<Contractors>()
+                .Property(e => e.TaxCode)
+                .IsFixedLength();
+
+            modelBuilder.Entity<Contractors>()
                 .HasMany(e => e.Contract)
                 .WithOptional(e => e.Contractors)
                 .HasForeignKey(e => e.ContractorID);
@@ -50,7 +55,7 @@ namespace Contract.DB
             modelBuilder.Entity<ContractorType>()
                 .HasMany(e => e.Contractors)
                 .WithOptional(e => e.ContractorType)
-                .HasForeignKey(e => e.TypeID);
+                .HasForeignKey(e => e.GroupID);
 
             modelBuilder.Entity<Departments>()
                 .HasMany(e => e.Contract)

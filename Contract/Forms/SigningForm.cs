@@ -36,7 +36,6 @@ namespace Contract.Forms
             }
         }
 
-
         private void fillDocInfo()
         {
             teActivity.Text = currContract.ActivityKind.Name;

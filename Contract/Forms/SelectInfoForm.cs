@@ -29,7 +29,6 @@ namespace Contract.Forms
             FillGV();
         }
 
-
         private void FillGV()
         {
             switch (this.table)

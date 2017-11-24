@@ -12,8 +12,6 @@ using System.Windows.Forms;
 
 namespace Contract
 {
-
-    
     public delegate void UpdateContracts();
     public partial class MainForm : DevExpress.XtraEditors.XtraForm
     {
@@ -29,10 +27,6 @@ namespace Contract
         {
             InitializeComponent();
             initFormSettings();
-
-            //debug
-            
-
         }
 
         public MainForm(int userID)
@@ -40,14 +34,13 @@ namespace Contract
             InitializeComponent();
             Properties.Settings.CurrentUserID = userID;
             initFormSettings();
-
         }
 
+        #region Договора
         public void updateContracts()
         {
             gridControl1.DataSource = null;
             gridControl1.MainView = gvContracts;
-
 
             var contractsBindingSource = dbContext.Contract.Select(x => new
             {
@@ -67,7 +60,6 @@ namespace Contract
             gvContracts.Columns["Theme"].Caption = "Предмет договора";
             gvContracts.Columns["Summ"].Caption = "Сумма договора";
             gvContracts.Columns["Name"].Caption = "Автор";
-
         }
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
@@ -75,40 +67,32 @@ namespace Contract
             Application.Exit();
         }
 
-        private void nbiContracts_ItemChanged(object sender, EventArgs e)
-        {
-          
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            
-        }
-
         private void nbiContracts_LinkPressed(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e)
         {
             updateContracts();                  
-        }
-
-        private void gvContracts_DoubleClick(object sender, EventArgs e)
-        {
-            MessageBox.Show( ((GridView)sender).GetSelectedRows()[0].ToString() );
-            
         }
 
         private void gvContracts_RowClick(object sender, RowClickEventArgs e)
         {
             if (e.Clicks > 1)
             {
-                Forms.ContractForm tmpForm = new Forms.ContractForm(dbContext, (int)gvContracts.GetRowCellValue(e.RowHandle, "ID"), updateContracts);
+                Forms.ContractForm tmpForm = new Forms.ContractForm((int)gvContracts.GetRowCellValue(e.RowHandle, "ID"), updateContracts);
                 tmpForm.Show();
             }      
         }
 
+        private void simpleButton1_Click(object sender, EventArgs e)
+        {
+            Forms.ContractForm tmpForm = new Forms.ContractForm(0, updateContracts);
+            tmpForm.Show();
+        }
+
+        #endregion
+
+        #region Соглашения
         private void nbiAgreementsDocs_LinkPressed(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e)
         {
             updateAgreements();
-
         }
 
         private void updateAgreements()
@@ -131,18 +115,8 @@ namespace Contract
             gvAgreements.Columns["Number"].Caption = "Номер договора";
             gvAgreements.Columns["Theme"].Caption = "Предмет договора";
             gvAgreements.Columns["Name"].Caption = "Автор";
-
-
-
-
-
         }
-        private void simpleButton1_Click(object sender, EventArgs e)
-        {
-            Forms.ContractForm tmpForm = new Forms.ContractForm(dbContext,0, updateContracts);
-            tmpForm.Show();
-        }
-
+   
         private void gvAgreements_RowClick(object sender, RowClickEventArgs e)
         {
             if (e.Clicks > 1)
@@ -152,9 +126,7 @@ namespace Contract
             }
         }
 
-        
+        #endregion
+
     }
 }
-
-
-//zzazzaz

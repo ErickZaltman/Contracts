@@ -14,47 +14,30 @@ namespace Contract.Forms
     public delegate void getIDFromForm(int ID, Tables type);
     public partial class ContractForm : DevExpress.XtraEditors.XtraForm
     {
-        private int returnID;
         private DB.DBModel dbContext;
+        private int returnID;
         private int contractID;
+        private bool isLoaded = false;
+        
         private DB.Contract currContract;
 
         private UpdateContracts uc;
-
-        public int ReturnID
-        {
-            get
-            {
-                return returnID;
-            }
-
-            set
-            {
-                returnID = value;
-            }
-        }
-
         
-        public ContractForm(DB.DBModel dbContext, int contractID, UpdateContracts updateContracts)
+        public ContractForm(int contractID, UpdateContracts updateContracts)
         {
             InitializeComponent();
-            this.dbContext = dbContext;
+            dbContext = new DB.DBModel();
+            
             this.contractID = contractID;
             this.uc = updateContracts;
             fillControls();
-            
-            if (contractID == 0)
-            {
-                currContract = new DB.Contract();
-            }else
-            {
-                fillExistingContract(contractID);
-            }
 
+            currContract = new DB.Contract();
+            if (contractID != 0)
+                fillExistingContract(contractID);
         }
         private void fillExistingContract(int id)
         {
-            currContract = new DB.Contract();
             currContract = dbContext.Contract.Where(x => x.ID == id).ToList()[0];
 
             Text += currContract.Number + " от " + currContract.Date.ToString();
@@ -77,17 +60,23 @@ namespace Contract.Forms
             lueExtensions.EditValue = currContract.ContractExtensionID;
             lueExtensionPeriod.EditValue = currContract.ContractExtensionTimeID;
             lueContractCategory.EditValue = currContract.CategoryID;
-            lueActivityKind.EditValue = currContract.ActivityKindID;
             lueContractors.EditValue = currContract.ContractorID;
 
-
             if(currContract.OnAgreement == true)
-            {
                 FillAgreemenst();
-            }
+
+            isLoaded = true;
+        }
+
+        private void HZHANDLER(object sender, EventArgs e)
+        {
         }
         private void fillControls()
         {
+
+            lueContractCategory.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(HZHANDLER);
+
+
             lueDepartment.Properties.DisplayMember = "Text";
             lueDepartment.Properties.ValueMember = "Value";
             lueDepartment.Properties.DataSource = dbContext.Departments.Select(x => new { Value = x.ID, Text = x.Name }).ToList();
@@ -111,11 +100,9 @@ namespace Contract.Forms
             lueContractors.Properties.DisplayMember = "Text";
             lueContractors.Properties.ValueMember = "Value";
             lueContractors.Properties.DataSource = dbContext.Contractors.Select(x => new { Value = x.ID, Text = x.Name }).ToList();
-
-            lueActivityKind.Properties.DisplayMember = "Text";
-            lueActivityKind.Properties.ValueMember = "Value";
-            lueActivityKind.Properties.DataSource = dbContext.ActivityKind.Select(x => new { Value = x.ID, Text = x.Name }).ToList();
         }
+
+        #region  LookUpEdits
         private void getIDSelectedItemID(int ID, Tables type)
         {
             switch (type)
@@ -123,12 +110,9 @@ namespace Contract.Forms
                 case Tables.Category: lueContractCategory.EditValue = ID; break;
                 case Tables.Users: lueContractual.EditValue = ID; break;
                 case Tables.Departments: lueDepartment.EditValue = ID; break;
-                case Tables.ActivityKinds: lueActivityKind.EditValue = ID; break;
                 case Tables.Contractors: lueContractors.EditValue = ID; break;
-
             }
         }
-
         private void lueContractCategory_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
         {
             if (e.Button.Index == 1)
@@ -137,10 +121,7 @@ namespace Contract.Forms
 
                 tmpForm.ShowDialog();
             }
-
         }
-        
-
         private void lueDepartment_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
         {
             if (e.Button.Index == 1)
@@ -151,7 +132,6 @@ namespace Contract.Forms
             }
 
         }
-
         private void lueContractual_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
         {
             if (e.Button.Index == 1)
@@ -161,30 +141,27 @@ namespace Contract.Forms
                 tmpForm.ShowDialog();
             }
         }
-
-        private void sbSaveChanges_Click(object sender, EventArgs e)
+        private void lueContractors_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
         {
-            SaveContracChanges();
-        }
-
-
-        private void checkNullLUE()
-        {
-            foreach(var tmpLue in Controls)
+            if (e.Button.Index == 1)
             {
-                if (tmpLue.GetType() == typeof(LookUpEdit))
-                {
-                    MessageBox.Show((tmpLue as LookUpEdit).Name + ";" + (tmpLue as LookUpEdit).EditValue);
-                }
-            }
-            foreach (var tmpLue in tnpMainInfo.Controls)
-            {
-                if (tmpLue.GetType() == typeof(LookUpEdit))
-                {
-                    MessageBox.Show((tmpLue as LookUpEdit).Name + ";" + (tmpLue as LookUpEdit).EditValue);
-                }
+                Forms.SelectInfoForm tmpForm = new SelectInfoForm(Tables.Contractors, dbContext, getIDSelectedItemID);
+
+                tmpForm.ShowDialog();
             }
         }
+        private void lueActivityKind_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            if (e.Button.Index == 1)
+            {
+                Forms.SelectInfoForm tmpForm = new SelectInfoForm(Tables.ActivityKinds, dbContext, getIDSelectedItemID);
+
+                tmpForm.ShowDialog();
+            }
+        }
+        #endregion
+
+        #region SaveChanges
         private void SaveContracChanges()
         {
             if (lueContractCategory.Text != "" && lueContractCategory.EditValue!= null && currContract.CategoryID != (int)lueContractCategory.EditValue)
@@ -193,8 +170,6 @@ namespace Contract.Forms
                 currContract.DepartmentID = (int)lueDepartment.EditValue;
             if (lueContractual.Text != "" && lueContractual.EditValue != null && currContract.ContractualID != (int)lueContractual.EditValue)
                 currContract.ContractualID = (int)lueContractual.EditValue;
-            if (lueActivityKind.Text != "" && lueActivityKind.EditValue != null && currContract.ActivityKindID != (int)lueActivityKind.EditValue)
-                currContract.ActivityKindID = (int)lueActivityKind.EditValue;
             if (lueExtensions.Text != "" && lueExtensions.EditValue != null && currContract.ContractExtensionID != (int)lueExtensions.EditValue)
                 currContract.ContractExtensionID = (int)lueExtensions.EditValue;
             if (lueContractors.Text != "" && lueContractors.EditValue != null && currContract.ContractorID != (int)lueContractors.EditValue)
@@ -227,36 +202,21 @@ namespace Contract.Forms
                 currContract.StartDate = Convert.ToDateTime(deContractDateStart.Text);
             currContract.AuthorID = Properties.Settings.CurrentUserID;
 
-
             if(this.contractID == 0)
-            {
                 dbContext.Contract.Add(currContract);
                 
-            }
             dbContext.SaveChanges();
             contractID = currContract.ID;
             uc();
         }
 
-        private void lueContractors_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        private void sbSaveChanges_Click(object sender, EventArgs e)
         {
-            if (e.Button.Index == 1)
-            {
-                Forms.SelectInfoForm tmpForm = new SelectInfoForm(Tables.Contractors, dbContext, getIDSelectedItemID);
-
-                tmpForm.ShowDialog();
-            }
+            SaveContracChanges();
         }
 
-        private void lueActivityKind_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
-        {
-            if (e.Button.Index == 1)
-            {
-                Forms.SelectInfoForm tmpForm = new SelectInfoForm(Tables.ActivityKinds, dbContext, getIDSelectedItemID);
+        #endregion
 
-                tmpForm.ShowDialog();
-            }
-        }
 
         private void SendContractToSigning()
         {
@@ -289,11 +249,39 @@ namespace Contract.Forms
             FillAgreemenst();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+       
+
+        private void lue_EditValueChanged(object sender, EventArgs e)
         {
-            checkNullLUE();
+
+            if (isLoaded)
+                if (!DataChanged())
+                    sbSaveChanges.Enabled = true;             
+                else
+                    sbSaveChanges.Enabled = false;
+        }
+
+
+
+
+
+        //Придумать оптимизацию на проверку
+        // когда-нибудь
+        private bool DataChanged()
+        {
+            if (currContract.CategoryID != (int)lueContractCategory.EditValue) return false;
+            if (currContract.DepartmentID != (int)lueDepartment.EditValue) return false;
+            if (currContract.ContractualID != (int)lueContractual.EditValue) return false;
+            if (currContract.ContractExtensionID != (int)lueExtensions.EditValue) return false;
+            if (currContract.ContractorID != (int)lueContractors.EditValue) return false;
+            if (currContract.ContractExtensionTimeID != (int)lueExtensionPeriod.EditValue) return false;
+            if (currContract.Summ != Convert.ToDouble(tbSumm.Text)) return false;
+            if (currContract.Note != tbContractNote.Text) return false;
+            if (currContract.Theme != tbContractTheme.Text) return false;
+            if (currContract.Date != Convert.ToDateTime(deDate.Text)) return false;
+            if (currContract.StartDate != Convert.ToDateTime(deContractDateStart.Text)) return false;
+            if (currContract.EndDate != Convert.ToDateTime(deContractDateEnd.Text)) return false;
+            return true;
         }
     }
 }
-
-//fggfgffggf

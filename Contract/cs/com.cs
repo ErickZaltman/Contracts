@@ -10,5 +10,4 @@ namespace Contract
     {
         Category, Users, Contractors, Departments, ActivityKinds
     }
-    
 }

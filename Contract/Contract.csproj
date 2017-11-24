@@ -87,6 +87,7 @@
     <Compile Include="DB\Signing.cs" />
     <Compile Include="DB\SupAgreement.cs" />
     <Compile Include="DB\sysdiagrams.cs" />
+    <Compile Include="DB\TaxesType.cs" />
     <Compile Include="DB\UserPermissions.cs" />
     <Compile Include="DB\Users.cs" />
     <Compile Include="Forms\ContractFormcs.cs">

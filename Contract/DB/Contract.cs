@@ -29,7 +29,7 @@ namespace Contract.DB
 
         public double? Summ { get; set; }
 
-        [StringLength(50)]
+        [StringLength(250)]
         public string Theme { get; set; }
 
         public DateTime? StartDate { get; set; }

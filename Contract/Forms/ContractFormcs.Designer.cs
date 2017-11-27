@@ -48,7 +48,6 @@
             this.tabNavigationPage2 = new DevExpress.XtraBars.Navigation.TabNavigationPage();
             this.tabPane1 = new DevExpress.XtraBars.Navigation.TabPane();
             this.tnpMainInfo = new DevExpress.XtraBars.Navigation.TabNavigationPage();
-            this.teContractNumber = new DevExpress.XtraEditors.TextEdit();
             this.teContractTheme = new DevExpress.XtraEditors.MemoEdit();
             this.teAuthor = new DevExpress.XtraEditors.TextEdit();
             this.teContractNote = new DevExpress.XtraEditors.TextEdit();
@@ -60,6 +59,7 @@
             this.gcAgreements = new DevExpress.XtraGrid.GridControl();
             this.gvAgreements = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.tnpAttachments = new DevExpress.XtraBars.Navigation.TabNavigationPage();
+            this.teContractNumber = new DevExpress.XtraEditors.TextEdit();
             this.lueContractCategory = new DevExpress.XtraEditors.LookUpEdit();
             this.deDate = new DevExpress.XtraEditors.DateEdit();
             this.lueDepartment = new DevExpress.XtraEditors.LookUpEdit();
@@ -74,7 +74,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.tabPane1)).BeginInit();
             this.tabPane1.SuspendLayout();
             this.tnpMainInfo.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.teContractNumber.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.teContractTheme.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.teAuthor.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.teContractNote.Properties)).BeginInit();
@@ -84,6 +83,7 @@
             this.tnpSigning.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gcAgreements)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvAgreements)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.teContractNumber.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lueContractCategory.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.deDate.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.deDate.Properties)).BeginInit();
@@ -257,14 +257,6 @@
             this.tnpMainInfo.Name = "tnpMainInfo";
             this.tnpMainInfo.Size = new System.Drawing.Size(1226, 474);
             // 
-            // teContractNumber
-            // 
-            this.teContractNumber.Location = new System.Drawing.Point(126, 9);
-            this.teContractNumber.Name = "teContractNumber";
-            this.teContractNumber.Properties.ReadOnly = true;
-            this.teContractNumber.Size = new System.Drawing.Size(106, 20);
-            this.teContractNumber.TabIndex = 41;
-            // 
             // teContractTheme
             // 
             this.teContractTheme.Location = new System.Drawing.Point(133, 42);
@@ -293,11 +285,10 @@
             // 
             this.teSumm.Location = new System.Drawing.Point(105, 163);
             this.teSumm.Name = "teSumm";
-            this.teSumm.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.Numeric;
-            this.teSumm.Properties.EditValueChangedFiringMode = DevExpress.XtraEditors.Controls.EditValueChangedFiringMode.Buffered;
             this.teSumm.Size = new System.Drawing.Size(129, 20);
             this.teSumm.TabIndex = 37;
             this.teSumm.TextChanged += new System.EventHandler(this.control_EditValueChanged);
+            this.teSumm.Validating += new System.ComponentModel.CancelEventHandler(this.teSumm_Validating);
             // 
             // lueContractual
             // 
@@ -373,6 +364,14 @@
             this.tnpAttachments.Caption = "Вложения";
             this.tnpAttachments.Name = "tnpAttachments";
             this.tnpAttachments.Size = new System.Drawing.Size(1226, 474);
+            // 
+            // teContractNumber
+            // 
+            this.teContractNumber.Location = new System.Drawing.Point(126, 9);
+            this.teContractNumber.Name = "teContractNumber";
+            this.teContractNumber.Properties.ReadOnly = true;
+            this.teContractNumber.Size = new System.Drawing.Size(106, 20);
+            this.teContractNumber.TabIndex = 41;
             // 
             // lueContractCategory
             // 
@@ -501,7 +500,6 @@
             this.tabPane1.ResumeLayout(false);
             this.tnpMainInfo.ResumeLayout(false);
             this.tnpMainInfo.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.teContractNumber.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.teContractTheme.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.teAuthor.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.teContractNote.Properties)).EndInit();
@@ -511,6 +509,7 @@
             this.tnpSigning.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gcAgreements)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvAgreements)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.teContractNumber.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lueContractCategory.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.deDate.Properties.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.deDate.Properties)).EndInit();

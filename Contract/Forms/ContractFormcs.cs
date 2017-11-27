@@ -15,7 +15,6 @@ namespace Contract.Forms
     public partial class ContractForm : DevExpress.XtraEditors.XtraForm
     {
         private DB.DBModel dbContext;
-        private int returnID;
         private int contractID;
         private bool isLoaded = false;
         
@@ -25,6 +24,7 @@ namespace Contract.Forms
         
         public ContractForm(int contractID, UpdateContracts updateContracts)
         {
+            BaseEdit.DefaultErrorIconAlignment = ErrorIconAlignment.BottomRight;
             InitializeComponent();
             dbContext = new DB.DBModel();
             
@@ -35,7 +35,11 @@ namespace Contract.Forms
             currContract = new DB.Contract();
             if (contractID != 0)
                 fillExistingContract(contractID);
+
+            if (contractID == 0)
+                sbSaveChanges.Enabled = true;
         }
+
         private void fillExistingContract(int id)
         {
             currContract = dbContext.Contract.Where(x => x.ID == id).ToList()[0];
@@ -67,6 +71,8 @@ namespace Contract.Forms
             isLoaded = true;
         }
 
+        #region  LookUpEdits
+
         private void fillControls()
         {
             lueDepartment.Properties.DisplayMember = "Text";
@@ -89,8 +95,6 @@ namespace Contract.Forms
             lueContractors.Properties.ValueMember = "Value";
             lueContractors.Properties.DataSource = dbContext.Contractors.Select(x => new { Value = x.ID, Text = x.Name }).ToList();
         }
-
-        #region  LookUpEdits
         private void getIDSelectedItemID(int ID, Tables type)
         {
             switch (type)
@@ -164,6 +168,8 @@ namespace Contract.Forms
                 currContract.ContractorID = (int)lueContractors.EditValue;
             if (teSumm.Text != "" && currContract.Summ != Convert.ToDouble(teSumm.Text))
                 currContract.Summ = Convert.ToDouble(teSumm.Text);
+            else if (teSumm.Text == "")
+                currContract.Summ = null;
             if (teContractNote.Text != "" && currContract.Note != teContractNote.Text)
                 currContract.Note = teContractNote.Text;
             if (teContractTheme.Text != "" && currContract.Theme != teContractTheme.Text)
@@ -193,6 +199,7 @@ namespace Contract.Forms
                 
             dbContext.SaveChanges();
             contractID = currContract.ID;
+            isLoaded = true;
             uc();
         }
 
@@ -238,25 +245,35 @@ namespace Contract.Forms
         }
         #endregion
 
+        #region Equal Check
         private void control_EditValueChanged(object sender, EventArgs e)
         {
+            bool isValid = true;
+            if (sender is TextEdit)
+                isValid = (sender as TextEdit).DoValidate();
+
             if (isLoaded)
-                if (!DataChanged())
-                    sbSaveChanges.Enabled = true;             
-                else
-                    sbSaveChanges.Enabled = false;
+            {
+                
+                if (contractID != 0)
+                    if (isValid &&!DataChanged())
+                        sbSaveChanges.Enabled = true;
+                    else
+                        sbSaveChanges.Enabled = false;
+            }
         }
 
         //Придумать оптимизацию на проверку
         // когда-нибудь
         private bool DataChanged()
         {
-            if (currContract.CategoryID != (int)lueContractCategory.EditValue) return false;
-            if (currContract.DepartmentID != (int)lueDepartment.EditValue) return false;
-            if (currContract.ContractualID != (int)lueContractual.EditValue) return false;
-            if (currContract.ContractExtensionID != (int)lueExtensions.EditValue) return false;
-            if (currContract.ContractorID != (int)lueContractors.EditValue) return false;
-            if (currContract.Summ != Convert.ToDouble(teSumm.Text)) return false;
+            if (currContract.CategoryID != (int?)lueContractCategory.EditValue) return false;
+            if (currContract.DepartmentID != (int?)lueDepartment.EditValue) return false;
+            if (currContract.ContractualID != (int?)lueContractual.EditValue) return false;
+            if (currContract.ContractExtensionID != (int?)lueExtensions.EditValue) return false;
+            if (currContract.ContractorID != (int?)lueContractors.EditValue) return false;
+            if (teSumm.Text == "" && currContract.Summ != null) return false;
+            else if (teSumm.Text != "" && currContract.Summ != Convert.ToDouble(teSumm.Text)) return false;
             if (currContract.Note != teContractNote.Text) return false;
             if (currContract.Theme != teContractTheme.Text) return false;
             if (currContract.Date != Convert.ToDateTime(deDate.Text)) return false;
@@ -265,5 +282,24 @@ namespace Contract.Forms
 
             return true;
         }
+
+        #endregion
+
+        #region Validation
+
+        private void teSumm_Validating(object sender, CancelEventArgs e)
+        {
+            TextEdit te = sender as TextEdit;
+            double output;
+            bool isInt = Double.TryParse(te.Text, out output);
+            if (te.Text != "" && !isInt)
+            {
+                te.ErrorText = "Некорректная сумма";
+                e.Cancel = true;
+                
+            }
+        }
+
+        #endregion
     }
 }

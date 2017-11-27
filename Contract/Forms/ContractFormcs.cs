@@ -42,11 +42,11 @@ namespace Contract.Forms
 
             Text += currContract.Number + " от " + currContract.Date.ToString();
 
-            tbContractNumber.Text = currContract.Number;
-            tbContractNote.Text = currContract.Note;
-            tbSumm.Text = currContract.Summ.ToString();
-            tbContractTheme.Text = currContract.Theme;
-            tbAuthor.Text = currContract.Users.Surname;
+            teContractNumber.Text = currContract.Number;
+            teContractNote.Text = currContract.Note;
+            teSumm.Text = currContract.Summ.ToString();
+            teContractTheme.Text = currContract.Theme;
+            teAuthor.Text = currContract.Users.Surname;
 
             if (currContract.Date != null)
                 deDate.DateTime = (DateTime)currContract.Date;
@@ -58,7 +58,6 @@ namespace Contract.Forms
             lueDepartment.EditValue = currContract.DepartmentID;
             lueContractual.EditValue = currContract.ContractualID;
             lueExtensions.EditValue = currContract.ContractExtensionID;
-            lueExtensionPeriod.EditValue = currContract.ContractExtensionTimeID;
             lueContractCategory.EditValue = currContract.CategoryID;
             lueContractors.EditValue = currContract.ContractorID;
 
@@ -68,15 +67,8 @@ namespace Contract.Forms
             isLoaded = true;
         }
 
-        private void HZHANDLER(object sender, EventArgs e)
-        {
-        }
         private void fillControls()
         {
-
-            lueContractCategory.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(HZHANDLER);
-
-
             lueDepartment.Properties.DisplayMember = "Text";
             lueDepartment.Properties.ValueMember = "Value";
             lueDepartment.Properties.DataSource = dbContext.Departments.Select(x => new { Value = x.ID, Text = x.Name }).ToList();
@@ -88,10 +80,6 @@ namespace Contract.Forms
             lueExtensions.Properties.DisplayMember = "Text";
             lueExtensions.Properties.ValueMember = "Value";
             lueExtensions.Properties.DataSource = dbContext.ContractExtension.Select(x => new { Value = x.ID, Text = x.Name }).ToList();
-
-            lueExtensionPeriod.Properties.DisplayMember = "Text";
-            lueExtensionPeriod.Properties.ValueMember = "Value";
-            lueExtensionPeriod.Properties.DataSource = dbContext.ContractExtensionPeriod.Select(x => new { Value = x.ID, Text = x.Name }).ToList();
 
             lueContractCategory.Properties.DisplayMember = "Text";
             lueContractCategory.Properties.ValueMember = "Value";
@@ -174,14 +162,12 @@ namespace Contract.Forms
                 currContract.ContractExtensionID = (int)lueExtensions.EditValue;
             if (lueContractors.Text != "" && lueContractors.EditValue != null && currContract.ContractorID != (int)lueContractors.EditValue)
                 currContract.ContractorID = (int)lueContractors.EditValue;
-            if (lueExtensionPeriod.Text != "" && lueExtensionPeriod.EditValue != null && currContract.ContractExtensionTimeID != (int)lueExtensionPeriod.EditValue)
-                currContract.ContractExtensionTimeID = (int)lueExtensionPeriod.EditValue;
-            if (tbSumm.Text != "" && currContract.Summ != Convert.ToDouble(tbSumm.Text))
-                currContract.Summ = Convert.ToDouble(tbSumm.Text);
-            if (tbContractNote.Text != "" && currContract.Note != tbContractNote.Text)
-                currContract.Note = tbContractNote.Text;
-            if (tbContractTheme.Text != "" && currContract.Theme != tbContractTheme.Text)
-                currContract.Theme = tbContractTheme.Text;
+            if (teSumm.Text != "" && currContract.Summ != Convert.ToDouble(teSumm.Text))
+                currContract.Summ = Convert.ToDouble(teSumm.Text);
+            if (teContractNote.Text != "" && currContract.Note != teContractNote.Text)
+                currContract.Note = teContractNote.Text;
+            if (teContractTheme.Text != "" && currContract.Theme != teContractTheme.Text)
+                currContract.Theme = teContractTheme.Text;
 
             if (deDate.Text == "")
                 currContract.Date = null;
@@ -213,14 +199,16 @@ namespace Contract.Forms
         private void sbSaveChanges_Click(object sender, EventArgs e)
         {
             SaveContracChanges();
+            sbSaveChanges.Enabled = false;
+            simpleButton1.Enabled = true;
         }
 
         #endregion
 
+        #region Отправить на согласование
 
         private void SendContractToSigning()
         {
-
             foreach (var user in dbContext.AgreementSignList.Select(x => x.ID).ToList())
             {
                 DB.Signing tmpSigning = new DB.Signing();
@@ -228,8 +216,7 @@ namespace Contract.Forms
                 tmpSigning.ContractID = currContract.ID;
                 tmpSigning.DeadlineTime = DateTime.Now.AddDays(5);
                 tmpSigning.IsAgreed = false;
-                dbContext.Signing.Add(tmpSigning);
-                
+                dbContext.Signing.Add(tmpSigning);     
             }
             dbContext.SaveChanges();
         }
@@ -239,6 +226,7 @@ namespace Contract.Forms
             gcAgreements.DataSource = dbContext.Signing.Where(x => x.ContractID == currContract.ID).ToList();
             gvAgreements.Columns["ID"].Visible = false;
         }
+
         private void simpleButton1_Click(object sender, EventArgs e)
         {
             SaveContracChanges();
@@ -248,22 +236,16 @@ namespace Contract.Forms
 
             FillAgreemenst();
         }
+        #endregion
 
-       
-
-        private void lue_EditValueChanged(object sender, EventArgs e)
+        private void control_EditValueChanged(object sender, EventArgs e)
         {
-
             if (isLoaded)
                 if (!DataChanged())
                     sbSaveChanges.Enabled = true;             
                 else
                     sbSaveChanges.Enabled = false;
         }
-
-
-
-
 
         //Придумать оптимизацию на проверку
         // когда-нибудь
@@ -274,13 +256,13 @@ namespace Contract.Forms
             if (currContract.ContractualID != (int)lueContractual.EditValue) return false;
             if (currContract.ContractExtensionID != (int)lueExtensions.EditValue) return false;
             if (currContract.ContractorID != (int)lueContractors.EditValue) return false;
-            if (currContract.ContractExtensionTimeID != (int)lueExtensionPeriod.EditValue) return false;
-            if (currContract.Summ != Convert.ToDouble(tbSumm.Text)) return false;
-            if (currContract.Note != tbContractNote.Text) return false;
-            if (currContract.Theme != tbContractTheme.Text) return false;
+            if (currContract.Summ != Convert.ToDouble(teSumm.Text)) return false;
+            if (currContract.Note != teContractNote.Text) return false;
+            if (currContract.Theme != teContractTheme.Text) return false;
             if (currContract.Date != Convert.ToDateTime(deDate.Text)) return false;
             if (currContract.StartDate != Convert.ToDateTime(deContractDateStart.Text)) return false;
             if (currContract.EndDate != Convert.ToDateTime(deContractDateEnd.Text)) return false;
+
             return true;
         }
     }

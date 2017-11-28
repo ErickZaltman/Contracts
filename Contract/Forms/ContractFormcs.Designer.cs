@@ -367,7 +367,7 @@
             // 
             // teContractNumber
             // 
-            this.teContractNumber.Location = new System.Drawing.Point(126, 9);
+            this.teContractNumber.Location = new System.Drawing.Point(126, 12);
             this.teContractNumber.Name = "teContractNumber";
             this.teContractNumber.Properties.ReadOnly = true;
             this.teContractNumber.Size = new System.Drawing.Size(106, 20);
@@ -404,6 +404,9 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.deDate.Size = new System.Drawing.Size(100, 20);
             this.deDate.TabIndex = 32;
+            this.deDate.EditValueChanged += new System.EventHandler(this.control_EditValueChanged);
+            this.deContractDateStart.EditValueChanged += new System.EventHandler(this.control_EditValueChanged);
+            this.deContractDateEnd.EditValueChanged += new System.EventHandler(this.control_EditValueChanged);
             // 
             // lueDepartment
             // 

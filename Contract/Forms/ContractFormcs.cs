@@ -16,19 +16,22 @@ namespace Contract.Forms
     {
         private DB.DBModel dbContext;
         private int contractID;
+        private string UserName;
         private bool isLoaded = false;
         
         private DB.Contract currContract;
 
         private UpdateContracts uc;
         
-        public ContractForm(int contractID, UpdateContracts updateContracts)
+        public ContractForm(int contractID, string UserName, UpdateContracts updateContracts)
         {
             BaseEdit.DefaultErrorIconAlignment = ErrorIconAlignment.BottomRight;
+
             InitializeComponent();
             dbContext = new DB.DBModel();
             
             this.contractID = contractID;
+            this.UserName = UserName;
             this.uc = updateContracts;
             fillControls();
 
@@ -37,7 +40,10 @@ namespace Contract.Forms
                 fillExistingContract(contractID);
 
             if (contractID == 0)
+            {
                 sbSaveChanges.Enabled = true;
+                teAuthor.Text = UserName;
+            }
         }
 
         private void fillExistingContract(int id)
@@ -50,7 +56,7 @@ namespace Contract.Forms
             teContractNote.Text = currContract.Note;
             teSumm.Text = currContract.Summ.ToString();
             teContractTheme.Text = currContract.Theme;
-            teAuthor.Text = currContract.Users.Surname;
+            teAuthor.Text = currContract.Users.Surname + " " + currContract.Users.FirstName.Substring(0, 1) + "." + currContract.Users.SecondName.Substring(0, 1) + ".";
 
             if (currContract.Date != null)
                 deDate.DateTime = (DateTime)currContract.Date;
@@ -170,10 +176,18 @@ namespace Contract.Forms
                 currContract.Summ = Convert.ToDouble(teSumm.Text);
             else if (teSumm.Text == "")
                 currContract.Summ = null;
-            if (teContractNote.Text != "" && currContract.Note != teContractNote.Text)
-                currContract.Note = teContractNote.Text;
-            if (teContractTheme.Text != "" && currContract.Theme != teContractTheme.Text)
-                currContract.Theme = teContractTheme.Text;
+
+            if (teContractNote.Text == "")
+                currContract.Note = null;
+            else
+                if (currContract.Note != teContractNote.Text)
+                    currContract.Note = teContractNote.Text;
+
+            if (teContractTheme.Text == "")
+                currContract.Theme = null;
+            else
+                if (currContract.Theme != teContractTheme.Text)
+                    currContract.Theme = teContractTheme.Text;
 
             if (deDate.Text == "")
                 currContract.Date = null;
@@ -194,8 +208,10 @@ namespace Contract.Forms
                 currContract.StartDate = Convert.ToDateTime(deContractDateStart.Text);
             currContract.AuthorID = Properties.Settings.CurrentUserID;
 
-            if(this.contractID == 0)
+            if (this.contractID == 0)
+            {
                 dbContext.Contract.Add(currContract);
+            }
                 
             dbContext.SaveChanges();
             contractID = currContract.ID;
@@ -272,13 +288,42 @@ namespace Contract.Forms
             if (currContract.ContractualID != (int?)lueContractual.EditValue) return false;
             if (currContract.ContractExtensionID != (int?)lueExtensions.EditValue) return false;
             if (currContract.ContractorID != (int?)lueContractors.EditValue) return false;
-            if (teSumm.Text == "" && currContract.Summ != null) return false;
-            else if (teSumm.Text != "" && currContract.Summ != Convert.ToDouble(teSumm.Text)) return false;
-            if (currContract.Note != teContractNote.Text) return false;
-            if (currContract.Theme != teContractTheme.Text) return false;
-            if (currContract.Date != Convert.ToDateTime(deDate.Text)) return false;
-            if (currContract.StartDate != Convert.ToDateTime(deContractDateStart.Text)) return false;
-            if (currContract.EndDate != Convert.ToDateTime(deContractDateEnd.Text)) return false;
+
+            if (teSumm.Text == "")
+            {
+                if (currContract.Summ != null) return false;
+            }
+            else if (currContract.Summ != Convert.ToDouble(teSumm.Text)) return false;
+
+            if (teContractNote.Text == "")
+            {
+                if (currContract.Note != null) return false;
+            }
+            else if (currContract.Note != teContractNote.Text) return false;
+
+            if (teContractTheme.Text == "")
+            {
+                if (currContract.Theme != null) return false;
+            }
+            else if (currContract.Theme != teContractTheme.Text) return false;
+
+            if (deDate.Text == "")
+            {
+                if (currContract.Date != null) return false;
+            }
+            else if (currContract.Date != Convert.ToDateTime(deDate.Text)) return false;
+
+            if (deContractDateStart.Text == "")
+            {
+                if (currContract.StartDate != null) return false;
+            }
+            else if (currContract.StartDate != Convert.ToDateTime(deContractDateStart.Text)) return false;
+
+            if (deContractDateEnd.Text == "")
+            {
+                if (currContract.EndDate != null) return false;
+            }
+            else if (currContract.EndDate != Convert.ToDateTime(deContractDateEnd.Text)) return false;
 
             return true;
         }
@@ -296,7 +341,6 @@ namespace Contract.Forms
             {
                 te.ErrorText = "Некорректная сумма";
                 e.Cancel = true;
-                
             }
         }
 

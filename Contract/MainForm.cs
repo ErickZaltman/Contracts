@@ -76,14 +76,14 @@ namespace Contract
         {
             if (e.Clicks > 1)
             {
-                Forms.ContractForm tmpForm = new Forms.ContractForm((int)gvContracts.GetRowCellValue(e.RowHandle, "ID"), updateContracts);
+                Forms.ContractForm tmpForm = new Forms.ContractForm((int)gvContracts.GetRowCellValue(e.RowHandle, "ID"), string.Empty, updateContracts);
                 tmpForm.Show();
             }      
         }
 
         private void simpleButton1_Click(object sender, EventArgs e)
         {
-            Forms.ContractForm tmpForm = new Forms.ContractForm(0, updateContracts);
+            Forms.ContractForm tmpForm = new Forms.ContractForm(0, tsslUserName.Text, updateContracts);
             tmpForm.Show();
         }
 

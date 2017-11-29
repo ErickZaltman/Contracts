@@ -75,10 +75,10 @@
     <Compile Include="DB\AgreementSignList.cs" />
     <Compile Include="DB\Contract.cs" />
     <Compile Include="DB\ContractCategory.cs" />
-    <Compile Include="DB\ContractExtension.cs" />
-    <Compile Include="DB\ContractExtensionPeriod.cs" />
     <Compile Include="DB\Contractors.cs" />
     <Compile Include="DB\ContractorType.cs" />
+    <Compile Include="DB\ContractRenewal.cs" />
+    <Compile Include="DB\ContractRenewalPeriod.cs" />
     <Compile Include="DB\DBModel.cs" />
     <Compile Include="DB\Departments.cs" />
     <Compile Include="DB\DocumentTypes.cs" />

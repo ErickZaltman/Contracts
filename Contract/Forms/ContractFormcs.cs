@@ -69,7 +69,7 @@ namespace Contract.Forms
 
             lueDepartment.EditValue = currContract.DepartmentID;
             lueContractual.EditValue = currContract.ContractualID;
-            lueExtensions.EditValue = currContract.ContractExtensionID;
+            lueExtensions.EditValue = currContract.ContractRenewalID;
             lueContractCategory.EditValue = currContract.CategoryID;
             lueContractors.EditValue = currContract.ContractorID;
 
@@ -94,7 +94,7 @@ namespace Contract.Forms
 
             lueExtensions.Properties.DisplayMember = "Text";
             lueExtensions.Properties.ValueMember = "Value";
-            lueExtensions.Properties.DataSource = dbContext.ContractExtension.Select(x => new { Value = x.ID, Text = x.Name }).ToList();
+            lueExtensions.Properties.DataSource = dbContext.ContractRenewal.Select(x => new { Value = x.ID, Text = x.Name }).ToList();
 
             lueContractCategory.Properties.DisplayMember = "Text";
             lueContractCategory.Properties.ValueMember = "Value";
@@ -171,8 +171,8 @@ namespace Contract.Forms
                 currContract.DepartmentID = (int)lueDepartment.EditValue;
             if (lueContractual.Text != "" && lueContractual.EditValue != null && currContract.ContractualID != (int)lueContractual.EditValue)
                 currContract.ContractualID = (int)lueContractual.EditValue;
-            if (lueExtensions.Text != "" && lueExtensions.EditValue != null && currContract.ContractExtensionID != (int)lueExtensions.EditValue)
-                currContract.ContractExtensionID = (int)lueExtensions.EditValue;
+            if (lueExtensions.Text != "" && lueExtensions.EditValue != null && currContract.ContractRenewalID != (int)lueExtensions.EditValue)
+                currContract.ContractRenewalID = (int)lueExtensions.EditValue;
             if (lueContractors.Text != "" && lueContractors.EditValue != null && currContract.ContractorID != (int)lueContractors.EditValue)
                 currContract.ContractorID = (int)lueContractors.EditValue;
             if (teSumm.Text != "" && currContract.Summ != Convert.ToDouble(teSumm.Text))
@@ -289,7 +289,7 @@ namespace Contract.Forms
             if (currContract.CategoryID != (int?)lueContractCategory.EditValue) return false;
             if (currContract.DepartmentID != (int?)lueDepartment.EditValue) return false;
             if (currContract.ContractualID != (int?)lueContractual.EditValue) return false;
-            if (currContract.ContractExtensionID != (int?)lueExtensions.EditValue) return false;
+            if (currContract.ContractRenewalID != (int?)lueExtensions.EditValue) return false;
             if (currContract.ContractorID != (int?)lueContractors.EditValue) return false;
 
             if (teSumm.Text == "")

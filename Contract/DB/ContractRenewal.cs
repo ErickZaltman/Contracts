@@ -6,11 +6,11 @@ namespace Contract.DB
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    [Table("ContractExtensionPeriod")]
-    public partial class ContractExtensionPeriod
+    [Table("ContractRenewal")]
+    public partial class ContractRenewal
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public ContractExtensionPeriod()
+        public ContractRenewal()
         {
             Contract = new HashSet<Contract>();
         }

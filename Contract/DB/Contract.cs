@@ -44,9 +44,9 @@ namespace Contract.DB
 
         public int? CategoryID { get; set; }
 
-        public int? ContractExtensionID { get; set; }
+        public int? ContractRenewalID { get; set; }
 
-        public int? ContractExtensionTimeID { get; set; }
+        public int? ContractRenewalTimeID { get; set; }
 
         [StringLength(50)]
         public string Note { get; set; }
@@ -61,9 +61,9 @@ namespace Contract.DB
 
         public virtual ContractCategory ContractCategory { get; set; }
 
-        public virtual ContractExtension ContractExtension { get; set; }
+        public virtual ContractRenewal ContractRenewal { get; set; }
 
-        public virtual ContractExtensionPeriod ContractExtensionPeriod { get; set; }
+        public virtual ContractRenewalPeriod ContractRenewalPeriod { get; set; }
 
         public virtual Contractors Contractors { get; set; }
 

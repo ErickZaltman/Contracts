@@ -18,11 +18,11 @@ namespace Contract.Forms
         private int contractID;
         private int signID;
         private DB.Contract currContract;
-        public SigningForm(DB.DBModel dbContext, int signID, int contractID, UpdateContracts sender)
+        public SigningForm(int signID, int contractID, UpdateContracts sender)
         {
             InitializeComponent();
 
-            this.dbContext = dbContext;
+            dbContext = new DB.DBModel();
             this.signID = signID;
             this.contractID = contractID;
             d = sender;

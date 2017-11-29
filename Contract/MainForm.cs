@@ -121,7 +121,7 @@ namespace Contract
         {
             if (e.Clicks > 1)
             {
-                Forms.SigningForm tmpForm = new Forms.SigningForm(dbContext, (int)gvAgreements.GetRowCellValue(e.RowHandle,"ID"), (int)gvAgreements.GetRowCellValue(e.RowHandle, "ContractID"), updateAgreements);
+                Forms.SigningForm tmpForm = new Forms.SigningForm((int)gvAgreements.GetRowCellValue(e.RowHandle,"ID"), (int)gvAgreements.GetRowCellValue(e.RowHandle, "ContractID"), updateAgreements);
                 tmpForm.Show();
             }
         }

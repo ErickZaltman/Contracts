@@ -43,6 +43,7 @@
             this.tsslUserName = new System.Windows.Forms.ToolStripStatusLabel();
             this.navBarGroup2 = new DevExpress.XtraNavBar.NavBarGroup();
             this.nbiContractors = new DevExpress.XtraNavBar.NavBarItem();
+            this.navBarItem1 = new DevExpress.XtraNavBar.NavBarItem();
             ((System.ComponentModel.ISupportInitialize)(this.navBarControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvContracts)).BeginInit();
@@ -184,6 +185,10 @@
             this.nbiContractors.Name = "nbiContractors";
             this.nbiContractors.LinkPressed += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.nbiContractors_LinkPressed);
             // 
+            // navBarItem1
+            // 
+            this.navBarItem1.Name = "navBarItem1";
+            // 
             // MainForm
             // 
             this.AllowMdiBar = true;
@@ -231,6 +236,7 @@
         private DevExpress.XtraGrid.Views.Grid.GridView gvAgreements;
         private DevExpress.XtraNavBar.NavBarGroup navBarGroup2;
         private DevExpress.XtraNavBar.NavBarItem nbiContractors;
+        private DevExpress.XtraNavBar.NavBarItem navBarItem1;
     }
 }
 

@@ -6,13 +6,12 @@ namespace Contract.DB
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    [Table("ContractExtension")]
-    public partial class ContractExtension
+    public partial class DocumentTypes
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public ContractExtension()
+        public DocumentTypes()
         {
-            Contract = new HashSet<Contract>();
+            HistoryChanges = new HashSet<HistoryChanges>();
         }
 
         public int ID { get; set; }
@@ -21,6 +20,6 @@ namespace Contract.DB
         public string Name { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Contract> Contract { get; set; }
+        public virtual ICollection<HistoryChanges> HistoryChanges { get; set; }
     }
 }

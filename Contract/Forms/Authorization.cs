@@ -29,7 +29,8 @@ namespace Contract.Forms
         {
             if (db.Users.Where(x => x.Login == tbLogin.Text && x.Password == tbPassword.Text).Count() > 0)
             {
-                MainForm main = new MainForm(tbLogin.Text);
+                Properties.Settings.CurrentUserID = db.Users.Where(x => x.Login == tbLogin.Text).ToList()[0].ID;
+                MainForm main = new MainForm();
                 main.Show();
                 Hide();
                 

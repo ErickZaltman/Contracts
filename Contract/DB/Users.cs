@@ -11,6 +11,7 @@ namespace Contract.DB
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Users()
         {
+            AgreementSignList = new HashSet<AgreementSignList>();
             Contract = new HashSet<Contract>();
             Contract1 = new HashSet<Contract>();
             Departments = new HashSet<Departments>();
@@ -38,6 +39,9 @@ namespace Contract.DB
 
         [StringLength(50)]
         public string Surname { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<AgreementSignList> AgreementSignList { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Contract> Contract { get; set; }

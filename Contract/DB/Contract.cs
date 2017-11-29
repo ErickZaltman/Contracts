@@ -20,6 +20,8 @@ namespace Contract.DB
 
         public int ID { get; set; }
 
+        public int? ContractorID { get; set; }
+
         [StringLength(50)]
         public string Number { get; set; }
 
@@ -27,12 +29,14 @@ namespace Contract.DB
 
         public double? Summ { get; set; }
 
-        [StringLength(50)]
+        [StringLength(250)]
         public string Theme { get; set; }
 
         public DateTime? StartDate { get; set; }
 
         public DateTime? EndDate { get; set; }
+
+        public DateTime? ConclusionDate { get; set; }
 
         public int? ContractualID { get; set; }
 
@@ -40,9 +44,9 @@ namespace Contract.DB
 
         public int? CategoryID { get; set; }
 
-        public int? ContractExtensionID { get; set; }
+        public int? ContractRenewalID { get; set; }
 
-        public int? ContractExtensionTimeID { get; set; }
+        public int? ContractRenewalTimeID { get; set; }
 
         [StringLength(50)]
         public string Note { get; set; }
@@ -51,13 +55,17 @@ namespace Contract.DB
 
         public int? DepartmentID { get; set; }
 
+        public bool? OnAgreement { get; set; }
+
         public virtual ActivityKind ActivityKind { get; set; }
 
         public virtual ContractCategory ContractCategory { get; set; }
 
-        public virtual ContractExtension ContractExtension { get; set; }
+        public virtual ContractRenewal ContractRenewal { get; set; }
 
-        public virtual ContractExtensionPeriod ContractExtensionPeriod { get; set; }
+        public virtual ContractRenewalPeriod ContractRenewalPeriod { get; set; }
+
+        public virtual Contractors Contractors { get; set; }
 
         public virtual Departments Departments { get; set; }
 

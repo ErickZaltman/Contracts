@@ -6,13 +6,13 @@ namespace Contract.DB
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    [Table("ContractExtensionPeriod")]
-    public partial class ContractExtensionPeriod
+    [Table("ContractorType")]
+    public partial class ContractorType
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public ContractExtensionPeriod()
+        public ContractorType()
         {
-            Contract = new HashSet<Contract>();
+            Contractors = new HashSet<Contractors>();
         }
 
         public int ID { get; set; }
@@ -21,6 +21,6 @@ namespace Contract.DB
         public string Name { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Contract> Contract { get; set; }
+        public virtual ICollection<Contractors> Contractors { get; set; }
     }
 }

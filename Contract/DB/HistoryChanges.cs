@@ -10,7 +10,9 @@ namespace Contract.DB
     {
         public int ID { get; set; }
 
-        public int? ContractID { get; set; }
+        public int? DocumentTypeID { get; set; }
+
+        public int? DocumentID { get; set; }
 
         [StringLength(50)]
         public string PropertyName { get; set; }
@@ -26,6 +28,8 @@ namespace Contract.DB
         public DateTime? Date { get; set; }
 
         public virtual Contract Contract { get; set; }
+
+        public virtual DocumentTypes DocumentTypes { get; set; }
 
         public virtual Users Users { get; set; }
     }

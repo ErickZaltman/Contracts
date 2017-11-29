@@ -22,16 +22,16 @@ namespace Contract.DB
         [StringLength(100)]
         public string FullName { get; set; }
 
-        public int? GroupID { get; set; }
+        public int? ContractorTypeID { get; set; }
 
         [StringLength(50)]
         public string EGRPOU { get; set; }
 
         [StringLength(350)]
-        public string LegalAdress { get; set; }
+        public string LegalAddress { get; set; }
 
         [StringLength(350)]
-        public string ActualAdress { get; set; }
+        public string ActualAddress { get; set; }
 
         public int? TaxTypeID { get; set; }
 
@@ -54,5 +54,7 @@ namespace Contract.DB
         public virtual ICollection<Contract> Contract { get; set; }
 
         public virtual ContractorType ContractorType { get; set; }
+
+        public virtual TaxesType TaxesType { get; set; }
     }
 }

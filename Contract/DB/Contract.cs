@@ -36,6 +36,8 @@ namespace Contract.DB
 
         public DateTime? EndDate { get; set; }
 
+        public DateTime? ConclusionDate { get; set; }
+
         public int? ContractualID { get; set; }
 
         public int? ActivityKindID { get; set; }

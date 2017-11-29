@@ -128,5 +128,11 @@ namespace Contract
 
         #endregion
 
+       
+        private void navBarControl1_Click(object sender, EventArgs e)
+        {
+            Forms.SelectInfoForm tmpForm = new Forms.SelectInfoForm(Tables.Contractors);
+            tmpForm.Show();
+        }
     }
 }

@@ -21,6 +21,7 @@ namespace Contract.DB
         public virtual DbSet<Contractors> Contractors { get; set; }
         public virtual DbSet<ContractorType> ContractorType { get; set; }
         public virtual DbSet<Departments> Departments { get; set; }
+        public virtual DbSet<DocumentTypes> DocumentTypes { get; set; }
         public virtual DbSet<Files> Files { get; set; }
         public virtual DbSet<HistoryChanges> HistoryChanges { get; set; }
         public virtual DbSet<Permissions> Permissions { get; set; }
@@ -33,6 +34,11 @@ namespace Contract.DB
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<Contract>()
+                .HasMany(e => e.HistoryChanges)
+                .WithOptional(e => e.Contract)
+                .HasForeignKey(e => e.DocumentID);
+
             modelBuilder.Entity<ContractCategory>()
                 .HasMany(e => e.Contract)
                 .WithOptional(e => e.ContractCategory)
@@ -52,11 +58,6 @@ namespace Contract.DB
                 .WithOptional(e => e.Contractors)
                 .HasForeignKey(e => e.ContractorID);
 
-            modelBuilder.Entity<ContractorType>()
-                .HasMany(e => e.Contractors)
-                .WithOptional(e => e.ContractorType)
-                .HasForeignKey(e => e.GroupID);
-
             modelBuilder.Entity<Departments>()
                 .HasMany(e => e.Contract)
                 .WithOptional(e => e.Departments)
@@ -67,10 +68,20 @@ namespace Contract.DB
                 .WithOptional(e => e.Departments1)
                 .HasForeignKey(e => e.DepartmentID);
 
+            modelBuilder.Entity<DocumentTypes>()
+                .HasMany(e => e.HistoryChanges)
+                .WithOptional(e => e.DocumentTypes)
+                .HasForeignKey(e => e.DocumentTypeID);
+
             modelBuilder.Entity<Permissions>()
                 .HasMany(e => e.UserPermissions)
                 .WithOptional(e => e.Permissions)
                 .HasForeignKey(e => e.PermissionID);
+
+            modelBuilder.Entity<TaxesType>()
+                .HasMany(e => e.Contractors)
+                .WithOptional(e => e.TaxesType)
+                .HasForeignKey(e => e.TaxTypeID);
 
             modelBuilder.Entity<Users>()
                 .HasMany(e => e.AgreementSignList)

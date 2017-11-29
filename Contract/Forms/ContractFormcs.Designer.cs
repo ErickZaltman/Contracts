@@ -67,6 +67,8 @@
             this.label14 = new System.Windows.Forms.Label();
             this.lueContractors = new DevExpress.XtraEditors.LookUpEdit();
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
+            this.deConclusionDate = new DevExpress.XtraEditors.DateEdit();
+            this.label5 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.deContractDateStart.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.deContractDateStart.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.deContractDateEnd.Properties.CalendarTimeProperties)).BeginInit();
@@ -89,6 +91,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.deDate.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lueDepartment.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lueContractors.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.deConclusionDate.Properties.CalendarTimeProperties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.deConclusionDate.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -192,6 +196,7 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.deContractDateStart.Size = new System.Drawing.Size(100, 20);
             this.deContractDateStart.TabIndex = 27;
+            this.deContractDateStart.EditValueChanged += new System.EventHandler(this.control_EditValueChanged);
             // 
             // deContractDateEnd
             // 
@@ -204,6 +209,7 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.deContractDateEnd.Size = new System.Drawing.Size(100, 20);
             this.deContractDateEnd.TabIndex = 28;
+            this.deContractDateEnd.EditValueChanged += new System.EventHandler(this.control_EditValueChanged);
             // 
             // tabNavigationPage1
             // 
@@ -405,8 +411,6 @@
             this.deDate.Size = new System.Drawing.Size(100, 20);
             this.deDate.TabIndex = 32;
             this.deDate.EditValueChanged += new System.EventHandler(this.control_EditValueChanged);
-            this.deContractDateStart.EditValueChanged += new System.EventHandler(this.control_EditValueChanged);
-            this.deContractDateEnd.EditValueChanged += new System.EventHandler(this.control_EditValueChanged);
             // 
             // lueDepartment
             // 
@@ -474,11 +478,34 @@
             this.simpleButton1.Text = "Отправить на согласование";
             this.simpleButton1.Click += new System.EventHandler(this.simpleButton1_Click);
             // 
+            // deConclusionDate
+            // 
+            this.deConclusionDate.EditValue = null;
+            this.deConclusionDate.Location = new System.Drawing.Point(517, 12);
+            this.deConclusionDate.Name = "deConclusionDate";
+            this.deConclusionDate.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.deConclusionDate.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.deConclusionDate.Size = new System.Drawing.Size(100, 20);
+            this.deConclusionDate.TabIndex = 42;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(409, 15);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(102, 13);
+            this.label5.TabIndex = 43;
+            this.label5.Text = "Дата заключения:";
+            // 
             // ContractForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1268, 622);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.deConclusionDate);
             this.Controls.Add(this.teContractNumber);
             this.Controls.Add(this.simpleButton1);
             this.Controls.Add(this.label14);
@@ -518,6 +545,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.deDate.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lueDepartment.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lueContractors.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.deConclusionDate.Properties.CalendarTimeProperties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.deConclusionDate.Properties)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -560,5 +589,7 @@
         private DevExpress.XtraEditors.TextEdit teAuthor;
         private DevExpress.XtraEditors.TextEdit teContractNote;
         private DevExpress.XtraEditors.TextEdit teContractNumber;
+        private DevExpress.XtraEditors.DateEdit deConclusionDate;
+        private System.Windows.Forms.Label label5;
     }
 }

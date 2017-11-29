@@ -64,12 +64,15 @@ namespace Contract.Forms
                 deContractDateEnd.DateTime = (DateTime)currContract.EndDate;
             if (currContract.StartDate != null)
                 deContractDateStart.DateTime = (DateTime)currContract.StartDate;
+            if (currContract.ConclusionDate != null)
+                deConclusionDate.DateTime = (DateTime)currContract.ConclusionDate;
 
             lueDepartment.EditValue = currContract.DepartmentID;
             lueContractual.EditValue = currContract.ContractualID;
             lueExtensions.EditValue = currContract.ContractExtensionID;
             lueContractCategory.EditValue = currContract.CategoryID;
             lueContractors.EditValue = currContract.ContractorID;
+
 
             if(currContract.OnAgreement == true)
                 FillAgreemenst();
@@ -115,7 +118,7 @@ namespace Contract.Forms
         {
             if (e.Button.Index == 1)
             {
-                Forms.SelectInfoForm tmpForm = new SelectInfoForm(Tables.Category, dbContext, getIDSelectedItemID);
+                Forms.SelectInfoForm tmpForm = new SelectInfoForm(Tables.Category, true, getIDSelectedItemID);
 
                 tmpForm.ShowDialog();
             }
@@ -124,7 +127,7 @@ namespace Contract.Forms
         {
             if (e.Button.Index == 1)
             {
-                Forms.SelectInfoForm tmpForm = new SelectInfoForm(Tables.Departments, dbContext, getIDSelectedItemID);
+                Forms.SelectInfoForm tmpForm = new SelectInfoForm(Tables.Departments, true, getIDSelectedItemID);
 
                 tmpForm.ShowDialog();
             }
@@ -134,7 +137,7 @@ namespace Contract.Forms
         {
             if (e.Button.Index == 1)
             {
-                Forms.SelectInfoForm tmpForm = new SelectInfoForm(Tables.Users, dbContext, getIDSelectedItemID);
+                Forms.SelectInfoForm tmpForm = new SelectInfoForm(Tables.Users, true, getIDSelectedItemID);
 
                 tmpForm.ShowDialog();
             }
@@ -143,7 +146,7 @@ namespace Contract.Forms
         {
             if (e.Button.Index == 1)
             {
-                Forms.SelectInfoForm tmpForm = new SelectInfoForm(Tables.Contractors, dbContext, getIDSelectedItemID);
+                Forms.SelectInfoForm tmpForm = new SelectInfoForm(Tables.Contractors, true, getIDSelectedItemID);
 
                 tmpForm.ShowDialog();
             }
@@ -152,7 +155,7 @@ namespace Contract.Forms
         {
             if (e.Button.Index == 1)
             {
-                Forms.SelectInfoForm tmpForm = new SelectInfoForm(Tables.ActivityKinds, dbContext, getIDSelectedItemID);
+                Forms.SelectInfoForm tmpForm = new SelectInfoForm(Tables.ActivityKinds, true, getIDSelectedItemID);
 
                 tmpForm.ShowDialog();
             }

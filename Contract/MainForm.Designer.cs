@@ -69,7 +69,6 @@
             this.navBarControl1.Size = new System.Drawing.Size(185, 300);
             this.navBarControl1.TabIndex = 0;
             this.navBarControl1.Text = "navBarControl1";
-            this.navBarControl1.Click += new System.EventHandler(this.navBarControl1_Click);
             // 
             // navBarGroup1
             // 
@@ -183,6 +182,7 @@
             // 
             this.nbiContractors.Caption = "Контрагенты";
             this.nbiContractors.Name = "nbiContractors";
+            this.nbiContractors.LinkPressed += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.nbiContractors_LinkPressed);
             // 
             // MainForm
             // 

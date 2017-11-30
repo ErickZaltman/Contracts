@@ -12,6 +12,7 @@ namespace Contract.DB
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Contract()
         {
+            ContractAnnex = new HashSet<ContractAnnex>();
             Files = new HashSet<Files>();
             HistoryChanges = new HashSet<HistoryChanges>();
             Signing = new HashSet<Signing>();
@@ -72,6 +73,9 @@ namespace Contract.DB
         public virtual Users Users { get; set; }
 
         public virtual Users Users1 { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ContractAnnex> ContractAnnex { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Files> Files { get; set; }

@@ -211,12 +211,28 @@ namespace Contract.Forms
                 currContract.StartDate = Convert.ToDateTime(deContractDateStart.Text);
             currContract.AuthorID = Properties.Settings.CurrentUserID;
 
+            string number = string.Empty;
+            string day = currContract.Date.Value.Day.ToString();
+            if (day.Length == 1) day = "0" + day;
+            string month = currContract.Date.Value.Month.ToString();
+            if (month.Length == 1) month = "0" + month;
+            string year = currContract.Date.Value.Year.ToString();
+            year = year.Substring(2);
+            string xz = "?";
+            string prefix = dbContext.Departments.Where(x => x.ID == currContract.DepartmentID).Select(y => y.Prefix).ToList()[0].ToString();
+            string nomenclature = "8";
+            string department_index = "?";
+            number = day + month + year + "-" + xz + prefix + nomenclature + "/" + department_index;
+            //if (currContract.Number == null)
+                currContract.Number = number;
+
             if (this.contractID == 0)
             {
                 dbContext.Contract.Add(currContract);
             }
                 
             dbContext.SaveChanges();
+            teContractNumber.Text = currContract.Number;
             contractID = currContract.ID;
             isLoaded = true;
             uc();
@@ -224,9 +240,26 @@ namespace Contract.Forms
 
         private void sbSaveChanges_Click(object sender, EventArgs e)
         {
-            SaveContracChanges();
-            sbSaveChanges.Enabled = false;
-            simpleButton1.Enabled = true;
+            bool isValid = isValid_deDate();
+            if (!isValid)
+            {
+                deDate_Validating(deDate, new CancelEventArgs());
+                lueDepartment_Validating(lueDepartment, new CancelEventArgs());
+            }
+            else
+            {
+                isValid = isValid_lueDepartment();
+                if (!isValid)
+                {
+                    lueDepartment_Validating(lueDepartment, new CancelEventArgs());
+                }
+                else
+                {
+                    SaveContracChanges();
+                    sbSaveChanges.Enabled = false;
+                    simpleButton1.Enabled = true;
+                }
+            }
         }
 
         #endregion
@@ -249,8 +282,12 @@ namespace Contract.Forms
 
         private void FillAgreemenst()
         {
-            gcAgreements.DataSource = dbContext.Signing.Where(x => x.ContractID == currContract.ID).ToList();
-            gvAgreements.Columns["ID"].Visible = false;
+            gcAgreements.DataSource = dbContext.Signing.Where(x => x.ContractID == currContract.ID).Select(x => new { FullName = x.Users.FirstName + " " + x.Users.SecondName, x.IsAgreed, x.Note, x.Date, x.DeadlineTime}).ToList();
+            gvAgreements.Columns["FullName"].Caption = "Ф.И.О. согласованта";
+            gvAgreements.Columns["IsAgreed"].Caption = "Согласовано";
+            gvAgreements.Columns["Note"].Caption = "Комментарий";
+            gvAgreements.Columns["Date"].Caption = "Дата согласования";
+            gvAgreements.Columns["DeadlineTime"].Caption = "Требуется согласовать до";
         }
 
         private void simpleButton1_Click(object sender, EventArgs e)
@@ -267,9 +304,7 @@ namespace Contract.Forms
         #region Equal Check
         private void control_EditValueChanged(object sender, EventArgs e)
         {
-            bool isValid = true;
-            if (sender is TextEdit)
-                isValid = (sender as TextEdit).DoValidate();
+            bool isValid = DoValidate(sender);
 
             if (isLoaded)
             {
@@ -335,6 +370,18 @@ namespace Contract.Forms
 
         #region Validation
 
+        private bool DoValidate(object sender)
+        {
+            bool isValid = true;
+            if (sender is TextEdit)
+                isValid = (sender as TextEdit).DoValidate();
+            else if (sender is DateEdit)
+                isValid = (sender as DateEdit).DoValidate();
+            else if (sender is LookUpEdit)
+                isValid = (sender as LookUpEdit).DoValidate();
+            return isValid;
+        }
+
         private void teSumm_Validating(object sender, CancelEventArgs e)
         {
             TextEdit te = sender as TextEdit;
@@ -347,7 +394,47 @@ namespace Contract.Forms
             }
         }
 
+        private bool isValid_deDate()
+        {
+            if (deDate.Text == string.Empty || deDate.Text == null)
+            {
+                deDate.ErrorText = "Некорректная дата";
+                return false;
+            }
+            else
+            {
+                DateTime output;
+                bool isDateTime = DateTime.TryParse(deDate.Text, out output);
+                if (!isDateTime)
+                {
+                    deDate.ErrorText = "Некорректная дата";
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        private void deDate_Validating(object sender, CancelEventArgs e)
+        {
+            if (!isValid_deDate()) e.Cancel = true;
+        }
+
+        private bool isValid_lueDepartment()
+        {
+            if (lueDepartment.EditValue == null)
+            {
+                lueDepartment.ErrorText = "Обязательное поле";
+                return false;
+            }
+            return true;
+        }
+        private void lueDepartment_Validating(object sender, CancelEventArgs e)
+        {
+            if (!isValid_lueDepartment()) e.Cancel = true;
+        }
+
         #endregion
+
     }
 }
 

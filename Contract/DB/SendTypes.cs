@@ -6,13 +6,12 @@ namespace Contract.DB
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    public partial class Departments
+    public partial class SendTypes
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Departments()
+        public SendTypes()
         {
-            Contract = new HashSet<Contract>();
-            Users1 = new HashSet<Users>();
+            ContractAnnex = new HashSet<ContractAnnex>();
         }
 
         public int ID { get; set; }
@@ -20,19 +19,7 @@ namespace Contract.DB
         [StringLength(50)]
         public string Name { get; set; }
 
-        public int? Parent { get; set; }
-
-        public int? HeadID { get; set; }
-
-        [StringLength(10)]
-        public string Prefix { get; set; }
-
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Contract> Contract { get; set; }
-
-        public virtual Users Users { get; set; }
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Users> Users1 { get; set; }
+        public virtual ICollection<ContractAnnex> ContractAnnex { get; set; }
     }
 }

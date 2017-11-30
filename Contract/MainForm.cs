@@ -126,13 +126,15 @@ namespace Contract
             }
         }
 
+
         #endregion
 
-       
-        private void navBarControl1_Click(object sender, EventArgs e)
+        private void nbiContractors_LinkClicked(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e)
         {
             Forms.SelectInfoForm tmpForm = new Forms.SelectInfoForm(Tables.Contractors);
             tmpForm.Show();
         }
+
+
     }
 }

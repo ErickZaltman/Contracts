@@ -73,7 +73,9 @@
     <Compile Include="cs\com.cs" />
     <Compile Include="DB\ActivityKind.cs" />
     <Compile Include="DB\AgreementSignList.cs" />
+    <Compile Include="DB\AnnexTypes.cs" />
     <Compile Include="DB\Contract.cs" />
+    <Compile Include="DB\ContractAnnex.cs" />
     <Compile Include="DB\ContractCategory.cs" />
     <Compile Include="DB\Contractors.cs" />
     <Compile Include="DB\ContractorType.cs" />
@@ -85,6 +87,7 @@
     <Compile Include="DB\Files.cs" />
     <Compile Include="DB\HistoryChanges.cs" />
     <Compile Include="DB\Permissions.cs" />
+    <Compile Include="DB\SendTypes.cs" />
     <Compile Include="DB\Signing.cs" />
     <Compile Include="DB\SupAgreement.cs" />
     <Compile Include="DB\sysdiagrams.cs" />

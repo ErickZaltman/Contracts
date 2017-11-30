@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject1 = new DevExpress.Utils.SerializableAppearanceObject();
-            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject2 = new DevExpress.Utils.SerializableAppearanceObject();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject3 = new DevExpress.Utils.SerializableAppearanceObject();
             DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject4 = new DevExpress.Utils.SerializableAppearanceObject();
+            DevExpress.Utils.SerializableAppearanceObject serializableAppearanceObject2 = new DevExpress.Utils.SerializableAppearanceObject();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -152,7 +152,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(15, 193);
+            this.label8.Location = new System.Drawing.Point(15, 292);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(78, 13);
             this.label8.TabIndex = 8;
@@ -161,7 +161,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(15, 166);
+            this.label9.Location = new System.Drawing.Point(15, 265);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(42, 13);
             this.label9.TabIndex = 9;
@@ -170,7 +170,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(14, 43);
+            this.label10.Location = new System.Drawing.Point(489, 98);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(65, 13);
             this.label10.TabIndex = 23;
@@ -179,7 +179,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(14, 69);
+            this.label11.Location = new System.Drawing.Point(14, 42);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(91, 13);
             this.label11.TabIndex = 24;
@@ -245,19 +245,25 @@
             // tnpMainInfo
             // 
             this.tnpMainInfo.Caption = "Основная информация";
+            this.tnpMainInfo.Controls.Add(this.label5);
             this.tnpMainInfo.Controls.Add(this.teContractTheme);
+            this.tnpMainInfo.Controls.Add(this.deConclusionDate);
             this.tnpMainInfo.Controls.Add(this.teAuthor);
             this.tnpMainInfo.Controls.Add(this.teContractNote);
             this.tnpMainInfo.Controls.Add(this.teSumm);
+            this.tnpMainInfo.Controls.Add(this.label14);
             this.tnpMainInfo.Controls.Add(this.lueContractual);
+            this.tnpMainInfo.Controls.Add(this.lueContractors);
             this.tnpMainInfo.Controls.Add(this.label12);
             this.tnpMainInfo.Controls.Add(this.label3);
             this.tnpMainInfo.Controls.Add(this.deContractDateEnd);
             this.tnpMainInfo.Controls.Add(this.deContractDateStart);
             this.tnpMainInfo.Controls.Add(this.label7);
+            this.tnpMainInfo.Controls.Add(this.label10);
             this.tnpMainInfo.Controls.Add(this.label4);
             this.tnpMainInfo.Controls.Add(this.label6);
             this.tnpMainInfo.Controls.Add(this.label9);
+            this.tnpMainInfo.Controls.Add(this.lueContractCategory);
             this.tnpMainInfo.Controls.Add(this.label8);
             this.tnpMainInfo.Controls.Add(this.lueExtensions);
             this.tnpMainInfo.Name = "tnpMainInfo";
@@ -273,7 +279,7 @@
             // 
             // teAuthor
             // 
-            this.teAuthor.Location = new System.Drawing.Point(105, 218);
+            this.teAuthor.Location = new System.Drawing.Point(105, 317);
             this.teAuthor.Name = "teAuthor";
             this.teAuthor.Properties.ReadOnly = true;
             this.teAuthor.Size = new System.Drawing.Size(129, 20);
@@ -281,7 +287,7 @@
             // 
             // teContractNote
             // 
-            this.teContractNote.Location = new System.Drawing.Point(105, 192);
+            this.teContractNote.Location = new System.Drawing.Point(105, 291);
             this.teContractNote.Name = "teContractNote";
             this.teContractNote.Size = new System.Drawing.Size(129, 20);
             this.teContractNote.TabIndex = 38;
@@ -289,7 +295,7 @@
             // 
             // teSumm
             // 
-            this.teSumm.Location = new System.Drawing.Point(105, 163);
+            this.teSumm.Location = new System.Drawing.Point(105, 262);
             this.teSumm.Name = "teSumm";
             this.teSumm.Size = new System.Drawing.Size(129, 20);
             this.teSumm.TabIndex = 37;
@@ -318,7 +324,7 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(15, 221);
+            this.label12.Location = new System.Drawing.Point(15, 320);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(42, 13);
             this.label12.TabIndex = 32;
@@ -381,11 +387,11 @@
             // 
             // lueContractCategory
             // 
-            this.lueContractCategory.Location = new System.Drawing.Point(126, 40);
+            this.lueContractCategory.Location = new System.Drawing.Point(601, 95);
             this.lueContractCategory.Name = "lueContractCategory";
             this.lueContractCategory.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo),
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Ellipsis, "...", -1, true, true, false, DevExpress.XtraEditors.ImageLocation.MiddleCenter, null, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject2, "", null, null, true)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Ellipsis, "...", -1, true, true, false, DevExpress.XtraEditors.ImageLocation.MiddleCenter, null, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject3, "", null, null, true)});
             this.lueContractCategory.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Value", "Value", 20, DevExpress.Utils.FormatType.None, "", false, DevExpress.Utils.HorzAlignment.Default),
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Text", "Наименование")});
@@ -411,14 +417,15 @@
             this.deDate.Size = new System.Drawing.Size(100, 20);
             this.deDate.TabIndex = 32;
             this.deDate.EditValueChanged += new System.EventHandler(this.control_EditValueChanged);
+            this.deDate.Validating += new System.ComponentModel.CancelEventHandler(this.deDate_Validating);
             // 
             // lueDepartment
             // 
-            this.lueDepartment.Location = new System.Drawing.Point(126, 66);
+            this.lueDepartment.Location = new System.Drawing.Point(126, 39);
             this.lueDepartment.Name = "lueDepartment";
             this.lueDepartment.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo),
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Ellipsis, "...", -1, true, true, false, DevExpress.XtraEditors.ImageLocation.MiddleCenter, null, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject3, "", null, null, true)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Ellipsis, "...", -1, true, true, false, DevExpress.XtraEditors.ImageLocation.MiddleCenter, null, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject4, "", null, null, true)});
             this.lueDepartment.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Value", "Value", 20, DevExpress.Utils.FormatType.None, "", false, DevExpress.Utils.HorzAlignment.Default),
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Text", "Наименование")});
@@ -430,6 +437,7 @@
             this.lueDepartment.TabIndex = 35;
             this.lueDepartment.ButtonClick += new DevExpress.XtraEditors.Controls.ButtonPressedEventHandler(this.lueDepartment_ButtonClick);
             this.lueDepartment.EditValueChanged += new System.EventHandler(this.control_EditValueChanged);
+            this.lueDepartment.Validating += new System.ComponentModel.CancelEventHandler(this.lueDepartment_Validating);
             // 
             // sbSaveChanges
             // 
@@ -444,7 +452,7 @@
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(442, 43);
+            this.label14.Location = new System.Drawing.Point(526, 155);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(71, 13);
             this.label14.TabIndex = 37;
@@ -452,11 +460,11 @@
             // 
             // lueContractors
             // 
-            this.lueContractors.Location = new System.Drawing.Point(554, 40);
+            this.lueContractors.Location = new System.Drawing.Point(638, 152);
             this.lueContractors.Name = "lueContractors";
             this.lueContractors.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo),
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Ellipsis, "...", -1, true, true, false, DevExpress.XtraEditors.ImageLocation.MiddleCenter, null, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject4, "", null, null, true)});
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Ellipsis, "...", -1, true, true, false, DevExpress.XtraEditors.ImageLocation.MiddleCenter, null, new DevExpress.Utils.KeyShortcut(System.Windows.Forms.Keys.None), serializableAppearanceObject2, "", null, null, true)});
             this.lueContractors.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Value", "Value", 20, DevExpress.Utils.FormatType.None, "", false, DevExpress.Utils.HorzAlignment.Default),
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Text", "Наименование")});
@@ -481,7 +489,7 @@
             // deConclusionDate
             // 
             this.deConclusionDate.EditValue = null;
-            this.deConclusionDate.Location = new System.Drawing.Point(517, 12);
+            this.deConclusionDate.Location = new System.Drawing.Point(601, 124);
             this.deConclusionDate.Name = "deConclusionDate";
             this.deConclusionDate.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
@@ -493,7 +501,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(409, 15);
+            this.label5.Location = new System.Drawing.Point(493, 127);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(102, 13);
             this.label5.TabIndex = 43;
@@ -504,21 +512,15 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1268, 622);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.deConclusionDate);
             this.Controls.Add(this.teContractNumber);
             this.Controls.Add(this.simpleButton1);
-            this.Controls.Add(this.label14);
-            this.Controls.Add(this.lueContractors);
             this.Controls.Add(this.sbSaveChanges);
             this.Controls.Add(this.lueDepartment);
             this.Controls.Add(this.deDate);
             this.Controls.Add(this.tabPane1);
             this.Controls.Add(this.label11);
-            this.Controls.Add(this.label10);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.lueContractCategory);
             this.Name = "ContractForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Договор №";

@@ -12,6 +12,7 @@ namespace Contract.DB
         public Contractors()
         {
             Contract = new HashSet<Contract>();
+            ContractAnnex = new HashSet<ContractAnnex>();
         }
 
         public int ID { get; set; }
@@ -52,6 +53,9 @@ namespace Contract.DB
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Contract> Contract { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ContractAnnex> ContractAnnex { get; set; }
 
         public virtual ContractorType ContractorType { get; set; }
 

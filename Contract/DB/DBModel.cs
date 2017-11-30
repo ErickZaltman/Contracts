@@ -16,6 +16,7 @@ namespace Contract.DB
         public virtual DbSet<AgreementSignList> AgreementSignList { get; set; }
         public virtual DbSet<AnnexTypes> AnnexTypes { get; set; }
         public virtual DbSet<Contract> Contract { get; set; }
+        public virtual DbSet<ContractAnnex> ContractAnnex { get; set; }
         public virtual DbSet<ContractCategory> ContractCategory { get; set; }
         public virtual DbSet<Contractors> Contractors { get; set; }
         public virtual DbSet<ContractorType> ContractorType { get; set; }
@@ -36,6 +37,11 @@ namespace Contract.DB
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<AnnexTypes>()
+                .HasMany(e => e.ContractAnnex)
+                .WithOptional(e => e.AnnexTypes)
+                .HasForeignKey(e => e.AnnexTypeID);
+
             modelBuilder.Entity<Contract>()
                 .HasMany(e => e.HistoryChanges)
                 .WithOptional(e => e.Contract)
@@ -52,6 +58,11 @@ namespace Contract.DB
 
             modelBuilder.Entity<Contractors>()
                 .HasMany(e => e.Contract)
+                .WithOptional(e => e.Contractors)
+                .HasForeignKey(e => e.ContractorID);
+
+            modelBuilder.Entity<Contractors>()
+                .HasMany(e => e.ContractAnnex)
                 .WithOptional(e => e.Contractors)
                 .HasForeignKey(e => e.ContractorID);
 
@@ -80,6 +91,11 @@ namespace Contract.DB
                 .WithOptional(e => e.Permissions)
                 .HasForeignKey(e => e.PermissionID);
 
+            modelBuilder.Entity<SendTypes>()
+                .HasMany(e => e.ContractAnnex)
+                .WithOptional(e => e.SendTypes)
+                .HasForeignKey(e => e.SendTypeID);
+
             modelBuilder.Entity<TaxesType>()
                 .HasMany(e => e.Contractors)
                 .WithOptional(e => e.TaxesType)
@@ -99,6 +115,16 @@ namespace Contract.DB
                 .HasMany(e => e.Contract1)
                 .WithOptional(e => e.Users1)
                 .HasForeignKey(e => e.ContractualID);
+
+            modelBuilder.Entity<Users>()
+                .HasMany(e => e.ContractAnnex)
+                .WithOptional(e => e.Users)
+                .HasForeignKey(e => e.AuthorID);
+
+            modelBuilder.Entity<Users>()
+                .HasMany(e => e.ContractAnnex1)
+                .WithOptional(e => e.Users1)
+                .HasForeignKey(e => e.AuthorID);
 
             modelBuilder.Entity<Users>()
                 .HasMany(e => e.Departments)

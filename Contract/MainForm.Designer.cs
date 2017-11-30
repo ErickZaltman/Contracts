@@ -35,6 +35,8 @@
             this.nbiAdditions = new DevExpress.XtraNavBar.NavBarItem();
             this.nbiAttachments = new DevExpress.XtraNavBar.NavBarItem();
             this.nbiAgreementsDocs = new DevExpress.XtraNavBar.NavBarItem();
+            this.navBarGroup2 = new DevExpress.XtraNavBar.NavBarGroup();
+            this.nbiContractors = new DevExpress.XtraNavBar.NavBarItem();
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
             this.gvContracts = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gvAgreements = new DevExpress.XtraGrid.Views.Grid.GridView();
@@ -119,6 +121,20 @@
             this.nbiAgreementsDocs.Caption = "Договора на согласовании";
             this.nbiAgreementsDocs.Name = "nbiAgreementsDocs";
             this.nbiAgreementsDocs.LinkPressed += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.nbiAgreementsDocs_LinkPressed);
+            // 
+            // navBarGroup2
+            // 
+            this.navBarGroup2.Caption = "Справочники";
+            this.navBarGroup2.Expanded = true;
+            this.navBarGroup2.ItemLinks.AddRange(new DevExpress.XtraNavBar.NavBarItemLink[] {
+            new DevExpress.XtraNavBar.NavBarItemLink(this.nbiContractors)});
+            this.navBarGroup2.Name = "navBarGroup2";
+            // 
+            // nbiContractors
+            // 
+            this.nbiContractors.Caption = "Контрагенты";
+            this.nbiContractors.Name = "nbiContractors";
+            this.nbiContractors.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.nbiContractors_LinkClicked);
             // 
             // gridControl1
             // 

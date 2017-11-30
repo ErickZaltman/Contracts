@@ -14,6 +14,8 @@ namespace Contract.DB
             AgreementSignList = new HashSet<AgreementSignList>();
             Contract = new HashSet<Contract>();
             Contract1 = new HashSet<Contract>();
+            ContractAnnex = new HashSet<ContractAnnex>();
+            ContractAnnex1 = new HashSet<ContractAnnex>();
             Departments = new HashSet<Departments>();
             HistoryChanges = new HashSet<HistoryChanges>();
             Signing = new HashSet<Signing>();
@@ -48,6 +50,12 @@ namespace Contract.DB
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Contract> Contract1 { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ContractAnnex> ContractAnnex { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ContractAnnex> ContractAnnex1 { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Departments> Departments { get; set; }

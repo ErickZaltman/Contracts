@@ -15,10 +15,10 @@ namespace Contract.DB
 
         public int? AuthorID { get; set; }
 
-        [StringLength(256)]
-        public string Text { get; set; }
-
         public DateTime? Date { get; set; }
+
+        [StringLength(50)]
+        public string Number { get; set; }
 
         public virtual Contract Contract { get; set; }
 

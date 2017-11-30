@@ -44,6 +44,9 @@
             this.navBarGroup2 = new DevExpress.XtraNavBar.NavBarGroup();
             this.nbiContractors = new DevExpress.XtraNavBar.NavBarItem();
             this.navBarItem1 = new DevExpress.XtraNavBar.NavBarItem();
+            this.nbiDisagreements = new DevExpress.XtraNavBar.NavBarItem();
+            this.nbiActivityKinds = new DevExpress.XtraNavBar.NavBarItem();
+            this.nbiDepartments = new DevExpress.XtraNavBar.NavBarItem();
             ((System.ComponentModel.ISupportInitialize)(this.navBarControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvContracts)).BeginInit();
@@ -63,7 +66,10 @@
             this.nbiAdditions,
             this.nbiAttachments,
             this.nbiAgreementsDocs,
-            this.nbiContractors});
+            this.nbiContractors,
+            this.nbiDisagreements,
+            this.nbiActivityKinds,
+            this.nbiDepartments});
             this.navBarControl1.Location = new System.Drawing.Point(2, 33);
             this.navBarControl1.Name = "navBarControl1";
             this.navBarControl1.OptionsNavPane.ExpandedWidth = 185;
@@ -73,14 +79,15 @@
             // 
             // navBarGroup1
             // 
-            this.navBarGroup1.Caption = "navBarGroup1";
+            this.navBarGroup1.Caption = "Договорная работа";
             this.navBarGroup1.Expanded = true;
             this.navBarGroup1.ItemLinks.AddRange(new DevExpress.XtraNavBar.NavBarItemLink[] {
             new DevExpress.XtraNavBar.NavBarItemLink(this.nbiContracts),
             new DevExpress.XtraNavBar.NavBarItemLink(this.nbiSupAgreements),
             new DevExpress.XtraNavBar.NavBarItemLink(this.nbiAdditions),
             new DevExpress.XtraNavBar.NavBarItemLink(this.nbiAttachments),
-            new DevExpress.XtraNavBar.NavBarItemLink(this.nbiAgreementsDocs)});
+            new DevExpress.XtraNavBar.NavBarItemLink(this.nbiAgreementsDocs),
+            new DevExpress.XtraNavBar.NavBarItemLink(this.nbiDisagreements)});
             this.navBarGroup1.Name = "navBarGroup1";
             // 
             // nbiContracts
@@ -176,7 +183,9 @@
             this.navBarGroup2.Caption = "Справочники";
             this.navBarGroup2.Expanded = true;
             this.navBarGroup2.ItemLinks.AddRange(new DevExpress.XtraNavBar.NavBarItemLink[] {
-            new DevExpress.XtraNavBar.NavBarItemLink(this.nbiContractors)});
+            new DevExpress.XtraNavBar.NavBarItemLink(this.nbiContractors),
+            new DevExpress.XtraNavBar.NavBarItemLink(this.nbiActivityKinds),
+            new DevExpress.XtraNavBar.NavBarItemLink(this.nbiDepartments)});
             this.navBarGroup2.Name = "navBarGroup2";
             // 
             // nbiContractors
@@ -188,6 +197,21 @@
             // navBarItem1
             // 
             this.navBarItem1.Name = "navBarItem1";
+            // 
+            // nbiDisagreements
+            // 
+            this.nbiDisagreements.Caption = "Протоколы разногласий";
+            this.nbiDisagreements.Name = "nbiDisagreements";
+            // 
+            // nbiActivityKinds
+            // 
+            this.nbiActivityKinds.Caption = "Виды деятельности";
+            this.nbiActivityKinds.Name = "nbiActivityKinds";
+            // 
+            // nbiDepartments
+            // 
+            this.nbiDepartments.Caption = "Департаменты";
+            this.nbiDepartments.Name = "nbiDepartments";
             // 
             // MainForm
             // 
@@ -237,6 +261,9 @@
         private DevExpress.XtraNavBar.NavBarGroup navBarGroup2;
         private DevExpress.XtraNavBar.NavBarItem nbiContractors;
         private DevExpress.XtraNavBar.NavBarItem navBarItem1;
+        private DevExpress.XtraNavBar.NavBarItem nbiDisagreements;
+        private DevExpress.XtraNavBar.NavBarItem nbiActivityKinds;
+        private DevExpress.XtraNavBar.NavBarItem nbiDepartments;
     }
 }
 

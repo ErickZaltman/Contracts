@@ -14,6 +14,7 @@ namespace Contract.DB
 
         public virtual DbSet<ActivityKind> ActivityKind { get; set; }
         public virtual DbSet<AgreementSignList> AgreementSignList { get; set; }
+        public virtual DbSet<AnnexTypes> AnnexTypes { get; set; }
         public virtual DbSet<Contract> Contract { get; set; }
         public virtual DbSet<ContractCategory> ContractCategory { get; set; }
         public virtual DbSet<Contractors> Contractors { get; set; }
@@ -25,6 +26,7 @@ namespace Contract.DB
         public virtual DbSet<Files> Files { get; set; }
         public virtual DbSet<HistoryChanges> HistoryChanges { get; set; }
         public virtual DbSet<Permissions> Permissions { get; set; }
+        public virtual DbSet<SendTypes> SendTypes { get; set; }
         public virtual DbSet<Signing> Signing { get; set; }
         public virtual DbSet<SupAgreement> SupAgreement { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }

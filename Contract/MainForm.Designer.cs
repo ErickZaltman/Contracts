@@ -134,7 +134,6 @@
             // 
             this.nbiContractors.Caption = "Контрагенты";
             this.nbiContractors.Name = "nbiContractors";
-            this.nbiContractors.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.nbiContractors_LinkClicked);
             // 
             // gridControl1
             // 

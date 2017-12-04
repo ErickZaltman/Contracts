@@ -10,4 +10,8 @@ namespace Contract
     {
         Category, Users, Contractors, Departments, ActivityKinds
     }
+    public enum Permissions
+    {
+        test, Admin, Signing, ReadOnly, Contractor, DepHead, TrueSight
+    }
 }

@@ -16,11 +16,23 @@ namespace Contract
     public partial class MainForm : DevExpress.XtraEditors.XtraForm
     {
         private DBModel dbContext;
+
+        private void checkPermissions(int userID)
+        {
+            
+            if (dbContext.UserPermissions.Where(x => x.UserID == userID && x.PermissionID == Int32.Parse(Permissions.Signing.ToString("d"))).ToList().Count > 0)
+            {
+                nbiApprovalDocs.Visible = true;
+            }
+        }
+
         private void initFormSettings()
         {
             dbContext = new DBModel();
             tsslUserName.Text = dbContext.Users.Where(y => y.ID == Properties.Settings.CurrentUserID).Select(x => new { Name = x.Surname + " " + x.FirstName.Substring(0, 1) + ". " 
                 + x.SecondName.Substring(0, 1) + "." }).ToList()[0].Name;
+            checkPermissions(Properties.Settings.CurrentUserID);
+           
         }
 
         public MainForm()

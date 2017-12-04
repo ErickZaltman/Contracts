@@ -34,10 +34,9 @@
             this.nbiSupAgreements = new DevExpress.XtraNavBar.NavBarItem();
             this.nbiAdditions = new DevExpress.XtraNavBar.NavBarItem();
             this.nbiAttachments = new DevExpress.XtraNavBar.NavBarItem();
-            this.nbiAgreementsDocs = new DevExpress.XtraNavBar.NavBarItem();
+            this.nbiApprovalDocs = new DevExpress.XtraNavBar.NavBarItem();
             this.nbiDisagreements = new DevExpress.XtraNavBar.NavBarItem();
             this.navBarGroup2 = new DevExpress.XtraNavBar.NavBarGroup();
-            this.nbiContractors = new DevExpress.XtraNavBar.NavBarItem();
             this.nbiActivityKinds = new DevExpress.XtraNavBar.NavBarItem();
             this.nbiDepartments = new DevExpress.XtraNavBar.NavBarItem();
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
@@ -47,6 +46,7 @@
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.tsslUserName = new System.Windows.Forms.ToolStripStatusLabel();
             this.navBarItem1 = new DevExpress.XtraNavBar.NavBarItem();
+            this.nbiContractors = new DevExpress.XtraNavBar.NavBarItem();
             ((System.ComponentModel.ISupportInitialize)(this.navBarControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvContracts)).BeginInit();
@@ -65,11 +65,11 @@
             this.nbiSupAgreements,
             this.nbiAdditions,
             this.nbiAttachments,
-            this.nbiAgreementsDocs,
-            this.nbiContractors,
+            this.nbiApprovalDocs,
             this.nbiDisagreements,
             this.nbiActivityKinds,
-            this.nbiDepartments});
+            this.nbiDepartments,
+            this.nbiContractors});
             this.navBarControl1.Location = new System.Drawing.Point(2, 33);
             this.navBarControl1.Name = "navBarControl1";
             this.navBarControl1.OptionsNavPane.ExpandedWidth = 185;
@@ -86,7 +86,7 @@
             new DevExpress.XtraNavBar.NavBarItemLink(this.nbiSupAgreements),
             new DevExpress.XtraNavBar.NavBarItemLink(this.nbiAdditions),
             new DevExpress.XtraNavBar.NavBarItemLink(this.nbiAttachments),
-            new DevExpress.XtraNavBar.NavBarItemLink(this.nbiAgreementsDocs),
+            new DevExpress.XtraNavBar.NavBarItemLink(this.nbiApprovalDocs),
             new DevExpress.XtraNavBar.NavBarItemLink(this.nbiDisagreements)});
             this.navBarGroup1.Name = "navBarGroup1";
             // 
@@ -114,11 +114,12 @@
             this.nbiAttachments.Name = "nbiAttachments";
             this.nbiAttachments.Visible = false;
             // 
-            // nbiAgreementsDocs
+            // nbiApprovalDocs
             // 
-            this.nbiAgreementsDocs.Caption = "Договора на согласовании";
-            this.nbiAgreementsDocs.Name = "nbiAgreementsDocs";
-            this.nbiAgreementsDocs.LinkPressed += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.nbiAgreementsDocs_LinkPressed);
+            this.nbiApprovalDocs.Caption = "Договора на согласовании";
+            this.nbiApprovalDocs.Name = "nbiApprovalDocs";
+            this.nbiApprovalDocs.Visible = false;
+            this.nbiApprovalDocs.LinkPressed += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.nbiAgreementsDocs_LinkPressed);
             // 
             // nbiDisagreements
             // 
@@ -130,17 +131,10 @@
             this.navBarGroup2.Caption = "Справочники";
             this.navBarGroup2.Expanded = true;
             this.navBarGroup2.ItemLinks.AddRange(new DevExpress.XtraNavBar.NavBarItemLink[] {
-            new DevExpress.XtraNavBar.NavBarItemLink(this.nbiContractors),
-            new DevExpress.XtraNavBar.NavBarItemLink(this.nbiContractors),
             new DevExpress.XtraNavBar.NavBarItemLink(this.nbiActivityKinds),
-            new DevExpress.XtraNavBar.NavBarItemLink(this.nbiDepartments)});
+            new DevExpress.XtraNavBar.NavBarItemLink(this.nbiDepartments),
+            new DevExpress.XtraNavBar.NavBarItemLink(this.nbiContractors)});
             this.navBarGroup2.Name = "navBarGroup2";
-            // 
-            // nbiContractors
-            // 
-            this.nbiContractors.Caption = "Контрагенты";
-            this.nbiContractors.Name = "nbiContractors";
-            this.nbiContractors.LinkPressed += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.nbiContractors_LinkPressed);
             // 
             // nbiActivityKinds
             // 
@@ -214,6 +208,11 @@
             // 
             this.navBarItem1.Name = "navBarItem1";
             // 
+            // nbiContractors
+            // 
+            this.nbiContractors.Caption = "Контрагенты";
+            this.nbiContractors.Name = "nbiContractors";
+            // 
             // MainForm
             // 
             this.AllowMdiBar = true;
@@ -254,17 +253,17 @@
         private DevExpress.XtraNavBar.NavBarItem nbiAttachments;
         private DevExpress.XtraGrid.GridControl gridControl1;
         private DevExpress.XtraGrid.Views.Grid.GridView gvContracts;
-        private DevExpress.XtraNavBar.NavBarItem nbiAgreementsDocs;
+        private DevExpress.XtraNavBar.NavBarItem nbiApprovalDocs;
         private DevExpress.XtraEditors.SimpleButton simpleButton1;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel tsslUserName;
         private DevExpress.XtraGrid.Views.Grid.GridView gvAgreements;
         private DevExpress.XtraNavBar.NavBarGroup navBarGroup2;
-        private DevExpress.XtraNavBar.NavBarItem nbiContractors;
         private DevExpress.XtraNavBar.NavBarItem navBarItem1;
         private DevExpress.XtraNavBar.NavBarItem nbiDisagreements;
         private DevExpress.XtraNavBar.NavBarItem nbiActivityKinds;
         private DevExpress.XtraNavBar.NavBarItem nbiDepartments;
+        private DevExpress.XtraNavBar.NavBarItem nbiContractors;
     }
 }
 

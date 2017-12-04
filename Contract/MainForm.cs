@@ -12,6 +12,8 @@ using System.Windows.Forms;
 
 namespace Contract
 {
+
+    //hz
     public delegate void UpdateContracts();
     public partial class MainForm : DevExpress.XtraEditors.XtraForm
     {

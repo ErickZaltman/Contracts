@@ -44,13 +44,16 @@ namespace Contract.Forms
                 sbSaveChanges.Enabled = true;
                 teAuthor.Text = UserName;
             }
+
+            if (contractID != 0)
+                Text = "Договор № " + currContract.Number + " от " + String.Format("{0:dd/MM/yyyy}", currContract.Date);
+            else
+                Text = "Новый договор";
         }
 
         private void fillExistingContract(int id)
         {
             currContract = dbContext.Contract.Where(x => x.ID == id).ToList()[0];
-
-            Text += currContract.Number + " от " + currContract.Date.ToString();
 
             teContractNumber.Text = currContract.Number;
             teContractNote.Text = currContract.Note;
@@ -218,17 +221,18 @@ namespace Contract.Forms
             if (month.Length == 1) month = "0" + month;
             string year = currContract.Date.Value.Year.ToString();
             year = year.Substring(2);
-            string xz = "?";
+            int today_number = dbContext.Contract.Where(x => x.Date == DateTime.Today).Count() + 1;
             string prefix = dbContext.Departments.Where(x => x.ID == currContract.DepartmentID).Select(y => y.Prefix).ToList()[0].ToString();
             string nomenclature = "8";
             string department_index = "?";
-            number = day + month + year + "-" + xz + prefix + nomenclature + "/" + department_index;
+            number = day + month + year + "-" + today_number.ToString() + prefix + nomenclature + "/" + department_index;
             //if (currContract.Number == null)
                 currContract.Number = number;
 
             if (this.contractID == 0)
             {
                 dbContext.Contract.Add(currContract);
+                Text = "Договор № " + currContract.Number + " от " + String.Format("{0:dd/MM/yyyy}", currContract.Date);
             }
                 
             dbContext.SaveChanges();

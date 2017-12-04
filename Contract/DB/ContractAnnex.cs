@@ -22,6 +22,7 @@ namespace Contract.DB
         public DateTime? ActionDate { get; set; }
 
         public int? SendTypeID { get; set; }
+        public string Number { get; set; }
 
         public DateTime? SendDate { get; set; }
 

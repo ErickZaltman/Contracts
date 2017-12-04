@@ -98,17 +98,23 @@
     <Compile Include="DB\TaxesType.cs" />
     <Compile Include="DB\UserPermissions.cs" />
     <Compile Include="DB\Users.cs" />
+    <Compile Include="Forms\ContractAnnexForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ContractAnnexForm.Designer.cs">
+      <DependentUpon>ContractAnnexForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\ContractFormcs.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\ContractFormcs.Designer.cs">
       <DependentUpon>ContractFormcs.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Contractor.cs">
+    <Compile Include="Forms\ContractorForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Contractor.Designer.cs">
-      <DependentUpon>Contractor.cs</DependentUpon>
+    <Compile Include="Forms\ContractorForm.Designer.cs">
+      <DependentUpon>ContractorForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\SelectInfoForm.cs">
       <SubType>Form</SubType>
@@ -121,6 +127,12 @@
     </Compile>
     <Compile Include="Forms\SigningForm.Designer.cs">
       <DependentUpon>SigningForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\SupAgreementForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\SupAgreementForm.Designer.cs">
+      <DependentUpon>SupAgreementForm.cs</DependentUpon>
     </Compile>
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
@@ -136,17 +148,23 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Forms\ContractAnnexForm.resx">
+      <DependentUpon>ContractAnnexForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\ContractFormcs.resx">
       <DependentUpon>ContractFormcs.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Contractor.resx">
-      <DependentUpon>Contractor.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\ContractorForm.resx">
+      <DependentUpon>ContractorForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\SelectInfoForm.resx">
       <DependentUpon>SelectInfoForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\SigningForm.resx">
       <DependentUpon>SigningForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SupAgreementForm.resx">
+      <DependentUpon>SupAgreementForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>

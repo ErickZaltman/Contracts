@@ -11,18 +11,18 @@ using DevExpress.XtraEditors;
 
 namespace Contract.Forms
 {
-    public partial class Contractor : DevExpress.XtraEditors.XtraForm
+    public partial class ContractorForm : DevExpress.XtraEditors.XtraForm
     {
         private DB.Contractors currentContractor;
         private DB.DBModel dbContext;
-        public Contractor()
+        public ContractorForm()
         {
             InitializeComponent();
             dbContext = new DB.DBModel();
             fillContorls();
         }
 
-        public Contractor(int id)
+        public ContractorForm(int id)
         {
             InitializeComponent();
             dbContext = new DB.DBModel();

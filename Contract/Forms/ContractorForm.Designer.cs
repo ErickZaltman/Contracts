@@ -1,6 +1,6 @@
 ﻿namespace Contract.Forms
 {
-    partial class Contractor
+    partial class ContractorForm
     {
         /// <summary>
         /// Required designer variable.

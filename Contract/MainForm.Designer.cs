@@ -32,25 +32,33 @@
             this.navBarGroup1 = new DevExpress.XtraNavBar.NavBarGroup();
             this.nbiContracts = new DevExpress.XtraNavBar.NavBarItem();
             this.nbiSupAgreements = new DevExpress.XtraNavBar.NavBarItem();
-            this.nbiAdditions = new DevExpress.XtraNavBar.NavBarItem();
+            this.nbiAnnexes = new DevExpress.XtraNavBar.NavBarItem();
             this.nbiAttachments = new DevExpress.XtraNavBar.NavBarItem();
-            this.nbiApprovalDocs = new DevExpress.XtraNavBar.NavBarItem();
+            this.nbiSigningDocs = new DevExpress.XtraNavBar.NavBarItem();
             this.nbiDisagreements = new DevExpress.XtraNavBar.NavBarItem();
             this.navBarGroup2 = new DevExpress.XtraNavBar.NavBarGroup();
             this.nbiActivityKinds = new DevExpress.XtraNavBar.NavBarItem();
             this.nbiDepartments = new DevExpress.XtraNavBar.NavBarItem();
-            this.gridControl1 = new DevExpress.XtraGrid.GridControl();
+            this.nbiContractors = new DevExpress.XtraNavBar.NavBarItem();
+            this.gcMain = new DevExpress.XtraGrid.GridControl();
+            this.gvAnnexes = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gvSupAgreements = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.gvContracts = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.gvAgreements = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gvSignings = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gvAttachments = new DevExpress.XtraGrid.Views.Grid.GridView();
+            this.gvDisagreements = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.tsslUserName = new System.Windows.Forms.ToolStripStatusLabel();
             this.navBarItem1 = new DevExpress.XtraNavBar.NavBarItem();
-            this.nbiContractors = new DevExpress.XtraNavBar.NavBarItem();
             ((System.ComponentModel.ISupportInitialize)(this.navBarControl1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gcMain)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gvAnnexes)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gvSupAgreements)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvContracts)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gvAgreements)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gvSignings)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gvAttachments)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gvDisagreements)).BeginInit();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -63,9 +71,9 @@
             this.navBarControl1.Items.AddRange(new DevExpress.XtraNavBar.NavBarItem[] {
             this.nbiContracts,
             this.nbiSupAgreements,
-            this.nbiAdditions,
+            this.nbiAnnexes,
             this.nbiAttachments,
-            this.nbiApprovalDocs,
+            this.nbiSigningDocs,
             this.nbiDisagreements,
             this.nbiActivityKinds,
             this.nbiDepartments,
@@ -84,9 +92,9 @@
             this.navBarGroup1.ItemLinks.AddRange(new DevExpress.XtraNavBar.NavBarItemLink[] {
             new DevExpress.XtraNavBar.NavBarItemLink(this.nbiContracts),
             new DevExpress.XtraNavBar.NavBarItemLink(this.nbiSupAgreements),
-            new DevExpress.XtraNavBar.NavBarItemLink(this.nbiAdditions),
+            new DevExpress.XtraNavBar.NavBarItemLink(this.nbiAnnexes),
             new DevExpress.XtraNavBar.NavBarItemLink(this.nbiAttachments),
-            new DevExpress.XtraNavBar.NavBarItemLink(this.nbiApprovalDocs),
+            new DevExpress.XtraNavBar.NavBarItemLink(this.nbiSigningDocs),
             new DevExpress.XtraNavBar.NavBarItemLink(this.nbiDisagreements)});
             this.navBarGroup1.Name = "navBarGroup1";
             // 
@@ -100,26 +108,26 @@
             // 
             this.nbiSupAgreements.Caption = "Доп. соглашения";
             this.nbiSupAgreements.Name = "nbiSupAgreements";
-            this.nbiSupAgreements.Visible = false;
+            this.nbiSupAgreements.LinkPressed += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.nbiSupAgreements_LinkPressed);
             // 
-            // nbiAdditions
+            // nbiAnnexes
             // 
-            this.nbiAdditions.Caption = "Приложения";
-            this.nbiAdditions.Name = "nbiAdditions";
-            this.nbiAdditions.Visible = false;
+            this.nbiAnnexes.Caption = "Приложения";
+            this.nbiAnnexes.Name = "nbiAnnexes";
+            this.nbiAnnexes.LinkPressed += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.nbiAnnexes_LinkPressed);
             // 
             // nbiAttachments
             // 
-            this.nbiAttachments.Caption = "Вложения";
+            this.nbiAttachments.Caption = "Прикрепленные документы";
             this.nbiAttachments.Name = "nbiAttachments";
             this.nbiAttachments.Visible = false;
             // 
-            // nbiApprovalDocs
+            // nbiSigningDocs
             // 
-            this.nbiApprovalDocs.Caption = "Договора на согласовании";
-            this.nbiApprovalDocs.Name = "nbiApprovalDocs";
-            this.nbiApprovalDocs.Visible = false;
-            this.nbiApprovalDocs.LinkPressed += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.nbiAgreementsDocs_LinkPressed);
+            this.nbiSigningDocs.Caption = "Договора на согласовании";
+            this.nbiSigningDocs.Name = "nbiSigningDocs";
+            this.nbiSigningDocs.Visible = false;
+            this.nbiSigningDocs.LinkPressed += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.nbiSigningDocs_LinkPressed);
             // 
             // nbiDisagreements
             // 
@@ -140,29 +148,61 @@
             // 
             this.nbiActivityKinds.Caption = "Виды деятельности";
             this.nbiActivityKinds.Name = "nbiActivityKinds";
+            this.nbiActivityKinds.LinkPressed += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.nbiActivityKinds_LinkPressed);
             // 
             // nbiDepartments
             // 
             this.nbiDepartments.Caption = "Департаменты";
             this.nbiDepartments.Name = "nbiDepartments";
+            this.nbiDepartments.LinkPressed += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.nbiDepartments_LinkPressed);
             // 
-            // gridControl1
+            // nbiContractors
             // 
-            this.gridControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.nbiContractors.Caption = "Контрагенты";
+            this.nbiContractors.Name = "nbiContractors";
+            this.nbiContractors.LinkPressed += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.nbiContractors_LinkPressed);
+            // 
+            // gcMain
+            // 
+            this.gcMain.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.gridControl1.Location = new System.Drawing.Point(193, 33);
-            this.gridControl1.MainView = this.gvContracts;
-            this.gridControl1.Name = "gridControl1";
-            this.gridControl1.Size = new System.Drawing.Size(543, 450);
-            this.gridControl1.TabIndex = 1;
-            this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gcMain.Location = new System.Drawing.Point(193, 33);
+            this.gcMain.MainView = this.gvAnnexes;
+            this.gcMain.Name = "gcMain";
+            this.gcMain.Size = new System.Drawing.Size(543, 450);
+            this.gcMain.TabIndex = 1;
+            this.gcMain.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gvAnnexes,
+            this.gvSupAgreements,
             this.gvContracts,
-            this.gvAgreements});
+            this.gvSignings,
+            this.gvAttachments,
+            this.gvDisagreements});
+            // 
+            // gvAnnexes
+            // 
+            this.gvAnnexes.GridControl = this.gcMain;
+            this.gvAnnexes.Name = "gvAnnexes";
+            this.gvAnnexes.OptionsBehavior.Editable = false;
+            this.gvAnnexes.OptionsView.ShowGroupPanel = false;
+            this.gvAnnexes.OptionsView.ShowIndicator = false;
+            this.gvAnnexes.OptionsView.ShowPreviewRowLines = DevExpress.Utils.DefaultBoolean.False;
+            this.gvAnnexes.RowClick += new DevExpress.XtraGrid.Views.Grid.RowClickEventHandler(this.gvAnnexes_RowClick);
+            // 
+            // gvSupAgreements
+            // 
+            this.gvSupAgreements.GridControl = this.gcMain;
+            this.gvSupAgreements.Name = "gvSupAgreements";
+            this.gvSupAgreements.OptionsBehavior.Editable = false;
+            this.gvSupAgreements.OptionsView.ShowGroupPanel = false;
+            this.gvSupAgreements.OptionsView.ShowIndicator = false;
+            this.gvSupAgreements.OptionsView.ShowPreviewRowLines = DevExpress.Utils.DefaultBoolean.False;
+            this.gvSupAgreements.RowClick += new DevExpress.XtraGrid.Views.Grid.RowClickEventHandler(this.gvSupAgreements_RowClick);
             // 
             // gvContracts
             // 
-            this.gvContracts.GridControl = this.gridControl1;
+            this.gvContracts.GridControl = this.gcMain;
             this.gvContracts.Name = "gvContracts";
             this.gvContracts.OptionsBehavior.Editable = false;
             this.gvContracts.OptionsView.ShowGroupPanel = false;
@@ -170,14 +210,32 @@
             this.gvContracts.OptionsView.ShowPreviewRowLines = DevExpress.Utils.DefaultBoolean.False;
             this.gvContracts.RowClick += new DevExpress.XtraGrid.Views.Grid.RowClickEventHandler(this.gvContracts_RowClick);
             // 
-            // gvAgreements
+            // gvSignings
             // 
-            this.gvAgreements.GridControl = this.gridControl1;
-            this.gvAgreements.Name = "gvAgreements";
-            this.gvAgreements.OptionsBehavior.Editable = false;
-            this.gvAgreements.OptionsView.ShowGroupPanel = false;
-            this.gvAgreements.OptionsView.ShowIndicator = false;
-            this.gvAgreements.RowClick += new DevExpress.XtraGrid.Views.Grid.RowClickEventHandler(this.gvAgreements_RowClick);
+            this.gvSignings.GridControl = this.gcMain;
+            this.gvSignings.Name = "gvSignings";
+            this.gvSignings.OptionsBehavior.Editable = false;
+            this.gvSignings.OptionsView.ShowGroupPanel = false;
+            this.gvSignings.OptionsView.ShowIndicator = false;
+            this.gvSignings.RowClick += new DevExpress.XtraGrid.Views.Grid.RowClickEventHandler(this.gvAgreements_RowClick);
+            // 
+            // gvAttachments
+            // 
+            this.gvAttachments.GridControl = this.gcMain;
+            this.gvAttachments.Name = "gvAttachments";
+            this.gvAttachments.OptionsBehavior.Editable = false;
+            this.gvAttachments.OptionsView.ShowGroupPanel = false;
+            this.gvAttachments.OptionsView.ShowIndicator = false;
+            this.gvAttachments.OptionsView.ShowPreviewRowLines = DevExpress.Utils.DefaultBoolean.False;
+            // 
+            // gvDisagreements
+            // 
+            this.gvDisagreements.GridControl = this.gcMain;
+            this.gvDisagreements.Name = "gvDisagreements";
+            this.gvDisagreements.OptionsBehavior.Editable = false;
+            this.gvDisagreements.OptionsView.ShowGroupPanel = false;
+            this.gvDisagreements.OptionsView.ShowIndicator = false;
+            this.gvDisagreements.OptionsView.ShowPreviewRowLines = DevExpress.Utils.DefaultBoolean.False;
             // 
             // simpleButton1
             // 
@@ -208,11 +266,6 @@
             // 
             this.navBarItem1.Name = "navBarItem1";
             // 
-            // nbiContractors
-            // 
-            this.nbiContractors.Caption = "Контрагенты";
-            this.nbiContractors.Name = "nbiContractors";
-            // 
             // MainForm
             // 
             this.AllowMdiBar = true;
@@ -226,16 +279,20 @@
             this.ClientSize = new System.Drawing.Size(904, 509);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.simpleButton1);
-            this.Controls.Add(this.gridControl1);
+            this.Controls.Add(this.gcMain);
             this.Controls.Add(this.navBarControl1);
             this.Name = "MainForm";
             this.Text = "Form1";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.navBarControl1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gcMain)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gvAnnexes)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gvSupAgreements)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvContracts)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.gvAgreements)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gvSignings)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gvAttachments)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gvDisagreements)).EndInit();
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -249,21 +306,25 @@
         private DevExpress.XtraNavBar.NavBarGroup navBarGroup1;
         private DevExpress.XtraNavBar.NavBarItem nbiContracts;
         private DevExpress.XtraNavBar.NavBarItem nbiSupAgreements;
-        private DevExpress.XtraNavBar.NavBarItem nbiAdditions;
+        private DevExpress.XtraNavBar.NavBarItem nbiAnnexes;
         private DevExpress.XtraNavBar.NavBarItem nbiAttachments;
-        private DevExpress.XtraGrid.GridControl gridControl1;
+        private DevExpress.XtraGrid.GridControl gcMain;
         private DevExpress.XtraGrid.Views.Grid.GridView gvContracts;
-        private DevExpress.XtraNavBar.NavBarItem nbiApprovalDocs;
+        private DevExpress.XtraNavBar.NavBarItem nbiSigningDocs;
         private DevExpress.XtraEditors.SimpleButton simpleButton1;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel tsslUserName;
-        private DevExpress.XtraGrid.Views.Grid.GridView gvAgreements;
+        private DevExpress.XtraGrid.Views.Grid.GridView gvSignings;
         private DevExpress.XtraNavBar.NavBarGroup navBarGroup2;
         private DevExpress.XtraNavBar.NavBarItem navBarItem1;
         private DevExpress.XtraNavBar.NavBarItem nbiDisagreements;
         private DevExpress.XtraNavBar.NavBarItem nbiActivityKinds;
         private DevExpress.XtraNavBar.NavBarItem nbiDepartments;
         private DevExpress.XtraNavBar.NavBarItem nbiContractors;
+        private DevExpress.XtraGrid.Views.Grid.GridView gvSupAgreements;
+        private DevExpress.XtraGrid.Views.Grid.GridView gvAnnexes;
+        private DevExpress.XtraGrid.Views.Grid.GridView gvAttachments;
+        private DevExpress.XtraGrid.Views.Grid.GridView gvDisagreements;
     }
 }
 

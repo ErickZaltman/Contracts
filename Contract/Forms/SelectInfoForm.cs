@@ -105,7 +105,7 @@ namespace Contract.Forms
                     case Tables.Category:  break;
                     case Tables.Users: break;
                     case Tables.Departments: break;
-                    case Tables.Contractors: Forms.Contractor tmpForm = new Contractor((int)gridView1.GetRowCellValue(e.RowHandle, "ID")); tmpForm.Show(); break;
+                    case Tables.Contractors: Forms.ContractorForm tmpForm = new ContractorForm((int)gridView1.GetRowCellValue(e.RowHandle, "ID")); tmpForm.Show(); break;
                     case Tables.ActivityKinds:  break;
 
                     default: MessageBox.Show("Y"); break;

@@ -15,16 +15,24 @@ namespace Contract
 
     //hz
     public delegate void UpdateContracts();
+
+    
     public partial class MainForm : DevExpress.XtraEditors.XtraForm
     {
         private DBModel dbContext;
 
+        private int getIntPermission(Permissions prm)
+        {
+            return Int32.Parse(prm.ToString("d"));
+        }
         private void checkPermissions(int userID)
         {
-            
-            if (dbContext.UserPermissions.Where(x => x.UserID == userID && x.PermissionID == Int32.Parse(Permissions.Signing.ToString("d"))).ToList().Count > 0)
+
+            int tmpInt = getIntPermission(Permissions.Signing);
+
+            if (dbContext.UserPermissions.Where(x => x.UserID == userID && x.PermissionID == tmpInt).ToList().Count > 0)
             {
-                nbiApprovalDocs.Visible = true;
+                nbiSigningDocs.Visible = true;
             }
         }
 
@@ -53,8 +61,8 @@ namespace Contract
         #region Договора
         public void updateContracts()
         {
-            gridControl1.DataSource = null;
-            gridControl1.MainView = gvContracts;
+            gcMain.DataSource = null;
+            gcMain.MainView = gvContracts;
 
             var contractsBindingSource = dbContext.Contract.Select(x => new
             {
@@ -65,7 +73,7 @@ namespace Contract
                 x.Summ,
                 Name = x.Users.Surname + " " + x.Users.FirstName.Substring(0, 1) + "." + x.Users.SecondName.Substring(0, 1) + "."
             }).ToList();
-            gridControl1.DataSource = contractsBindingSource;
+            gcMain.DataSource = contractsBindingSource;
 
             gvContracts.Columns["ID"].Visible = false;
 
@@ -104,15 +112,15 @@ namespace Contract
         #endregion
 
         #region Соглашения
-        private void nbiAgreementsDocs_LinkPressed(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e)
+        private void nbiSigningDocs_LinkPressed(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e)
         {
-            updateAgreements();
+            updateSignings();
         }
 
-        private void updateAgreements()
+        private void updateSignings()
         {
-            gridControl1.DataSource = null;
-            gridControl1.MainView = gvAgreements;
+            gcMain.DataSource = null;
+            gcMain.MainView = gvSignings;
             var contractsBindingSource = dbContext.Signing.Where(x => x.UserID == Properties.Settings.CurrentUserID).Select(x => new {
                 x.ID,
                 x.ContractID,
@@ -121,21 +129,66 @@ namespace Contract
                 Name = x.Contract.Users.Surname + " " + x.Contract.Users.FirstName.Substring(0, 1) + "." + x.Contract.Users.SecondName.Substring(0, 1) + ".",
                 x.IsAgreed
             }).ToList();
-            gridControl1.DataSource = contractsBindingSource;
+            gcMain.DataSource = contractsBindingSource;
             
-            gvAgreements.Columns["ID"].Visible = false;
-            gvAgreements.Columns["ContractID"].Visible = false;
-            gvAgreements.Columns["IsAgreed"].Caption = "Согласовано";
-            gvAgreements.Columns["Number"].Caption = "Номер договора";
-            gvAgreements.Columns["Theme"].Caption = "Предмет договора";
-            gvAgreements.Columns["Name"].Caption = "Автор";
+            gvSignings.Columns["ID"].Visible = false;
+            gvSignings.Columns["ContractID"].Visible = false;
+            gvSignings.Columns["IsAgreed"].Caption = "Согласовано";
+            gvSignings.Columns["Number"].Caption = "Номер договора";
+            gvSignings.Columns["Theme"].Caption = "Предмет договора";
+            gvSignings.Columns["Name"].Caption = "Автор";
         }
-   
+
+        private void updateSupAgreements()
+        {
+            gcMain.DataSource = null;
+            gcMain.MainView = gvSupAgreements;
+            var contractsBindingSource = dbContext.SupAgreement.Select(x => new {
+                x.ID,
+                x.ContractID,
+                x.Contract.Number,
+                x.Contract.Theme,
+                Name = x.Contract.Users.Surname + " " + x.Contract.Users.FirstName.Substring(0, 1) + "." + x.Contract.Users.SecondName.Substring(0, 1) + "."
+            }).ToList();
+            gcMain.DataSource = contractsBindingSource;
+
+            gvSupAgreements.Columns["ID"].Visible = false;
+            gvSupAgreements.Columns["ContractID"].Visible = false;
+            gvSupAgreements.Columns["Number"].Caption = "Номер договора";
+            gvSupAgreements.Columns["Theme"].Caption = "Предмет договора";
+            gvSupAgreements.Columns["Name"].Caption = "Автор";
+        }
+
+        private void updateAnnexes()
+        {
+            gcMain.DataSource = null;
+            gcMain.MainView = gvAnnexes;
+            var contractsBindingSource = dbContext.ContractAnnex.Select(x => new {
+                x.ID,
+                x.ContractID,
+                x.Contract.Number,
+                x.Contract.Theme,
+                annexType = x.AnnexTypes.Name,
+                x.ActionDate,
+                Name = x.Contract.Users.Surname + " " + x.Contract.Users.FirstName.Substring(0, 1) + "." + x.Contract.Users.SecondName.Substring(0, 1) + "."
+            }).ToList();
+            gcMain.DataSource = contractsBindingSource;
+
+            gvAnnexes.Columns["ID"].Visible = false;
+            gvAnnexes.Columns["ContractID"].Visible = false;
+            gvAnnexes.Columns["Number"].Caption = "Номер договора";
+            gvAnnexes.Columns["Theme"].Caption = "Предмет договора";
+            gvAnnexes.Columns["Name"].Caption = "Автор";
+            gvAnnexes.Columns["annexType"].Caption = "Вид приложения";
+
+        }
+
+
         private void gvAgreements_RowClick(object sender, RowClickEventArgs e)
         {
             if (e.Clicks > 1)
             {
-                Forms.SigningForm tmpForm = new Forms.SigningForm((int)gvAgreements.GetRowCellValue(e.RowHandle,"ID"), (int)gvAgreements.GetRowCellValue(e.RowHandle, "ContractID"), updateAgreements);
+                Forms.SigningForm tmpForm = new Forms.SigningForm((int)gvSignings.GetRowCellValue(e.RowHandle,"ID"), (int)gvSignings.GetRowCellValue(e.RowHandle, "ContractID"), updateSignings);
                 tmpForm.Show();
             }
         }
@@ -147,6 +200,46 @@ namespace Contract
         {
             Forms.SelectInfoForm tmpForm = new Forms.SelectInfoForm(Tables.Contractors);
             tmpForm.Show();
+        }
+
+        private void nbiDepartments_LinkPressed(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e)
+        {
+            Forms.SelectInfoForm tmpForm = new Forms.SelectInfoForm(Tables.Departments);
+            tmpForm.Show();
+        }
+
+        private void nbiActivityKinds_LinkPressed(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e)
+        {
+            Forms.SelectInfoForm tmpForm = new Forms.SelectInfoForm(Tables.ActivityKinds);
+            tmpForm.Show();
+        }
+
+        private void nbiSupAgreements_LinkPressed(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e)
+        {
+            updateSupAgreements();
+        }
+
+        private void nbiAnnexes_LinkPressed(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e)
+        {
+            updateAnnexes();
+        }
+
+        private void gvSupAgreements_RowClick(object sender, RowClickEventArgs e)
+        {
+            if (e.Clicks > 1)
+            {
+                Forms.SupAgreementForm tmpForm = new Forms.SupAgreementForm((int)gvSupAgreements.GetRowCellValue(e.RowHandle, "ID"));
+                tmpForm.Show();
+            }
+        }
+
+        private void gvAnnexes_RowClick(object sender, RowClickEventArgs e)
+        {
+            if (e.Clicks > 1)
+            {
+                Forms.ContractAnnexForm tmpForm = new Forms.ContractAnnexForm((int)gvAnnexes.GetRowCellValue(e.RowHandle, "ID"));
+                tmpForm.Show();
+            }
         }
     }
 }

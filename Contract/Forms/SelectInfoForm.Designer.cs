@@ -65,7 +65,7 @@
             this.ClientSize = new System.Drawing.Size(635, 554);
             this.Controls.Add(this.gridControl1);
             this.Name = "SelectInfoForm";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "SelectSomeShitForm";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.SelectInfoForm_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();

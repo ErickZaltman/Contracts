@@ -11,18 +11,19 @@ namespace Contract.DB
     {
         public int ID { get; set; }
 
-        public int? ContractID { get; set; }
-
         public int? AnnexTypeID { get; set; }
-
-        public int? ContractorID { get; set; }
 
         public int? AuthorID { get; set; }
 
-        public DateTime? ActionDate { get; set; }
+        public int? ContractID { get; set; }
+
+        public int? ContractorID { get; set; }
 
         public int? SendTypeID { get; set; }
+
         public string Number { get; set; }
+
+        public DateTime? ActionDate { get; set; }
 
         public DateTime? SendDate { get; set; }
 

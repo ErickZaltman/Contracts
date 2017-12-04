@@ -12,6 +12,6 @@ namespace Contract
     }
     public enum Permissions
     {
-        test, Admin, Signing, ReadOnly, Contractor, DepHead, TrueSight
+        Admin = 1, Signing = 2, ReadOnly = 3, Contractor = 4, DepHead = 5, TrueSight = 6
     }
 }

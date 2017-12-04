@@ -131,7 +131,6 @@
             this.navBarGroup2.Expanded = true;
             this.navBarGroup2.ItemLinks.AddRange(new DevExpress.XtraNavBar.NavBarItemLink[] {
             new DevExpress.XtraNavBar.NavBarItemLink(this.nbiContractors),
-            new DevExpress.XtraNavBar.NavBarItemLink(this.nbiContractors),
             new DevExpress.XtraNavBar.NavBarItemLink(this.nbiActivityKinds),
             new DevExpress.XtraNavBar.NavBarItemLink(this.nbiDepartments)});
             this.navBarGroup2.Name = "navBarGroup2";

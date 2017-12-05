@@ -13,7 +13,7 @@ using System.Windows.Forms;
 namespace Contract
 {
 
-    //hz
+    //hzgzgz
     public delegate void UpdateContracts();
 
     

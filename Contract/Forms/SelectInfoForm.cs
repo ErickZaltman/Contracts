@@ -42,10 +42,10 @@ namespace Contract.Forms
             switch (this.table)
             {
                 case Tables.Category: FillGVCategory(); Text = "Выберите категорию"; break;
-                case Tables.Users: FillGVUsers(); Text = ":"; break;
-                case Tables.Departments: FillGVDepartments(); Text = ":"; break;
-                case Tables.Contractors: FillGVContractors(); Text = ":"; break;
-                case Tables.ActivityKinds: FillGVActivityKinds(); Text = ":"; break;
+                case Tables.Users: FillGVUsers(); Text = "Users"; break;
+                case Tables.Departments: FillGVDepartments(); Text = "Департаменты"; break;
+                case Tables.Contractors: FillGVContractors(); Text = "Контрагенты"; break;
+                case Tables.ActivityKinds: FillGVActivityKinds(); Text = "Виды деятельности"; break;
 
                 default: MessageBox.Show("Y"); break;
             }

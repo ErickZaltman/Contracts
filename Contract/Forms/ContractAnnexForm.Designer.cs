@@ -158,7 +158,7 @@
             // 
             this.teNumber.Location = new System.Drawing.Point(192, 13);
             this.teNumber.Name = "teNumber";
-            this.teNumber.Size = new System.Drawing.Size(100, 20);
+            this.teNumber.Size = new System.Drawing.Size(153, 20);
             this.teNumber.TabIndex = 11;
             // 
             // lueContract
@@ -167,7 +167,10 @@
             this.lueContract.Name = "lueContract";
             this.lueContract.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.lueContract.Size = new System.Drawing.Size(100, 20);
+            this.lueContract.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Value", "Value", 20, DevExpress.Utils.FormatType.None, "", false, DevExpress.Utils.HorzAlignment.Default),
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Text", "Номер договора")});
+            this.lueContract.Size = new System.Drawing.Size(153, 20);
             this.lueContract.TabIndex = 12;
             // 
             // lueContractor
@@ -176,7 +179,10 @@
             this.lueContractor.Name = "lueContractor";
             this.lueContractor.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.lueContractor.Size = new System.Drawing.Size(100, 20);
+            this.lueContractor.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Value", "Value", 20, DevExpress.Utils.FormatType.None, "", false, DevExpress.Utils.HorzAlignment.Default),
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Text", "Наименование")});
+            this.lueContractor.Size = new System.Drawing.Size(153, 20);
             this.lueContractor.TabIndex = 13;
             // 
             // lueSendType
@@ -185,7 +191,10 @@
             this.lueSendType.Name = "lueSendType";
             this.lueSendType.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.lueSendType.Size = new System.Drawing.Size(100, 20);
+            this.lueSendType.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Value", "Value", 20, DevExpress.Utils.FormatType.None, "", false, DevExpress.Utils.HorzAlignment.Default),
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Text", "Тип отправки")});
+            this.lueSendType.Size = new System.Drawing.Size(153, 20);
             this.lueSendType.TabIndex = 14;
             // 
             // lueAnnexType
@@ -194,7 +203,10 @@
             this.lueAnnexType.Name = "lueAnnexType";
             this.lueAnnexType.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.lueAnnexType.Size = new System.Drawing.Size(100, 20);
+            this.lueAnnexType.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Value", "Value", 20, DevExpress.Utils.FormatType.None, "", false, DevExpress.Utils.HorzAlignment.Default),
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Text", "Тип приложения")});
+            this.lueAnnexType.Size = new System.Drawing.Size(153, 20);
             this.lueAnnexType.TabIndex = 15;
             // 
             // deSendDate
@@ -206,7 +218,7 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.deSendDate.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.deSendDate.Size = new System.Drawing.Size(100, 20);
+            this.deSendDate.Size = new System.Drawing.Size(153, 20);
             this.deSendDate.TabIndex = 16;
             // 
             // deSigningDateContractor
@@ -218,7 +230,7 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.deSigningDateContractor.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.deSigningDateContractor.Size = new System.Drawing.Size(100, 20);
+            this.deSigningDateContractor.Size = new System.Drawing.Size(153, 20);
             this.deSigningDateContractor.TabIndex = 17;
             // 
             // deSigningDateUs
@@ -230,14 +242,14 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.deSigningDateUs.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.deSigningDateUs.Size = new System.Drawing.Size(100, 20);
+            this.deSigningDateUs.Size = new System.Drawing.Size(153, 20);
             this.deSigningDateUs.TabIndex = 18;
             // 
             // teAuthor
             // 
             this.teAuthor.Location = new System.Drawing.Point(192, 208);
             this.teAuthor.Name = "teAuthor";
-            this.teAuthor.Size = new System.Drawing.Size(100, 20);
+            this.teAuthor.Size = new System.Drawing.Size(153, 20);
             this.teAuthor.TabIndex = 19;
             // 
             // deDate
@@ -249,7 +261,7 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.deDate.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.deDate.Size = new System.Drawing.Size(100, 20);
+            this.deDate.Size = new System.Drawing.Size(153, 20);
             this.deDate.TabIndex = 20;
             // 
             // ContractAnnexForm
@@ -278,7 +290,8 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "ContractAnnexForm";
-            this.Text = "ContractAnnexForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Приложение";
             ((System.ComponentModel.ISupportInitialize)(this.teNumber.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lueContract.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lueContractor.Properties)).EndInit();

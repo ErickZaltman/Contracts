@@ -79,14 +79,14 @@
             // 
             this.teNumber.Location = new System.Drawing.Point(116, 33);
             this.teNumber.Name = "teNumber";
-            this.teNumber.Size = new System.Drawing.Size(156, 20);
+            this.teNumber.Size = new System.Drawing.Size(222, 20);
             this.teNumber.TabIndex = 5;
             // 
             // teAuthor
             // 
             this.teAuthor.Location = new System.Drawing.Point(116, 85);
             this.teAuthor.Name = "teAuthor";
-            this.teAuthor.Size = new System.Drawing.Size(156, 20);
+            this.teAuthor.Size = new System.Drawing.Size(222, 20);
             this.teAuthor.TabIndex = 6;
             // 
             // deDate
@@ -98,7 +98,7 @@
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.deDate.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.deDate.Size = new System.Drawing.Size(156, 20);
+            this.deDate.Size = new System.Drawing.Size(222, 20);
             this.deDate.TabIndex = 7;
             // 
             // lueContract
@@ -107,14 +107,17 @@
             this.lueContract.Name = "lueContract";
             this.lueContract.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton()});
-            this.lueContract.Size = new System.Drawing.Size(156, 20);
+            this.lueContract.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Value", "Value", 20, DevExpress.Utils.FormatType.None, "", false, DevExpress.Utils.HorzAlignment.Default),
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Text", "Номер договора")});
+            this.lueContract.Size = new System.Drawing.Size(222, 20);
             this.lueContract.TabIndex = 4;
             // 
             // SupAgreementForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 262);
+            this.ClientSize = new System.Drawing.Size(350, 262);
             this.Controls.Add(this.deDate);
             this.Controls.Add(this.teAuthor);
             this.Controls.Add(this.teNumber);
@@ -124,7 +127,8 @@
             this.Controls.Add(this.labelControl2);
             this.Controls.Add(this.labelControl1);
             this.Name = "SupAgreementForm";
-            this.Text = "SupAgreementForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Доп. соглашения";
             ((System.ComponentModel.ISupportInitialize)(this.teNumber.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.teAuthor.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.deDate.Properties.CalendarTimeProperties)).EndInit();

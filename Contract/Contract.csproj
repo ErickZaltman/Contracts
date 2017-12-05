@@ -81,6 +81,7 @@
     <Compile Include="DB\Contract.cs" />
     <Compile Include="DB\ContractAnnex.cs" />
     <Compile Include="DB\ContractCategory.cs" />
+    <Compile Include="DB\ContractMovements.cs" />
     <Compile Include="DB\Contractors.cs" />
     <Compile Include="DB\ContractorType.cs" />
     <Compile Include="DB\ContractRenewal.cs" />
@@ -90,6 +91,7 @@
     <Compile Include="DB\DocumentTypes.cs" />
     <Compile Include="DB\Files.cs" />
     <Compile Include="DB\HistoryChanges.cs" />
+    <Compile Include="DB\MovementTypes.cs" />
     <Compile Include="DB\Permissions.cs" />
     <Compile Include="DB\SendTypes.cs" />
     <Compile Include="DB\Signing.cs" />

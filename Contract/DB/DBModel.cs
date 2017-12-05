@@ -18,6 +18,7 @@ namespace Contract.DB
         public virtual DbSet<Contract> Contract { get; set; }
         public virtual DbSet<ContractAnnex> ContractAnnex { get; set; }
         public virtual DbSet<ContractCategory> ContractCategory { get; set; }
+        public virtual DbSet<ContractMovements> ContractMovements { get; set; }
         public virtual DbSet<Contractors> Contractors { get; set; }
         public virtual DbSet<ContractorType> ContractorType { get; set; }
         public virtual DbSet<ContractRenewal> ContractRenewal { get; set; }
@@ -26,6 +27,7 @@ namespace Contract.DB
         public virtual DbSet<DocumentTypes> DocumentTypes { get; set; }
         public virtual DbSet<Files> Files { get; set; }
         public virtual DbSet<HistoryChanges> HistoryChanges { get; set; }
+        public virtual DbSet<MovementTypes> MovementTypes { get; set; }
         public virtual DbSet<Permissions> Permissions { get; set; }
         public virtual DbSet<SendTypes> SendTypes { get; set; }
         public virtual DbSet<Signing> Signing { get; set; }
@@ -86,6 +88,11 @@ namespace Contract.DB
                 .WithOptional(e => e.DocumentTypes)
                 .HasForeignKey(e => e.DocumentTypeID);
 
+            modelBuilder.Entity<MovementTypes>()
+                .HasMany(e => e.ContractMovements)
+                .WithOptional(e => e.MovementTypes)
+                .HasForeignKey(e => e.MovementTypeID);
+
             modelBuilder.Entity<Permissions>()
                 .HasMany(e => e.UserPermissions)
                 .WithOptional(e => e.Permissions)
@@ -124,6 +131,11 @@ namespace Contract.DB
             modelBuilder.Entity<Users>()
                 .HasMany(e => e.ContractAnnex1)
                 .WithOptional(e => e.Users1)
+                .HasForeignKey(e => e.AuthorID);
+
+            modelBuilder.Entity<Users>()
+                .HasMany(e => e.ContractMovements)
+                .WithOptional(e => e.Users)
                 .HasForeignKey(e => e.AuthorID);
 
             modelBuilder.Entity<Users>()

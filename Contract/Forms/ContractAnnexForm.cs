@@ -61,7 +61,7 @@ namespace Contract.Forms
             lueContractor.EditValue = currAnnex.ContractorID;
             lueSendType.EditValue = currAnnex.SendTypeID;
 
-            teAuthor.Text = currAnnex.Users.Surname;
+            teAuthor.Text = currAnnex.Users1.Surname;
             teNumber.Text = currAnnex.Number;
 
             deDate.DateTime = (DateTime)currAnnex.ActionDate;

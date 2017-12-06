@@ -78,7 +78,9 @@ namespace Contract.Forms
 
 
             if(currContract.OnAgreement == true)
+            {
                 FillAgreemenst();
+            }
 
             isLoaded = true;
         }
@@ -277,7 +279,9 @@ namespace Contract.Forms
                 DB.Signing tmpSigning = new DB.Signing();
                 tmpSigning.UserID = user;
                 tmpSigning.ContractID = currContract.ID;
-                tmpSigning.DeadlineTime = DateTime.Now.AddDays(5);
+                //tmpSigning.DeadlineTime = DateTime.Now.AddDays(Properties.Settings.con.DaysToDeadline);
+                tmpSigning.DeadlineTime = DateTime.Now.AddDays(4);
+
                 tmpSigning.IsAgreed = false;
                 dbContext.Signing.Add(tmpSigning);     
             }
@@ -300,7 +304,6 @@ namespace Contract.Forms
 
             currContract.OnAgreement = true;
             SendContractToSigning();
-
             FillAgreemenst();
         }
         #endregion

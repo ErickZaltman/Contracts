@@ -14,4 +14,21 @@ namespace Contract
     {
         Admin = 1, Signing = 2, ReadOnly = 3, Contractor = 4, DepHead = 5, TrueSight = 6
     }
+    public class Constants
+    {
+        private int daysToDeadline;
+
+        public int DaysToDeadline
+        {
+            get
+            {
+                return daysToDeadline;
+            }
+
+            set
+            {
+                daysToDeadline = value;
+            }
+        }
+    }
 }

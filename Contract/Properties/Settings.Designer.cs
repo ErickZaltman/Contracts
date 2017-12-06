@@ -18,6 +18,7 @@ namespace Contract.Properties
     {
 
         static int currentUserID;
+        public static Constants con;
 
         private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
 

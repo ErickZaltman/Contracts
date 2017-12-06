@@ -22,7 +22,7 @@ namespace Contract
             BonusSkins.Register();
             SkinManager.EnableFormSkins();
             UserLookAndFeel.Default.SetSkinStyle("DevExpress Style");
-            Application.Run(new MainForm(3));
+            Application.Run(new ParentForm());
         }
     }
 }

@@ -63,12 +63,15 @@
             this.tnpSigning = new DevExpress.XtraBars.Navigation.TabNavigationPage();
             this.gcAgreements = new DevExpress.XtraGrid.GridControl();
             this.gvAgreements = new DevExpress.XtraGrid.Views.Grid.GridView();
-            this.tnpAttachments = new DevExpress.XtraBars.Navigation.TabNavigationPage();
+            this.tnpRelatedDocs = new DevExpress.XtraBars.Navigation.TabNavigationPage();
             this.teContractNumber = new DevExpress.XtraEditors.TextEdit();
             this.deDate = new DevExpress.XtraEditors.DateEdit();
             this.lueDepartment = new DevExpress.XtraEditors.LookUpEdit();
             this.sbSaveChanges = new DevExpress.XtraEditors.SimpleButton();
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
+            this.tabNavigationPage3 = new DevExpress.XtraBars.Navigation.TabNavigationPage();
+            this.gcMovements = new DevExpress.XtraGrid.GridControl();
+            this.gvMovements = new DevExpress.XtraGrid.Views.Grid.GridView();
             ((System.ComponentModel.ISupportInitialize)(this.deContractDateStart.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.deContractDateStart.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.deContractDateEnd.Properties.CalendarTimeProperties)).BeginInit();
@@ -93,6 +96,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.deDate.Properties.CalendarTimeProperties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.deDate.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lueDepartment.Properties)).BeginInit();
+            this.tabNavigationPage3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gcMovements)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gvMovements)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -170,7 +176,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(489, 98);
+            this.label10.Location = new System.Drawing.Point(476, 98);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(65, 13);
             this.label10.TabIndex = 23;
@@ -229,18 +235,21 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tabPane1.Controls.Add(this.tnpMainInfo);
             this.tabPane1.Controls.Add(this.tnpSigning);
-            this.tabPane1.Controls.Add(this.tnpAttachments);
+            this.tabPane1.Controls.Add(this.tnpRelatedDocs);
+            this.tabPane1.Controls.Add(this.tabNavigationPage3);
             this.tabPane1.Location = new System.Drawing.Point(12, 106);
             this.tabPane1.Name = "tabPane1";
             this.tabPane1.Pages.AddRange(new DevExpress.XtraBars.Navigation.NavigationPageBase[] {
             this.tnpMainInfo,
             this.tnpSigning,
-            this.tnpAttachments});
+            this.tnpRelatedDocs,
+            this.tabNavigationPage3});
             this.tabPane1.RegularSize = new System.Drawing.Size(1244, 519);
             this.tabPane1.SelectedPage = this.tnpMainInfo;
             this.tabPane1.Size = new System.Drawing.Size(1244, 519);
             this.tabPane1.TabIndex = 31;
             this.tabPane1.Text = "tabPane1";
+            this.tabPane1.Visible = false;
             // 
             // tnpMainInfo
             // 
@@ -272,7 +281,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(493, 127);
+            this.label5.Location = new System.Drawing.Point(476, 127);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(102, 13);
             this.label5.TabIndex = 43;
@@ -326,7 +335,7 @@
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(526, 155);
+            this.label14.Location = new System.Drawing.Point(476, 155);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(71, 13);
             this.label14.TabIndex = 37;
@@ -353,7 +362,7 @@
             // 
             // lueContractors
             // 
-            this.lueContractors.Location = new System.Drawing.Point(638, 152);
+            this.lueContractors.Location = new System.Drawing.Point(601, 152);
             this.lueContractors.Name = "lueContractors";
             this.lueContractors.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo),
@@ -440,11 +449,11 @@
             this.gvAgreements.OptionsView.ShowGroupPanel = false;
             this.gvAgreements.OptionsView.ShowIndicator = false;
             // 
-            // tnpAttachments
+            // tnpRelatedDocs
             // 
-            this.tnpAttachments.Caption = "Вложения";
-            this.tnpAttachments.Name = "tnpAttachments";
-            this.tnpAttachments.Size = new System.Drawing.Size(1226, 474);
+            this.tnpRelatedDocs.Caption = "Связанные документы";
+            this.tnpRelatedDocs.Name = "tnpRelatedDocs";
+            this.tnpRelatedDocs.Size = new System.Drawing.Size(1226, 474);
             // 
             // teContractNumber
             // 
@@ -507,6 +516,30 @@
             this.simpleButton1.Text = "Отправить на согласование";
             this.simpleButton1.Click += new System.EventHandler(this.simpleButton1_Click);
             // 
+            // tabNavigationPage3
+            // 
+            this.tabNavigationPage3.Caption = "История движений";
+            this.tabNavigationPage3.Controls.Add(this.gcMovements);
+            this.tabNavigationPage3.Name = "tabNavigationPage3";
+            this.tabNavigationPage3.Size = new System.Drawing.Size(1226, 474);
+            // 
+            // gcMovements
+            // 
+            this.gcMovements.Location = new System.Drawing.Point(0, 3);
+            this.gcMovements.MainView = this.gvMovements;
+            this.gcMovements.Name = "gcMovements";
+            this.gcMovements.Size = new System.Drawing.Size(1219, 375);
+            this.gcMovements.TabIndex = 1;
+            this.gcMovements.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
+            this.gvMovements});
+            // 
+            // gvMovements
+            // 
+            this.gvMovements.GridControl = this.gcMovements;
+            this.gvMovements.Name = "gvMovements";
+            this.gvMovements.OptionsView.ShowGroupPanel = false;
+            this.gvMovements.OptionsView.ShowIndicator = false;
+            // 
             // ContractForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -548,6 +581,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.deDate.Properties.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.deDate.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lueDepartment.Properties)).EndInit();
+            this.tabNavigationPage3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.gcMovements)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gvMovements)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -572,7 +608,7 @@
         private DevExpress.XtraBars.Navigation.TabPane tabPane1;
         private DevExpress.XtraBars.Navigation.TabNavigationPage tnpMainInfo;
         private DevExpress.XtraBars.Navigation.TabNavigationPage tnpSigning;
-        private DevExpress.XtraBars.Navigation.TabNavigationPage tnpAttachments;
+        private DevExpress.XtraBars.Navigation.TabNavigationPage tnpRelatedDocs;
         private DevExpress.XtraEditors.DateEdit deDate;
         private System.Windows.Forms.Label label12;
         private DevExpress.XtraEditors.LookUpEdit lueExtensions;
@@ -592,5 +628,8 @@
         private DevExpress.XtraEditors.TextEdit teContractNumber;
         private DevExpress.XtraEditors.DateEdit deConclusionDate;
         private System.Windows.Forms.Label label5;
+        private DevExpress.XtraBars.Navigation.TabNavigationPage tabNavigationPage3;
+        private DevExpress.XtraGrid.GridControl gcMovements;
+        private DevExpress.XtraGrid.Views.Grid.GridView gvMovements;
     }
 }

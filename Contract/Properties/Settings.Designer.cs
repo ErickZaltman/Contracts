@@ -22,17 +22,20 @@ namespace Contract.Properties {
                 return defaultInstance;
             }
         }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("10, 256")]
-        public global::System.Drawing.Point UnderPanel {
-            get {
-                return ((global::System.Drawing.Point)(this["UnderPanel"]));
+
+        public static int CurrentUserID
+        {
+            get
+            {
+                return currentUserID;
             }
-            set {
-                this["UnderPanel"] = value;
+
+            set
+            {
+                currentUserID = value;
             }
         }
+
+        private static int currentUserID;
     }
 }

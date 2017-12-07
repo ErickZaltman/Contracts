@@ -36,6 +36,7 @@ namespace Contract
         {
             InitializeComponent();
             dbContext = new DBModel();
+            
             checkPermissions(Properties.Settings.CurrentUserID);
         }
 

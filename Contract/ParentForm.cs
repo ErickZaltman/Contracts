@@ -32,10 +32,7 @@ namespace Contract
             dbContext = new DBModel();
             Properties.Settings.CurrentUserID = id;
 
-            tsslblCurrentUserName.Text = dbContext.Users.Where(y => y.ID == Properties.Settings.CurrentUserID).Select(x => new {
-                Name = x.Surname + " " + x.FirstName.Substring(0, 1) + ". "
-                + x.SecondName.Substring(0, 1) + "."
-            }).ToList()[0].Name;
+            
 
             MainForm tmpForm = new MainForm();
             tmpForm.MdiParent = this;

@@ -21,8 +21,6 @@ namespace Contract.DB
 
         public int? SendTypeID { get; set; }
 
-        public string Number { get; set; }
-
         public DateTime? ActionDate { get; set; }
 
         public DateTime? SendDate { get; set; }
@@ -30,6 +28,9 @@ namespace Contract.DB
         public DateTime? SigningDateUS { get; set; }
 
         public DateTime? SigningDateContractor { get; set; }
+
+        [StringLength(50)]
+        public string Number { get; set; }
 
         public virtual AnnexTypes AnnexTypes { get; set; }
 

@@ -78,6 +78,7 @@
     <Compile Include="DB\ActivityKind.cs" />
     <Compile Include="DB\AgreementSignList.cs" />
     <Compile Include="DB\AnnexTypes.cs" />
+    <Compile Include="DB\Const.cs" />
     <Compile Include="DB\Contract.cs" />
     <Compile Include="DB\ContractAnnex.cs" />
     <Compile Include="DB\ContractCategory.cs" />
@@ -90,6 +91,7 @@
     <Compile Include="DB\Departments.cs" />
     <Compile Include="DB\DocumentTypes.cs" />
     <Compile Include="DB\Files.cs" />
+    <Compile Include="DB\getFullUserName.cs" />
     <Compile Include="DB\HistoryChanges.cs" />
     <Compile Include="DB\MovementTypes.cs" />
     <Compile Include="DB\Permissions.cs" />
@@ -154,6 +156,12 @@
     <Compile Include="ParentForm.Designer.cs">
       <DependentUpon>ParentForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="ParentRibbonForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ParentRibbonForm.Designer.cs">
+      <DependentUpon>ParentRibbonForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Forms\ContractAnnexForm.resx">
@@ -183,6 +191,9 @@
     <None Include="Properties\licenses.licx" />
     <EmbeddedResource Include="ParentForm.resx">
       <DependentUpon>ParentForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ParentRibbonForm.resx">
+      <DependentUpon>ParentRibbonForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

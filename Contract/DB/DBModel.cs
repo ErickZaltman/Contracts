@@ -15,6 +15,7 @@ namespace Contract.DB
         public virtual DbSet<ActivityKind> ActivityKind { get; set; }
         public virtual DbSet<AgreementSignList> AgreementSignList { get; set; }
         public virtual DbSet<AnnexTypes> AnnexTypes { get; set; }
+        public virtual DbSet<Const> Const { get; set; }
         public virtual DbSet<Contract> Contract { get; set; }
         public virtual DbSet<ContractAnnex> ContractAnnex { get; set; }
         public virtual DbSet<ContractCategory> ContractCategory { get; set; }
@@ -36,6 +37,7 @@ namespace Contract.DB
         public virtual DbSet<TaxesType> TaxesType { get; set; }
         public virtual DbSet<UserPermissions> UserPermissions { get; set; }
         public virtual DbSet<Users> Users { get; set; }
+        public virtual DbSet<getFullUserName> getFullUserName { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -43,6 +45,10 @@ namespace Contract.DB
                 .HasMany(e => e.ContractAnnex)
                 .WithOptional(e => e.AnnexTypes)
                 .HasForeignKey(e => e.AnnexTypeID);
+
+            modelBuilder.Entity<Const>()
+                .Property(e => e.Value)
+                .IsFixedLength();
 
             modelBuilder.Entity<Contract>()
                 .HasMany(e => e.HistoryChanges)

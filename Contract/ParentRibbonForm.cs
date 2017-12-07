@@ -1,4 +1,5 @@
 ﻿using System;
+using Contract.DB;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,42 +8,33 @@ using System.Text;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using DevExpress.XtraEditors;
-using Contract.DB;
+using DevExpress.XtraBars;
 
 namespace Contract
 {
-    public partial class ParentForm : DevExpress.XtraEditors.XtraForm
+    public partial class ParentRibbonForm : DevExpress.XtraBars.Ribbon.RibbonForm
     {
-
-        ////TODO 
-        //Придумать кнопки
-
-       
-
-        public ParentForm()
+        public ParentRibbonForm()
         {
             InitializeComponent();
         }
+
         DBModel dbContext;
-        public ParentForm(int id)
+        public ParentRibbonForm(int id)
         {
             InitializeComponent();
 
             dbContext = new DBModel();
             Properties.Settings.CurrentUserID = id;
 
-            tsslblCurrentUserName.Text = dbContext.Users.Where(y => y.ID == Properties.Settings.CurrentUserID).Select(x => new {
-                Name = x.Surname + " " + x.FirstName.Substring(0, 1) + ". "
-                + x.SecondName.Substring(0, 1) + "."
-            }).ToList()[0].Name;
+
 
             MainForm tmpForm = new MainForm();
             tmpForm.MdiParent = this;
             tmpForm.Show();
         }
 
-        private void tsmiMainForm_Click(object sender, EventArgs e)
+        private void barButtonItem1_ItemClick(object sender, ItemClickEventArgs e)
         {
             MainForm tmpForm = new MainForm();
             tmpForm.MdiParent = this;
@@ -50,5 +42,3 @@ namespace Contract
         }
     }
 }
-
-// 11:39

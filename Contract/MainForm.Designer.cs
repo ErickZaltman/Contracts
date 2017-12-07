@@ -76,7 +76,7 @@
             this.nbiActivityKinds,
             this.nbiDepartments,
             this.nbiContractors});
-            this.navBarControl1.Location = new System.Drawing.Point(2, 33);
+            this.navBarControl1.Location = new System.Drawing.Point(2, -1);
             this.navBarControl1.Name = "navBarControl1";
             this.navBarControl1.OptionsNavPane.ExpandedWidth = 185;
             this.navBarControl1.Size = new System.Drawing.Size(185, 300);
@@ -165,10 +165,10 @@
             this.gcMain.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.gcMain.Location = new System.Drawing.Point(193, 33);
+            this.gcMain.Location = new System.Drawing.Point(193, -1);
             this.gcMain.MainView = this.gvAnnexes;
             this.gcMain.Name = "gcMain";
-            this.gcMain.Size = new System.Drawing.Size(543, 450);
+            this.gcMain.Size = new System.Drawing.Size(584, 507);
             this.gcMain.TabIndex = 1;
             this.gcMain.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvAnnexes,
@@ -238,7 +238,7 @@
             // simpleButton1
             // 
             this.simpleButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.simpleButton1.Location = new System.Drawing.Point(764, 33);
+            this.simpleButton1.Location = new System.Drawing.Point(783, 12);
             this.simpleButton1.Name = "simpleButton1";
             this.simpleButton1.Size = new System.Drawing.Size(109, 23);
             this.simpleButton1.TabIndex = 2;

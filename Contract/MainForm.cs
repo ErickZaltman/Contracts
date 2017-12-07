@@ -12,10 +12,7 @@ using System.Windows.Forms;
 
 namespace Contract
 {
-
-    //hzgzgz
     public delegate void UpdateContracts();
-
     
     public partial class MainForm : DevExpress.XtraEditors.XtraForm
     {
@@ -27,7 +24,6 @@ namespace Contract
         }
         private void checkPermissions(int userID)
         {
-
             int tmpInt = getIntPermission(Permissions.Signing);
 
             if (dbContext.UserPermissions.Where(x => x.UserID == userID && x.PermissionID == tmpInt).ToList().Count > 0)
@@ -36,27 +32,13 @@ namespace Contract
             }
         }
 
-        private void initFormSettings()
-        {
-            dbContext = new DBModel();
-            tsslUserName.Text = dbContext.Users.Where(y => y.ID == Properties.Settings.CurrentUserID).Select(x => new { Name = x.Surname + " " + x.FirstName.Substring(0, 1) + ". " 
-                + x.SecondName.Substring(0, 1) + "." }).ToList()[0].Name;
-            checkPermissions(Properties.Settings.CurrentUserID);
-           
-        }
-
         public MainForm()
         {
             InitializeComponent();
-            initFormSettings();
+            dbContext = new DBModel();
+            checkPermissions(Properties.Settings.CurrentUserID);
         }
 
-        public MainForm(int userID)
-        {
-            InitializeComponent();
-            Properties.Settings.CurrentUserID = userID;
-            initFormSettings();
-        }
 
         #region Договора
         public void updateContracts()
@@ -99,13 +81,15 @@ namespace Contract
             if (e.Clicks > 1)
             {
                 Forms.ContractForm tmpForm = new Forms.ContractForm((int)gvContracts.GetRowCellValue(e.RowHandle, "ID"), string.Empty, updateContracts);
+                tmpForm.MdiParent = ParentForm;
                 tmpForm.Show();
             }      
         }
 
         private void simpleButton1_Click(object sender, EventArgs e)
         {
-            Forms.ContractForm tmpForm = new Forms.ContractForm(0, tsslUserName.Text, updateContracts);
+            Forms.ContractForm tmpForm = new Forms.ContractForm(0, "?????username??????", updateContracts);
+            tmpForm.MdiParent = ParentForm;
             tmpForm.Show();
         }
 
@@ -189,6 +173,7 @@ namespace Contract
             if (e.Clicks > 1)
             {
                 Forms.SigningForm tmpForm = new Forms.SigningForm((int)gvSignings.GetRowCellValue(e.RowHandle,"ID"), (int)gvSignings.GetRowCellValue(e.RowHandle, "ContractID"), updateSignings);
+                tmpForm.MdiParent = ParentForm;
                 tmpForm.Show();
             }
         }
@@ -199,18 +184,21 @@ namespace Contract
         private void nbiContractors_LinkPressed(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e)
         {
             Forms.SelectInfoForm tmpForm = new Forms.SelectInfoForm(Tables.Contractors);
+            tmpForm.MdiParent = ParentForm;
             tmpForm.Show();
         }
 
         private void nbiDepartments_LinkPressed(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e)
         {
             Forms.SelectInfoForm tmpForm = new Forms.SelectInfoForm(Tables.Departments);
+            tmpForm.MdiParent = ParentForm;
             tmpForm.Show();
         }
 
         private void nbiActivityKinds_LinkPressed(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e)
         {
             Forms.SelectInfoForm tmpForm = new Forms.SelectInfoForm(Tables.ActivityKinds);
+            tmpForm.MdiParent = ParentForm;
             tmpForm.Show();
         }
 
@@ -229,6 +217,7 @@ namespace Contract
             if (e.Clicks > 1)
             {
                 Forms.SupAgreementForm tmpForm = new Forms.SupAgreementForm((int)gvSupAgreements.GetRowCellValue(e.RowHandle, "ID"));
+                tmpForm.MdiParent = ParentForm;
                 tmpForm.Show();
             }
         }
@@ -238,6 +227,7 @@ namespace Contract
             if (e.Clicks > 1)
             {
                 Forms.ContractAnnexForm tmpForm = new Forms.ContractAnnexForm((int)gvAnnexes.GetRowCellValue(e.RowHandle, "ID"));
+                tmpForm.MdiParent = ParentForm;
                 tmpForm.Show();
             }
         }

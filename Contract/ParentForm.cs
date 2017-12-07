@@ -8,6 +8,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
+using Contract.DB;
 
 namespace Contract
 {
@@ -15,19 +16,35 @@ namespace Contract
     {
 
         ////TODO 
-        //Конструктор с айдишником пользователя
-        //Убрать конструктор с айдишником из MainForm
         //Придумать кнопки
-        //Прицепить имя пользователя на статусБар
 
+        DBModel dbContext;
 
         public ParentForm()
         {
             InitializeComponent();
+        }
 
-            
+        public ParentForm(int id)
+        {
+            InitializeComponent();
 
-            var tmpForm = new MainForm(3);
+            dbContext = new DBModel();
+            Properties.Settings.CurrentUserID = id;
+
+            tsslblCurrentUserName.Text = dbContext.Users.Where(y => y.ID == Properties.Settings.CurrentUserID).Select(x => new {
+                Name = x.Surname + " " + x.FirstName.Substring(0, 1) + ". "
+                + x.SecondName.Substring(0, 1) + "."
+            }).ToList()[0].Name;
+
+            MainForm tmpForm = new MainForm();
+            tmpForm.MdiParent = this;
+            tmpForm.Show();
+        }
+
+        private void tsmiMainForm_Click(object sender, EventArgs e)
+        {
+            MainForm tmpForm = new MainForm();
             tmpForm.MdiParent = this;
             tmpForm.Show();
         }

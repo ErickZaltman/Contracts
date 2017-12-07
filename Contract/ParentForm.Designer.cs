@@ -34,7 +34,7 @@
             this.tsmiFIle = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiMainForm = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.tsslblUserName = new System.Windows.Forms.ToolStripStatusLabel();
+            this.tsslblCurrentUserName = new System.Windows.Forms.ToolStripStatusLabel();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabbedMdiManager1)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
@@ -42,6 +42,7 @@
             // 
             // xtraTabbedMdiManager1
             // 
+            this.xtraTabbedMdiManager1.HeaderLocation = DevExpress.XtraTab.TabHeaderLocation.Bottom;
             this.xtraTabbedMdiManager1.MdiParent = this;
             // 
             // menuStrip1
@@ -67,22 +68,23 @@
             this.tsmiMainForm.Name = "tsmiMainForm";
             this.tsmiMainForm.Size = new System.Drawing.Size(152, 22);
             this.tsmiMainForm.Text = "MainForm";
+            this.tsmiMainForm.Click += new System.EventHandler(this.tsmiMainForm_Click);
             // 
             // statusStrip1
             // 
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsslblUserName});
+            this.tsslblCurrentUserName});
             this.statusStrip1.Location = new System.Drawing.Point(0, 548);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(1322, 22);
             this.statusStrip1.TabIndex = 2;
             this.statusStrip1.Text = "statusStrip1";
             // 
-            // tsslblUserName
+            // tsslblCurrentUserName
             // 
-            this.tsslblUserName.Name = "tsslblUserName";
-            this.tsslblUserName.Size = new System.Drawing.Size(118, 17);
-            this.tsslblUserName.Text = "toolStripStatusLabel1";
+            this.tsslblCurrentUserName.Name = "tsslblCurrentUserName";
+            this.tsslblCurrentUserName.Size = new System.Drawing.Size(102, 17);
+            this.tsslblCurrentUserName.Text = "CurrentUserName";
             // 
             // ParentForm
             // 
@@ -95,6 +97,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "ParentForm";
             this.Text = "ParentForm";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabbedMdiManager1)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
@@ -112,6 +115,6 @@
         private System.Windows.Forms.ToolStripMenuItem tsmiFIle;
         private System.Windows.Forms.ToolStripMenuItem tsmiMainForm;
         private System.Windows.Forms.StatusStrip statusStrip1;
-        private System.Windows.Forms.ToolStripStatusLabel tsslblUserName;
+        private System.Windows.Forms.ToolStripStatusLabel tsslblCurrentUserName;
     }
 }

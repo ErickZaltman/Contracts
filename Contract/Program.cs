@@ -10,6 +10,8 @@ namespace Contract
 {
     static class Program
     {
+        public static Dictionary<Tables, Type> TypesList;
+
         /// <summary>
         /// The main entry point for the application.
         /// </summary>

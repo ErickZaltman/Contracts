@@ -22,7 +22,22 @@ namespace Contract.Properties {
                 return defaultInstance;
             }
         }
-
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0, 0")]
+        public global::System.Drawing.Point UnderPanel {
+            get {
+                return ((global::System.Drawing.Point)(this["UnderPanel"]));
+            }
+            set {
+                this["UnderPanel"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
         public static int CurrentUserID
         {
             get
@@ -37,5 +52,8 @@ namespace Contract.Properties {
         }
 
         private static int currentUserID;
+
+
+        
     }
 }

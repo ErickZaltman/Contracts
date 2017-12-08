@@ -17,8 +17,9 @@ namespace Contract
 
         ////TODO 
         //Придумать кнопки
+        
 
-       
+
 
         public ParentForm()
         {
@@ -32,11 +33,11 @@ namespace Contract
             dbContext = new DBModel();
             Properties.Settings.CurrentUserID = id;
 
+            Program.TypesList.Add(Tables.Contracts, typeof(Forms.ContractorForm));
+
             
 
-            MainForm tmpForm = new MainForm();
-            tmpForm.MdiParent = this;
-            tmpForm.Show();
+            
         }
 
         private void tsmiMainForm_Click(object sender, EventArgs e)
@@ -45,7 +46,15 @@ namespace Contract
             tmpForm.MdiParent = this;
             tmpForm.Show();
         }
+
+        private void bbrnContracts_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            Forms.ContractSelectForm tmpForm = new Forms.ContractSelectForm();
+            tmpForm.MdiParent = this;
+            tmpForm.Show();
+        }
     }
+    
 }
 
 // 11:39

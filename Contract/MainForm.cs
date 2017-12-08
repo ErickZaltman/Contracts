@@ -26,10 +26,7 @@ namespace Contract
         {
             int tmpInt = getIntPermission(Permissions.Signing);
 
-            if (dbContext.UserPermissions.Where(x => x.UserID == userID && x.PermissionID == tmpInt).ToList().Count > 0)
-            {
-                nbiSigningDocs.Visible = true;
-            }
+            
         }
 
         public MainForm()
@@ -184,21 +181,21 @@ namespace Contract
 
         private void nbiContractors_LinkPressed(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e)
         {
-            Forms.SelectInfoForm tmpForm = new Forms.SelectInfoForm(Tables.Contractors);
+            Forms.SelectForm tmpForm = new Forms.SelectForm(Tables.Contractors);
             tmpForm.MdiParent = ParentForm;
             tmpForm.Show();
         }
 
         private void nbiDepartments_LinkPressed(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e)
         {
-            Forms.SelectInfoForm tmpForm = new Forms.SelectInfoForm(Tables.Departments);
+            Forms.SelectForm tmpForm = new Forms.SelectForm(Tables.Departments);
             tmpForm.MdiParent = ParentForm;
             tmpForm.Show();
         }
 
         private void nbiActivityKinds_LinkPressed(object sender, DevExpress.XtraNavBar.NavBarLinkEventArgs e)
         {
-            Forms.SelectInfoForm tmpForm = new Forms.SelectInfoForm(Tables.ActivityKinds);
+            Forms.SelectForm tmpForm = new Forms.SelectForm(Tables.ActivityKinds);
             tmpForm.MdiParent = ParentForm;
             tmpForm.Show();
         }
@@ -231,6 +228,11 @@ namespace Contract
                 tmpForm.MdiParent = ParentForm;
                 tmpForm.Show();
             }
+        }
+
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

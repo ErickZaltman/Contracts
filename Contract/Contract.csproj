@@ -123,11 +123,14 @@
     <Compile Include="Forms\ContractorForm.Designer.cs">
       <DependentUpon>ContractorForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\SelectInfoForm.cs">
+    <Compile Include="Forms\ContractSelectForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\SelectInfoForm.Designer.cs">
-      <DependentUpon>SelectInfoForm.cs</DependentUpon>
+    <Compile Include="Forms\SelectForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\SelectForm.Designer.cs">
+      <DependentUpon>SelectForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\SigningForm.cs">
       <SubType>Form</SubType>
@@ -176,8 +179,8 @@
     <EmbeddedResource Include="Forms\ContractorForm.resx">
       <DependentUpon>ContractorForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\SelectInfoForm.resx">
-      <DependentUpon>SelectInfoForm.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\SelectForm.resx">
+      <DependentUpon>SelectForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\SigningForm.resx">
       <DependentUpon>SigningForm.cs</DependentUpon>

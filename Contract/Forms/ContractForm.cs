@@ -123,7 +123,7 @@ namespace Contract.Forms
         {
             if (e.Button.Index == 1)
             {
-                Forms.SelectInfoForm tmpForm = new SelectInfoForm(Tables.Category, true, getIDSelectedItemID);
+                Forms.SelectForm tmpForm = new SelectForm(Tables.Category, true, getIDSelectedItemID);
 
                 tmpForm.ShowDialog();
             }
@@ -132,7 +132,7 @@ namespace Contract.Forms
         {
             if (e.Button.Index == 1)
             {
-                Forms.SelectInfoForm tmpForm = new SelectInfoForm(Tables.Departments, true, getIDSelectedItemID);
+                Forms.SelectForm tmpForm = new SelectForm(Tables.Departments, true, getIDSelectedItemID);
 
                 tmpForm.ShowDialog();
             }
@@ -142,7 +142,7 @@ namespace Contract.Forms
         {
             if (e.Button.Index == 1)
             {
-                Forms.SelectInfoForm tmpForm = new SelectInfoForm(Tables.Users, true, getIDSelectedItemID);
+                Forms.SelectForm tmpForm = new SelectForm(Tables.Users, true, getIDSelectedItemID);
 
                 tmpForm.ShowDialog();
             }
@@ -151,7 +151,7 @@ namespace Contract.Forms
         {
             if (e.Button.Index == 1)
             {
-                Forms.SelectInfoForm tmpForm = new SelectInfoForm(Tables.Contractors, true, getIDSelectedItemID);
+                Forms.SelectForm tmpForm = new SelectForm(Tables.Contractors, true, getIDSelectedItemID);
 
                 tmpForm.ShowDialog();
             }
@@ -160,7 +160,7 @@ namespace Contract.Forms
         {
             if (e.Button.Index == 1)
             {
-                Forms.SelectInfoForm tmpForm = new SelectInfoForm(Tables.ActivityKinds, true, getIDSelectedItemID);
+                Forms.SelectForm tmpForm = new SelectForm(Tables.ActivityKinds, true, getIDSelectedItemID);
 
                 tmpForm.ShowDialog();
             }

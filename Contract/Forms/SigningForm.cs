@@ -18,14 +18,13 @@ namespace Contract.Forms
         private int contractID;
         private int signID;
         private DB.Contract currContract;
-        public SigningForm(int signID, int contractID, UpdateContracts sender)
+        public SigningForm(int signID)
         {
             InitializeComponent();
 
             dbContext = new DB.DBModel();
             this.signID = signID;
-            this.contractID = contractID;
-            d = sender;
+            //this.contractID = contractID;
 
             currContract = dbContext.Contract.Where(x => x.ID == contractID).ToList()[0];
             fillDocInfo();
@@ -72,7 +71,6 @@ namespace Contract.Forms
             tmpSign.IsAgreed = true;
             tmpSign.Date = DateTime.Now;
             dbContext.SaveChanges();
-            d();
             Close();
         }
 

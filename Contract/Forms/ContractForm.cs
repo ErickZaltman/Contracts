@@ -23,7 +23,7 @@ namespace Contract.Forms
 
         private UpdateContracts uc;
         
-        public ContractForm(int contractID, string UserName, UpdateContracts updateContracts)
+        public ContractForm(int contractID)
         {
             BaseEdit.DefaultErrorIconAlignment = ErrorIconAlignment.BottomRight;
 
@@ -31,8 +31,8 @@ namespace Contract.Forms
             dbContext = new DB.DBModel();
             
             this.contractID = contractID;
-            this.UserName = UserName;
-            this.uc = updateContracts;
+            this.UserName = dbContext.getFullUserName.Where(x => x.ID == Properties.Settings.CurrentUserID).ToList()[0].ToString();
+            //this.uc = updateContracts;
             fillControls();
 
             currContract = new DB.Contract();
@@ -123,8 +123,9 @@ namespace Contract.Forms
         {
             if (e.Button.Index == 1)
             {
-                Forms.SelectForm tmpForm = new SelectForm(Tables.Category, true, getIDSelectedItemID);
-
+                Forms.CategorySelectForm tmpForm = new CategorySelectForm(true, getIDSelectedItemID);
+                tmpForm.ShowInTaskbar = false;
+                tmpForm.WindowState = FormWindowState.Normal;
                 tmpForm.ShowDialog();
             }
         }
@@ -160,7 +161,7 @@ namespace Contract.Forms
         {
             if (e.Button.Index == 1)
             {
-                Forms.SelectForm tmpForm = new SelectForm(Tables.ActivityKinds, true, getIDSelectedItemID);
+                SelectForm tmpForm = new SelectForm(Tables.ActivityKinds, true, getIDSelectedItemID);
 
                 tmpForm.ShowDialog();
             }
@@ -241,7 +242,7 @@ namespace Contract.Forms
             teContractNumber.Text = currContract.Number;
             contractID = currContract.ID;
             isLoaded = true;
-            uc();
+            //uc();
         }
 
         private void sbSaveChanges_Click(object sender, EventArgs e)

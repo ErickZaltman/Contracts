@@ -76,19 +76,19 @@ namespace Contract
 
         private void gvContracts_RowClick(object sender, RowClickEventArgs e)
         {
-            if (e.Clicks > 1)
-            {
-                Forms.ContractForm tmpForm = new Forms.ContractForm((int)gvContracts.GetRowCellValue(e.RowHandle, "ID"), string.Empty, updateContracts);
-                tmpForm.MdiParent = ParentForm;
-                tmpForm.Show();
-            }      
+            //if (e.Clicks > 1)
+            //{
+            //    Forms.ContractForm tmpForm = new Forms.ContractForm((int)gvContracts.GetRowCellValue(e.RowHandle, "ID"), string.Empty, updateContracts);
+            //    tmpForm.MdiParent = ParentForm;
+            //    tmpForm.Show();
+            //}      
         }
 
         private void simpleButton1_Click(object sender, EventArgs e)
         {
-            Forms.ContractForm tmpForm = new Forms.ContractForm(0, "?????username??????", updateContracts);
-            tmpForm.MdiParent = ParentForm;
-            tmpForm.Show();
+            //Forms.ContractForm tmpForm = new Forms.ContractForm(0, "?????username??????", updateContracts);
+            //tmpForm.MdiParent = ParentForm;
+            //tmpForm.Show();
         }
 
         #endregion
@@ -170,7 +170,7 @@ namespace Contract
         {
             if (e.Clicks > 1)
             {
-                Forms.SigningForm tmpForm = new Forms.SigningForm((int)gvSignings.GetRowCellValue(e.RowHandle,"ID"), (int)gvSignings.GetRowCellValue(e.RowHandle, "ContractID"), updateSignings);
+                Forms.SigningForm tmpForm = new Forms.SigningForm((int)gvSignings.GetRowCellValue(e.RowHandle,"ID"));
                 tmpForm.MdiParent = ParentForm;
                 tmpForm.Show();
             }

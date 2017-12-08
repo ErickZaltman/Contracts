@@ -123,7 +123,7 @@
     <Compile Include="Forms\ContractorForm.Designer.cs">
       <DependentUpon>ContractorForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\ContractSelectForm.cs">
+    <Compile Include="Forms\SelectFormsList.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\SelectForm.cs">
@@ -143,6 +143,12 @@
     </Compile>
     <Compile Include="Forms\SupAgreementForm.Designer.cs">
       <DependentUpon>SupAgreementForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\tmp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\tmp.Designer.cs">
+      <DependentUpon>tmp.cs</DependentUpon>
     </Compile>
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>

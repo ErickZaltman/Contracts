@@ -36,13 +36,13 @@
             this.ribbonControl1 = new DevExpress.XtraBars.Ribbon.RibbonControl();
             this.bbrnContracts = new DevExpress.XtraBars.BarButtonItem();
             this.bbtnSingingDocs = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem3 = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem4 = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem6 = new DevExpress.XtraBars.BarButtonItem();
+            this.bbtnSupAgreements = new DevExpress.XtraBars.BarButtonItem();
+            this.bbtnAnexes = new DevExpress.XtraBars.BarButtonItem();
+            this.bbtnDisAgreements = new DevExpress.XtraBars.BarButtonItem();
             this.barStaticItem1 = new DevExpress.XtraBars.BarStaticItem();
-            this.barButtonItem8 = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem9 = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem11 = new DevExpress.XtraBars.BarButtonItem();
+            this.bbtnContractors = new DevExpress.XtraBars.BarButtonItem();
+            this.bbtnDepartments = new DevExpress.XtraBars.BarButtonItem();
+            this.bbtnActivityKind = new DevExpress.XtraBars.BarButtonItem();
             this.barStaticItem2 = new DevExpress.XtraBars.BarStaticItem();
             this.ribbonMiniToolbar1 = new DevExpress.XtraBars.Ribbon.RibbonMiniToolbar(this.components);
             this.ribbonPage2 = new DevExpress.XtraBars.Ribbon.RibbonPage();
@@ -59,8 +59,8 @@
             // xtraTabbedMdiManager1
             // 
             this.xtraTabbedMdiManager1.ClosePageButtonShowMode = DevExpress.XtraTab.ClosePageButtonShowMode.InActiveTabPageHeader;
-            this.xtraTabbedMdiManager1.FloatOnDoubleClick = DevExpress.Utils.DefaultBoolean.False;
-            this.xtraTabbedMdiManager1.FloatOnDrag = DevExpress.Utils.DefaultBoolean.False;
+            this.xtraTabbedMdiManager1.FloatOnDoubleClick = DevExpress.Utils.DefaultBoolean.True;
+            this.xtraTabbedMdiManager1.FloatOnDrag = DevExpress.Utils.DefaultBoolean.True;
             this.xtraTabbedMdiManager1.FloatPageDragMode = DevExpress.XtraTabbedMdi.FloatPageDragMode.Preview;
             this.xtraTabbedMdiManager1.HeaderLocation = DevExpress.XtraTab.TabHeaderLocation.Bottom;
             this.xtraTabbedMdiManager1.MdiParent = this;
@@ -81,13 +81,13 @@
             this.ribbonControl1.ExpandCollapseItem,
             this.bbrnContracts,
             this.bbtnSingingDocs,
-            this.barButtonItem3,
-            this.barButtonItem4,
-            this.barButtonItem6,
+            this.bbtnSupAgreements,
+            this.bbtnAnexes,
+            this.bbtnDisAgreements,
             this.barStaticItem1,
-            this.barButtonItem8,
-            this.barButtonItem9,
-            this.barButtonItem11,
+            this.bbtnContractors,
+            this.bbtnDepartments,
+            this.bbtnActivityKind,
             this.barStaticItem2});
             this.ribbonControl1.Location = new System.Drawing.Point(0, 0);
             this.ribbonControl1.MaxItemId = 36;
@@ -128,33 +128,37 @@
             this.bbtnSingingDocs.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("bbtnSingingDocs.LargeGlyph")));
             this.bbtnSingingDocs.Name = "bbtnSingingDocs";
             this.bbtnSingingDocs.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText;
+            this.bbtnSingingDocs.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbtnSingingDocs_ItemClick);
             // 
-            // barButtonItem3
+            // bbtnSupAgreements
             // 
-            this.barButtonItem3.Caption = "Доп. соглашения";
-            this.barButtonItem3.Glyph = ((System.Drawing.Image)(resources.GetObject("barButtonItem3.Glyph")));
-            this.barButtonItem3.Id = 18;
-            this.barButtonItem3.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("barButtonItem3.LargeGlyph")));
-            this.barButtonItem3.Name = "barButtonItem3";
-            this.barButtonItem3.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText;
+            this.bbtnSupAgreements.Caption = "Доп. соглашения";
+            this.bbtnSupAgreements.Glyph = ((System.Drawing.Image)(resources.GetObject("bbtnSupAgreements.Glyph")));
+            this.bbtnSupAgreements.Id = 18;
+            this.bbtnSupAgreements.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("bbtnSupAgreements.LargeGlyph")));
+            this.bbtnSupAgreements.Name = "bbtnSupAgreements";
+            this.bbtnSupAgreements.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText;
+            this.bbtnSupAgreements.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem3_ItemClick);
             // 
-            // barButtonItem4
+            // bbtnAnexes
             // 
-            this.barButtonItem4.Caption = "Приложения";
-            this.barButtonItem4.Glyph = ((System.Drawing.Image)(resources.GetObject("barButtonItem4.Glyph")));
-            this.barButtonItem4.Id = 19;
-            this.barButtonItem4.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("barButtonItem4.LargeGlyph")));
-            this.barButtonItem4.Name = "barButtonItem4";
-            this.barButtonItem4.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText;
+            this.bbtnAnexes.Caption = "Приложения";
+            this.bbtnAnexes.Glyph = ((System.Drawing.Image)(resources.GetObject("bbtnAnexes.Glyph")));
+            this.bbtnAnexes.Id = 19;
+            this.bbtnAnexes.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("bbtnAnexes.LargeGlyph")));
+            this.bbtnAnexes.Name = "bbtnAnexes";
+            this.bbtnAnexes.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText;
+            this.bbtnAnexes.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbtnAnexes_ItemClick);
             // 
-            // barButtonItem6
+            // bbtnDisAgreements
             // 
-            this.barButtonItem6.Caption = "Протокол разногласий";
-            this.barButtonItem6.Glyph = ((System.Drawing.Image)(resources.GetObject("barButtonItem6.Glyph")));
-            this.barButtonItem6.Id = 23;
-            this.barButtonItem6.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("barButtonItem6.LargeGlyph")));
-            this.barButtonItem6.Name = "barButtonItem6";
-            this.barButtonItem6.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText;
+            this.bbtnDisAgreements.Caption = "Протокол разногласий";
+            this.bbtnDisAgreements.Glyph = ((System.Drawing.Image)(resources.GetObject("bbtnDisAgreements.Glyph")));
+            this.bbtnDisAgreements.Id = 23;
+            this.bbtnDisAgreements.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("bbtnDisAgreements.LargeGlyph")));
+            this.bbtnDisAgreements.Name = "bbtnDisAgreements";
+            this.bbtnDisAgreements.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText;
+            this.bbtnDisAgreements.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbtnDisAgreements_ItemClick);
             // 
             // barStaticItem1
             // 
@@ -162,23 +166,26 @@
             this.barStaticItem1.Name = "barStaticItem1";
             this.barStaticItem1.TextAlignment = System.Drawing.StringAlignment.Near;
             // 
-            // barButtonItem8
+            // bbtnContractors
             // 
-            this.barButtonItem8.Caption = "Контрагенты";
-            this.barButtonItem8.Id = 32;
-            this.barButtonItem8.Name = "barButtonItem8";
+            this.bbtnContractors.Caption = "Контрагенты";
+            this.bbtnContractors.Id = 32;
+            this.bbtnContractors.Name = "bbtnContractors";
+            this.bbtnContractors.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem8_ItemClick);
             // 
-            // barButtonItem9
+            // bbtnDepartments
             // 
-            this.barButtonItem9.Caption = "Департаменты";
-            this.barButtonItem9.Id = 33;
-            this.barButtonItem9.Name = "barButtonItem9";
+            this.bbtnDepartments.Caption = "Департаменты";
+            this.bbtnDepartments.Id = 33;
+            this.bbtnDepartments.Name = "bbtnDepartments";
+            this.bbtnDepartments.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbtnDepartments_ItemClick);
             // 
-            // barButtonItem11
+            // bbtnActivityKind
             // 
-            this.barButtonItem11.Caption = "Виды деятельности";
-            this.barButtonItem11.Id = 34;
-            this.barButtonItem11.Name = "barButtonItem11";
+            this.bbtnActivityKind.Caption = "Виды деятельности";
+            this.bbtnActivityKind.Id = 34;
+            this.bbtnActivityKind.Name = "bbtnActivityKind";
+            this.bbtnActivityKind.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbtnActivityKind_ItemClick);
             // 
             // barStaticItem2
             // 
@@ -198,9 +205,9 @@
             // 
             this.ribbonPageGroup1.ItemLinks.Add(this.bbrnContracts);
             this.ribbonPageGroup1.ItemLinks.Add(this.bbtnSingingDocs);
-            this.ribbonPageGroup1.ItemLinks.Add(this.barButtonItem3);
-            this.ribbonPageGroup1.ItemLinks.Add(this.barButtonItem4);
-            this.ribbonPageGroup1.ItemLinks.Add(this.barButtonItem6);
+            this.ribbonPageGroup1.ItemLinks.Add(this.bbtnSupAgreements);
+            this.ribbonPageGroup1.ItemLinks.Add(this.bbtnAnexes);
+            this.ribbonPageGroup1.ItemLinks.Add(this.bbtnDisAgreements);
             this.ribbonPageGroup1.ItemLinks.Add(this.barStaticItem1);
             this.ribbonPageGroup1.ItemLinks.Add(this.barStaticItem2);
             this.ribbonPageGroup1.Name = "ribbonPageGroup1";
@@ -208,9 +215,9 @@
             // 
             // rbgCats
             // 
-            this.rbgCats.ItemLinks.Add(this.barButtonItem8);
-            this.rbgCats.ItemLinks.Add(this.barButtonItem9);
-            this.rbgCats.ItemLinks.Add(this.barButtonItem11);
+            this.rbgCats.ItemLinks.Add(this.bbtnContractors);
+            this.rbgCats.ItemLinks.Add(this.bbtnDepartments);
+            this.rbgCats.ItemLinks.Add(this.bbtnActivityKind);
             this.rbgCats.Name = "rbgCats";
             this.rbgCats.Text = "Справочники";
             // 
@@ -251,6 +258,7 @@
             this.Name = "ParentForm";
             this.Text = "ParentForm";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ParentForm_KeyPress);
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabbedMdiManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).EndInit();
             this.ResumeLayout(false);
@@ -259,8 +267,6 @@
         }
 
         #endregion
-
-        private DevExpress.XtraTabbedMdi.XtraTabbedMdiManager xtraTabbedMdiManager1;
         private DevExpress.XtraBars.Ribbon.RibbonStatusBar ribbonStatusBar1;
         private DevExpress.XtraBars.Ribbon.RibbonControl ribbonControl1;
         private DevExpress.Utils.WorkspaceManager workspaceManager1;
@@ -268,18 +274,19 @@
         private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPage2;
         private DevExpress.XtraBars.BarButtonItem bbrnContracts;
         private DevExpress.XtraBars.BarButtonItem bbtnSingingDocs;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem3;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem4;
+        private DevExpress.XtraBars.BarButtonItem bbtnSupAgreements;
+        private DevExpress.XtraBars.BarButtonItem bbtnAnexes;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup1;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem6;
+        private DevExpress.XtraBars.BarButtonItem bbtnDisAgreements;
         private DevExpress.XtraBars.BarStaticItem barStaticItem1;
         private DevExpress.XtraBars.Ribbon.RibbonPage ribbonPage1;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup2;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem8;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem9;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem11;
+        private DevExpress.XtraBars.BarButtonItem bbtnContractors;
+        private DevExpress.XtraBars.BarButtonItem bbtnDepartments;
+        private DevExpress.XtraBars.BarButtonItem bbtnActivityKind;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup rbgCats;
         private DevExpress.XtraBars.BarButtonItem barButtonItem5;
         private DevExpress.XtraBars.BarStaticItem barStaticItem2;
+        public DevExpress.XtraTabbedMdi.XtraTabbedMdiManager xtraTabbedMdiManager1;
     }
 }

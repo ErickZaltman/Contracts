@@ -8,7 +8,7 @@ namespace Contract
 {
     public enum Tables
     {
-        Category, Users, Contractors, Departments, ActivityKinds, Contracts
+        Category, Users, Contractors, Departments, ActivityKinds, Contracts, SupAgreements, Signings, Annexes
     }
     public enum Permissions
     {

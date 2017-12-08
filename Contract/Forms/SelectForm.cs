@@ -18,7 +18,7 @@ namespace Contract.Forms
         protected DB.DBModel dbContext;
         protected bool isSelection = false;
 
-        private getIDFromForm d;
+        protected getIDFromForm d;
         public SelectForm()
         {
             InitializeComponent();
@@ -37,7 +37,6 @@ namespace Contract.Forms
             this.table = table;
             this.isSelection = isSelection;
             this.dbContext = new DB.DBModel();
-            FillGV();
         }
 
         protected void FillGV()
@@ -69,10 +68,28 @@ namespace Contract.Forms
         protected void openDocForm(int id, Tables type)
         {
 
-            var tmpForm = Activator.CreateInstance(Program.TypesList[type]);
-            (tmpForm as Form).Show();
+            var tmpForm = (Form)Activator.CreateInstance(Program.TypesList[type],id);
+            tmpForm.MdiParent = this.MdiParent;
+            tmpForm.Show();
+        }
+        private void closeForm()
+        {
+            if (MessageBox.Show("", "z", MessageBoxButtons.YesNoCancel) == DialogResult.No)
+                this.Close();
         }
         
+        private void SelectForm_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode == Keys.Escape)
+            {
+                Close();
+            }
+        }
 
+        private void gridControl1_KeyDown(object sender, KeyEventArgs e)
+        {
+            //if (e.KeyCode == Keys.Escape)
+            //    Close();
+        }
     }
 }

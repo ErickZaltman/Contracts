@@ -237,16 +237,16 @@
             this.tabPane1.Controls.Add(this.tnpSigning);
             this.tabPane1.Controls.Add(this.tnpRelatedDocs);
             this.tabPane1.Controls.Add(this.tabNavigationPage3);
-            this.tabPane1.Location = new System.Drawing.Point(12, 106);
+            this.tabPane1.Location = new System.Drawing.Point(12, 65);
             this.tabPane1.Name = "tabPane1";
             this.tabPane1.Pages.AddRange(new DevExpress.XtraBars.Navigation.NavigationPageBase[] {
             this.tnpMainInfo,
             this.tnpSigning,
             this.tnpRelatedDocs,
             this.tabNavigationPage3});
-            this.tabPane1.RegularSize = new System.Drawing.Size(1244, 519);
+            this.tabPane1.RegularSize = new System.Drawing.Size(1244, 560);
             this.tabPane1.SelectedPage = this.tnpMainInfo;
-            this.tabPane1.Size = new System.Drawing.Size(1244, 519);
+            this.tabPane1.Size = new System.Drawing.Size(1244, 560);
             this.tabPane1.TabIndex = 31;
             this.tabPane1.Text = "tabPane1";
             // 
@@ -275,7 +275,7 @@
             this.tnpMainInfo.Controls.Add(this.label8);
             this.tnpMainInfo.Controls.Add(this.lueExtensions);
             this.tnpMainInfo.Name = "tnpMainInfo";
-            this.tnpMainInfo.Size = new System.Drawing.Size(1226, 474);
+            this.tnpMainInfo.Size = new System.Drawing.Size(1226, 515);
             // 
             // label5
             // 

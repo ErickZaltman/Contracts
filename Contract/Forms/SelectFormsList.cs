@@ -257,6 +257,17 @@ namespace Contract.Forms
             FormClosed += DepartmentsSelectForm_FormClosed;
         }
 
+        public DepartmentsSelectForm(getIDFromForm sender)
+        {
+            dbContext = new DB.DBModel();
+            table = Tables.Departments;
+            Text = "Департаменты";
+            d = sender;
+            isSelection = true;
+            fillGV();
+            FormClosed += DepartmentsSelectForm_FormClosed;
+        }
+
         private void DepartmentsSelectForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             inst = null;
@@ -273,7 +284,7 @@ namespace Contract.Forms
             //gvList.Columns["Category"].Caption = "Категория договора";
             //gvList.Columns["Theme"].Caption = "Предмет договора";
             //gvList.Columns["Summ"].Caption = "Сумма договора";
-            //gvList.Columns["Name"].Caption = "Автор";
+            gvList.Columns["Name"].Caption = "Наименование";
         }
 
      
@@ -294,6 +305,16 @@ namespace Contract.Forms
             dbContext = new DB.DBModel();
             table = Tables.Users;
             Text = "Сотрудники";
+            fillGV();
+            FormClosed += UsersSelectForm_FormClosed;
+        }
+        public UsersSelectForm(getIDFromForm sender)
+        {
+            dbContext = new DB.DBModel();
+            table = Tables.Users;
+            Text = "Сотрудники";
+            d = sender;
+            isSelection = true;
             fillGV();
             FormClosed += UsersSelectForm_FormClosed;
         }
@@ -344,6 +365,16 @@ namespace Contract.Forms
             fillGV();
             FormClosed += ActivityKindsSelectForm_FormClosed;
         }
+        public ActivityKindsSelectForm(getIDFromForm sender)
+        {
+            dbContext = new DB.DBModel();
+            table = Tables.ActivityKinds;
+            Text = "Виды деятельности";
+            d = sender;
+            isSelection = true;
+            fillGV();
+            FormClosed += ActivityKindsSelectForm_FormClosed;
+        }
 
         private void ActivityKindsSelectForm_FormClosed(object sender, FormClosedEventArgs e)
         {
@@ -377,6 +408,16 @@ namespace Contract.Forms
             dbContext = new DB.DBModel();
             table = Tables.Contractors;
             Text = "Контрагенты";
+            fillGV();
+            FormClosed += ContractorsSelectForm_FormClosed;
+        }
+        public ContractorsSelectForm(getIDFromForm sender)
+        {
+            dbContext = new DB.DBModel();
+            table = Tables.Contractors;
+            Text = "Контрагенты";
+            d = sender;
+            isSelection = true;
             fillGV();
             FormClosed += ContractorsSelectForm_FormClosed;
         }
@@ -422,14 +463,14 @@ namespace Contract.Forms
 
         }
 
-        public CategorySelectForm(bool isSelection, getIDFromForm sender)
+        public CategorySelectForm(getIDFromForm sender)
         {
             dbContext = new DB.DBModel();
             table = Tables.Category;
             Text = "Категории договоров";
 
             this.d = sender;
-            this.isSelection = isSelection;
+            this.isSelection = true;
             fillGV();
         }
 

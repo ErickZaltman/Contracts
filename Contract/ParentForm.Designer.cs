@@ -28,11 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ParentForm));
             DevExpress.Utils.Animation.PushTransition pushTransition1 = new DevExpress.Utils.Animation.PushTransition();
-            this.xtraTabbedMdiManager1 = new DevExpress.XtraTabbedMdi.XtraTabbedMdiManager(this.components);
+            this.xtraTabbedMdiManager1 = new DevExpress.XtraTabbedMdi.XtraTabbedMdiManager();
             this.ribbonStatusBar1 = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
+            this.bsiUserName = new DevExpress.XtraBars.BarStaticItem();
             this.ribbonControl1 = new DevExpress.XtraBars.Ribbon.RibbonControl();
             this.bbrnContracts = new DevExpress.XtraBars.BarButtonItem();
             this.bbtnSingingDocs = new DevExpress.XtraBars.BarButtonItem();
@@ -44,21 +44,22 @@
             this.bbtnDepartments = new DevExpress.XtraBars.BarButtonItem();
             this.bbtnActivityKind = new DevExpress.XtraBars.BarButtonItem();
             this.barStaticItem2 = new DevExpress.XtraBars.BarStaticItem();
-            this.ribbonMiniToolbar1 = new DevExpress.XtraBars.Ribbon.RibbonMiniToolbar(this.components);
+            this.bbtnNewContract = new DevExpress.XtraBars.BarButtonItem();
+            this.bbtnSave = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem3 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem4 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
+            this.ribbonMiniToolbar1 = new DevExpress.XtraBars.Ribbon.RibbonMiniToolbar();
             this.rpMain = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.rbgCats = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.rpContractWork = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.rbpCurrentContract = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.workspaceManager1 = new DevExpress.Utils.WorkspaceManager();
             this.barButtonItem5 = new DevExpress.XtraBars.BarButtonItem();
-            this.bbtnNewContract = new DevExpress.XtraBars.BarButtonItem();
-            this.bbtnSave = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem3 = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem4 = new DevExpress.XtraBars.BarButtonItem();
-            this.ribbonPageGroup3 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem6 = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabbedMdiManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).BeginInit();
             this.SuspendLayout();
@@ -77,10 +78,18 @@
             // 
             // ribbonStatusBar1
             // 
+            this.ribbonStatusBar1.ItemLinks.Add(this.bsiUserName);
             this.ribbonStatusBar1.Location = new System.Drawing.Point(0, 543);
             this.ribbonStatusBar1.Name = "ribbonStatusBar1";
             this.ribbonStatusBar1.Ribbon = this.ribbonControl1;
             this.ribbonStatusBar1.Size = new System.Drawing.Size(1322, 27);
+            // 
+            // bsiUserName
+            // 
+            this.bsiUserName.Caption = "barStaticItem3";
+            this.bsiUserName.Id = 44;
+            this.bsiUserName.Name = "bsiUserName";
+            this.bsiUserName.TextAlignment = System.Drawing.StringAlignment.Near;
             // 
             // ribbonControl1
             // 
@@ -104,9 +113,11 @@
             this.barButtonItem3,
             this.barButtonItem4,
             this.barButtonItem1,
-            this.barButtonItem2});
+            this.barButtonItem2,
+            this.bsiUserName,
+            this.barButtonItem6});
             this.ribbonControl1.Location = new System.Drawing.Point(0, 0);
-            this.ribbonControl1.MaxItemId = 44;
+            this.ribbonControl1.MaxItemId = 46;
             this.ribbonControl1.MiniToolbars.Add(this.ribbonMiniToolbar1);
             this.ribbonControl1.Name = "ribbonControl1";
             this.ribbonControl1.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
@@ -209,64 +220,6 @@
             this.barStaticItem2.Name = "barStaticItem2";
             this.barStaticItem2.TextAlignment = System.Drawing.StringAlignment.Near;
             // 
-            // rpMain
-            // 
-            this.rpMain.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
-            this.ribbonPageGroup1,
-            this.rbgCats});
-            this.rpMain.Name = "rpMain";
-            this.rpMain.Text = "Главная";
-            // 
-            // ribbonPageGroup1
-            // 
-            this.ribbonPageGroup1.ItemLinks.Add(this.bbrnContracts);
-            this.ribbonPageGroup1.ItemLinks.Add(this.bbtnSingingDocs);
-            this.ribbonPageGroup1.ItemLinks.Add(this.bbtnSupAgreements);
-            this.ribbonPageGroup1.ItemLinks.Add(this.bbtnAnexes);
-            this.ribbonPageGroup1.ItemLinks.Add(this.bbtnDisAgreements);
-            this.ribbonPageGroup1.ItemLinks.Add(this.barStaticItem1);
-            this.ribbonPageGroup1.ItemLinks.Add(this.barStaticItem2);
-            this.ribbonPageGroup1.Name = "ribbonPageGroup1";
-            this.ribbonPageGroup1.Text = "Документы";
-            // 
-            // rbgCats
-            // 
-            this.rbgCats.ItemLinks.Add(this.bbtnContractors);
-            this.rbgCats.ItemLinks.Add(this.bbtnDepartments);
-            this.rbgCats.ItemLinks.Add(this.bbtnActivityKind);
-            this.rbgCats.Name = "rbgCats";
-            this.rbgCats.Text = "Справочники";
-            // 
-            // rpContractWork
-            // 
-            this.rpContractWork.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
-            this.ribbonPageGroup2,
-            this.ribbonPageGroup3});
-            this.rpContractWork.Name = "rpContractWork";
-            this.rpContractWork.Text = "Договорная работа";
-            this.rpContractWork.Visible = false;
-            // 
-            // ribbonPageGroup2
-            // 
-            this.ribbonPageGroup2.ItemLinks.Add(this.bbtnNewContract);
-            this.ribbonPageGroup2.ItemLinks.Add(this.barButtonItem4);
-            this.ribbonPageGroup2.Name = "ribbonPageGroup2";
-            this.ribbonPageGroup2.Text = "Договора";
-            // 
-            // workspaceManager1
-            // 
-            this.workspaceManager1.TargetControl = this;
-            this.workspaceManager1.TransitionType = pushTransition1;
-            // 
-            // barButtonItem5
-            // 
-            this.barButtonItem5.Caption = "Спецификации";
-            this.barButtonItem5.Glyph = ((System.Drawing.Image)(resources.GetObject("barButtonItem5.Glyph")));
-            this.barButtonItem5.Id = 22;
-            this.barButtonItem5.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("barButtonItem5.LargeGlyph")));
-            this.barButtonItem5.Name = "barButtonItem5";
-            this.barButtonItem5.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText;
-            // 
             // bbtnNewContract
             // 
             this.bbtnNewContract.Caption = "Новый договор";
@@ -291,15 +244,6 @@
             this.barButtonItem4.Id = 40;
             this.barButtonItem4.Name = "barButtonItem4";
             // 
-            // ribbonPageGroup3
-            // 
-            this.ribbonPageGroup3.ItemLinks.Add(this.barButtonItem3);
-            this.ribbonPageGroup3.ItemLinks.Add(this.bbtnSave);
-            this.ribbonPageGroup3.ItemLinks.Add(this.barButtonItem1);
-            this.ribbonPageGroup3.ItemLinks.Add(this.barButtonItem2);
-            this.ribbonPageGroup3.Name = "ribbonPageGroup3";
-            this.ribbonPageGroup3.Text = "ribbonPageGroup3";
-            // 
             // barButtonItem1
             // 
             this.barButtonItem1.Caption = "Вложения";
@@ -311,6 +255,82 @@
             this.barButtonItem2.Caption = "Связанные документы";
             this.barButtonItem2.Id = 43;
             this.barButtonItem2.Name = "barButtonItem2";
+            // 
+            // rpMain
+            // 
+            this.rpMain.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
+            this.ribbonPageGroup1,
+            this.rbgCats});
+            this.rpMain.Name = "rpMain";
+            this.rpMain.Text = "Главная";
+            // 
+            // ribbonPageGroup1
+            // 
+            this.ribbonPageGroup1.ItemLinks.Add(this.bbrnContracts);
+            this.ribbonPageGroup1.ItemLinks.Add(this.bbtnSingingDocs);
+            this.ribbonPageGroup1.ItemLinks.Add(this.bbtnSupAgreements);
+            this.ribbonPageGroup1.ItemLinks.Add(this.bbtnAnexes);
+            this.ribbonPageGroup1.ItemLinks.Add(this.bbtnDisAgreements);
+            this.ribbonPageGroup1.ItemLinks.Add(this.barStaticItem1);
+            this.ribbonPageGroup1.ItemLinks.Add(this.barStaticItem2);
+            this.ribbonPageGroup1.ItemLinks.Add(this.barButtonItem6);
+            this.ribbonPageGroup1.Name = "ribbonPageGroup1";
+            this.ribbonPageGroup1.Text = "Документы";
+            // 
+            // rbgCats
+            // 
+            this.rbgCats.ItemLinks.Add(this.bbtnContractors);
+            this.rbgCats.ItemLinks.Add(this.bbtnDepartments);
+            this.rbgCats.ItemLinks.Add(this.bbtnActivityKind);
+            this.rbgCats.Name = "rbgCats";
+            this.rbgCats.Text = "Справочники";
+            // 
+            // rpContractWork
+            // 
+            this.rpContractWork.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
+            this.ribbonPageGroup2,
+            this.rbpCurrentContract});
+            this.rpContractWork.Name = "rpContractWork";
+            this.rpContractWork.Text = "Договорная работа";
+            this.rpContractWork.Visible = false;
+            // 
+            // ribbonPageGroup2
+            // 
+            this.ribbonPageGroup2.ItemLinks.Add(this.bbtnNewContract);
+            this.ribbonPageGroup2.ItemLinks.Add(this.barButtonItem4);
+            this.ribbonPageGroup2.Name = "ribbonPageGroup2";
+            this.ribbonPageGroup2.Text = "Договора";
+            // 
+            // rbpCurrentContract
+            // 
+            this.rbpCurrentContract.ItemLinks.Add(this.barButtonItem3);
+            this.rbpCurrentContract.ItemLinks.Add(this.bbtnSave);
+            this.rbpCurrentContract.ItemLinks.Add(this.barButtonItem1);
+            this.rbpCurrentContract.ItemLinks.Add(this.barButtonItem2);
+            this.rbpCurrentContract.Name = "rbpCurrentContract";
+            this.rbpCurrentContract.Text = "Работа с договором";
+            this.rbpCurrentContract.Visible = false;
+            // 
+            // workspaceManager1
+            // 
+            this.workspaceManager1.TargetControl = this;
+            this.workspaceManager1.TransitionType = pushTransition1;
+            // 
+            // barButtonItem5
+            // 
+            this.barButtonItem5.Caption = "Спецификации";
+            this.barButtonItem5.Glyph = ((System.Drawing.Image)(resources.GetObject("barButtonItem5.Glyph")));
+            this.barButtonItem5.Id = 22;
+            this.barButtonItem5.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("barButtonItem5.LargeGlyph")));
+            this.barButtonItem5.Name = "barButtonItem5";
+            this.barButtonItem5.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText;
+            // 
+            // barButtonItem6
+            // 
+            this.barButtonItem6.Caption = "barButtonItem6";
+            this.barButtonItem6.Id = 45;
+            this.barButtonItem6.Name = "barButtonItem6";
+            this.barButtonItem6.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem6_ItemClick);
             // 
             // ParentForm
             // 
@@ -359,6 +379,8 @@
         private DevExpress.XtraBars.BarButtonItem barButtonItem4;
         private DevExpress.XtraBars.BarButtonItem barButtonItem1;
         private DevExpress.XtraBars.BarButtonItem barButtonItem2;
-        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup3;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup rbpCurrentContract;
+        private DevExpress.XtraBars.BarStaticItem bsiUserName;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem6;
     }
 }

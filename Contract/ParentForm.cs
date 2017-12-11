@@ -33,6 +33,8 @@ namespace Contract
             dbContext = new DBModel();
             Properties.Settings.CurrentUserID = id;
 
+            bsiUserName.Caption = dbContext.getFullUserName.First(x => x.ID == id).FullName;
+
 
             
 
@@ -58,6 +60,8 @@ namespace Contract
             tmpForm.Show();
 
             xtraTabbedMdiManager1.SelectedPage = xtraTabbedMdiManager1.Pages[tmpForm];
+            rpContractWork.Visible = true;
+            ribbonControl1.SelectedPage = rpContractWork;
 
         }
 
@@ -121,21 +125,44 @@ namespace Contract
 
         private void xtraTabbedMdiManager1_SelectedPageChanged(object sender, EventArgs e)
         {
-            if (xtraTabbedMdiManager1.Pages.Count > 1 && (xtraTabbedMdiManager1.SelectedPage.MdiChild.GetType() == typeof(Forms.ContractForm) || xtraTabbedMdiManager1.SelectedPage.MdiChild.GetType() == typeof(Forms.ContractSelectForm)))
+            if (xtraTabbedMdiManager1.Pages.Count > 1)
             {
-                rpContractWork.Visible = true;
+                if (xtraTabbedMdiManager1.SelectedPage.MdiChild.GetType() == typeof(Forms.ContractForm) || xtraTabbedMdiManager1.SelectedPage.MdiChild.GetType() == typeof(Forms.ContractSelectForm))
+                {
+                    rpContractWork.Visible = true;
+                    ribbonControl1.SelectedPage = rpContractWork;
+                }
+                else
+                {
+                    rpContractWork.Visible = false;
+                }
+
+                if (xtraTabbedMdiManager1.SelectedPage.MdiChild.GetType() == typeof(Forms.ContractForm))
+                {
+                    rbpCurrentContract.Visible = true;
+                    ribbonControl1.SelectedPage = rpContractWork;
+                    rbpCurrentContract.Text = "Договор № " + (xtraTabbedMdiManager1.SelectedPage.MdiChild as Forms.ContractForm).currContract.Number ;
+                }
+                else rbpCurrentContract.Visible = false;
             }
-            else
-                rpContractWork.Visible = false;
         }
 
         private void xtraTabbedMdiManager1_PageRemoved(object sender, DevExpress.XtraTabbedMdi.MdiTabPageEventArgs e)
         {
+            if (xtraTabbedMdiManager1.Pages.Count == 0)
+            {
+                rpContractWork.Visible = false;
+            }
         }
 
         private void barButtonItem1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             int i = 0;
+        }
+
+        private void barButtonItem6_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+           
         }
     }
     

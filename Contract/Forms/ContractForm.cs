@@ -19,7 +19,7 @@ namespace Contract.Forms
         private string UserName;
         private bool isLoaded = false;
         
-        private DB.Contract currContract;
+        public DB.Contract currContract;
 
         private UpdateContracts uc;
         
@@ -123,7 +123,7 @@ namespace Contract.Forms
         {
             if (e.Button.Index == 1)
             {
-                Forms.CategorySelectForm tmpForm = new CategorySelectForm(true, getIDSelectedItemID);
+                Forms.CategorySelectForm tmpForm = new CategorySelectForm(getIDSelectedItemID);
                 tmpForm.ShowInTaskbar = false;
                 tmpForm.WindowState = FormWindowState.Normal;
                 tmpForm.ShowDialog();
@@ -133,7 +133,7 @@ namespace Contract.Forms
         {
             if (e.Button.Index == 1)
             {
-                Forms.SelectForm tmpForm = new SelectForm(Tables.Departments, true, getIDSelectedItemID);
+                Forms.DepartmentsSelectForm tmpForm = new Forms.DepartmentsSelectForm(getIDSelectedItemID);
 
                 tmpForm.ShowDialog();
             }
@@ -143,7 +143,7 @@ namespace Contract.Forms
         {
             if (e.Button.Index == 1)
             {
-                Forms.SelectForm tmpForm = new SelectForm(Tables.Users, true, getIDSelectedItemID);
+                Forms.UsersSelectForm tmpForm = new UsersSelectForm( getIDSelectedItemID);
 
                 tmpForm.ShowDialog();
             }
@@ -152,7 +152,7 @@ namespace Contract.Forms
         {
             if (e.Button.Index == 1)
             {
-                Forms.SelectForm tmpForm = new SelectForm(Tables.Contractors, true, getIDSelectedItemID);
+                Forms.ContractorsSelectForm tmpForm = new Forms.ContractorsSelectForm(getIDSelectedItemID);
 
                 tmpForm.ShowDialog();
             }
@@ -161,7 +161,7 @@ namespace Contract.Forms
         {
             if (e.Button.Index == 1)
             {
-                SelectForm tmpForm = new SelectForm(Tables.ActivityKinds, true, getIDSelectedItemID);
+                ActivityKindsSelectForm tmpForm = new ActivityKindsSelectForm(getIDSelectedItemID);
 
                 tmpForm.ShowDialog();
             }

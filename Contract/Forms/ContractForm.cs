@@ -21,7 +21,7 @@ namespace Contract.Forms
         
         private DB.Contract currContract;
 
-        private UpdateContracts uc;
+        //private UpdateContracts uc;
         
         public ContractForm(int contractID)
         {

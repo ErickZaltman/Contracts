@@ -343,7 +343,6 @@
             this.Name = "ParentForm";
             this.Text = "ParentForm";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ParentForm_KeyPress);
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabbedMdiManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).EndInit();
             this.ResumeLayout(false);

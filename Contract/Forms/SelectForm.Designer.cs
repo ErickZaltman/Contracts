@@ -71,7 +71,6 @@
             this.Name = "SelectForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "SelectSomeShitForm";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.SelectInfoForm_FormClosing);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.SelectForm_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvList)).EndInit();

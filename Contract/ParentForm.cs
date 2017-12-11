@@ -55,7 +55,7 @@ namespace Contract
 
         private void bbrnContracts_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            Forms.ContractSelectForm tmpForm = (Forms.ContractSelectForm)Forms.ContractSelectForm.getInst();
+            Forms.ContractSelectForm tmpForm = Forms.ContractSelectForm.getInst();
             tmpForm.MdiParent = this;
             tmpForm.Show();
 

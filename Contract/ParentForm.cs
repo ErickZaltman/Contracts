@@ -39,6 +39,11 @@ namespace Contract
             
         }
 
+
+        private void setActiveForm(Type formType)
+        {
+        }
+
         private void tsmiMainForm_Click(object sender, EventArgs e)
         {
             MainForm tmpForm = new MainForm();
@@ -48,37 +53,44 @@ namespace Contract
 
         private void bbrnContracts_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            Forms.ContractSelectForm tmpForm = new Forms.ContractSelectForm();
+            Forms.ContractSelectForm tmpForm = (Forms.ContractSelectForm)Forms.ContractSelectForm.getInst();
             tmpForm.MdiParent = this;
             tmpForm.Show();
+
+            xtraTabbedMdiManager1.SelectedPage = xtraTabbedMdiManager1.Pages[tmpForm];
+
         }
 
         private void bbtnSingingDocs_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            Forms.SigningSelectForm tmpForm = new Forms.SigningSelectForm();
+            Forms.SigningSelectForm tmpForm = Forms.SigningSelectForm.getInst() as Forms.SigningSelectForm;
             tmpForm.MdiParent = this;
             tmpForm.Show();
+            xtraTabbedMdiManager1.SelectedPage = xtraTabbedMdiManager1.Pages[tmpForm];
         }
 
         private void barButtonItem8_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            Forms.ContractorsSelectForm tmpForm = new Forms.ContractorsSelectForm();
+            Forms.ContractorsSelectForm tmpForm = Forms.ContractorsSelectForm.getInst();
             tmpForm.MdiParent = this;
             tmpForm.Show();
+            xtraTabbedMdiManager1.SelectedPage = xtraTabbedMdiManager1.Pages[tmpForm];
         }
 
         private void barButtonItem3_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            Forms.SupAgreementsSelectForm tmpForm = new Forms.SupAgreementsSelectForm();
+            Forms.SupAgreementsSelectForm tmpForm = Forms.SupAgreementsSelectForm.getInst() as Forms.SupAgreementsSelectForm;
             tmpForm.MdiParent = this;
             tmpForm.Show();
+            xtraTabbedMdiManager1.SelectedPage = xtraTabbedMdiManager1.Pages[tmpForm];
         }
 
         private void bbtnAnexes_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            Forms.AnnexesSelectForm tmpForm = new Forms.AnnexesSelectForm();
+            Forms.AnnexesSelectForm tmpForm = Forms.AnnexesSelectForm.getInst() as Forms.AnnexesSelectForm;
             tmpForm.MdiParent = this;
             tmpForm.Show();
+            xtraTabbedMdiManager1.SelectedPage = xtraTabbedMdiManager1.Pages[tmpForm];
         }
 
         private void bbtnDisAgreements_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -88,22 +100,42 @@ namespace Contract
 
         private void bbtnDepartments_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            Forms.DepartmentsSelectForm tmpForm = new Forms.DepartmentsSelectForm();
+            Forms.DepartmentsSelectForm tmpForm = Forms.DepartmentsSelectForm.getInst() as Forms.DepartmentsSelectForm;
             tmpForm.MdiParent = this;
             tmpForm.Show();
+            xtraTabbedMdiManager1.SelectedPage = xtraTabbedMdiManager1.Pages[tmpForm];
         }
 
         private void bbtnActivityKind_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            Forms.ActivityKindsSelectForm tmpForm = new Forms.ActivityKindsSelectForm();
+            Forms.ActivityKindsSelectForm tmpForm =  Forms.ActivityKindsSelectForm.getInst() as Forms.ActivityKindsSelectForm;
             tmpForm.MdiParent = this;
             tmpForm.Show();
+            xtraTabbedMdiManager1.SelectedPage = xtraTabbedMdiManager1.Pages[tmpForm];
         }
 
         private void ParentForm_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (e.KeyChar == (char)Keys.Escape)
-                MessageBox.Show("");
+           
+        }
+
+        private void xtraTabbedMdiManager1_SelectedPageChanged(object sender, EventArgs e)
+        {
+            if (xtraTabbedMdiManager1.Pages.Count > 1 && (xtraTabbedMdiManager1.SelectedPage.MdiChild.GetType() == typeof(Forms.ContractForm) || xtraTabbedMdiManager1.SelectedPage.MdiChild.GetType() == typeof(Forms.ContractSelectForm)))
+            {
+                rpContractWork.Visible = true;
+            }
+            else
+                rpContractWork.Visible = false;
+        }
+
+        private void xtraTabbedMdiManager1_PageRemoved(object sender, DevExpress.XtraTabbedMdi.MdiTabPageEventArgs e)
+        {
+        }
+
+        private void barButtonItem1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            int i = 0;
         }
     }
     

@@ -13,6 +13,9 @@ namespace Contract.Forms
 {
     public partial class SelectForm : DevExpress.XtraEditors.XtraForm
     {
+
+
+
         protected string type;
         protected Tables table;
         protected DB.DBModel dbContext;
@@ -30,6 +33,9 @@ namespace Contract.Forms
             this.dbContext = new DB.DBModel();
             FillGV();
         }
+
+        
+
         public SelectForm(Tables table, bool isSelection, getIDFromForm sender)
         {
             InitializeComponent();

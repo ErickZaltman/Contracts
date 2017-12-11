@@ -14,13 +14,7 @@ namespace Contract
 {
     public partial class ParentForm : DevExpress.XtraEditors.XtraForm
     {
-
-        ////TODO 
-        //Придумать кнопки
-        
-
-
-
+        public delegate void UpdateContracts();
         public ParentForm()
         {
             InitializeComponent();
@@ -32,14 +26,7 @@ namespace Contract
 
             dbContext = new DBModel();
             Properties.Settings.CurrentUserID = id;
-
-
-            
-
-            
         }
-
-
         private void setActiveForm(Type formType)
         {
         }
@@ -58,7 +45,6 @@ namespace Contract
             tmpForm.Show();
 
             xtraTabbedMdiManager1.SelectedPage = xtraTabbedMdiManager1.Pages[tmpForm];
-
         }
 
         private void bbtnSingingDocs_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -133,9 +119,40 @@ namespace Contract
         {
         }
 
-        private void barButtonItem1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        public void updateContracts()
         {
-            int i = 0;
+            Forms.ContractSelectForm childForm = (xtraTabbedMdiManager1.SelectedPage.MdiChild as Forms.ContractSelectForm);
+            childForm.gridControl1.DataSource = null;
+            childForm.gridControl1.MainView = childForm.gvList;
+
+            var contractsBindingSource = dbContext.Contract.Where(y => y.isRemoved != true).Join(dbContext.getFullUserName, e => e.AuthorID, x => x.ID, (e, x) => new
+            {
+                e.ID,
+                e.Number,
+                Category = e.ContractCategory.Name,
+                e.Theme,
+                e.Summ,
+                Name = x.FullName
+            }).ToList();
+
+            childForm.gridControl1.DataSource = contractsBindingSource;
+
+            childForm.gvList.Columns["ID"].Visible = false;
+
+            childForm.gvList.Columns["Number"].Caption = "Номер договора";
+            childForm.gvList.Columns["Category"].Caption = "Категория договора";
+            childForm.gvList.Columns["Theme"].Caption = "Предмет договора";
+            childForm.gvList.Columns["Summ"].Caption = "Сумма договора";
+            childForm.gvList.Columns["Name"].Caption = "Автор";
+        }
+
+        private void bbtnRemoveContract_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            Forms.ContractSelectForm childForm = (xtraTabbedMdiManager1.SelectedPage.MdiChild as Forms.ContractSelectForm);
+            int rowIndex = childForm.gvList.GetSelectedRows()[0];
+            int id = Convert.ToInt32(childForm.gvList.GetRowCellValue(rowIndex, "ID"));
+            childForm.RemoveContract(id);
+            updateContracts();
         }
     }
     

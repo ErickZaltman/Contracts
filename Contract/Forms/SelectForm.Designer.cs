@@ -80,7 +80,7 @@
         }
 
         #endregion
-        protected DevExpress.XtraGrid.GridControl gridControl1;
         protected internal DevExpress.XtraGrid.Views.Grid.GridView gvList;
+        public DevExpress.XtraGrid.GridControl gridControl1;
     }
 }

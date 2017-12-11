@@ -32,16 +32,10 @@ namespace Contract.Forms
             inst = null;
         }
 
-        private void ContractSelectForm_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            MessageBox.Show("hui");
-        }
-
         private void fillGV()
         {
-            gridControl1.DataSource = dbContext.Contract.Join(dbContext.getFullUserName, e => e.AuthorID, x => x.ID, (e, x) => new
+            gridControl1.DataSource = dbContext.Contract.Where(y => y.isRemoved != true).Join(dbContext.getFullUserName, e => e.AuthorID, x => x.ID, (e, x) => new
             {
-
                 e.ID,
                 e.Number,
                 Category = e.ContractCategory.Name,
@@ -59,6 +53,13 @@ namespace Contract.Forms
             gvList.Columns["Name"].Caption = "Автор";
         }
         
+        public void RemoveContract (int id)
+        {
+            DB.Contract currContract = dbContext.Contract.First(x => x.ID == id);
+            currContract.isRemoved = true;
+            dbContext.SaveChanges();
+            //uc();
+        }
 
 
     }

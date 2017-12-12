@@ -29,7 +29,16 @@ namespace Contract
 
         public void updateContracts()
         {
-            Forms.ContractSelectForm childForm = (xtraTabbedMdiManager1.SelectedPage.MdiChild as Forms.ContractSelectForm);
+            Forms.ContractSelectForm childForm = new Forms.ContractSelectForm();
+            foreach(var item in this.MdiChildren)
+            {
+                if(item is Forms.ContractSelectForm)
+                {
+                    childForm = item as Forms.ContractSelectForm;
+                    break;
+                }
+            }
+
             childForm.gridControl1.DataSource = null;
             childForm.gridControl1.MainView = childForm.gvList;
 
@@ -118,11 +127,25 @@ namespace Contract
 
         private void xtraTabbedMdiManager1_SelectedPageChanged(object sender, EventArgs e)
         {
-            // if (xtraTabbedMdiManager1.Pages.Count > 1 && (xtraTabbedMdiManager1.SelectedPage.MdiChild.GetType() == typeof(Forms.ContractForm) || xtraTabbedMdiManager1.SelectedPage.MdiChild.GetType() == typeof(Forms.ContractSelectForm)))
             if (xtraTabbedMdiManager1.SelectedPage != null && (xtraTabbedMdiManager1.SelectedPage.MdiChild.GetType() == typeof(Forms.ContractForm) || xtraTabbedMdiManager1.SelectedPage.MdiChild.GetType() == typeof(Forms.ContractSelectForm)))
-
             {
                 rpContractWork.Visible = true;
+                if ((xtraTabbedMdiManager1.SelectedPage.MdiChild.GetType() == typeof(Forms.ContractForm)))
+                {
+                    bbtnNewContract.Enabled = false;
+                    bbtnRemoveContract.Enabled = false;
+                    bbtnSendToSigning.Enabled = true;
+                    bbtnConnectedDocs.Enabled = true;
+                    bbtnAttachments.Enabled = true;
+                }
+                else
+                {
+                    bbtnNewContract.Enabled = true;
+                    bbtnRemoveContract.Enabled = true;
+                    bbtnSendToSigning.Enabled = false;
+                    bbtnConnectedDocs.Enabled = false;
+                    bbtnAttachments.Enabled = false;
+                }
             }
             else
                 rpContractWork.Visible = false;
@@ -137,14 +160,27 @@ namespace Contract
             updateContracts();
         }
 
-        private void xtraTabbedMdiManager1_PageRemoved(object sender, DevExpress.XtraTabbedMdi.MdiTabPageEventArgs e)
+        private void bbtnSave_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-
+            Forms.ContractForm childForm = (xtraTabbedMdiManager1.SelectedPage.MdiChild as Forms.ContractForm);
+            childForm.SaveContracChanges();
+            updateContracts();
+            bbtnSave.Enabled = false;
         }
 
-        private void barButtonItem6_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        private void bbtnSendToSigning_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-           
+            Forms.ContractForm childForm = (xtraTabbedMdiManager1.SelectedPage.MdiChild as Forms.ContractForm);
+            childForm.SaveContracChanges();
+            childForm.SendContractToSigning();
+            childForm.FillAgreemenst();
+        }
+
+        private void bbtnNewContract_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            var tmpform = new Forms.ContractForm(0);
+            tmpform.MdiParent = this;
+            tmpform.Show();
         }
     }
     

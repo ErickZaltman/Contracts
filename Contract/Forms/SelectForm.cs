@@ -53,7 +53,6 @@ namespace Contract.Forms
         }
         protected void openDocForm(int id, Tables type)
         {
-
             var tmpForm = (Form)Activator.CreateInstance(Program.TypesList[type],id);
             tmpForm.MdiParent = this.MdiParent;
             tmpForm.Show();
@@ -70,12 +69,6 @@ namespace Contract.Forms
             {
                 Close();
             }
-        }
-
-        private void gridControl1_KeyDown(object sender, KeyEventArgs e)
-        {
-            //if (e.KeyCode == Keys.Escape)
-            //    Close();
         }
     }
 }

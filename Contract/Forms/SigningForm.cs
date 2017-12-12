@@ -26,7 +26,7 @@ namespace Contract.Forms
             this.signID = signID;
             //this.contractID = contractID;
 
-            currContract = dbContext.Contract.Where(x => x.ID == contractID).ToList()[0];
+            currContract = dbContext.Signing.Where(x => x.ID == signID).ToList()[0].Contract;
             fillDocInfo();
             fillGVSign();
             if((bool)dbContext.Signing.Where(x => x.ID == signID).ToList()[0].IsAgreed)

@@ -437,6 +437,14 @@ namespace Contract.Forms
 
         #endregion
 
+        private void ContractForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+           if(MessageBox.Show("ZARYT:", "ZAZA", MessageBoxButtons.YesNoCancel) == DialogResult.OK)
+            {
+                Close();
+            }
+            return;
+        }
     }
 }
 

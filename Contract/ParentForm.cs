@@ -14,45 +14,47 @@ namespace Contract
 {
     public partial class ParentForm : DevExpress.XtraEditors.XtraForm
     {
-
-        ////TODO 
-        //Придумать кнопки
-        
-
-
-
+        DBModel dbContext;
         public ParentForm()
         {
             InitializeComponent();
         }
-        DBModel dbContext;
         public ParentForm(int id)
         {
             InitializeComponent();
 
             dbContext = new DBModel();
             Properties.Settings.CurrentUserID = id;
-
-            bsiUserName.Caption = dbContext.getFullUserName.First(x => x.ID == id).FullName;
-
-
-            
-
-            
         }
 
-
-        private void setActiveForm(Type formType)
+        public void updateContracts()
         {
+            Forms.ContractSelectForm childForm = (xtraTabbedMdiManager1.SelectedPage.MdiChild as Forms.ContractSelectForm);
+            childForm.gridControl1.DataSource = null;
+            childForm.gridControl1.MainView = childForm.gvList;
+
+            var contractsBindingSource = dbContext.Contract.Where(y => y.isRemoved != true).Join(dbContext.getFullUserName, e => e.AuthorID, x => x.ID, (e, x) => new
+            {
+                e.ID,
+                e.Number,
+                Category = e.ContractCategory.Name,
+                e.Theme,
+                e.Summ,
+                Name = x.FullName
+            }).ToList();
+
+            childForm.gridControl1.DataSource = contractsBindingSource;
+
+            childForm.gvList.Columns["ID"].Visible = false;
+
+            childForm.gvList.Columns["Number"].Caption = "Номер договора";
+            childForm.gvList.Columns["Category"].Caption = "Категория договора";
+            childForm.gvList.Columns["Theme"].Caption = "Предмет договора";
+            childForm.gvList.Columns["Summ"].Caption = "Сумма договора";
+            childForm.gvList.Columns["Name"].Caption = "Автор";
         }
 
-        private void tsmiMainForm_Click(object sender, EventArgs e)
-        {
-            MainForm tmpForm = new MainForm();
-            tmpForm.MdiParent = this;
-            tmpForm.Show();
-        }
-
+        #region Ribbon OPEN forms buttons click
         private void bbrnContracts_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             Forms.ContractSelectForm tmpForm = Forms.ContractSelectForm.getInst();
@@ -64,7 +66,6 @@ namespace Contract
             ribbonControl1.SelectedPage = rpContractWork;
 
         }
-
         private void bbtnSingingDocs_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             Forms.SigningSelectForm tmpForm = Forms.SigningSelectForm.getInst() as Forms.SigningSelectForm;
@@ -72,7 +73,6 @@ namespace Contract
             tmpForm.Show();
             xtraTabbedMdiManager1.SelectedPage = xtraTabbedMdiManager1.Pages[tmpForm];
         }
-
         private void barButtonItem8_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             Forms.ContractorsSelectForm tmpForm = Forms.ContractorsSelectForm.getInst();
@@ -80,7 +80,6 @@ namespace Contract
             tmpForm.Show();
             xtraTabbedMdiManager1.SelectedPage = xtraTabbedMdiManager1.Pages[tmpForm];
         }
-
         private void barButtonItem3_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             Forms.SupAgreementsSelectForm tmpForm = Forms.SupAgreementsSelectForm.getInst() as Forms.SupAgreementsSelectForm;
@@ -96,7 +95,6 @@ namespace Contract
             tmpForm.Show();
             xtraTabbedMdiManager1.SelectedPage = xtraTabbedMdiManager1.Pages[tmpForm];
         }
-
         private void bbtnDisAgreements_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             
@@ -109,7 +107,6 @@ namespace Contract
             tmpForm.Show();
             xtraTabbedMdiManager1.SelectedPage = xtraTabbedMdiManager1.Pages[tmpForm];
         }
-
         private void bbtnActivityKind_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             Forms.ActivityKindsSelectForm tmpForm =  Forms.ActivityKindsSelectForm.getInst() as Forms.ActivityKindsSelectForm;
@@ -117,47 +114,32 @@ namespace Contract
             tmpForm.Show();
             xtraTabbedMdiManager1.SelectedPage = xtraTabbedMdiManager1.Pages[tmpForm];
         }
-
-        private void ParentForm_KeyPress(object sender, KeyPressEventArgs e)
-        {
-           
-        }
+        #endregion
 
         private void xtraTabbedMdiManager1_SelectedPageChanged(object sender, EventArgs e)
         {
-            if (xtraTabbedMdiManager1.Pages.Count > 1)
-            {
-                if (xtraTabbedMdiManager1.SelectedPage.MdiChild.GetType() == typeof(Forms.ContractForm) || xtraTabbedMdiManager1.SelectedPage.MdiChild.GetType() == typeof(Forms.ContractSelectForm))
-                {
-                    rpContractWork.Visible = true;
-                    ribbonControl1.SelectedPage = rpContractWork;
-                }
-                else
-                {
-                    rpContractWork.Visible = false;
-                }
+            // if (xtraTabbedMdiManager1.Pages.Count > 1 && (xtraTabbedMdiManager1.SelectedPage.MdiChild.GetType() == typeof(Forms.ContractForm) || xtraTabbedMdiManager1.SelectedPage.MdiChild.GetType() == typeof(Forms.ContractSelectForm)))
+            if (xtraTabbedMdiManager1.SelectedPage != null && (xtraTabbedMdiManager1.SelectedPage.MdiChild.GetType() == typeof(Forms.ContractForm) || xtraTabbedMdiManager1.SelectedPage.MdiChild.GetType() == typeof(Forms.ContractSelectForm)))
 
-                if (xtraTabbedMdiManager1.SelectedPage.MdiChild.GetType() == typeof(Forms.ContractForm))
-                {
-                    rbpCurrentContract.Visible = true;
-                    ribbonControl1.SelectedPage = rpContractWork;
-                    rbpCurrentContract.Text = "Договор № " + (xtraTabbedMdiManager1.SelectedPage.MdiChild as Forms.ContractForm).currContract.Number ;
-                }
-                else rbpCurrentContract.Visible = false;
+            {
+                rpContractWork.Visible = true;
             }
+            else
+                rpContractWork.Visible = false;
+        }     
+
+        private void bbtnRemoveContract_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            Forms.ContractSelectForm childForm = (xtraTabbedMdiManager1.SelectedPage.MdiChild as Forms.ContractSelectForm);
+            int rowIndex = childForm.gvList.GetSelectedRows()[0];
+            int id = Convert.ToInt32(childForm.gvList.GetRowCellValue(rowIndex, "ID"));
+            childForm.RemoveContract(id);
+            updateContracts();
         }
 
         private void xtraTabbedMdiManager1_PageRemoved(object sender, DevExpress.XtraTabbedMdi.MdiTabPageEventArgs e)
         {
-            if (xtraTabbedMdiManager1.Pages.Count == 0)
-            {
-                rpContractWork.Visible = false;
-            }
-        }
 
-        private void barButtonItem1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            int i = 0;
         }
 
         private void barButtonItem6_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -168,4 +150,4 @@ namespace Contract
     
 }
 
-// 11:39
+// Тут была ЗЛАЯЛЕЗБУХА

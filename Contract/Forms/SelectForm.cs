@@ -13,9 +13,6 @@ namespace Contract.Forms
 {
     public partial class SelectForm : DevExpress.XtraEditors.XtraForm
     {
-
-
-
         protected string type;
         protected Tables table;
         protected DB.DBModel dbContext;
@@ -31,11 +28,7 @@ namespace Contract.Forms
             InitializeComponent();
             this.table = table;
             this.dbContext = new DB.DBModel();
-            FillGV();
         }
-
-        
-
         public SelectForm(Tables table, bool isSelection, getIDFromForm sender)
         {
             InitializeComponent();
@@ -43,18 +36,6 @@ namespace Contract.Forms
             this.table = table;
             this.isSelection = isSelection;
             this.dbContext = new DB.DBModel();
-        }
-
-        protected void FillGV()
-        {
-        }
-
-
-
-
-        private void SelectInfoForm_FormClosing(object sender, FormClosingEventArgs e)
-        {
-
         }
 
         private void gridView1_RowClick(object sender, DevExpress.XtraGrid.Views.Grid.RowClickEventArgs e)
@@ -68,7 +49,6 @@ namespace Contract.Forms
                     return;
                 }
                 openDocForm((int)gvList.GetRowCellValue(e.RowHandle, "ID"), table);
-
             }
         }
         protected void openDocForm(int id, Tables type)

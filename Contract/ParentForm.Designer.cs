@@ -47,16 +47,16 @@
             this.bbtnNewContract = new DevExpress.XtraBars.BarButtonItem();
             this.bbtnSave = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem3 = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem4 = new DevExpress.XtraBars.BarButtonItem();
+            this.bbtnRemoveContract = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
-            this.ribbonMiniToolbar1 = new DevExpress.XtraBars.Ribbon.RibbonMiniToolbar();
+            this.ribbonMiniToolbar1 = new DevExpress.XtraBars.Ribbon.RibbonMiniToolbar(this.components);
             this.rpMain = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.rbgCats = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.rpContractWork = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.rbpCurrentContract = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.ribbonPageGroup3 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.workspaceManager1 = new DevExpress.Utils.WorkspaceManager();
             this.barButtonItem5 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem6 = new DevExpress.XtraBars.BarButtonItem();
@@ -111,7 +111,7 @@
             this.bbtnNewContract,
             this.bbtnSave,
             this.barButtonItem3,
-            this.barButtonItem4,
+            this.bbtnRemoveContract,
             this.barButtonItem1,
             this.barButtonItem2,
             this.bsiUserName,
@@ -223,38 +223,58 @@
             // bbtnNewContract
             // 
             this.bbtnNewContract.Caption = "Новый договор";
+            this.bbtnNewContract.Glyph = ((System.Drawing.Image)(resources.GetObject("bbtnNewContract.Glyph")));
             this.bbtnNewContract.Id = 37;
+            this.bbtnNewContract.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("bbtnNewContract.LargeGlyph")));
             this.bbtnNewContract.Name = "bbtnNewContract";
             // 
             // bbtnSave
             // 
             this.bbtnSave.Caption = "Сохранить договор";
+            this.bbtnSave.Enabled = false;
+            this.bbtnSave.Glyph = ((System.Drawing.Image)(resources.GetObject("bbtnSave.Glyph")));
             this.bbtnSave.Id = 38;
+            this.bbtnSave.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("bbtnSave.LargeGlyph")));
             this.bbtnSave.Name = "bbtnSave";
             // 
             // barButtonItem3
             // 
             this.barButtonItem3.Caption = "Отправить на согласование";
+            this.barButtonItem3.Enabled = false;
+            this.barButtonItem3.Glyph = ((System.Drawing.Image)(resources.GetObject("barButtonItem3.Glyph")));
             this.barButtonItem3.Id = 39;
+            this.barButtonItem3.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("barButtonItem3.LargeGlyph")));
             this.barButtonItem3.Name = "barButtonItem3";
+            this.barButtonItem3.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText;
             // 
-            // barButtonItem4
+            // bbtnRemoveContract
             // 
-            this.barButtonItem4.Caption = "Пометить на удаление";
-            this.barButtonItem4.Id = 40;
-            this.barButtonItem4.Name = "barButtonItem4";
+            this.bbtnRemoveContract.Caption = "Пометить на удаление";
+            this.bbtnRemoveContract.Glyph = ((System.Drawing.Image)(resources.GetObject("bbtnRemoveContract.Glyph")));
+            this.bbtnRemoveContract.Id = 40;
+            this.bbtnRemoveContract.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("bbtnRemoveContract.LargeGlyph")));
+            this.bbtnRemoveContract.Name = "bbtnRemoveContract";
+            this.bbtnRemoveContract.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbtnRemoveContract_ItemClick);
             // 
             // barButtonItem1
             // 
             this.barButtonItem1.Caption = "Вложения";
+            this.barButtonItem1.Enabled = false;
+            this.barButtonItem1.Glyph = ((System.Drawing.Image)(resources.GetObject("barButtonItem1.Glyph")));
             this.barButtonItem1.Id = 42;
+            this.barButtonItem1.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("barButtonItem1.LargeGlyph")));
             this.barButtonItem1.Name = "barButtonItem1";
+            this.barButtonItem1.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText;
             // 
             // barButtonItem2
             // 
             this.barButtonItem2.Caption = "Связанные документы";
+            this.barButtonItem2.Enabled = false;
+            this.barButtonItem2.Glyph = ((System.Drawing.Image)(resources.GetObject("barButtonItem2.Glyph")));
             this.barButtonItem2.Id = 43;
+            this.barButtonItem2.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("barButtonItem2.LargeGlyph")));
             this.barButtonItem2.Name = "barButtonItem2";
+            this.barButtonItem2.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText;
             // 
             // rpMain
             // 
@@ -297,19 +317,18 @@
             // ribbonPageGroup2
             // 
             this.ribbonPageGroup2.ItemLinks.Add(this.bbtnNewContract);
-            this.ribbonPageGroup2.ItemLinks.Add(this.barButtonItem4);
+            this.ribbonPageGroup2.ItemLinks.Add(this.bbtnRemoveContract);
             this.ribbonPageGroup2.Name = "ribbonPageGroup2";
             this.ribbonPageGroup2.Text = "Договора";
             // 
-            // rbpCurrentContract
+            // ribbonPageGroup3
             // 
-            this.rbpCurrentContract.ItemLinks.Add(this.barButtonItem3);
-            this.rbpCurrentContract.ItemLinks.Add(this.bbtnSave);
-            this.rbpCurrentContract.ItemLinks.Add(this.barButtonItem1);
-            this.rbpCurrentContract.ItemLinks.Add(this.barButtonItem2);
-            this.rbpCurrentContract.Name = "rbpCurrentContract";
-            this.rbpCurrentContract.Text = "Работа с договором";
-            this.rbpCurrentContract.Visible = false;
+            this.ribbonPageGroup3.ItemLinks.Add(this.bbtnSave);
+            this.ribbonPageGroup3.ItemLinks.Add(this.barButtonItem3);
+            this.ribbonPageGroup3.ItemLinks.Add(this.barButtonItem2);
+            this.ribbonPageGroup3.ItemLinks.Add(this.barButtonItem1);
+            this.ribbonPageGroup3.Name = "ribbonPageGroup3";
+            this.ribbonPageGroup3.Text = "ribbonPageGroup3";
             // 
             // workspaceManager1
             // 
@@ -343,7 +362,6 @@
             this.Name = "ParentForm";
             this.Text = "ParentForm";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ParentForm_KeyPress);
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabbedMdiManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).EndInit();
             this.ResumeLayout(false);
@@ -376,7 +394,7 @@
         private DevExpress.XtraBars.BarButtonItem bbtnNewContract;
         private DevExpress.XtraBars.BarButtonItem bbtnSave;
         private DevExpress.XtraBars.BarButtonItem barButtonItem3;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem4;
+        private DevExpress.XtraBars.BarButtonItem bbtnRemoveContract;
         private DevExpress.XtraBars.BarButtonItem barButtonItem1;
         private DevExpress.XtraBars.BarButtonItem barButtonItem2;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup rbpCurrentContract;

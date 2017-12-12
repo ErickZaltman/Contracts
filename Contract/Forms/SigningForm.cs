@@ -13,7 +13,7 @@ namespace Contract.Forms
 {
     public partial class SigningForm : DevExpress.XtraEditors.XtraForm
     {
-        //private UpdateContracts d;
+        //private UpdateContracts d;aaa
         private DB.DBModel dbContext;
         private int contractID;
         private int signID;

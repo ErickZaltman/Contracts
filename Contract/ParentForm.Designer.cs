@@ -1,4 +1,6 @@
-﻿namespace Contract
+﻿using DevExpress.XtraBars.Ribbon;
+
+namespace Contract
 {
     partial class ParentForm
     {
@@ -50,7 +52,6 @@
             this.bbtnRemoveContract = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem2 = new DevExpress.XtraBars.BarButtonItem();
-            this.ribbonMiniToolbar1 = new DevExpress.XtraBars.Ribbon.RibbonMiniToolbar(this.components);
             this.rpMain = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.rbgCats = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -118,7 +119,6 @@
             this.barButtonItem6});
             this.ribbonControl1.Location = new System.Drawing.Point(0, 0);
             this.ribbonControl1.MaxItemId = 46;
-            this.ribbonControl1.MiniToolbars.Add(this.ribbonMiniToolbar1);
             this.ribbonControl1.Name = "ribbonControl1";
             this.ribbonControl1.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.rpMain,
@@ -309,7 +309,7 @@
             // 
             this.rpContractWork.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
             this.ribbonPageGroup2,
-            this.rbpCurrentContract});
+            this.ribbonPageGroup3});
             this.rpContractWork.Name = "rpContractWork";
             this.rpContractWork.Text = "Договорная работа";
             this.rpContractWork.Visible = false;
@@ -373,7 +373,6 @@
         private DevExpress.XtraBars.Ribbon.RibbonStatusBar ribbonStatusBar1;
         private DevExpress.XtraBars.Ribbon.RibbonControl ribbonControl1;
         private DevExpress.Utils.WorkspaceManager workspaceManager1;
-        private DevExpress.XtraBars.Ribbon.RibbonMiniToolbar ribbonMiniToolbar1;
         private DevExpress.XtraBars.Ribbon.RibbonPage rpMain;
         private DevExpress.XtraBars.BarButtonItem bbrnContracts;
         private DevExpress.XtraBars.BarButtonItem bbtnSingingDocs;
@@ -397,7 +396,7 @@
         private DevExpress.XtraBars.BarButtonItem bbtnRemoveContract;
         private DevExpress.XtraBars.BarButtonItem barButtonItem1;
         private DevExpress.XtraBars.BarButtonItem barButtonItem2;
-        private DevExpress.XtraBars.Ribbon.RibbonPageGroup rbpCurrentContract;
+        private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup3;
         private DevExpress.XtraBars.BarStaticItem bsiUserName;
         private DevExpress.XtraBars.BarButtonItem barButtonItem6;
     }

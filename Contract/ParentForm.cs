@@ -182,6 +182,11 @@ namespace Contract
             tmpform.MdiParent = this;
             tmpform.Show();
         }
+
+        private void barButtonItem1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            xtraTabbedMdiManager1.SelectedPage.MdiChild.Close();
+        }
     }
     
 }

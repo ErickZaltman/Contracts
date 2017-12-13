@@ -53,6 +53,7 @@ namespace Contract
             this.bbtnRemoveContract = new DevExpress.XtraBars.BarButtonItem();
             this.bbtnAttachments = new DevExpress.XtraBars.BarButtonItem();
             this.bbtnConnectedDocs = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
             this.rpMain = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.rbgCats = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -114,10 +115,12 @@ namespace Contract
             this.bbtnRemoveContract,
             this.bbtnAttachments,
             this.bbtnConnectedDocs,
-            this.bsiUserName});
+            this.bsiUserName,
+            this.barButtonItem1});
             this.ribbonControl1.Location = new System.Drawing.Point(0, 0);
-            this.ribbonControl1.MaxItemId = 46;
+            this.ribbonControl1.MaxItemId = 48;
             this.ribbonControl1.Name = "ribbonControl1";
+            this.ribbonControl1.PageHeaderItemLinks.Add(this.barButtonItem1);
             this.ribbonControl1.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.rpMain,
             this.rpContractWork});
@@ -277,6 +280,15 @@ namespace Contract
             this.bbtnConnectedDocs.Name = "bbtnConnectedDocs";
             this.bbtnConnectedDocs.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText;
             // 
+            // barButtonItem1
+            // 
+            this.barButtonItem1.Caption = "КРЕСТИК";
+            this.barButtonItem1.Glyph = global::Contract.Properties.Resources.x;
+            this.barButtonItem1.Id = 47;
+            this.barButtonItem1.Name = "barButtonItem1";
+            this.barButtonItem1.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText;
+            this.barButtonItem1.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem1_ItemClick);
+            // 
             // rpMain
             // 
             this.rpMain.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
@@ -391,5 +403,6 @@ namespace Contract
         public DevExpress.XtraBars.BarButtonItem bbtnSave;
         public RibbonControl ribbonControl1;
         public RibbonPageGroup rpgContractWork;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem1;
     }
 }

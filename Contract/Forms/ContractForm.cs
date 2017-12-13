@@ -21,8 +21,6 @@ namespace Contract.Forms
 
         public DB.Contract currContract;
 
-        //private UpdateContracts uc;
-
         public ContractForm(int contractID)
         {
             BaseEdit.DefaultErrorIconAlignment = ErrorIconAlignment.BottomRight;
@@ -32,7 +30,6 @@ namespace Contract.Forms
 
             this.contractID = contractID;
             this.UserName = dbContext.getFullUserName.Where(x => x.ID == Properties.Settings.CurrentUserID).ToList()[0].ToString();
-            //this.uc = updateContracts;
             fillControls();
 
             currContract = new DB.Contract();
@@ -41,7 +38,6 @@ namespace Contract.Forms
 
             if (contractID == 0)
             {
-                //sbSaveChanges.Enabled = true;
                 teAuthor.Text = UserName;
             }
 
@@ -242,7 +238,6 @@ namespace Contract.Forms
             teContractNumber.Text = currContract.Number;
             contractID = currContract.ID;
             isLoaded = true;
-            //uc();
         }
 
         private void sbSaveChanges_Click(object sender, EventArgs e)
@@ -305,16 +300,12 @@ namespace Contract.Forms
         private void control_EditValueChanged(object sender, EventArgs e)
         {
             bool isValid = DoValidate(sender);
-
             if (isLoaded)
             {
-
                 if (contractID != 0)
                     if (isValid && !DataChanged())
-                        //sbSaveChanges.Enabled = true;
                         (this.ParentForm as ParentForm).bbtnSave.Enabled = true;
                     else
-                        // sbSaveChanges.Enabled = false;
                         (this.ParentForm as ParentForm).bbtnSave.Enabled = false;
             }
         }
@@ -384,14 +375,21 @@ namespace Contract.Forms
             return isValid;
         }
 
+        public bool IsValid()
+        {
+            bool b = true;
+            if (!isValid_deDate()) { deDate_Validating(deDate, new CancelEventArgs()); b = false; }
+            if (!isValid_lueDepartment()) { lueDepartment_Validating(lueDepartment, new CancelEventArgs()); b = false; }
+            return b;
+        }
+
         private void teSumm_Validating(object sender, CancelEventArgs e)
         {
-            TextEdit te = sender as TextEdit;
             double output;
-            bool isInt = Double.TryParse(te.Text, out output);
-            if (te.Text != "" && !isInt)
+            bool isInt = Double.TryParse(teSumm.Text, out output);
+            if (teSumm.Text != "" && !isInt)
             {
-                te.ErrorText = "Некорректная сумма";
+                teSumm.ErrorText = "Некорректная сумма";
                 e.Cancel = true;
             }
         }
@@ -451,6 +449,7 @@ namespace Contract.Forms
                 }
             }
         }
+
     }
 }
 

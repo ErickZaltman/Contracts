@@ -181,9 +181,12 @@ namespace Contract
         private void bbtnSave_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             Forms.ContractForm childForm = (xtraTabbedMdiManager1.SelectedPage.MdiChild as Forms.ContractForm);
-            childForm.SaveContracChanges();
-            updateContracts();
-            bbtnSave.Enabled = false;
+            if (childForm.IsValid())
+            {
+                childForm.SaveContracChanges();
+                updateContracts();
+                bbtnSave.Enabled = false;
+            }
         }
 
         private void bbtnSendToSigning_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -196,6 +199,7 @@ namespace Contract
 
         private void bbtnNewContract_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            bbtnSave.Enabled = true;
             var tmpform = new Forms.ContractForm(0);
             tmpform.MdiParent = this;
             tmpform.Show();

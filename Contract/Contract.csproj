@@ -258,7 +258,10 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\x.gif" />
+    <None Include="Resources\btnClose_normal.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnClose_hover.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\x1.gif" />

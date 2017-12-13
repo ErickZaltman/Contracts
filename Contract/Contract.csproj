@@ -78,6 +78,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="cs\com.cs" />
+    <Compile Include="cs\DocumentFormsContainer.cs" />
     <Compile Include="DB\ActivityKind.cs" />
     <Compile Include="DB\AgreementSignList.cs" />
     <Compile Include="DB\AnnexTypes.cs" />
@@ -249,6 +250,15 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\x.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\x1.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Image1.bmp" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.

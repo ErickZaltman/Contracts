@@ -451,6 +451,11 @@ namespace Contract.Forms
                 }
             }
         }
+
+        private void ContractForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            (MdiParent as ParentForm).DocumentManager.removePage(this);
+        }
     }
 }
 

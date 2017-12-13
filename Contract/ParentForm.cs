@@ -15,6 +15,21 @@ namespace Contract
     public partial class ParentForm : DevExpress.XtraEditors.XtraForm
     {
         DBModel dbContext;
+        private DocumentFormsContainer documentManager;
+
+        internal DocumentFormsContainer DocumentManager
+        {
+            get
+            {
+                return documentManager;
+            }
+
+            set
+            {
+                documentManager = value;
+            }
+        }
+
         public ParentForm()
         {
             InitializeComponent();
@@ -25,6 +40,8 @@ namespace Contract
 
             dbContext = new DBModel();
             Properties.Settings.CurrentUserID = id;
+            documentManager = new DocumentFormsContainer();
+
         }
 
         public void updateContracts()
@@ -192,6 +209,3 @@ namespace Contract
     }
     
 }
-
-// Тут была ЗЛАЯЛЕЗБУХА
-// 123

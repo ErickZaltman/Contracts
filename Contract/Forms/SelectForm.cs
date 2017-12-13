@@ -53,9 +53,12 @@ namespace Contract.Forms
         }
         protected void openDocForm(int id, Tables type)
         {
-            var tmpForm = (Form)Activator.CreateInstance(Program.TypesList[type],id);
+            var tmpForm = (MdiParent as ParentForm).DocumentManager.addPage(new KeyValuePair<string, Form>(Program.TypesList[type].ToString() + id.ToString(), 
+                (Form)Activator.CreateInstance(Program.TypesList[type], id)));
             tmpForm.MdiParent = this.MdiParent;
             tmpForm.Show();
+            (MdiParent as ParentForm).xtraTabbedMdiManager1.SelectedPage = (MdiParent as ParentForm).xtraTabbedMdiManager1.Pages[tmpForm];   //Нихуя не соответствует принципам ООП
+
         }
         private void closeForm()
         {

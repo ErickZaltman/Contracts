@@ -283,7 +283,6 @@ namespace Contract
             // barButtonItem1
             // 
             this.barButtonItem1.Caption = "КРЕСТИК";
-            this.barButtonItem1.Glyph = global::Contract.Properties.Resources.x;
             this.barButtonItem1.Id = 47;
             this.barButtonItem1.Name = "barButtonItem1";
             this.barButtonItem1.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText;

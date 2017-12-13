@@ -537,6 +537,7 @@
             this.Name = "ContractForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ContractForm_FormClosing);
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.ContractForm_FormClosed);
             ((System.ComponentModel.ISupportInitialize)(this.deContractDateStart.Properties.CalendarTimeProperties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.deContractDateStart.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.deContractDateEnd.Properties.CalendarTimeProperties)).EndInit();

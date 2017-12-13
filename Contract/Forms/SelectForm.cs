@@ -53,7 +53,6 @@ namespace Contract.Forms
         }
         protected void openDocForm(int id, Tables type)
         {
-
             var tmpForm = (Form)Activator.CreateInstance(Program.TypesList[type],id);
             tmpForm.MdiParent = this.MdiParent;
             tmpForm.Show();

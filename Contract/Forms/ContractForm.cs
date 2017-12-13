@@ -41,7 +41,7 @@ namespace Contract.Forms
 
             if (contractID == 0)
             {
-                sbSaveChanges.Enabled = true;
+                //sbSaveChanges.Enabled = true;
                 teAuthor.Text = UserName;
             }
 
@@ -169,7 +169,7 @@ namespace Contract.Forms
         #endregion
 
         #region SaveChanges
-        private void SaveContracChanges()
+        public void SaveContracChanges()
         {
             if (lueContractCategory.Text != "" && lueContractCategory.EditValue!= null && currContract.CategoryID != (int)lueContractCategory.EditValue)
                 currContract.CategoryID = (int)lueContractCategory.EditValue;
@@ -263,8 +263,7 @@ namespace Contract.Forms
                 else
                 {
                     SaveContracChanges();
-                    sbSaveChanges.Enabled = false;
-                    simpleButton1.Enabled = true;
+                    //sbSaveChanges.Enabled = false;
                 }
             }
         }
@@ -273,8 +272,9 @@ namespace Contract.Forms
 
         #region Отправить на согласование
 
-        private void SendContractToSigning()
+        public void SendContractToSigning()
         {
+            currContract.OnAgreement = true;
             foreach (var user in dbContext.AgreementSignList.Select(x => x.ID).ToList())
             {
                 DB.Signing tmpSigning = new DB.Signing();
@@ -289,7 +289,7 @@ namespace Contract.Forms
             dbContext.SaveChanges();
         }
 
-        private void FillAgreemenst()
+        public void FillAgreemenst()
         {
             gcAgreements.DataSource = dbContext.Signing.Where(x => x.ContractID == currContract.ID).Select(x => new { FullName = x.Users.FirstName + " " + x.Users.SecondName, x.IsAgreed, x.Note, x.Date, x.DeadlineTime}).ToList();
             gvAgreements.Columns["FullName"].Caption = "Ф.И.О. согласованта";
@@ -299,14 +299,6 @@ namespace Contract.Forms
             gvAgreements.Columns["DeadlineTime"].Caption = "Требуется согласовать до";
         }
 
-        private void simpleButton1_Click(object sender, EventArgs e)
-        {
-            SaveContracChanges();
-
-            currContract.OnAgreement = true;
-            SendContractToSigning();
-            FillAgreemenst();
-        }
         #endregion
 
         #region Equal Check
@@ -319,9 +311,11 @@ namespace Contract.Forms
                 
                 if (contractID != 0)
                     if (isValid &&!DataChanged())
-                        sbSaveChanges.Enabled = true;
+                        //sbSaveChanges.Enabled = true;
+                (this.ParentForm as ParentForm).bbtnSave.Enabled = true;
                     else
-                        sbSaveChanges.Enabled = false;
+                        // sbSaveChanges.Enabled = false;
+                        (this.ParentForm as ParentForm).bbtnSave.Enabled = false;
             }
         }
 
@@ -378,7 +372,7 @@ namespace Contract.Forms
 
         #region Validation
 
-        private bool DoValidate(object sender)
+        public bool DoValidate(object sender)
         {
             bool isValid = true;
             if (sender is TextEdit)
@@ -402,7 +396,7 @@ namespace Contract.Forms
             }
         }
 
-        private bool isValid_deDate()
+        public bool isValid_deDate()
         {
             if (deDate.Text == string.Empty || deDate.Text == null)
             {
@@ -443,6 +437,14 @@ namespace Contract.Forms
 
         #endregion
 
+        private void ContractForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+           if(MessageBox.Show("ZARYT:", "ZAZA", MessageBoxButtons.YesNoCancel) == DialogResult.OK)
+            {
+                Close();
+            }
+            return;
+        }
     }
 }
 

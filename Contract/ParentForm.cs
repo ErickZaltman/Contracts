@@ -149,6 +149,7 @@ namespace Contract
             }
             else
                 rpContractWork.Visible = false;
+            if (xtraTabbedMdiManager1.Pages.Count > 0) barButtonItem1.Visibility = DevExpress.XtraBars.BarItemVisibility.Always;
         }     
 
         private void bbtnRemoveContract_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -185,7 +186,8 @@ namespace Contract
 
         private void barButtonItem1_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            xtraTabbedMdiManager1.SelectedPage.MdiChild.Close();
+                xtraTabbedMdiManager1.SelectedPage.MdiChild.Close();
+            if (xtraTabbedMdiManager1.Pages.Count == 0) barButtonItem1.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
         }
 
         private void barButtonItem1_ItemClick_1(object sender, DevExpress.XtraBars.ItemClickEventArgs e)

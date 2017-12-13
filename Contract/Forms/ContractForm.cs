@@ -18,18 +18,18 @@ namespace Contract.Forms
         private int contractID;
         private string UserName;
         private bool isLoaded = false;
-        
+
         public DB.Contract currContract;
 
         //private UpdateContracts uc;
-        
+
         public ContractForm(int contractID)
         {
             BaseEdit.DefaultErrorIconAlignment = ErrorIconAlignment.BottomRight;
 
             InitializeComponent();
             dbContext = new DB.DBModel();
-            
+
             this.contractID = contractID;
             this.UserName = dbContext.getFullUserName.Where(x => x.ID == Properties.Settings.CurrentUserID).ToList()[0].ToString();
             //this.uc = updateContracts;
@@ -77,7 +77,7 @@ namespace Contract.Forms
             lueContractors.EditValue = currContract.ContractorID;
 
 
-            if(currContract.OnAgreement == true)
+            if (currContract.OnAgreement == true)
             {
                 FillAgreemenst();
             }
@@ -143,7 +143,7 @@ namespace Contract.Forms
         {
             if (e.Button.Index == 1)
             {
-                Forms.UsersSelectForm tmpForm = new UsersSelectForm( getIDSelectedItemID);
+                Forms.UsersSelectForm tmpForm = new UsersSelectForm(getIDSelectedItemID);
 
                 tmpForm.ShowDialog();
             }
@@ -171,7 +171,7 @@ namespace Contract.Forms
         #region SaveChanges
         public void SaveContracChanges()
         {
-            if (lueContractCategory.Text != "" && lueContractCategory.EditValue!= null && currContract.CategoryID != (int)lueContractCategory.EditValue)
+            if (lueContractCategory.Text != "" && lueContractCategory.EditValue != null && currContract.CategoryID != (int)lueContractCategory.EditValue)
                 currContract.CategoryID = (int)lueContractCategory.EditValue;
             if (lueDepartment.Text != "" && lueDepartment.EditValue != null && currContract.DepartmentID != (int)lueDepartment.EditValue)
                 currContract.DepartmentID = (int)lueDepartment.EditValue;
@@ -190,13 +190,13 @@ namespace Contract.Forms
                 currContract.Note = null;
             else
                 if (currContract.Note != teContractNote.Text)
-                    currContract.Note = teContractNote.Text;
+                currContract.Note = teContractNote.Text;
 
             if (teContractTheme.Text == "")
                 currContract.Theme = null;
             else
                 if (currContract.Theme != teContractTheme.Text)
-                    currContract.Theme = teContractTheme.Text;
+                currContract.Theme = teContractTheme.Text;
 
             if (deDate.Text == "")
                 currContract.Date = null;
@@ -230,14 +230,14 @@ namespace Contract.Forms
             string department_index = "?";
             number = day + month + year + "-" + today_number.ToString() + prefix + nomenclature + "/" + department_index;
             //if (currContract.Number == null)
-                currContract.Number = number;
+            currContract.Number = number;
 
             if (this.contractID == 0)
             {
                 dbContext.Contract.Add(currContract);
                 Text = "Договор № " + currContract.Number + " от " + String.Format("{0:dd/MM/yyyy}", currContract.Date);
             }
-                
+
             dbContext.SaveChanges();
             teContractNumber.Text = currContract.Number;
             contractID = currContract.ID;
@@ -284,14 +284,14 @@ namespace Contract.Forms
                 tmpSigning.DeadlineTime = DateTime.Now.AddDays(4);
 
                 tmpSigning.IsAgreed = false;
-                dbContext.Signing.Add(tmpSigning);     
+                dbContext.Signing.Add(tmpSigning);
             }
             dbContext.SaveChanges();
         }
 
         public void FillAgreemenst()
         {
-            gcAgreements.DataSource = dbContext.Signing.Where(x => x.ContractID == currContract.ID).Select(x => new { FullName = x.Users.FirstName + " " + x.Users.SecondName, x.IsAgreed, x.Note, x.Date, x.DeadlineTime}).ToList();
+            gcAgreements.DataSource = dbContext.Signing.Where(x => x.ContractID == currContract.ID).Select(x => new { FullName = x.Users.FirstName + " " + x.Users.SecondName, x.IsAgreed, x.Note, x.Date, x.DeadlineTime }).ToList();
             gvAgreements.Columns["FullName"].Caption = "Ф.И.О. согласованта";
             gvAgreements.Columns["IsAgreed"].Caption = "Согласовано";
             gvAgreements.Columns["Note"].Caption = "Комментарий";
@@ -308,11 +308,11 @@ namespace Contract.Forms
 
             if (isLoaded)
             {
-                
+
                 if (contractID != 0)
-                    if (isValid &&!DataChanged())
+                    if (isValid && !DataChanged())
                         //sbSaveChanges.Enabled = true;
-                (this.ParentForm as ParentForm).bbtnSave.Enabled = true;
+                        (this.ParentForm as ParentForm).bbtnSave.Enabled = true;
                     else
                         // sbSaveChanges.Enabled = false;
                         (this.ParentForm as ParentForm).bbtnSave.Enabled = false;
@@ -439,11 +439,17 @@ namespace Contract.Forms
 
         private void ContractForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-           if(MessageBox.Show("ZARYT:", "ZAZA", MessageBoxButtons.YesNoCancel) == DialogResult.OK)
+            if (!DataChanged())
             {
-                Close();
+                DialogResult closeFormDialogResult = MessageBox.Show("Сохранить изменения?", "Закрытие ", MessageBoxButtons.YesNoCancel);
+                switch (closeFormDialogResult)
+                {
+                    case DialogResult.Yes: SaveContracChanges(); e.Cancel = false; break;
+                    case DialogResult.No: e.Cancel = false; break;
+                    case DialogResult.Cancel: e.Cancel = true; break;
+                    default: break;
+                }
             }
-            return;
         }
     }
 }

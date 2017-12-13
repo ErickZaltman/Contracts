@@ -123,6 +123,12 @@
     <Compile Include="Forms\ContractorForm.Designer.cs">
       <DependentUpon>ContractorForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\CustomMessageBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\CustomMessageBox.Designer.cs">
+      <DependentUpon>CustomMessageBox.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\SelectFormsList.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -190,6 +196,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\ContractorForm.resx">
       <DependentUpon>ContractorForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\CustomMessageBox.resx">
+      <DependentUpon>CustomMessageBox.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\SelectForm.resx">
       <DependentUpon>SelectForm.cs</DependentUpon>

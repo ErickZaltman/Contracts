@@ -241,6 +241,24 @@
   <ItemGroup>
     <None Include="Resources\x.gif" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\200dpi_formbuttonmdiclose_glyph.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\formbuttonmdiclose.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\formbuttonmdiclose_glyph.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btn_hover.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnClose_normal.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\btnClose_hover.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.

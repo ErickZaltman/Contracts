@@ -63,9 +63,19 @@ namespace Contract.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap x {
+        internal static System.Drawing.Bitmap btnClose_hover {
             get {
-                object obj = ResourceManager.GetObject("x", resourceCulture);
+                object obj = ResourceManager.GetObject("btnClose_hover", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap btnClose_normal {
+            get {
+                object obj = ResourceManager.GetObject("btnClose_normal", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

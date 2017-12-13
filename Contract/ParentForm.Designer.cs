@@ -30,10 +30,9 @@ namespace Contract
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ParentForm));
             DevExpress.Utils.Animation.PushTransition pushTransition1 = new DevExpress.Utils.Animation.PushTransition();
-            this.xtraTabbedMdiManager1 = new DevExpress.XtraTabbedMdi.XtraTabbedMdiManager(this.components);
+            this.xtraTabbedMdiManager1 = new DevExpress.XtraTabbedMdi.XtraTabbedMdiManager();
             this.ribbonStatusBar1 = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
             this.bsiUserName = new DevExpress.XtraBars.BarStaticItem();
             this.ribbonControl1 = new DevExpress.XtraBars.Ribbon.RibbonControl();
@@ -53,7 +52,6 @@ namespace Contract
             this.bbtnRemoveContract = new DevExpress.XtraBars.BarButtonItem();
             this.bbtnAttachments = new DevExpress.XtraBars.BarButtonItem();
             this.bbtnConnectedDocs = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
             this.rpMain = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.rbgCats = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -62,8 +60,10 @@ namespace Contract
             this.rpgContractWork = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.workspaceManager1 = new DevExpress.Utils.WorkspaceManager();
             this.barButtonItem5 = new DevExpress.XtraBars.BarButtonItem();
+            this.icButtons = new DevExpress.Utils.ImageCollection();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabbedMdiManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.icButtons)).BeginInit();
             this.SuspendLayout();
             // 
             // xtraTabbedMdiManager1
@@ -115,12 +115,10 @@ namespace Contract
             this.bbtnRemoveContract,
             this.bbtnAttachments,
             this.bbtnConnectedDocs,
-            this.bsiUserName,
-            this.barButtonItem1});
+            this.bsiUserName});
             this.ribbonControl1.Location = new System.Drawing.Point(0, 0);
-            this.ribbonControl1.MaxItemId = 48;
+            this.ribbonControl1.MaxItemId = 50;
             this.ribbonControl1.Name = "ribbonControl1";
-            this.ribbonControl1.PageHeaderItemLinks.Add(this.barButtonItem1);
             this.ribbonControl1.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
             this.rpMain,
             this.rpContractWork});
@@ -280,15 +278,6 @@ namespace Contract
             this.bbtnConnectedDocs.Name = "bbtnConnectedDocs";
             this.bbtnConnectedDocs.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText;
             // 
-            // barButtonItem1
-            // 
-            this.barButtonItem1.Caption = "КРЕСТИК";
-            this.barButtonItem1.Glyph = global::Contract.Properties.Resources.x;
-            this.barButtonItem1.Id = 47;
-            this.barButtonItem1.Name = "barButtonItem1";
-            this.barButtonItem1.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText;
-            this.barButtonItem1.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem1_ItemClick);
-            // 
             // rpMain
             // 
             this.rpMain.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
@@ -356,6 +345,10 @@ namespace Contract
             this.barButtonItem5.Name = "barButtonItem5";
             this.barButtonItem5.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText;
             // 
+            // icButtons
+            // 
+            this.icButtons.ImageStream = ((DevExpress.Utils.ImageCollectionStreamer)(resources.GetObject("icButtons.ImageStream")));
+            // 
             // ParentForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -369,6 +362,7 @@ namespace Contract
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabbedMdiManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.icButtons)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -403,6 +397,6 @@ namespace Contract
         public DevExpress.XtraBars.BarButtonItem bbtnSave;
         public RibbonControl ribbonControl1;
         public RibbonPageGroup rpgContractWork;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem1;
+        private DevExpress.Utils.ImageCollection icButtons;
     }
 }

@@ -24,6 +24,12 @@ namespace Contract
             pages = new Dictionary<string, Form>();
         }
 
+        public bool ContainsPage(string key)
+        {
+            
+            return pages.ContainsKey(key);
+
+        }
         public Form addPage(KeyValuePair<string, Form> kvp)
         {
             if (!pages.ContainsKey(kvp.Key))

@@ -16,15 +16,14 @@ namespace Contract.Forms
         //private UpdateContracts d;aaa
         //11
         private DB.DBModel dbContext;
-        private int contractID;
-        private int signID;
+        private int currentID;
         private DB.Contract currContract;
         public SigningForm(int signID)
         {
             InitializeComponent();
 
             dbContext = new DB.DBModel();
-            this.signID = signID;
+            this.currentID = signID;
             //this.contractID = contractID;
 
             currContract = dbContext.Signing.Where(x => x.ID == signID).ToList()[0].Contract;
@@ -51,7 +50,7 @@ namespace Contract.Forms
 
         private void fillGVSign()
         {
-            gridControl1.DataSource = dbContext.Signing.Where(x => x.ContractID == contractID).Select(x => new
+            gridControl1.DataSource = dbContext.Signing.Where(x => x.ContractID == currentID).Select(x => new
             {
                 x.ID,
                 Name = x.Users.Surname + " " + x.Users.FirstName.Substring(0, 1) + "." + x.Users.SecondName.Substring(0, 1) + ".",
@@ -68,7 +67,7 @@ namespace Contract.Forms
 
         private void sbAgree_Click(object sender, EventArgs e)
         {
-            DB.Signing tmpSign = dbContext.Signing.Where(x => x.ID == signID).ToList()[0];
+            DB.Signing tmpSign = dbContext.Signing.Where(x => x.ID == currentID).ToList()[0];
             tmpSign.IsAgreed = true;
             tmpSign.Date = DateTime.Now;
             dbContext.SaveChanges();

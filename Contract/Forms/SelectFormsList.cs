@@ -21,7 +21,7 @@ namespace Contract.Forms
         public ContractSelectForm()
         {
             dbContext = new DB.DBModel();
-            table = Tables.Contracts;
+            Table = Tables.Contracts;
             Text = "Договора";
             fillGV();
             this.FormClosed += ContractSelectForm_FormClosed;
@@ -77,7 +77,7 @@ namespace Contract.Forms
         public SupAgreementsSelectForm()
         {
             dbContext = new DB.DBModel();
-            table = Tables.SupAgreements;
+            Table = Tables.SupAgreements;
             Text = "Доп. соглашения";
             fillGV();
             FormClosed += SupAgreementsSelectForm_FormClosed;
@@ -123,7 +123,7 @@ namespace Contract.Forms
         public SigningSelectForm()
         {
             dbContext = new DB.DBModel();
-            table = Tables.Signings;
+            Table = Tables.Signings;
             Text = "Согласования";
             fillGV();
             FormClosed += SigningSelectForm_FormClosed;
@@ -171,7 +171,7 @@ namespace Contract.Forms
         public AnnexesSelectForm()
         {
             dbContext = new DB.DBModel();
-            table = Tables.Contracts;
+            Table = Tables.Contracts;
             Text = "Приложения";
             fillGV();
             FormClosed += AnnexesSelectForm_FormClosed;
@@ -252,7 +252,7 @@ namespace Contract.Forms
         public DepartmentsSelectForm()
         {
             dbContext = new DB.DBModel();
-            table = Tables.Departments;
+            Table = Tables.Departments;
             Text = "Департаменты";
             fillGV();
             FormClosed += DepartmentsSelectForm_FormClosed;
@@ -261,7 +261,7 @@ namespace Contract.Forms
         public DepartmentsSelectForm(getIDFromForm sender)
         {
             dbContext = new DB.DBModel();
-            table = Tables.Departments;
+            Table = Tables.Departments;
             Text = "Департаменты";
             d = sender;
             isSelection = true;
@@ -304,7 +304,7 @@ namespace Contract.Forms
         public UsersSelectForm()
         {
             dbContext = new DB.DBModel();
-            table = Tables.Users;
+            Table = Tables.Users;
             Text = "Сотрудники";
             fillGV();
             FormClosed += UsersSelectForm_FormClosed;
@@ -312,7 +312,7 @@ namespace Contract.Forms
         public UsersSelectForm(getIDFromForm sender)
         {
             dbContext = new DB.DBModel();
-            table = Tables.Users;
+            Table = Tables.Users;
             Text = "Сотрудники";
             d = sender;
             isSelection = true;
@@ -361,7 +361,7 @@ namespace Contract.Forms
         public ActivityKindsSelectForm()
         {
             dbContext = new DB.DBModel();
-            table = Tables.ActivityKinds;
+            Table = Tables.ActivityKinds;
             Text = "Виды деятельности";
             fillGV();
             FormClosed += ActivityKindsSelectForm_FormClosed;
@@ -369,7 +369,7 @@ namespace Contract.Forms
         public ActivityKindsSelectForm(getIDFromForm sender)
         {
             dbContext = new DB.DBModel();
-            table = Tables.ActivityKinds;
+            Table = Tables.ActivityKinds;
             Text = "Виды деятельности";
             d = sender;
             isSelection = true;
@@ -407,7 +407,7 @@ namespace Contract.Forms
         public ContractorsSelectForm()
         {
             dbContext = new DB.DBModel();
-            table = Tables.Contractors;
+            Table = Tables.Contractors;
             Text = "Контрагенты";
             fillGV();
             FormClosed += ContractorsSelectForm_FormClosed;
@@ -415,7 +415,7 @@ namespace Contract.Forms
         public ContractorsSelectForm(getIDFromForm sender)
         {
             dbContext = new DB.DBModel();
-            table = Tables.Contractors;
+            Table = Tables.Contractors;
             Text = "Контрагенты";
             d = sender;
             isSelection = true;
@@ -452,7 +452,7 @@ namespace Contract.Forms
         public CategorySelectForm()
         {
             dbContext = new DB.DBModel();
-            table = Tables.Category;
+            Table = Tables.Category;
             Text = "Категории договоров";
             fillGV();
             FormClosed += CategorySelectForm_FormClosed;
@@ -467,7 +467,7 @@ namespace Contract.Forms
         public CategorySelectForm(getIDFromForm sender)
         {
             dbContext = new DB.DBModel();
-            table = Tables.Category;
+            Table = Tables.Category;
             Text = "Категории договоров";
 
             this.d = sender;

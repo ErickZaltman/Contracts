@@ -206,6 +206,18 @@ namespace Contract
                 xtraTabbedMdiManager1.SelectedPage.MdiChild.Close();
             if (xtraTabbedMdiManager1.Pages.Count == 0) barButtonItem1.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
         }
+
+        private void xtraTabbedMdiManager1_PageAdded(object sender, DevExpress.XtraTabbedMdi.MdiTabPageEventArgs e)
+        {
+            
+
+
+        }
+
+        private void xtraTabbedMdiManager1_PageRemoved(object sender, DevExpress.XtraTabbedMdi.MdiTabPageEventArgs e)
+        {
+            documentManager.removePage(e.Page.MdiChild);
+        }
     }
     
 }

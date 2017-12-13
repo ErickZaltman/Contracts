@@ -15,11 +15,12 @@ namespace Contract.Forms
     {
         DB.DBModel dbContext;
         private DB.SupAgreement currentAgreement;
+        private int currentID;
         public SupAgreementForm(int supAgreementID)
         {
             InitializeComponent();
             dbContext = new DB.DBModel();
-
+            currentID = supAgreementID;
             currentAgreement = dbContext.SupAgreement.Where(x => x.ID == supAgreementID).ToList()[0];
             fillControls();
             fillExisting();

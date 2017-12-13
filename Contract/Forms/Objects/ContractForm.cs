@@ -15,8 +15,8 @@ namespace Contract.Forms
     public partial class ContractForm : DevExpress.XtraEditors.XtraForm
     {
         private DB.DBModel dbContext;
-        private int contractID;
         private string UserName;
+        private int currentID;
         private bool isLoaded = false;
 
         public DB.Contract currContract;
@@ -30,7 +30,7 @@ namespace Contract.Forms
             InitializeComponent();
             dbContext = new DB.DBModel();
 
-            this.contractID = contractID;
+            this.currentID = contractID;
             this.UserName = dbContext.getFullUserName.Where(x => x.ID == Properties.Settings.CurrentUserID).ToList()[0].ToString();
             //this.uc = updateContracts;
             fillControls();
@@ -232,7 +232,7 @@ namespace Contract.Forms
             //if (currContract.Number == null)
             currContract.Number = number;
 
-            if (this.contractID == 0)
+            if (this.currentID == 0)
             {
                 dbContext.Contract.Add(currContract);
                 Text = "Договор № " + currContract.Number + " от " + String.Format("{0:dd/MM/yyyy}", currContract.Date);
@@ -240,7 +240,7 @@ namespace Contract.Forms
 
             dbContext.SaveChanges();
             teContractNumber.Text = currContract.Number;
-            contractID = currContract.ID;
+            currentID = currContract.ID;
             isLoaded = true;
             //uc();
         }
@@ -309,7 +309,7 @@ namespace Contract.Forms
             if (isLoaded)
             {
 
-                if (contractID != 0)
+                if (currentID != 0)
                     if (isValid && !DataChanged())
                         //sbSaveChanges.Enabled = true;
                         (this.ParentForm as ParentForm).bbtnSave.Enabled = true;
@@ -454,7 +454,7 @@ namespace Contract.Forms
 
         private void ContractForm_FormClosed(object sender, FormClosedEventArgs e)
         {
-            (MdiParent as ParentForm).DocumentManager.removePage(this);
+           
         }
     }
 }

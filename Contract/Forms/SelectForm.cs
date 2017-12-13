@@ -19,6 +19,20 @@ namespace Contract.Forms
         protected bool isSelection = false;
 
         protected getIDFromForm d;
+
+        public Tables Table
+        {
+            get
+            {
+                return table;
+            }
+
+            set
+            {
+                table = value;
+            }
+        }
+
         public SelectForm()
         {
             InitializeComponent();
@@ -26,14 +40,14 @@ namespace Contract.Forms
         public SelectForm(Tables table)
         {
             InitializeComponent();
-            this.table = table;
+            this.Table = table;
             this.dbContext = new DB.DBModel();
         }
         public SelectForm(Tables table, bool isSelection, getIDFromForm sender)
         {
             InitializeComponent();
             d = sender;
-            this.table = table;
+            this.Table = table;
             this.isSelection = isSelection;
             this.dbContext = new DB.DBModel();
         }
@@ -44,19 +58,21 @@ namespace Contract.Forms
             {
                 if (isSelection)
                 {
-                    d((int)gvList.GetRowCellValue(e.RowHandle, "ID"), table);
+                    d((int)gvList.GetRowCellValue(e.RowHandle, "ID"), Table);
                     Close();
                     return;
                 }
-                openDocForm((int)gvList.GetRowCellValue(e.RowHandle, "ID"), table);
+                openDocForm((int)gvList.GetRowCellValue(e.RowHandle, "ID"));
             }
         }
-        protected void openDocForm(int id, Tables type)
+        protected void openDocForm(int id)
         {
-            var tmpForm = (MdiParent as ParentForm).DocumentManager.addPage(new KeyValuePair<string, Form>(Program.TypesList[type].ToString() + id.ToString(), 
-                (Form)Activator.CreateInstance(Program.TypesList[type], id)));
+            var tmpForm = (MdiParent as ParentForm).DocumentManager.addPage(new KeyValuePair<string, Form>(Program.TypesList[table].ToString() + id.ToString(), 
+                (Form)Activator.CreateInstance(Program.TypesList[table], id)));
             tmpForm.MdiParent = this.MdiParent;
+
             tmpForm.Show();
+
             (MdiParent as ParentForm).xtraTabbedMdiManager1.SelectedPage = (MdiParent as ParentForm).xtraTabbedMdiManager1.Pages[tmpForm];   //Нихуя не соответствует принципам ООП
 
         }

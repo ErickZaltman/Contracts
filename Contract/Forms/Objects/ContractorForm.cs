@@ -15,6 +15,7 @@ namespace Contract.Forms
     {
         private DB.Contractors currentContractor;
         private DB.DBModel dbContext;
+        private int currentID;
         public ContractorForm()
         {
             InitializeComponent();
@@ -27,7 +28,7 @@ namespace Contract.Forms
             InitializeComponent();
             dbContext = new DB.DBModel();
             currentContractor = dbContext.Contractors.Where(x => x.ID == id).ToList()[0];
-
+            currentID = id;
             fillContorls();
             FillExistingContractor();
         }

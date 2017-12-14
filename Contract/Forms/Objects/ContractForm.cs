@@ -465,14 +465,15 @@ namespace Contract.Forms
         {
             if (!DataChanged())
             {
-                DialogResult closeFormDialogResult = MessageBox.Show("Сохранить изменения?", "Закрытие ", MessageBoxButtons.YesNoCancel);
-                switch (closeFormDialogResult)
+                Forms.CustomMessageBox mbForm = new Forms.CustomMessageBox();
+                mbForm.ShowDialog();
+                switch(mbForm.DialogResult)
                 {
-                    case DialogResult.Yes: SaveContracChanges(); e.Cancel = false; break;
-                    case DialogResult.No: e.Cancel = false; break;
+                    case DialogResult.Yes: SaveContracChanges(); (this.ParentForm as ParentForm).updateContracts(); (this.ParentForm as ParentForm).bbtnSave.Enabled = false; e.Cancel = false; break;
+                    case DialogResult.No: e.Cancel = false; (this.ParentForm as ParentForm).bbtnSave.Enabled = false; break;
                     case DialogResult.Cancel: e.Cancel = true; break;
                     default: break;
-                }
+                }               
             }
         }
 

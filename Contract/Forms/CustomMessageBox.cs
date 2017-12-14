@@ -20,7 +20,6 @@ namespace Contract.Forms
 
         private void CustomMessageBox_Load(object sender, EventArgs e)
         {
-
         }
     }
 }

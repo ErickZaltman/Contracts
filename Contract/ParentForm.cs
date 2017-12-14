@@ -176,6 +176,14 @@ namespace Contract
             int id = Convert.ToInt32(childForm.gvList.GetRowCellValue(rowIndex, "ID"));
             childForm.RemoveContract(id);
             updateContracts();
+
+            DB.ContractMovements movements = new DB.ContractMovements();
+            movements.ContractID = id;
+            movements.Date = DateTime.Now;
+            movements.AuthorID = Properties.Settings.CurrentUserID;
+            movements.MovementTypeID = 3;
+            dbContext.ContractMovements.Add(movements);
+            dbContext.SaveChanges();
         }
 
         private void bbtnSave_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)

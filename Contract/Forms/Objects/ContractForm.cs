@@ -78,6 +78,8 @@ namespace Contract.Forms
                 FillAgreemenst();
             }
 
+            FillMovements();
+
             isLoaded = true;
         }
 
@@ -228,16 +230,27 @@ namespace Contract.Forms
             //if (currContract.Number == null)
             currContract.Number = number;
 
+            DB.ContractMovements movements = new DB.ContractMovements();
+            movements.ContractID = currContract.ID;
+            movements.Date = DateTime.Now;
+            movements.AuthorID = Properties.Settings.CurrentUserID;
+
             if (this.currentID == 0)
             {
                 dbContext.Contract.Add(currContract);
                 Text = "Договор № " + currContract.Number + " от " + String.Format("{0:dd/MM/yyyy}", currContract.Date);
+                movements.MovementTypeID = 1;
             }
-
+            else
+            {
+                movements.MovementTypeID = 2;
+            }
+            dbContext.ContractMovements.Add(movements);
             dbContext.SaveChanges();
             teContractNumber.Text = currContract.Number;
             currentID = currContract.ID;
             isLoaded = true;
+            FillMovements();
         }
 
         private void sbSaveChanges_Click(object sender, EventArgs e)
@@ -265,7 +278,7 @@ namespace Contract.Forms
 
         #endregion
 
-        #region Отправить на согласование
+        #region Signing
 
         public void SendContractToSigning()
         {
@@ -286,12 +299,24 @@ namespace Contract.Forms
 
         public void FillAgreemenst()
         {
-            gcAgreements.DataSource = dbContext.Signing.Where(x => x.ContractID == currContract.ID).Select(x => new { FullName = x.Users.FirstName + " " + x.Users.SecondName, x.IsAgreed, x.Note, x.Date, x.DeadlineTime }).ToList();
+            gcAgreements.DataSource = dbContext.Signing.Where(z => z.ContractID == currContract.ID).Join(dbContext.getFullUserName, x => x.UserID, y=>y.ID, (x,y) => new { FullName = y.FullName, x.IsAgreed, x.Note, x.Date, x.DeadlineTime }).ToList();
             gvAgreements.Columns["FullName"].Caption = "Ф.И.О. согласованта";
             gvAgreements.Columns["IsAgreed"].Caption = "Согласовано";
             gvAgreements.Columns["Note"].Caption = "Комментарий";
             gvAgreements.Columns["Date"].Caption = "Дата согласования";
             gvAgreements.Columns["DeadlineTime"].Caption = "Требуется согласовать до";
+        }
+
+        #endregion
+
+        #region Movements
+
+        public void FillMovements()
+        {
+            gcMovements.DataSource = dbContext.ContractMovements.Where(z => z.ContractID == currContract.ID).Join(dbContext.getFullUserName, x => x.AuthorID, y => y.ID, (x, y) => new { Date = x.Date, Type = x.MovementTypes.Name, Author = y.FullName }).ToList();
+            gvMovements.Columns["Date"].Caption = "Дата";
+            gvMovements.Columns["Type"].Caption = "Действие";
+            gvMovements.Columns["Author"].Caption = "Автор";
         }
 
         #endregion

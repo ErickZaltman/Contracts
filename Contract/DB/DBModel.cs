@@ -35,6 +35,8 @@ namespace Contract.DB
         public virtual DbSet<SupAgreement> SupAgreement { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<TaxesType> TaxesType { get; set; }
+        public virtual DbSet<Test2test> Test2test { get; set; }
+        public virtual DbSet<testtable> testtable { get; set; }
         public virtual DbSet<UserPermissions> UserPermissions { get; set; }
         public virtual DbSet<Users> Users { get; set; }
         public virtual DbSet<getFullUserName> getFullUserName { get; set; }

@@ -34,7 +34,7 @@ namespace Contract.Forms
 
         private void fillGV()
         {
-            gridControl1.DataSource = dbContext.Contract.Where(y => y.isRemoved != true).Join(dbContext.getFullUserName, e => e.AuthorID, x => x.ID, (e, x) => new
+            gridControl1.DataSource = dbContext.Contract.Where(y => y.IsRemoved != true).Join(dbContext.getFullUserName, e => e.AuthorID, x => x.ID, (e, x) => new
             {
                 e.ID,
                 e.Number,
@@ -56,7 +56,7 @@ namespace Contract.Forms
         public void RemoveContract (int id)
         {
             DB.Contract currContract = dbContext.Contract.First(x => x.ID == id);
-            currContract.isRemoved = true;
+            currContract.IsRemoved = true;
             dbContext.SaveChanges();
             //uc();
         }

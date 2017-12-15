@@ -59,7 +59,7 @@ namespace Contract.DB
 
         public bool? OnAgreement { get; set; }
 
-        public bool? isRemoved { get; set; }
+        public bool? IsRemoved { get; set; }
 
         public virtual ActivityKind ActivityKind { get; set; }
 

@@ -82,6 +82,7 @@
             this.MinimizeBox = false;
             this.Name = "CustomMessageBox";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.CustomMessageBox_FormClosing);
             this.Load += new System.EventHandler(this.CustomMessageBox_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

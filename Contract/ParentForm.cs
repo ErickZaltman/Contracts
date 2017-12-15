@@ -59,7 +59,7 @@ namespace Contract
             childForm.gridControl1.DataSource = null;
             childForm.gridControl1.MainView = childForm.gvList;
 
-            var contractsBindingSource = dbContext.Contract.Where(y => y.isRemoved != true).Join(dbContext.getFullUserName, e => e.AuthorID, x => x.ID, (e, x) => new
+            var contractsBindingSource = dbContext.Contract.Where(y => y.IsRemoved != true).Join(dbContext.getFullUserName, e => e.AuthorID, x => x.ID, (e, x) => new
             {
                 e.ID,
                 e.Number,
@@ -229,6 +229,12 @@ namespace Contract
         private void xtraTabbedMdiManager1_PageRemoved(object sender, DevExpress.XtraTabbedMdi.MdiTabPageEventArgs e)
         {
             documentManager.removePage(e.Page.MdiChild);
+        }
+
+        private void bbtnContractWordDocument_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            WordDocument wd = new WordDocument();
+            wd.makeNewWordContract((xtraTabbedMdiManager1.SelectedPage.MdiChild as Forms.ContractForm).currContract);
         }
     }
     

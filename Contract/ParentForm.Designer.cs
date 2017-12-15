@@ -32,7 +32,7 @@ namespace Contract
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ParentForm));
-            DevExpress.Utils.Animation.PushTransition pushTransition2 = new DevExpress.Utils.Animation.PushTransition();
+            DevExpress.Utils.Animation.PushTransition pushTransition1 = new DevExpress.Utils.Animation.PushTransition();
             this.xtraTabbedMdiManager1 = new DevExpress.XtraTabbedMdi.XtraTabbedMdiManager(this.components);
             this.ribbonStatusBar1 = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
             this.bsiUserName = new DevExpress.XtraBars.BarStaticItem();
@@ -54,6 +54,8 @@ namespace Contract
             this.bbtnAttachments = new DevExpress.XtraBars.BarButtonItem();
             this.bbtnConnectedDocs = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
+            this.barEditItem1 = new DevExpress.XtraBars.BarEditItem();
+            this.repositoryItemImageEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemImageEdit();
             this.rpMain = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.rbgCats = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
@@ -62,8 +64,8 @@ namespace Contract
             this.rpgContractWork = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.workspaceManager1 = new DevExpress.Utils.WorkspaceManager();
             this.barButtonItem5 = new DevExpress.XtraBars.BarButtonItem();
-            this.barEditItem1 = new DevExpress.XtraBars.BarEditItem();
-            this.repositoryItemImageEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemImageEdit();
+            this.rbpContractFiles = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.bbtnContractWordDocument = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabbedMdiManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageEdit1)).BeginInit();
@@ -122,9 +124,10 @@ namespace Contract
             this.bbtnConnectedDocs,
             this.bsiUserName,
             this.barButtonItem1,
-            this.barEditItem1});
+            this.barEditItem1,
+            this.bbtnContractWordDocument});
             this.ribbonControl1.Location = new System.Drawing.Point(0, 0);
-            this.ribbonControl1.MaxItemId = 49;
+            this.ribbonControl1.MaxItemId = 50;
             this.ribbonControl1.Name = "ribbonControl1";
             this.ribbonControl1.PageHeaderItemLinks.Add(this.barButtonItem1);
             this.ribbonControl1.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
@@ -291,12 +294,27 @@ namespace Contract
             // barButtonItem1
             // 
             this.barButtonItem1.Caption = "КРЕСТИК";
-            this.barButtonItem1.Glyph = Properties.Resources.btnClose_normal;
+            this.barButtonItem1.Glyph = global::Contract.Properties.Resources.btnClose_normal;
             this.barButtonItem1.Id = 47;
             this.barButtonItem1.Name = "barButtonItem1";
             this.barButtonItem1.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithoutText;
             this.barButtonItem1.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
             this.barButtonItem1.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem1_ItemClick);
+            // 
+            // barEditItem1
+            // 
+            this.barEditItem1.Caption = "barEditItem1";
+            this.barEditItem1.Edit = this.repositoryItemImageEdit1;
+            this.barEditItem1.Glyph = global::Contract.Properties.Resources.btnClose_normal;
+            this.barEditItem1.Id = 48;
+            this.barEditItem1.Name = "barEditItem1";
+            // 
+            // repositoryItemImageEdit1
+            // 
+            this.repositoryItemImageEdit1.AutoHeight = false;
+            this.repositoryItemImageEdit1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemImageEdit1.Name = "repositoryItemImageEdit1";
             // 
             // rpMain
             // 
@@ -330,7 +348,8 @@ namespace Contract
             // 
             this.rpContractWork.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
             this.ribbonPageGroup2,
-            this.rpgContractWork});
+            this.rpgContractWork,
+            this.rbpContractFiles});
             this.rpContractWork.Name = "rpContractWork";
             this.rpContractWork.Text = "Договорная работа";
             this.rpContractWork.Visible = false;
@@ -354,7 +373,7 @@ namespace Contract
             // workspaceManager1
             // 
             this.workspaceManager1.TargetControl = this;
-            this.workspaceManager1.TransitionType = pushTransition2;
+            this.workspaceManager1.TransitionType = pushTransition1;
             // 
             // barButtonItem5
             // 
@@ -365,20 +384,18 @@ namespace Contract
             this.barButtonItem5.Name = "barButtonItem5";
             this.barButtonItem5.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText;
             // 
-            // barEditItem1
+            // rbpContractFiles
             // 
-            this.barEditItem1.Caption = "barEditItem1";
-            this.barEditItem1.Edit = this.repositoryItemImageEdit1;
-            this.barEditItem1.Glyph = global::Contract.Properties.Resources.btnClose_normal;
-            this.barEditItem1.Id = 48;
-            this.barEditItem1.Name = "barEditItem1";
+            this.rbpContractFiles.ItemLinks.Add(this.bbtnContractWordDocument);
+            this.rbpContractFiles.Name = "rbpContractFiles";
+            this.rbpContractFiles.Text = "Файлы";
             // 
-            // repositoryItemImageEdit1
+            // bbtnContractWordDocument
             // 
-            this.repositoryItemImageEdit1.AutoHeight = false;
-            this.repositoryItemImageEdit1.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.repositoryItemImageEdit1.Name = "repositoryItemImageEdit1";
+            this.bbtnContractWordDocument.Caption = "Договор";
+            this.bbtnContractWordDocument.Id = 49;
+            this.bbtnContractWordDocument.Name = "bbtnContractWordDocument";
+            this.bbtnContractWordDocument.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbtnContractWordDocument_ItemClick);
             // 
             // ParentForm
             // 
@@ -431,5 +448,7 @@ namespace Contract
         private DevExpress.XtraBars.BarButtonItem barButtonItem1;
         private DevExpress.XtraBars.BarEditItem barEditItem1;
         private DevExpress.XtraEditors.Repository.RepositoryItemImageEdit repositoryItemImageEdit1;
+        private DevExpress.XtraBars.BarButtonItem bbtnContractWordDocument;
+        private RibbonPageGroup rbpContractFiles;
     }
 }

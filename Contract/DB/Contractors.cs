@@ -51,6 +51,12 @@ namespace Contract.DB
         [StringLength(50)]
         public string CheckingAccount { get; set; }
 
+        [StringLength(50)]
+        public string PersonInCharge { get; set; }
+
+        [StringLength(50)]
+        public string BaseDocument { get; set; }
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Contract> Contract { get; set; }
 

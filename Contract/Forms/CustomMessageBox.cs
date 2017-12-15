@@ -21,5 +21,10 @@ namespace Contract.Forms
         private void CustomMessageBox_Load(object sender, EventArgs e)
         {
         }
+
+        private void CustomMessageBox_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            DialogResult = DialogResult.Cancel;
+        }
     }
 }

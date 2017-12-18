@@ -33,18 +33,18 @@ namespace Contract.Forms
             fillControls();
 
             currContract = new DB.Contract();
-            if (contractID != 0)
-                fillExistingContract(contractID);
 
-            if (contractID == 0)
+            if (contractID != 0)
             {
-                teAuthor.Text = UserName;
-            }
-
-            if (contractID != 0)
+                fillExistingContract(contractID);
                 Text = "Договор № " + currContract.Number + " от " + String.Format("{0:dd/MM/yyyy}", currContract.Date);
+            }
             else
+            {
                 Text = "Новый договор";
+                deDate.DateTime = DateTime.Now;
+                teAuthor.Text = dbContext.getFullUserName.Where(x => x.ID == Properties.Settings.CurrentUserID).Select(y => y.FullName).ToList()[0];
+            }
         }
 
         private void fillExistingContract(int id)
@@ -55,7 +55,7 @@ namespace Contract.Forms
             teContractNote.Text = currContract.Note;
             teSumm.Text = currContract.Summ.ToString();
             teContractTheme.Text = currContract.Theme;
-            teAuthor.Text = currContract.Users.Surname + " " + currContract.Users.FirstName.Substring(0, 1) + "." + currContract.Users.SecondName.Substring(0, 1) + ".";
+            teAuthor.Text = dbContext.getFullUserName.Where(x => x.ID == currContract.Users.ID).Select(y => y.FullName).ToList()[0];
 
             if (currContract.Date != null)
                 deDate.DateTime = (DateTime)currContract.Date;
@@ -313,8 +313,9 @@ namespace Contract.Forms
 
         public void FillMovements()
         {
-            gcMovements.DataSource = dbContext.ContractMovements.Where(z => z.ContractID == currContract.ID).Join(dbContext.getFullUserName, x => x.AuthorID, y => y.ID, (x, y) => new { Date = x.Date, Type = x.MovementTypes.Name, Author = y.FullName }).ToList();
+            gcMovements.DataSource = dbContext.ContractMovements.Where(z => z.ContractID == currContract.ID).Join(dbContext.getFullUserName, x => x.AuthorID, y => y.ID, (x, y) => new { Date = x.Date, Time = x.Date.Value.Hour + ":" + x.Date.Value.Minute, Type = x.MovementTypes.Name, Author = y.FullName }).ToList();
             gvMovements.Columns["Date"].Caption = "Дата";
+            gvMovements.Columns["Time"].Caption = "Время";
             gvMovements.Columns["Type"].Caption = "Действие";
             gvMovements.Columns["Author"].Caption = "Автор";
         }

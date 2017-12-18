@@ -44,6 +44,7 @@ namespace Contract
 
         }
 
+        #region Update Grid Controls
         public void updateContracts()
         {
             Forms.ContractSelectForm childForm = new Forms.ContractSelectForm();
@@ -80,6 +81,36 @@ namespace Contract
             childForm.gvList.Columns["Name"].Caption = "Автор";
         }
 
+        public void updateContractors()
+        {
+            Forms.ContractorsSelectForm childForm = new Forms.ContractorsSelectForm();
+            foreach (var item in this.MdiChildren)
+            {
+                if (item is Forms.ContractorsSelectForm)
+                {
+                    childForm = item as Forms.ContractorsSelectForm;
+                    break;
+                }
+            }
+
+            childForm.gridControl1.DataSource = null;
+            childForm.gridControl1.MainView = childForm.gvList;
+
+            var contractsBindingSource = dbContext.Contractors.Where(y => y.IsRemoved != true).Select(x => new
+            {
+                ID = x.ID,
+                Name = x.Name
+            }).ToList();
+
+            childForm.gridControl1.DataSource = contractsBindingSource;
+
+            childForm.gvList.Columns["ID"].Visible = false;
+
+            childForm.gvList.Columns["Name"].Caption = "Наименование";
+        }
+
+        #endregion
+
         #region Ribbon OPEN forms buttons click
         private void bbrnContracts_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
@@ -105,6 +136,9 @@ namespace Contract
             tmpForm.MdiParent = this;
             tmpForm.Show();
             xtraTabbedMdiManager1.SelectedPage = xtraTabbedMdiManager1.Pages[tmpForm];
+
+            rpContractors.Visible = true;
+            ribbonControl1.SelectedPage = rpContractors;
         }
         private void barButtonItem3_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
@@ -166,6 +200,26 @@ namespace Contract
             }
             else
                 rpContractWork.Visible = false;
+
+            if (xtraTabbedMdiManager1.SelectedPage != null && (xtraTabbedMdiManager1.SelectedPage.MdiChild.GetType() == typeof(Forms.ContractorForm) || xtraTabbedMdiManager1.SelectedPage.MdiChild.GetType() == typeof(Forms.ContractorsSelectForm)))
+            {
+                rpContractors.Visible = true;
+                if ((xtraTabbedMdiManager1.SelectedPage.MdiChild.GetType() == typeof(Forms.ContractorForm)))
+                {
+                    bbtnNewContractor.Enabled = false;
+                    bbtnRemoveContractor.Enabled = false;
+                    bbtnSaveContractor.Enabled = true;
+                }
+                else
+                {
+                    bbtnNewContractor.Enabled = true;
+                    bbtnRemoveContractor.Enabled = true;
+                    bbtnSaveContractor.Enabled = false;
+                }
+            }
+            else
+                rpContractors.Visible = false;
+
             if (xtraTabbedMdiManager1.Pages.Count > 0) barButtonItem1.Visibility = DevExpress.XtraBars.BarItemVisibility.Always;
         }     
 
@@ -229,6 +283,35 @@ namespace Contract
         private void xtraTabbedMdiManager1_PageRemoved(object sender, DevExpress.XtraTabbedMdi.MdiTabPageEventArgs e)
         {
             documentManager.removePage(e.Page.MdiChild);
+        }
+
+        private void bbtnNewContractor_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            bbtnSaveContractor.Enabled = true;
+            var tmpform = new Forms.ContractorForm(0);
+            tmpform.MdiParent = this;
+            tmpform.Show();
+        }
+
+        private void bbtnRemoveContractor_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            Forms.ContractorsSelectForm childForm = (xtraTabbedMdiManager1.SelectedPage.MdiChild as Forms.ContractorsSelectForm);
+            int rowIndex = childForm.gvList.GetSelectedRows()[0];
+            int id = Convert.ToInt32(childForm.gvList.GetRowCellValue(rowIndex, "ID"));
+            //childForm.RemoveContractor(id);
+            updateContractors();
+        }
+
+        private void bbtnSaveContractor_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            Forms.ContractorForm childForm = (xtraTabbedMdiManager1.SelectedPage.MdiChild as Forms.ContractorForm);
+            if (childForm.IsValid())
+            {
+                childForm.SaveContractorChanges();
+                updateContractors();
+                xtraTabbedMdiManager1.SelectedPage.Text = childForm.GetName();
+                bbtnSaveContractor.Enabled = false;
+            }
         }
     }
     

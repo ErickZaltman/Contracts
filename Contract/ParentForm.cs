@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using Contract.DB;
+using System.Configuration;
 
 namespace Contract
 {
@@ -33,6 +34,8 @@ namespace Contract
         public ParentForm()
         {
             InitializeComponent();
+            documentManager = new DocumentFormsContainer();
+
         }
         public ParentForm(int id)
         {
@@ -235,6 +238,11 @@ namespace Contract
         {
             WordDocument wd = new WordDocument();
             wd.makeNewWordContract((xtraTabbedMdiManager1.SelectedPage.MdiChild as Forms.ContractForm).currContract);
+        }
+
+        private void barButtonItem2_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            MessageBox.Show(ConfigurationManager.ConnectionStrings["DBModel"].ToString());
         }
     }
     

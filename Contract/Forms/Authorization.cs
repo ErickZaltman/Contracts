@@ -8,6 +8,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
+using System.Configuration;
+using System.Data.SqlClient;
+using System.Reflection;
 
 namespace Contract.Forms
 {
@@ -17,8 +20,7 @@ namespace Contract.Forms
         public Authorization()
         {
             InitializeComponent();
-
-            db = new DB.DBModel();
+            
         }
 
         private void btnAuthorization_Click(object sender, EventArgs e)
@@ -27,10 +29,18 @@ namespace Contract.Forms
         }
         private void Authorize()
         {
+
+
+            var fi = typeof(ConfigurationElement).GetField("_bReadOnly", BindingFlags.Instance | BindingFlags.NonPublic);
+            fi.SetValue(ConfigurationManager.ConnectionStrings[1], false);
+            ConfigurationManager.ConnectionStrings["DBModel"].ConnectionString = @"data source = 172.24.8.84\ZALUPAKITA; initial catalog = ContractBDTest; integrated security = True; MultipleActiveResultSets = True; App = EntityFramework";
+
+            db = new DB.DBModel();
+
             if (db.Users.Where(x => x.Login == tbLogin.Text && x.Password == tbPassword.Text).Count() > 0)
             {
                 Properties.Settings.CurrentUserID = db.Users.Where(x => x.Login == tbLogin.Text).ToList()[0].ID;
-                MainForm main = new MainForm();
+                ParentForm main = new ParentForm();
                 main.Show();
                 Hide();
                 
@@ -55,6 +65,11 @@ namespace Contract.Forms
             {
                 Authorize();
             }
+        }
+
+        private void Authorization_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -56,16 +56,16 @@ namespace Contract
             this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
             this.barEditItem1 = new DevExpress.XtraBars.BarEditItem();
             this.repositoryItemImageEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemImageEdit();
+            this.bbtnContractWordDocument = new DevExpress.XtraBars.BarButtonItem();
             this.rpMain = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.rbgCats = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.rpContractWork = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.rpgContractWork = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.rbpContractFiles = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.workspaceManager1 = new DevExpress.Utils.WorkspaceManager();
             this.barButtonItem5 = new DevExpress.XtraBars.BarButtonItem();
-            this.rbpContractFiles = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.bbtnContractWordDocument = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabbedMdiManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageEdit1)).BeginInit();
@@ -127,7 +127,7 @@ namespace Contract
             this.barEditItem1,
             this.bbtnContractWordDocument});
             this.ribbonControl1.Location = new System.Drawing.Point(0, 0);
-            this.ribbonControl1.MaxItemId = 50;
+            this.ribbonControl1.MaxItemId = 51;
             this.ribbonControl1.Name = "ribbonControl1";
             this.ribbonControl1.PageHeaderItemLinks.Add(this.barButtonItem1);
             this.ribbonControl1.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
@@ -316,6 +316,13 @@ namespace Contract
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.repositoryItemImageEdit1.Name = "repositoryItemImageEdit1";
             // 
+            // bbtnContractWordDocument
+            // 
+            this.bbtnContractWordDocument.Caption = "Договор";
+            this.bbtnContractWordDocument.Id = 49;
+            this.bbtnContractWordDocument.Name = "bbtnContractWordDocument";
+            this.bbtnContractWordDocument.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbtnContractWordDocument_ItemClick);
+            // 
             // rpMain
             // 
             this.rpMain.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
@@ -370,6 +377,12 @@ namespace Contract
             this.rpgContractWork.Name = "rpgContractWork";
             this.rpgContractWork.Text = "ribbonPageGroup3";
             // 
+            // rbpContractFiles
+            // 
+            this.rbpContractFiles.ItemLinks.Add(this.bbtnContractWordDocument);
+            this.rbpContractFiles.Name = "rbpContractFiles";
+            this.rbpContractFiles.Text = "Файлы";
+            // 
             // workspaceManager1
             // 
             this.workspaceManager1.TargetControl = this;
@@ -383,19 +396,6 @@ namespace Contract
             this.barButtonItem5.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("barButtonItem5.LargeGlyph")));
             this.barButtonItem5.Name = "barButtonItem5";
             this.barButtonItem5.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText;
-            // 
-            // rbpContractFiles
-            // 
-            this.rbpContractFiles.ItemLinks.Add(this.bbtnContractWordDocument);
-            this.rbpContractFiles.Name = "rbpContractFiles";
-            this.rbpContractFiles.Text = "Файлы";
-            // 
-            // bbtnContractWordDocument
-            // 
-            this.bbtnContractWordDocument.Caption = "Договор";
-            this.bbtnContractWordDocument.Id = 49;
-            this.bbtnContractWordDocument.Name = "bbtnContractWordDocument";
-            this.bbtnContractWordDocument.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbtnContractWordDocument_ItemClick);
             // 
             // ParentForm
             // 

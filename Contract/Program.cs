@@ -25,7 +25,7 @@ namespace Contract
             SkinManager.EnableFormSkins();
             UserLookAndFeel.Default.SetSkinStyle("DevExpress Style");
             initDict();
-            Application.Run(new ParentForm(3));
+            Application.Run(new Forms.Authorization());
         }
         public static void initDict()
         {

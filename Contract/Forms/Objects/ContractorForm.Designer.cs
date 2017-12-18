@@ -215,7 +215,7 @@
             // 
             // teActualAddress
             // 
-            this.teActualAddress.Location = new System.Drawing.Point(146, 147);
+            this.teActualAddress.Location = new System.Drawing.Point(146, 144);
             this.teActualAddress.Name = "teActualAddress";
             this.teActualAddress.Size = new System.Drawing.Size(161, 20);
             this.teActualAddress.TabIndex = 17;
@@ -273,7 +273,7 @@
             this.Appearance.Options.UseBackColor = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(319, 398);
+            this.ClientSize = new System.Drawing.Size(319, 323);
             this.Controls.Add(this.teEmail);
             this.Controls.Add(this.tePhoneNumber);
             this.Controls.Add(this.teCheckingAccount);

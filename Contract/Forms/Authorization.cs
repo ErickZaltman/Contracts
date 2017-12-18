@@ -69,7 +69,7 @@ namespace Contract.Forms
 
         private void Authorization_Load(object sender, EventArgs e)
         {
-
+            //test
         }
     }
 }

@@ -58,7 +58,6 @@ namespace Contract.Forms
             DB.Contract currContract = dbContext.Contract.First(x => x.ID == id);
             currContract.IsRemoved = true;
             dbContext.SaveChanges();
-            //uc();
         }
 
 
@@ -431,12 +430,19 @@ namespace Contract.Forms
 
         private void fillGV()
         {
-            gridControl1.DataSource = dbContext.Contractors.Select(x => new { x.ID, x.Name, x.ActualAddress }).ToList();
+            gridControl1.DataSource = dbContext.Contractors.Where(y => y.IsRemoved != true).Select(x => new { x.ID, x.Name }).ToList();
 
             gvList.Columns["ID"].Visible = false;
+
+            gvList.Columns["Name"].Caption = "Наименование";
         }
 
-       
+        public void RemoveContractor(int id)
+        {
+            DB.Contractors currContractor = dbContext.Contractors.First(x => x.ID == id);
+            currContractor.IsRemoved = true;
+            dbContext.SaveChanges();
+        }
 
     }
     class CategorySelectForm : SelectForm

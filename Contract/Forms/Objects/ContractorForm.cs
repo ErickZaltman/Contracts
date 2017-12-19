@@ -15,7 +15,8 @@ namespace Contract.Forms
     {
         private DB.Contractors currentContractor;
         private DB.DBModel dbContext;
-        private int currentID;
+        public int currentID;
+        private bool isLoaded = false;
 
         public ContractorForm(int id)
         {
@@ -64,6 +65,8 @@ namespace Contract.Forms
 
             lueGroup.EditValue = currentContractor.ContractorTypeID;
             lueTaxType.EditValue = currentContractor.TaxTypeID;
+
+            isLoaded = true;
         }
 
         #region Save Changes
@@ -158,6 +161,110 @@ namespace Contract.Forms
         {
             return true;
         }
+
         #endregion
+
+        #region Equal Check
+
+        private void control_EditValueChanged(object sender, EventArgs e)
+        {
+            //bool isValid = DoValidate(sender);
+            bool isValid = true;
+            if (isLoaded)
+            {
+                if (currentID != 0)
+                    if (isValid && !DataChanged())
+                        (this.ParentForm as ParentForm).bbtnSaveContractor.Enabled = true;
+                    else
+                        (this.ParentForm as ParentForm).bbtnSaveContractor.Enabled = false;
+            }
+        }
+
+        //Придумать оптимизацию на проверку
+        // когда-нибудь
+        public bool DataChanged()
+        {
+            if (currentContractor.ContractorTypeID != (int?)lueGroup.EditValue) return false;
+            if (currentContractor.TaxTypeID != (int?)lueTaxType.EditValue) return false;
+
+            if (teName.Text == "")
+            {
+                if (currentContractor.Name != null) return false;
+            }
+            else if (currentContractor.Name != teName.Text) return false;
+            //
+            if (meFullName.Text == "")
+            {
+                if (currentContractor.FullName != null) return false;
+            }
+            else if (currentContractor.FullName != meFullName.Text) return false;
+            //
+            if (teEGRPOU.Text == "")
+            {
+                if (currentContractor.EGRPOU != null) return false;
+            }
+            else if (currentContractor.EGRPOU != teEGRPOU.Text) return false;
+            //
+            if (teLegalAddress.Text == "")
+            {
+                if (currentContractor.LegalAddress != null) return false;
+            }
+            else if (currentContractor.LegalAddress != teLegalAddress.Text) return false;
+            //
+            if (teActualAddress.Text == "")
+            {
+                if (currentContractor.ActualAddress != null) return false;
+            }
+            else if (currentContractor.ActualAddress != teActualAddress.Text) return false;
+            //
+            if (teTaxCode.Text == "")
+            {
+                if (currentContractor.TaxCode != null) return false;
+            }
+            else if (currentContractor.TaxCode != teTaxCode.Text) return false;
+            //
+            if (teEngCode.Text == "")
+            {
+                if (currentContractor.EngCode != null) return false;
+            }
+            else if (currentContractor.EngCode != teEngCode.Text) return false;
+            //
+            if (teCheckingAccount.Text == "")
+            {
+                if (currentContractor.CheckingAccount != null) return false;
+            }
+            else if (currentContractor.CheckingAccount != teCheckingAccount.Text) return false;
+            //
+            if (tePhoneNumber.Text == "")
+            {
+                if (currentContractor.PhoneNumber != null) return false;
+            }
+            else if (currentContractor.PhoneNumber != tePhoneNumber.Text) return false;
+            //
+            if (teEmail.Text == "")
+            {
+                if (currentContractor.Email != null) return false;
+            }
+            else if (currentContractor.Email != teEmail.Text) return false;
+
+            return true;
+        }
+        #endregion
+
+        private void ContractorForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (!DataChanged())
+            {
+                Forms.CustomMessageBox mbForm = new Forms.CustomMessageBox();
+                mbForm.ShowDialog();
+                switch (mbForm.DialogResult)
+                {
+                    case DialogResult.Yes: SaveContractorChanges(); (this.ParentForm as ParentForm).updateContractors(); (this.ParentForm as ParentForm).bbtnSaveContractor.Enabled = false; e.Cancel = false; break;
+                    case DialogResult.No: e.Cancel = false; (this.ParentForm as ParentForm).bbtnSaveContractor.Enabled = false; break;
+                    case DialogResult.Cancel: e.Cancel = true; break;
+                    default: break;
+                }
+            }
+        }
     }
 }

@@ -179,6 +179,7 @@
             this.teName.Name = "teName";
             this.teName.Size = new System.Drawing.Size(161, 20);
             this.teName.TabIndex = 12;
+            this.teName.TextChanged += new System.EventHandler(this.control_EditValueChanged);
             // 
             // meFullName
             // 
@@ -186,6 +187,7 @@
             this.meFullName.Name = "meFullName";
             this.meFullName.Size = new System.Drawing.Size(161, 40);
             this.meFullName.TabIndex = 13;
+            this.meFullName.TextChanged += new System.EventHandler(this.control_EditValueChanged);
             // 
             // lueGroup
             // 
@@ -198,6 +200,7 @@
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Text", "Наименование")});
             this.lueGroup.Size = new System.Drawing.Size(161, 20);
             this.lueGroup.TabIndex = 14;
+            this.lueGroup.EditValueChanged += new System.EventHandler(this.control_EditValueChanged);
             // 
             // teEGRPOU
             // 
@@ -205,6 +208,7 @@
             this.teEGRPOU.Name = "teEGRPOU";
             this.teEGRPOU.Size = new System.Drawing.Size(161, 20);
             this.teEGRPOU.TabIndex = 15;
+            this.teEGRPOU.TextChanged += new System.EventHandler(this.control_EditValueChanged);
             // 
             // teLegalAddress
             // 
@@ -212,6 +216,7 @@
             this.teLegalAddress.Name = "teLegalAddress";
             this.teLegalAddress.Size = new System.Drawing.Size(161, 20);
             this.teLegalAddress.TabIndex = 16;
+            this.teLegalAddress.TextChanged += new System.EventHandler(this.control_EditValueChanged);
             // 
             // teActualAddress
             // 
@@ -219,6 +224,7 @@
             this.teActualAddress.Name = "teActualAddress";
             this.teActualAddress.Size = new System.Drawing.Size(161, 20);
             this.teActualAddress.TabIndex = 17;
+            this.teActualAddress.TextChanged += new System.EventHandler(this.control_EditValueChanged);
             // 
             // lueTaxType
             // 
@@ -231,6 +237,7 @@
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("Text", "Наименование")});
             this.lueTaxType.Size = new System.Drawing.Size(161, 20);
             this.lueTaxType.TabIndex = 18;
+            this.lueTaxType.EditValueChanged += new System.EventHandler(this.control_EditValueChanged);
             // 
             // teTaxCode
             // 
@@ -238,6 +245,7 @@
             this.teTaxCode.Name = "teTaxCode";
             this.teTaxCode.Size = new System.Drawing.Size(161, 20);
             this.teTaxCode.TabIndex = 19;
+            this.teTaxCode.TextChanged += new System.EventHandler(this.control_EditValueChanged);
             // 
             // teEngCode
             // 
@@ -245,6 +253,7 @@
             this.teEngCode.Name = "teEngCode";
             this.teEngCode.Size = new System.Drawing.Size(161, 21);
             this.teEngCode.TabIndex = 20;
+            this.teEngCode.TextChanged += new System.EventHandler(this.control_EditValueChanged);
             // 
             // teCheckingAccount
             // 
@@ -252,6 +261,7 @@
             this.teCheckingAccount.Name = "teCheckingAccount";
             this.teCheckingAccount.Size = new System.Drawing.Size(161, 21);
             this.teCheckingAccount.TabIndex = 21;
+            this.teCheckingAccount.TextChanged += new System.EventHandler(this.control_EditValueChanged);
             // 
             // tePhoneNumber
             // 
@@ -259,6 +269,7 @@
             this.tePhoneNumber.Name = "tePhoneNumber";
             this.tePhoneNumber.Size = new System.Drawing.Size(161, 21);
             this.tePhoneNumber.TabIndex = 22;
+            this.tePhoneNumber.TextChanged += new System.EventHandler(this.control_EditValueChanged);
             // 
             // teEmail
             // 
@@ -266,6 +277,7 @@
             this.teEmail.Name = "teEmail";
             this.teEmail.Size = new System.Drawing.Size(161, 21);
             this.teEmail.TabIndex = 23;
+            this.teEmail.TextChanged += new System.EventHandler(this.control_EditValueChanged);
             // 
             // ContractorForm
             // 
@@ -301,6 +313,7 @@
             this.Name = "ContractorForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Contractor";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ContractorForm_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.teName.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.meFullName.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lueGroup.Properties)).EndInit();

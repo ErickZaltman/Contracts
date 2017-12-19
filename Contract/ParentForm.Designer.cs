@@ -30,9 +30,10 @@ namespace Contract
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ParentForm));
             DevExpress.Utils.Animation.PushTransition pushTransition1 = new DevExpress.Utils.Animation.PushTransition();
-            this.xtraTabbedMdiManager1 = new DevExpress.XtraTabbedMdi.XtraTabbedMdiManager();
+            this.xtraTabbedMdiManager1 = new DevExpress.XtraTabbedMdi.XtraTabbedMdiManager(this.components);
             this.ribbonStatusBar1 = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
             this.bsiUserName = new DevExpress.XtraBars.BarStaticItem();
             this.ribbonControl1 = new DevExpress.XtraBars.Ribbon.RibbonControl();
@@ -67,10 +68,8 @@ namespace Contract
             this.rpContractors = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.rpgContractor = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.rpgContractorWork = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.rbpContractFiles = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.workspaceManager1 = new DevExpress.Utils.WorkspaceManager();
             this.barButtonItem5 = new DevExpress.XtraBars.BarButtonItem();
-            this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabbedMdiManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageEdit1)).BeginInit();
@@ -384,8 +383,7 @@ namespace Contract
             // 
             this.rpContractWork.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
             this.rpgContracts,
-            this.rpgContractWork,
-            this.ribbonPageGroup2});
+            this.rpgContractWork});
             this.rpContractWork.Name = "rpContractWork";
             this.rpContractWork.Text = "Договорная работа";
             this.rpContractWork.Visible = false;
@@ -428,11 +426,6 @@ namespace Contract
             this.rpgContractorWork.Name = "rpgContractorWork";
             this.rpgContractorWork.Text = "Текущий контрагент";
             // 
-            // rbpContractFiles
-            // 
-            this.rbpContractFiles.Name = "rbpContractFiles";
-            this.rbpContractFiles.Text = "Файлы";
-            // 
             // workspaceManager1
             // 
             this.workspaceManager1.TargetControl = this;
@@ -447,11 +440,6 @@ namespace Contract
             this.barButtonItem5.Name = "barButtonItem5";
             this.barButtonItem5.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText;
             // 
-            // ribbonPageGroup2
-            // 
-            this.ribbonPageGroup2.Name = "ribbonPageGroup2";
-            this.ribbonPageGroup2.Text = "ribbonPageGroup2";
-            // 
             // ParentForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -463,7 +451,6 @@ namespace Contract
             this.Name = "ParentForm";
             this.Text = "ParentForm";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ParentForm_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabbedMdiManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageEdit1)).EndInit();
@@ -509,9 +496,6 @@ namespace Contract
         private DevExpress.XtraBars.BarButtonItem bbtnNewContractor;
         private RibbonPageGroup rpgContractorWork;
         private DevExpress.XtraBars.BarButtonItem bbtnRemoveContractor;
-        private DevExpress.XtraBars.BarButtonItem bbtnSaveContractor;
-        private RibbonPageGroup rbpContractFiles;
-        private DevExpress.XtraBars.BarButtonItem bbtnContractWordDocument;
-        private RibbonPageGroup ribbonPageGroup2;
+        public DevExpress.XtraBars.BarButtonItem bbtnSaveContractor;
     }
 }

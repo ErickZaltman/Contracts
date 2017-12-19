@@ -197,6 +197,10 @@ namespace Contract
                     bbtnSendToSigning.Enabled = true;
                     bbtnConnectedDocs.Enabled = true;
                     bbtnAttachments.Enabled = true;
+                    if ((xtraTabbedMdiManager1.SelectedPage.MdiChild as Forms.ContractForm).currentID == 0 || (xtraTabbedMdiManager1.SelectedPage.MdiChild as Forms.ContractForm).DataChanged() == false)
+                        bbtnSave.Enabled = true;
+                    else
+                        bbtnSave.Enabled = false;
                 }
                 else
                 {
@@ -217,7 +221,10 @@ namespace Contract
                 {
                     bbtnNewContractor.Enabled = false;
                     bbtnRemoveContractor.Enabled = false;
-                    bbtnSaveContractor.Enabled = true;
+                    if ((xtraTabbedMdiManager1.SelectedPage.MdiChild as Forms.ContractorForm).currentID == 0 || (xtraTabbedMdiManager1.SelectedPage.MdiChild as Forms.ContractorForm).DataChanged() == false)
+                        bbtnSaveContractor.Enabled = true;
+                    else
+                        bbtnSaveContractor.Enabled = false;
                 }
                 else
                 {
@@ -307,7 +314,7 @@ namespace Contract
             Forms.ContractorsSelectForm childForm = (xtraTabbedMdiManager1.SelectedPage.MdiChild as Forms.ContractorsSelectForm);
             int rowIndex = childForm.gvList.GetSelectedRows()[0];
             int id = Convert.ToInt32(childForm.gvList.GetRowCellValue(rowIndex, "ID"));
-            //childForm.RemoveContractor(id);
+            childForm.RemoveContractor(id);
             updateContractors();
         }
 

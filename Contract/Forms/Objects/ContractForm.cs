@@ -16,7 +16,7 @@ namespace Contract.Forms
     {
         private DB.DBModel dbContext;
         private string UserName;
-        private int currentID;
+        public int currentID;
         private bool isLoaded = false;
 
         public DB.Contract currContract;
@@ -328,7 +328,6 @@ namespace Contract.Forms
             bool isValid = DoValidate(sender);
             if (isLoaded)
             {
-
                 if (currentID != 0)
                     if (isValid && !DataChanged())
                         (this.ParentForm as ParentForm).bbtnSave.Enabled = true;
@@ -339,7 +338,7 @@ namespace Contract.Forms
 
         //Придумать оптимизацию на проверку
         // когда-нибудь
-        private bool DataChanged()
+        public bool DataChanged()
         {
             if (currContract.CategoryID != (int?)lueContractCategory.EditValue) return false;
             if (currContract.DepartmentID != (int?)lueDepartment.EditValue) return false;

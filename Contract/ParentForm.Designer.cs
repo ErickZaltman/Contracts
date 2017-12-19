@@ -30,10 +30,9 @@ namespace Contract
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ParentForm));
             DevExpress.Utils.Animation.PushTransition pushTransition1 = new DevExpress.Utils.Animation.PushTransition();
-            this.xtraTabbedMdiManager1 = new DevExpress.XtraTabbedMdi.XtraTabbedMdiManager(this.components);
+            this.xtraTabbedMdiManager1 = new DevExpress.XtraTabbedMdi.XtraTabbedMdiManager();
             this.ribbonStatusBar1 = new DevExpress.XtraBars.Ribbon.RibbonStatusBar();
             this.bsiUserName = new DevExpress.XtraBars.BarStaticItem();
             this.ribbonControl1 = new DevExpress.XtraBars.Ribbon.RibbonControl();
@@ -56,21 +55,22 @@ namespace Contract
             this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
             this.barEditItem1 = new DevExpress.XtraBars.BarEditItem();
             this.repositoryItemImageEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemImageEdit();
+            this.bbtnNewContractor = new DevExpress.XtraBars.BarButtonItem();
+            this.bbtnRemoveContractor = new DevExpress.XtraBars.BarButtonItem();
+            this.bbtnSaveContractor = new DevExpress.XtraBars.BarButtonItem();
             this.rpMain = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.rbgCats = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.rpContractWork = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.rpgContracts = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.rpgContractWork = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.rbpContractFiles = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.workspaceManager1 = new DevExpress.Utils.WorkspaceManager();
-            this.barButtonItem5 = new DevExpress.XtraBars.BarButtonItem();
             this.rpContractors = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.rpgContractor = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.rpgContractorWork = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
-            this.bbtnNewContractor = new DevExpress.XtraBars.BarButtonItem();
-            this.bbtnRemoveContractor = new DevExpress.XtraBars.BarButtonItem();
-            this.bbtnSaveContractor = new DevExpress.XtraBars.BarButtonItem();
+            this.rbpContractFiles = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.workspaceManager1 = new DevExpress.Utils.WorkspaceManager();
+            this.barButtonItem5 = new DevExpress.XtraBars.BarButtonItem();
+            this.ribbonPageGroup2 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabbedMdiManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageEdit1)).BeginInit();
@@ -324,6 +324,34 @@ namespace Contract
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.repositoryItemImageEdit1.Name = "repositoryItemImageEdit1";
             // 
+            // bbtnNewContractor
+            // 
+            this.bbtnNewContractor.Caption = "Новый контаргент";
+            this.bbtnNewContractor.Glyph = ((System.Drawing.Image)(resources.GetObject("bbtnNewContractor.Glyph")));
+            this.bbtnNewContractor.Id = 49;
+            this.bbtnNewContractor.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("bbtnNewContractor.LargeGlyph")));
+            this.bbtnNewContractor.Name = "bbtnNewContractor";
+            this.bbtnNewContractor.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbtnNewContractor_ItemClick);
+            // 
+            // bbtnRemoveContractor
+            // 
+            this.bbtnRemoveContractor.Caption = "Пометить на удаление";
+            this.bbtnRemoveContractor.Glyph = ((System.Drawing.Image)(resources.GetObject("bbtnRemoveContractor.Glyph")));
+            this.bbtnRemoveContractor.Id = 50;
+            this.bbtnRemoveContractor.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("bbtnRemoveContractor.LargeGlyph")));
+            this.bbtnRemoveContractor.Name = "bbtnRemoveContractor";
+            this.bbtnRemoveContractor.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbtnRemoveContractor_ItemClick);
+            // 
+            // bbtnSaveContractor
+            // 
+            this.bbtnSaveContractor.Caption = "Сохранить";
+            this.bbtnSaveContractor.Enabled = false;
+            this.bbtnSaveContractor.Glyph = ((System.Drawing.Image)(resources.GetObject("bbtnSaveContractor.Glyph")));
+            this.bbtnSaveContractor.Id = 51;
+            this.bbtnSaveContractor.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("bbtnSaveContractor.LargeGlyph")));
+            this.bbtnSaveContractor.Name = "bbtnSaveContractor";
+            this.bbtnSaveContractor.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbtnSaveContractor_ItemClick);
+            // 
             // rpMain
             // 
             this.rpMain.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
@@ -356,7 +384,8 @@ namespace Contract
             // 
             this.rpContractWork.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
             this.rpgContracts,
-            this.rpgContractWork});
+            this.rpgContractWork,
+            this.ribbonPageGroup2});
             this.rpContractWork.Name = "rpContractWork";
             this.rpContractWork.Text = "Договорная работа";
             this.rpContractWork.Visible = false;
@@ -376,26 +405,6 @@ namespace Contract
             this.rpgContractWork.ItemLinks.Add(this.bbtnAttachments);
             this.rpgContractWork.Name = "rpgContractWork";
             this.rpgContractWork.Text = "Текущий договор";
-            // 
-            // rbpContractFiles
-            // 
-            this.rbpContractFiles.ItemLinks.Add(this.bbtnContractWordDocument);
-            this.rbpContractFiles.Name = "rbpContractFiles";
-            this.rbpContractFiles.Text = "Файлы";
-            // 
-            // workspaceManager1
-            // 
-            this.workspaceManager1.TargetControl = this;
-            this.workspaceManager1.TransitionType = pushTransition1;
-            // 
-            // barButtonItem5
-            // 
-            this.barButtonItem5.Caption = "Спецификации";
-            this.barButtonItem5.Glyph = ((System.Drawing.Image)(resources.GetObject("barButtonItem5.Glyph")));
-            this.barButtonItem5.Id = 22;
-            this.barButtonItem5.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("barButtonItem5.LargeGlyph")));
-            this.barButtonItem5.Name = "barButtonItem5";
-            this.barButtonItem5.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText;
             // 
             // rpContractors
             // 
@@ -419,33 +428,29 @@ namespace Contract
             this.rpgContractorWork.Name = "rpgContractorWork";
             this.rpgContractorWork.Text = "Текущий контрагент";
             // 
-            // bbtnNewContractor
+            // rbpContractFiles
             // 
-            this.bbtnNewContractor.Caption = "Новый контаргент";
-            this.bbtnNewContractor.Glyph = ((System.Drawing.Image)(resources.GetObject("bbtnNewContractor.Glyph")));
-            this.bbtnNewContractor.Id = 49;
-            this.bbtnNewContractor.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("bbtnNewContractor.LargeGlyph")));
-            this.bbtnNewContractor.Name = "bbtnNewContractor";
-            this.bbtnNewContractor.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbtnNewContractor_ItemClick);
+            this.rbpContractFiles.Name = "rbpContractFiles";
+            this.rbpContractFiles.Text = "Файлы";
             // 
-            // bbtnRemoveContractor
+            // workspaceManager1
             // 
-            this.bbtnRemoveContractor.Caption = "Пометить на удаление";
-            this.bbtnRemoveContractor.Glyph = ((System.Drawing.Image)(resources.GetObject("bbtnRemoveContractor.Glyph")));
-            this.bbtnRemoveContractor.Id = 50;
-            this.bbtnRemoveContractor.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("bbtnRemoveContractor.LargeGlyph")));
-            this.bbtnRemoveContractor.Name = "bbtnRemoveContractor";
-            this.bbtnRemoveContractor.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbtnRemoveContractor_ItemClick);
+            this.workspaceManager1.TargetControl = this;
+            this.workspaceManager1.TransitionType = pushTransition1;
             // 
-            // bbtnSaveContractor
+            // barButtonItem5
             // 
-            this.bbtnSaveContractor.Caption = "Сохранить";
-            this.bbtnSaveContractor.Enabled = false;
-            this.bbtnSaveContractor.Glyph = ((System.Drawing.Image)(resources.GetObject("bbtnSaveContractor.Glyph")));
-            this.bbtnSaveContractor.Id = 51;
-            this.bbtnSaveContractor.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("bbtnSaveContractor.LargeGlyph")));
-            this.bbtnSaveContractor.Name = "bbtnSaveContractor";
-            this.bbtnSaveContractor.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbtnSaveContractor_ItemClick);
+            this.barButtonItem5.Caption = "Спецификации";
+            this.barButtonItem5.Glyph = ((System.Drawing.Image)(resources.GetObject("barButtonItem5.Glyph")));
+            this.barButtonItem5.Id = 22;
+            this.barButtonItem5.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("barButtonItem5.LargeGlyph")));
+            this.barButtonItem5.Name = "barButtonItem5";
+            this.barButtonItem5.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText;
+            // 
+            // ribbonPageGroup2
+            // 
+            this.ribbonPageGroup2.Name = "ribbonPageGroup2";
+            this.ribbonPageGroup2.Text = "ribbonPageGroup2";
             // 
             // ParentForm
             // 
@@ -458,6 +463,7 @@ namespace Contract
             this.Name = "ParentForm";
             this.Text = "ParentForm";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ParentForm_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabbedMdiManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageEdit1)).EndInit();
@@ -504,5 +510,8 @@ namespace Contract
         private RibbonPageGroup rpgContractorWork;
         private DevExpress.XtraBars.BarButtonItem bbtnRemoveContractor;
         private DevExpress.XtraBars.BarButtonItem bbtnSaveContractor;
+        private RibbonPageGroup rbpContractFiles;
+        private DevExpress.XtraBars.BarButtonItem bbtnContractWordDocument;
+        private RibbonPageGroup ribbonPageGroup2;
     }
 }

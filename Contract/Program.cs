@@ -11,6 +11,20 @@ namespace Contract
     static class Program
     {
         public static Dictionary<Tables, Type> TypesList;
+        private static IniFile _settings;
+
+        internal static IniFile Settings
+        {
+            get
+            {
+                return _settings;
+            }
+
+            set
+            {
+                _settings = value;
+            }
+        }
 
         /// <summary>
         /// The main entry point for the application.
@@ -24,8 +38,14 @@ namespace Contract
             BonusSkins.Register();
             SkinManager.EnableFormSkins();
             UserLookAndFeel.Default.SetSkinStyle("DevExpress Style");
-            initDict();
+            initSettings();
             Application.Run(new Forms.Authorization());
+        }
+
+        public static void initSettings()
+        {
+            _settings = new IniFile("test.ini");
+            initDict();
         }
         public static void initDict()
         {

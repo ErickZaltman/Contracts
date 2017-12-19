@@ -20,7 +20,10 @@ namespace Contract.Forms
         public Authorization()
         {
             InitializeComponent();
-            
+
+            tbLogin.Text = Program.Settings.ValueList["userName"];
+            tbServerName.Text = Program.Settings.ValueList["serverAddress"];
+
         }
 
         private void btnAuthorization_Click(object sender, EventArgs e)
@@ -39,11 +42,16 @@ namespace Contract.Forms
 
             if (db.Users.Where(x => x.Login == tbLogin.Text && x.Password == tbPassword.Text).Count() > 0)
             {
-                Properties.Settings.CurrentUserID = db.Users.Where(x => x.Login == tbLogin.Text).ToList()[0].ID;
-                ParentForm main = new ParentForm();
+                Properties.Settings.CurrentUserID = db.Users.First(x => x.Login == tbLogin.Text).ID;
+                ParentForm main = new ParentForm(Properties.Settings.CurrentUserID);
                 main.Show();
                 Hide();
-                
+                if (tbServerName.Text != Program.Settings.ValueList["serverAddress"])
+                    Program.Settings.ChangeValue("serverAddress", tbServerName.Text);
+                if (tbLogin.Text != Program.Settings.ValueList["userName"])
+                    Program.Settings.ChangeValue("userName", tbLogin.Text);
+
+
             }
             else
             {

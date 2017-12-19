@@ -85,6 +85,7 @@
   <ItemGroup>
     <Compile Include="cs\com.cs" />
     <Compile Include="cs\DocumentFormsContainer.cs" />
+    <Compile Include="cs\IniFile.cs" />
     <Compile Include="cs\WordDocument.cs" />
     <Compile Include="DB\ActivityKind.cs" />
     <Compile Include="DB\AgreementSignList.cs" />

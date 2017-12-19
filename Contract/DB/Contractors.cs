@@ -57,6 +57,8 @@ namespace Contract.DB
         [StringLength(50)]
         public string BaseDocument { get; set; }
 
+        public bool? IsRemoved { get; set; }
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Contract> Contract { get; set; }
 

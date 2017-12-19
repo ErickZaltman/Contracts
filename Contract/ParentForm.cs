@@ -34,7 +34,11 @@ namespace Contract
         public ParentForm()
         {
             InitializeComponent();
+            dbContext = new DBModel();
+
             documentManager = new DocumentFormsContainer();
+            bsiUserName.Caption = dbContext.getFullUserName.First(x => x.ID == Properties.Settings.CurrentUserID).FullName;
+
 
         }
         public ParentForm(int id)
@@ -44,6 +48,8 @@ namespace Contract
             dbContext = new DBModel();
             Properties.Settings.CurrentUserID = id;
             documentManager = new DocumentFormsContainer();
+
+            bsiUserName.Caption = dbContext.getFullUserName.First(x => x.ID == Properties.Settings.CurrentUserID).FullName;
 
         }
 
@@ -325,6 +331,11 @@ namespace Contract
         private void barButtonItem2_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             MessageBox.Show(ConfigurationManager.ConnectionStrings["DBModel"].ToString());
+        }
+
+        private void ParentForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Environment.Exit(0);
         }
     }
     

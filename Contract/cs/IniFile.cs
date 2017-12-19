@@ -16,6 +16,7 @@ namespace Contract
         public IniFile(string Path)
         {
             _path = Path;
+            
             _valueList = getValueList();
             oldSettings = this;
 
@@ -41,22 +42,31 @@ namespace Contract
         }
         private Dictionary<string, string> getValueList()
         {
-            string text = System.IO.File.ReadAllText(_path);
-            text = text.Replace("\r", "");
-            text = text.Replace("[Settings]", "");
-            text = text.Replace(" ", "");
-            text = text.Replace("\n", "");
-            string[] lines = text.Split(';');
             Dictionary<string, string> tmpDict = new Dictionary<string, string>();
-            foreach (string line in lines)
+            if (File.Exists(_path))
             {
-                if (line.Length != 0)
+                string text = System.IO.File.ReadAllText(_path);
+                text = text.Replace("\r", "");
+                text = text.Replace("[Settings]", "");
+                text = text.Replace(" ", "");
+                text = text.Replace("\n", "");
+                string[] lines = text.Split(';');
+                foreach (string line in lines)
                 {
-                    string tmpLine = line;
-                    tmpLine = line.Replace(" ", "");
-                    string[] values = line.Split('=');
-                    tmpDict.Add(values[0], values[1]);
+                    if (line.Length != 0)
+                    {
+                        string tmpLine = line;
+                        tmpLine = line.Replace(" ", "");
+                        string[] values = line.Split('=');
+                        tmpDict.Add(values[0], values[1]);
+                    }
                 }
+            }
+            else
+            {
+                tmpDict.Add("userName", "");
+                tmpDict.Add("serverAddress", "");
+                SaveChanges(tmpDict);
             }
 
             return tmpDict;
@@ -67,7 +77,7 @@ namespace Contract
         {
             _valueList[valueName] = newValue;
             if (CheckChanges())
-                SaveChanges();
+                SaveChanges(_valueList);
         }
         private bool CheckChanges()
         {
@@ -75,13 +85,13 @@ namespace Contract
 
         }
 
-        private void SaveChanges()
+        private void SaveChanges(Dictionary<string,string> _values)
         {
             using (StreamWriter sw = new StreamWriter(_path, false, System.Text.Encoding.Default))
             {
                 sw.WriteLine("[Settings]");
             }
-            foreach (KeyValuePair<string, string> kvp in _valueList)
+            foreach (KeyValuePair<string, string> kvp in _values)
             {
                 using (StreamWriter sw = new StreamWriter(_path, true, System.Text.Encoding.Default))
                 {

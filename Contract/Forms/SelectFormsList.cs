@@ -425,7 +425,6 @@ namespace Contract.Forms
         private void ContractorsSelectForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             inst = null;
-
         }
 
         private void fillGV()

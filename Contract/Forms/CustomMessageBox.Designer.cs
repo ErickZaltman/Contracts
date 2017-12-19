@@ -42,6 +42,7 @@
             this.sbSave.Size = new System.Drawing.Size(105, 23);
             this.sbSave.TabIndex = 0;
             this.sbSave.Text = "Сохранить";
+            this.sbSave.Click += new System.EventHandler(this.sbSave_Click);
             // 
             // sbNoSave
             // 

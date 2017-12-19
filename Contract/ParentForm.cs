@@ -342,7 +342,7 @@ namespace Contract
 
         private void ParentForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            Environment.Exit(0);
+            Application.Exit();
         }
     }
     

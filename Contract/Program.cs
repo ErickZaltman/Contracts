@@ -39,7 +39,7 @@ namespace Contract
             SkinManager.EnableFormSkins();
             UserLookAndFeel.Default.SetSkinStyle("DevExpress Style");
             initSettings();
-            Application.Run(new Forms.Authorization());
+            Application.Run(new ParentForm(3));
         }
 
         public static void initSettings()

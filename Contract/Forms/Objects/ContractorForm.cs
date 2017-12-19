@@ -260,7 +260,7 @@ namespace Contract.Forms
                 switch (mbForm.DialogResult)
                 {
                     case DialogResult.Yes: SaveContractorChanges(); (this.ParentForm as ParentForm).updateContractors(); (this.ParentForm as ParentForm).bbtnSaveContractor.Enabled = false; e.Cancel = false; break;
-                    case DialogResult.No: e.Cancel = false; (this.ParentForm as ParentForm).bbtnSaveContractor.Enabled = false; break;
+                    case DialogResult.No: e.Cancel = true; (this.ParentForm as ParentForm).bbtnSaveContractor.Enabled = false; break;
                     case DialogResult.Cancel: e.Cancel = true; break;
                     default: break;
                 }

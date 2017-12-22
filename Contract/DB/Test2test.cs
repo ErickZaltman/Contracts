@@ -8,11 +8,12 @@ namespace Contract.DB
 
     public partial class Test2test
     {
-        public int id { get; set; }
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
+        public int ID { get; set; }
 
-        [StringLength(50)]
-        public string txt { get; set; }
+        public int? ParentID { get; set; }
 
-        public int? hz { get; set; }
+        [StringLength(150)]
+        public string Name { get; set; }
     }
 }

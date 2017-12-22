@@ -344,6 +344,11 @@ namespace Contract
         {
             Application.Exit();
         }
+
+        private void barButtonItem2_ItemClick_1(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            MessageBox.Show(Application.OpenForms.Count.ToString());
+        }
     }
     
 }

@@ -54,7 +54,7 @@ namespace Contract.Forms
         {
             teName.Text = currentContractor.Name;
             meFullName.Text = currentContractor.FullName;
-            teEGRPOU.Text = currentContractor.EGRPOU;
+            teEGRPOU.Text = currentContractor.EDRPOU;
             teLegalAddress.Text = currentContractor.LegalAddress;
             teActualAddress.Text = currentContractor.ActualAddress;
             teTaxCode.Text = currentContractor.TaxCode;
@@ -85,16 +85,16 @@ namespace Contract.Forms
                 currentContractor.FullName = meFullName.Text;
             //
             if (teEGRPOU.Text == "")
-                currentContractor.EGRPOU = null;
+                currentContractor.EDRPOU = null;
             else
-                if (currentContractor.EGRPOU != teEGRPOU.Text)
-                currentContractor.EGRPOU = teEGRPOU.Text;
+                if (currentContractor.EDRPOU != teEGRPOU.Text)
+                currentContractor.EDRPOU = teEGRPOU.Text;
             //
             if (teEGRPOU.Text == "")
-                currentContractor.EGRPOU = null;
+                currentContractor.EDRPOU = null;
             else
-                if (currentContractor.EGRPOU != teEGRPOU.Text)
-                currentContractor.EGRPOU = teEGRPOU.Text;
+                if (currentContractor.EDRPOU != teEGRPOU.Text)
+                currentContractor.EDRPOU = teEGRPOU.Text;
             //
             if (teLegalAddress.Text == "")
                 currentContractor.LegalAddress = null;
@@ -201,9 +201,9 @@ namespace Contract.Forms
             //
             if (teEGRPOU.Text == "")
             {
-                if (currentContractor.EGRPOU != null) return false;
+                if (currentContractor.EDRPOU != null) return false;
             }
-            else if (currentContractor.EGRPOU != teEGRPOU.Text) return false;
+            else if (currentContractor.EDRPOU != teEGRPOU.Text) return false;
             //
             if (teLegalAddress.Text == "")
             {

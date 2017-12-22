@@ -155,8 +155,8 @@ namespace Contract
 
             ReplaceAllStr("@@ContractNumber@@", currentContract.Number);
             ReplaceAllStr("@@ContractDate@@", currentContract.Date);
-            ReplaceAllStr("@@ContractorPersonInCharge@@", currentContract.Contractors.PersonInCharge);
-            ReplaceAllStr("@@ContractorBaseDocument@@", currentContract.Contractors.BaseDocument);
+            ReplaceAllStr("@@ContractorPersonInCharge@@", currentContract.Contractors.Person);
+            ReplaceAllStr("@@ContractorBaseDocument@@", currentContract.Contractors.ProofDocument);
 
             ReplaceAllStr("@@ContractDateDay@@", currentContract.Date.Value.Day);
             ReplaceAllStr("@@ContractDateMonth@@", currentContract.Date.Value.Month);

@@ -337,10 +337,6 @@ namespace Contract.Forms
 
             gvList.Columns["ID"].Visible = false;
 
-            gvList.Columns["Number"].Caption = "Номер договора";
-            gvList.Columns["Category"].Caption = "Категория договора";
-            gvList.Columns["Theme"].Caption = "Предмет договора";
-            gvList.Columns["Summ"].Caption = "Сумма договора";
             gvList.Columns["Name"].Caption = "Автор";
         }
 

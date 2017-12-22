@@ -15,18 +15,19 @@ namespace Contract.DB
             ContractAnnex = new HashSet<ContractAnnex>();
         }
 
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int ID { get; set; }
 
         [StringLength(50)]
         public string Name { get; set; }
 
-        [StringLength(100)]
+        [StringLength(200)]
         public string FullName { get; set; }
 
         public int? ContractorTypeID { get; set; }
 
         [StringLength(50)]
-        public string EGRPOU { get; set; }
+        public string EDRPOU { get; set; }
 
         [StringLength(350)]
         public string LegalAddress { get; set; }
@@ -36,13 +37,16 @@ namespace Contract.DB
 
         public int? TaxTypeID { get; set; }
 
-        [StringLength(50)]
+        [StringLength(150)]
         public string PhoneNumber { get; set; }
 
         [StringLength(50)]
         public string Email { get; set; }
 
-        [StringLength(10)]
+        [StringLength(50)]
+        public string INN { get; set; }
+
+        [StringLength(50)]
         public string TaxCode { get; set; }
 
         [StringLength(50)]
@@ -52,10 +56,23 @@ namespace Contract.DB
         public string CheckingAccount { get; set; }
 
         [StringLength(50)]
-        public string PersonInCharge { get; set; }
+        public string Person { get; set; }
 
         [StringLength(50)]
-        public string BaseDocument { get; set; }
+        public string ProofDocument { get; set; }
+
+        public int? RegionID { get; set; }
+
+        [StringLength(50)]
+        public string DRFOCode { get; set; }
+
+        public int? GroupID { get; set; }
+
+        public int? IndustryID { get; set; }
+
+        public bool? IsLegalEntity { get; set; }
+
+        public bool? IsCustomer { get; set; }
 
         public bool? IsRemoved { get; set; }
 

@@ -20,6 +20,7 @@ namespace Contract.DB
         public virtual DbSet<ContractAnnex> ContractAnnex { get; set; }
         public virtual DbSet<ContractCategory> ContractCategory { get; set; }
         public virtual DbSet<ContractMovements> ContractMovements { get; set; }
+        public virtual DbSet<ContractorGroups> ContractorGroups { get; set; }
         public virtual DbSet<Contractors> Contractors { get; set; }
         public virtual DbSet<ContractorType> ContractorType { get; set; }
         public virtual DbSet<ContractRenewal> ContractRenewal { get; set; }
@@ -28,17 +29,20 @@ namespace Contract.DB
         public virtual DbSet<DocumentTypes> DocumentTypes { get; set; }
         public virtual DbSet<Files> Files { get; set; }
         public virtual DbSet<HistoryChanges> HistoryChanges { get; set; }
+        public virtual DbSet<Industry> Industry { get; set; }
         public virtual DbSet<MovementTypes> MovementTypes { get; set; }
         public virtual DbSet<Permissions> Permissions { get; set; }
+        public virtual DbSet<Region> Region { get; set; }
+        public virtual DbSet<RegionGroup> RegionGroup { get; set; }
         public virtual DbSet<SendTypes> SendTypes { get; set; }
         public virtual DbSet<Signing> Signing { get; set; }
         public virtual DbSet<SupAgreement> SupAgreement { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<TaxesType> TaxesType { get; set; }
-        public virtual DbSet<Test2test> Test2test { get; set; }
         public virtual DbSet<testtable> testtable { get; set; }
         public virtual DbSet<UserPermissions> UserPermissions { get; set; }
         public virtual DbSet<Users> Users { get; set; }
+        public virtual DbSet<Test2test> Test2test { get; set; }
         public virtual DbSet<getFullUserName> getFullUserName { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
@@ -61,10 +65,6 @@ namespace Contract.DB
                 .HasMany(e => e.Contract)
                 .WithOptional(e => e.ContractCategory)
                 .HasForeignKey(e => e.CategoryID);
-
-            modelBuilder.Entity<Contractors>()
-                .Property(e => e.TaxCode)
-                .IsFixedLength();
 
             modelBuilder.Entity<Contractors>()
                 .HasMany(e => e.Contract)

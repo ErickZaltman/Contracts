@@ -133,7 +133,7 @@ namespace Contract
             this.bbtnRemoveContractor,
             this.bbtnSaveContractor});
             this.ribbonControl1.Location = new System.Drawing.Point(0, 0);
-            this.ribbonControl1.MaxItemId = 52;
+            this.ribbonControl1.MaxItemId = 53;
             this.ribbonControl1.Name = "ribbonControl1";
             this.ribbonControl1.PageHeaderItemLinks.Add(this.barButtonItem1);
             this.ribbonControl1.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {

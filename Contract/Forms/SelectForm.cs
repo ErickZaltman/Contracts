@@ -73,7 +73,7 @@ namespace Contract.Forms
 
             tmpForm.Show();
 
-            (MdiParent as ParentForm).xtraTabbedMdiManager1.SelectedPage = (MdiParent as ParentForm).xtraTabbedMdiManager1.Pages[tmpForm];   //Нихуя не соответствует принципам ООП
+            //(MdiParent as ParentForm).xtraTabbedMdiManager1.SelectedPage = (MdiParent as ParentForm).xtraTabbedMdiManager1.Pages[tmpForm];   //Нихуя не соответствует принципам ООП
 
         }
         private void closeForm()

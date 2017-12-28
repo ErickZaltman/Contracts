@@ -105,7 +105,7 @@ namespace Contract.Forms
 
             lueContractors.Properties.DisplayMember = "Text";
             lueContractors.Properties.ValueMember = "Value";
-            lueContractors.Properties.DataSource = dbContext.Contractors.Select(x => new { Value = x.ID, Text = x.Name }).ToList();
+            lueContractors.Properties.DataSource = dbContext.Contractors.Select(x => new { Value = x.ID, Text = x.Name }).OrderBy(x => x.Text).ToList();
         }
         private void getIDSelectedItemID(int ID, Tables type)
         {

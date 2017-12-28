@@ -22,9 +22,9 @@ namespace Contract
 
         private Object _templatePathObj;
 
-        private Word.Range _currentRange = null;
+        //private Word.Range _currentRange = null;
 
-        private Word.Table _table = null;
+        //private Word.Table _table = null;
         public bool Closed
         {
             get

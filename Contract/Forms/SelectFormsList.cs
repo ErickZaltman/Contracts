@@ -428,7 +428,9 @@ namespace Contract.Forms
         {
             gridControl1.DataSource = dbContext.Contractors.Where(y => y.IsRemoved != true).Select(x => new { x.ID, x.Name }).ToList();
 
-            gvList.Columns["ID"].Visible = false;
+            gvList.Columns["ID"].Caption = "Код";
+            gvList.Columns["ID"].MaxWidth = 50;
+            gvList.Columns["ID"].MinWidth = 50;
 
             gvList.Columns["Name"].Caption = "Наименование";
         }

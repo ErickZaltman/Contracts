@@ -150,6 +150,12 @@
     <Compile Include="Forms\Objects\DocumentForm.Designer.cs">
       <DependentUpon>DocumentForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\SelectTreeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\SelectTreeForm.Designer.cs">
+      <DependentUpon>SelectTreeForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\SelectFormsList.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -223,6 +229,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Objects\DocumentForm.resx">
       <DependentUpon>DocumentForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SelectTreeForm.resx">
+      <DependentUpon>SelectTreeForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\SelectForm.resx">
       <DependentUpon>SelectForm.cs</DependentUpon>

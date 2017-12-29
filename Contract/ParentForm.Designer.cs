@@ -42,11 +42,10 @@ namespace Contract
             this.bbtnSupAgreements = new DevExpress.XtraBars.BarButtonItem();
             this.bbtnAnexes = new DevExpress.XtraBars.BarButtonItem();
             this.bbtnDisAgreements = new DevExpress.XtraBars.BarButtonItem();
-            this.barStaticItem1 = new DevExpress.XtraBars.BarStaticItem();
+            this.bsiSpace = new DevExpress.XtraBars.BarStaticItem();
             this.bbtnContractors = new DevExpress.XtraBars.BarButtonItem();
             this.bbtnDepartments = new DevExpress.XtraBars.BarButtonItem();
             this.bbtnActivityKind = new DevExpress.XtraBars.BarButtonItem();
-            this.barStaticItem2 = new DevExpress.XtraBars.BarStaticItem();
             this.bbtnNewContract = new DevExpress.XtraBars.BarButtonItem();
             this.bbtnSave = new DevExpress.XtraBars.BarButtonItem();
             this.bbtnSendToSigning = new DevExpress.XtraBars.BarButtonItem();
@@ -59,20 +58,58 @@ namespace Contract
             this.bbtnNewContractor = new DevExpress.XtraBars.BarButtonItem();
             this.bbtnRemoveContractor = new DevExpress.XtraBars.BarButtonItem();
             this.bbtnSaveContractor = new DevExpress.XtraBars.BarButtonItem();
+            this.bbtnUpdateContracts = new DevExpress.XtraBars.BarButtonItem();
+            this.bbtnOpenContract = new DevExpress.XtraBars.BarButtonItem();
+            this.beiFilterField = new DevExpress.XtraBars.BarEditItem();
+            this.repositoryItemLueFilterField = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
+            this.beiFilterMethod = new DevExpress.XtraBars.BarEditItem();
+            this.repositoryItemLueFilterMethod = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
+            this.bsiFilterField = new DevExpress.XtraBars.BarStaticItem();
+            this.bsiFilterMethod = new DevExpress.XtraBars.BarStaticItem();
+            this.bsiFilterValue = new DevExpress.XtraBars.BarStaticItem();
+            this.bbiFilter = new DevExpress.XtraBars.BarButtonItem();
+            this.bbiFilterClear = new DevExpress.XtraBars.BarButtonItem();
+            this.beiFilterValue = new DevExpress.XtraBars.BarEditItem();
+            this.repositoryItemTextEdit1 = new DevExpress.XtraEditors.Repository.RepositoryItemTextEdit();
+            this.bbiFilterCreator = new DevExpress.XtraBars.BarButtonItem();
+            this.bsiSortField = new DevExpress.XtraBars.BarStaticItem();
+            this.bbiSort = new DevExpress.XtraBars.BarButtonItem();
+            this.bsiSortMethod = new DevExpress.XtraBars.BarStaticItem();
+            this.beiSortMethod = new DevExpress.XtraBars.BarEditItem();
+            this.repositoryItemLueSortMethod = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
+            this.beiSortField = new DevExpress.XtraBars.BarEditItem();
+            this.repositoryItemLueSortField = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
+            this.bbiRemoveSort = new DevExpress.XtraBars.BarButtonItem();
+            this.bbiAutoWidth = new DevExpress.XtraBars.BarButtonItem();
+            this.bciFindString = new DevExpress.XtraBars.BarCheckItem();
+            this.bciAutoFilterPanel = new DevExpress.XtraBars.BarCheckItem();
             this.rpMain = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.rbgCats = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.rpContractWork = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.rpgContracts = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.rpgContractsFilter = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.rpgContractsSort = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.rpgContractsSettings = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.rpgContractWork = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.rpContractors = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.rpgContractor = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.rpgContractorWork = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
+            this.repositoryItemLueSortParam = new DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit();
+            this.repositoryItemRgSortParam = new DevExpress.XtraEditors.Repository.RepositoryItemRadioGroup();
             this.workspaceManager1 = new DevExpress.Utils.WorkspaceManager();
             this.barButtonItem5 = new DevExpress.XtraBars.BarButtonItem();
+            this.barEditItem2 = new DevExpress.XtraBars.BarEditItem();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabbedMdiManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageEdit1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLueFilterField)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLueFilterMethod)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLueSortMethod)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLueSortField)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLueSortParam)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemRgSortParam)).BeginInit();
             this.SuspendLayout();
             // 
             // xtraTabbedMdiManager1
@@ -94,7 +131,7 @@ namespace Contract
             this.ribbonStatusBar1.Location = new System.Drawing.Point(0, 543);
             this.ribbonStatusBar1.Name = "ribbonStatusBar1";
             this.ribbonStatusBar1.Ribbon = this.ribbonControl1;
-            this.ribbonStatusBar1.Size = new System.Drawing.Size(1322, 27);
+            this.ribbonStatusBar1.Size = new System.Drawing.Size(1270, 27);
             // 
             // bsiUserName
             // 
@@ -115,11 +152,10 @@ namespace Contract
             this.bbtnSupAgreements,
             this.bbtnAnexes,
             this.bbtnDisAgreements,
-            this.barStaticItem1,
+            this.bsiSpace,
             this.bbtnContractors,
             this.bbtnDepartments,
             this.bbtnActivityKind,
-            this.barStaticItem2,
             this.bbtnNewContract,
             this.bbtnSave,
             this.bbtnSendToSigning,
@@ -131,9 +167,29 @@ namespace Contract
             this.barEditItem1,
             this.bbtnNewContractor,
             this.bbtnRemoveContractor,
-            this.bbtnSaveContractor});
+            this.bbtnSaveContractor,
+            this.bbtnUpdateContracts,
+            this.bbtnOpenContract,
+            this.beiFilterField,
+            this.beiFilterMethod,
+            this.bsiFilterField,
+            this.bsiFilterMethod,
+            this.bsiFilterValue,
+            this.bbiFilter,
+            this.bbiFilterClear,
+            this.beiFilterValue,
+            this.bbiFilterCreator,
+            this.bsiSortField,
+            this.bbiSort,
+            this.bsiSortMethod,
+            this.beiSortMethod,
+            this.beiSortField,
+            this.bbiRemoveSort,
+            this.bbiAutoWidth,
+            this.bciFindString,
+            this.bciAutoFilterPanel});
             this.ribbonControl1.Location = new System.Drawing.Point(0, 0);
-            this.ribbonControl1.MaxItemId = 53;
+            this.ribbonControl1.MaxItemId = 90;
             this.ribbonControl1.Name = "ribbonControl1";
             this.ribbonControl1.PageHeaderItemLinks.Add(this.barButtonItem1);
             this.ribbonControl1.Pages.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPage[] {
@@ -141,7 +197,14 @@ namespace Contract
             this.rpContractWork,
             this.rpContractors});
             this.ribbonControl1.RepositoryItems.AddRange(new DevExpress.XtraEditors.Repository.RepositoryItem[] {
-            this.repositoryItemImageEdit1});
+            this.repositoryItemImageEdit1,
+            this.repositoryItemLueSortParam,
+            this.repositoryItemRgSortParam,
+            this.repositoryItemLueFilterField,
+            this.repositoryItemLueFilterMethod,
+            this.repositoryItemTextEdit1,
+            this.repositoryItemLueSortField,
+            this.repositoryItemLueSortMethod});
             this.ribbonControl1.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonControlStyle.Office2013;
             this.ribbonControl1.ShowApplicationButton = DevExpress.Utils.DefaultBoolean.False;
             this.ribbonControl1.ShowCategoryInCaption = false;
@@ -151,7 +214,7 @@ namespace Contract
             this.ribbonControl1.ShowPageHeadersMode = DevExpress.XtraBars.Ribbon.ShowPageHeadersMode.Show;
             this.ribbonControl1.ShowQatLocationSelector = false;
             this.ribbonControl1.ShowToolbarCustomizeItem = false;
-            this.ribbonControl1.Size = new System.Drawing.Size(1322, 116);
+            this.ribbonControl1.Size = new System.Drawing.Size(1270, 116);
             this.ribbonControl1.StatusBar = this.ribbonStatusBar1;
             this.ribbonControl1.Toolbar.ShowCustomizeItem = false;
             this.ribbonControl1.ToolbarLocation = DevExpress.XtraBars.Ribbon.RibbonQuickAccessToolbarLocation.Hidden;
@@ -206,11 +269,11 @@ namespace Contract
             this.bbtnDisAgreements.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText;
             this.bbtnDisAgreements.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbtnDisAgreements_ItemClick);
             // 
-            // barStaticItem1
+            // bsiSpace
             // 
-            this.barStaticItem1.Id = 26;
-            this.barStaticItem1.Name = "barStaticItem1";
-            this.barStaticItem1.TextAlignment = System.Drawing.StringAlignment.Near;
+            this.bsiSpace.Id = 26;
+            this.bsiSpace.Name = "bsiSpace";
+            this.bsiSpace.TextAlignment = System.Drawing.StringAlignment.Near;
             // 
             // bbtnContractors
             // 
@@ -233,12 +296,6 @@ namespace Contract
             this.bbtnActivityKind.Name = "bbtnActivityKind";
             this.bbtnActivityKind.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbtnActivityKind_ItemClick);
             // 
-            // barStaticItem2
-            // 
-            this.barStaticItem2.Id = 35;
-            this.barStaticItem2.Name = "barStaticItem2";
-            this.barStaticItem2.TextAlignment = System.Drawing.StringAlignment.Near;
-            // 
             // bbtnNewContract
             // 
             this.bbtnNewContract.Caption = "Новый договор";
@@ -251,7 +308,6 @@ namespace Contract
             // bbtnSave
             // 
             this.bbtnSave.Caption = "Сохранить договор";
-            this.bbtnSave.Enabled = false;
             this.bbtnSave.Glyph = ((System.Drawing.Image)(resources.GetObject("bbtnSave.Glyph")));
             this.bbtnSave.Id = 38;
             this.bbtnSave.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("bbtnSave.LargeGlyph")));
@@ -261,7 +317,6 @@ namespace Contract
             // bbtnSendToSigning
             // 
             this.bbtnSendToSigning.Caption = "Отправить на согласование";
-            this.bbtnSendToSigning.Enabled = false;
             this.bbtnSendToSigning.Glyph = ((System.Drawing.Image)(resources.GetObject("bbtnSendToSigning.Glyph")));
             this.bbtnSendToSigning.Id = 39;
             this.bbtnSendToSigning.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("bbtnSendToSigning.LargeGlyph")));
@@ -281,7 +336,6 @@ namespace Contract
             // bbtnAttachments
             // 
             this.bbtnAttachments.Caption = "Вложения";
-            this.bbtnAttachments.Enabled = false;
             this.bbtnAttachments.Glyph = ((System.Drawing.Image)(resources.GetObject("bbtnAttachments.Glyph")));
             this.bbtnAttachments.Id = 42;
             this.bbtnAttachments.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("bbtnAttachments.LargeGlyph")));
@@ -291,7 +345,6 @@ namespace Contract
             // bbtnConnectedDocs
             // 
             this.bbtnConnectedDocs.Caption = "Связанные документы";
-            this.bbtnConnectedDocs.Enabled = false;
             this.bbtnConnectedDocs.Glyph = ((System.Drawing.Image)(resources.GetObject("bbtnConnectedDocs.Glyph")));
             this.bbtnConnectedDocs.Id = 43;
             this.bbtnConnectedDocs.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("bbtnConnectedDocs.LargeGlyph")));
@@ -344,12 +397,210 @@ namespace Contract
             // bbtnSaveContractor
             // 
             this.bbtnSaveContractor.Caption = "Сохранить";
-            this.bbtnSaveContractor.Enabled = false;
             this.bbtnSaveContractor.Glyph = ((System.Drawing.Image)(resources.GetObject("bbtnSaveContractor.Glyph")));
             this.bbtnSaveContractor.Id = 51;
             this.bbtnSaveContractor.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("bbtnSaveContractor.LargeGlyph")));
             this.bbtnSaveContractor.Name = "bbtnSaveContractor";
             this.bbtnSaveContractor.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbtnSaveContractor_ItemClick);
+            // 
+            // bbtnUpdateContracts
+            // 
+            this.bbtnUpdateContracts.Caption = "Обновить список";
+            this.bbtnUpdateContracts.Glyph = ((System.Drawing.Image)(resources.GetObject("bbtnUpdateContracts.Glyph")));
+            this.bbtnUpdateContracts.Id = 53;
+            this.bbtnUpdateContracts.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("bbtnUpdateContracts.LargeGlyph")));
+            this.bbtnUpdateContracts.Name = "bbtnUpdateContracts";
+            this.bbtnUpdateContracts.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbtnUpdateContracts_ItemClick);
+            // 
+            // bbtnOpenContract
+            // 
+            this.bbtnOpenContract.Caption = "Открыть договор";
+            this.bbtnOpenContract.Glyph = ((System.Drawing.Image)(resources.GetObject("bbtnOpenContract.Glyph")));
+            this.bbtnOpenContract.Id = 54;
+            this.bbtnOpenContract.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("bbtnOpenContract.LargeGlyph")));
+            this.bbtnOpenContract.Name = "bbtnOpenContract";
+            this.bbtnOpenContract.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbtnOpenContract_ItemClick);
+            // 
+            // beiFilterField
+            // 
+            this.beiFilterField.Edit = this.repositoryItemLueFilterField;
+            this.beiFilterField.EditWidth = 120;
+            this.beiFilterField.Id = 66;
+            this.beiFilterField.Name = "beiFilterField";
+            // 
+            // repositoryItemLueFilterField
+            // 
+            this.repositoryItemLueFilterField.AutoHeight = false;
+            this.repositoryItemLueFilterField.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemLueFilterField.Name = "repositoryItemLueFilterField";
+            this.repositoryItemLueFilterField.NullText = "";
+            // 
+            // beiFilterMethod
+            // 
+            this.beiFilterMethod.Edit = this.repositoryItemLueFilterMethod;
+            this.beiFilterMethod.EditWidth = 120;
+            this.beiFilterMethod.Id = 67;
+            this.beiFilterMethod.Name = "beiFilterMethod";
+            // 
+            // repositoryItemLueFilterMethod
+            // 
+            this.repositoryItemLueFilterMethod.AutoHeight = false;
+            this.repositoryItemLueFilterMethod.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemLueFilterMethod.Name = "repositoryItemLueFilterMethod";
+            this.repositoryItemLueFilterMethod.NullText = "";
+            // 
+            // bsiFilterField
+            // 
+            this.bsiFilterField.Caption = "Поле";
+            this.bsiFilterField.Id = 69;
+            this.bsiFilterField.Name = "bsiFilterField";
+            this.bsiFilterField.TextAlignment = System.Drawing.StringAlignment.Near;
+            // 
+            // bsiFilterMethod
+            // 
+            this.bsiFilterMethod.Caption = "Сравнение";
+            this.bsiFilterMethod.Id = 70;
+            this.bsiFilterMethod.Name = "bsiFilterMethod";
+            this.bsiFilterMethod.TextAlignment = System.Drawing.StringAlignment.Near;
+            // 
+            // bsiFilterValue
+            // 
+            this.bsiFilterValue.Caption = "Значение";
+            this.bsiFilterValue.Id = 71;
+            this.bsiFilterValue.Name = "bsiFilterValue";
+            this.bsiFilterValue.TextAlignment = System.Drawing.StringAlignment.Near;
+            // 
+            // bbiFilter
+            // 
+            this.bbiFilter.Caption = "Фильтр";
+            this.bbiFilter.Glyph = ((System.Drawing.Image)(resources.GetObject("bbiFilter.Glyph")));
+            this.bbiFilter.Id = 72;
+            this.bbiFilter.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("bbiFilter.LargeGlyph")));
+            this.bbiFilter.Name = "bbiFilter";
+            this.bbiFilter.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText;
+            this.bbiFilter.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiFilter_ItemClick);
+            // 
+            // bbiFilterClear
+            // 
+            this.bbiFilterClear.Caption = "Сбросить фильтр";
+            this.bbiFilterClear.Glyph = ((System.Drawing.Image)(resources.GetObject("bbiFilterClear.Glyph")));
+            this.bbiFilterClear.Id = 73;
+            this.bbiFilterClear.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("bbiFilterClear.LargeGlyph")));
+            this.bbiFilterClear.Name = "bbiFilterClear";
+            this.bbiFilterClear.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText;
+            this.bbiFilterClear.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiFilterClear_ItemClick);
+            // 
+            // beiFilterValue
+            // 
+            this.beiFilterValue.Edit = this.repositoryItemTextEdit1;
+            this.beiFilterValue.EditWidth = 120;
+            this.beiFilterValue.Id = 74;
+            this.beiFilterValue.Name = "beiFilterValue";
+            // 
+            // repositoryItemTextEdit1
+            // 
+            this.repositoryItemTextEdit1.AutoHeight = false;
+            this.repositoryItemTextEdit1.Name = "repositoryItemTextEdit1";
+            // 
+            // bbiFilterCreator
+            // 
+            this.bbiFilterCreator.Caption = "Конструктор фильтра";
+            this.bbiFilterCreator.Glyph = ((System.Drawing.Image)(resources.GetObject("bbiFilterCreator.Glyph")));
+            this.bbiFilterCreator.Id = 76;
+            this.bbiFilterCreator.Name = "bbiFilterCreator";
+            this.bbiFilterCreator.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiFilterCreator_ItemClick_1);
+            // 
+            // bsiSortField
+            // 
+            this.bsiSortField.Caption = "Поле";
+            this.bsiSortField.Id = 77;
+            this.bsiSortField.Name = "bsiSortField";
+            this.bsiSortField.TextAlignment = System.Drawing.StringAlignment.Near;
+            // 
+            // bbiSort
+            // 
+            this.bbiSort.Caption = "Сотрировать";
+            this.bbiSort.Glyph = ((System.Drawing.Image)(resources.GetObject("bbiSort.Glyph")));
+            this.bbiSort.Id = 78;
+            this.bbiSort.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("bbiSort.LargeGlyph")));
+            this.bbiSort.Name = "bbiSort";
+            this.bbiSort.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText;
+            this.bbiSort.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiSort_ItemClick);
+            // 
+            // bsiSortMethod
+            // 
+            this.bsiSortMethod.Caption = "Порядок";
+            this.bsiSortMethod.Id = 79;
+            this.bsiSortMethod.Name = "bsiSortMethod";
+            this.bsiSortMethod.TextAlignment = System.Drawing.StringAlignment.Near;
+            // 
+            // beiSortMethod
+            // 
+            this.beiSortMethod.Edit = this.repositoryItemLueSortMethod;
+            this.beiSortMethod.EditWidth = 120;
+            this.beiSortMethod.Id = 80;
+            this.beiSortMethod.Name = "beiSortMethod";
+            // 
+            // repositoryItemLueSortMethod
+            // 
+            this.repositoryItemLueSortMethod.AutoHeight = false;
+            this.repositoryItemLueSortMethod.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemLueSortMethod.Name = "repositoryItemLueSortMethod";
+            this.repositoryItemLueSortMethod.NullText = "";
+            // 
+            // beiSortField
+            // 
+            this.beiSortField.Edit = this.repositoryItemLueSortField;
+            this.beiSortField.EditWidth = 120;
+            this.beiSortField.Id = 81;
+            this.beiSortField.Name = "beiSortField";
+            // 
+            // repositoryItemLueSortField
+            // 
+            this.repositoryItemLueSortField.AutoHeight = false;
+            this.repositoryItemLueSortField.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemLueSortField.Name = "repositoryItemLueSortField";
+            this.repositoryItemLueSortField.NullText = "";
+            // 
+            // bbiRemoveSort
+            // 
+            this.bbiRemoveSort.Caption = "Сбросить сортировку";
+            this.bbiRemoveSort.Glyph = ((System.Drawing.Image)(resources.GetObject("bbiRemoveSort.Glyph")));
+            this.bbiRemoveSort.Id = 82;
+            this.bbiRemoveSort.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("bbiRemoveSort.LargeGlyph")));
+            this.bbiRemoveSort.Name = "bbiRemoveSort";
+            this.bbiRemoveSort.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText;
+            this.bbiRemoveSort.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiRemoveSort_ItemClick);
+            // 
+            // bbiAutoWidth
+            // 
+            this.bbiAutoWidth.Caption = "Выровнять колонки";
+            this.bbiAutoWidth.Glyph = ((System.Drawing.Image)(resources.GetObject("bbiAutoWidth.Glyph")));
+            this.bbiAutoWidth.Id = 86;
+            this.bbiAutoWidth.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("bbiAutoWidth.LargeGlyph")));
+            this.bbiAutoWidth.Name = "bbiAutoWidth";
+            this.bbiAutoWidth.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText;
+            this.bbiAutoWidth.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiAutoWidth_ItemClick);
+            // 
+            // bciFindString
+            // 
+            this.bciFindString.Caption = "Строка поиска";
+            this.bciFindString.CheckBoxVisibility = DevExpress.XtraBars.CheckBoxVisibility.BeforeText;
+            this.bciFindString.Id = 87;
+            this.bciFindString.Name = "bciFindString";
+            this.bciFindString.CheckedChanged += new DevExpress.XtraBars.ItemClickEventHandler(this.bciFindString_CheckedChanged);
+            // 
+            // bciAutoFilterPanel
+            // 
+            this.bciAutoFilterPanel.Caption = "Панель авто-фильтра";
+            this.bciAutoFilterPanel.CheckBoxVisibility = DevExpress.XtraBars.CheckBoxVisibility.BeforeText;
+            this.bciAutoFilterPanel.Id = 89;
+            this.bciAutoFilterPanel.Name = "bciAutoFilterPanel";
+            this.bciAutoFilterPanel.CheckedChanged += new DevExpress.XtraBars.ItemClickEventHandler(this.bciAutoFilterPanel_CheckedChanged);
             // 
             // rpMain
             // 
@@ -366,8 +617,8 @@ namespace Contract
             this.ribbonPageGroup1.ItemLinks.Add(this.bbtnSupAgreements);
             this.ribbonPageGroup1.ItemLinks.Add(this.bbtnAnexes);
             this.ribbonPageGroup1.ItemLinks.Add(this.bbtnDisAgreements);
-            this.ribbonPageGroup1.ItemLinks.Add(this.barStaticItem1);
-            this.ribbonPageGroup1.ItemLinks.Add(this.barStaticItem2);
+            this.ribbonPageGroup1.ItemLinks.Add(this.bsiSpace);
+            this.ribbonPageGroup1.ItemLinks.Add(this.bsiSpace);
             this.ribbonPageGroup1.Name = "ribbonPageGroup1";
             this.ribbonPageGroup1.Text = "Документы";
             // 
@@ -383,6 +634,9 @@ namespace Contract
             // 
             this.rpContractWork.Groups.AddRange(new DevExpress.XtraBars.Ribbon.RibbonPageGroup[] {
             this.rpgContracts,
+            this.rpgContractsFilter,
+            this.rpgContractsSort,
+            this.rpgContractsSettings,
             this.rpgContractWork});
             this.rpContractWork.Name = "rpContractWork";
             this.rpContractWork.Text = "Договорная работа";
@@ -390,10 +644,49 @@ namespace Contract
             // 
             // rpgContracts
             // 
+            this.rpgContracts.ItemLinks.Add(this.bbtnOpenContract);
             this.rpgContracts.ItemLinks.Add(this.bbtnNewContract);
             this.rpgContracts.ItemLinks.Add(this.bbtnRemoveContract);
+            this.rpgContracts.ItemLinks.Add(this.bbtnUpdateContracts);
             this.rpgContracts.Name = "rpgContracts";
+            this.rpgContracts.ShowCaptionButton = false;
             this.rpgContracts.Text = "Договора";
+            // 
+            // rpgContractsFilter
+            // 
+            this.rpgContractsFilter.ItemLinks.Add(this.bsiFilterField);
+            this.rpgContractsFilter.ItemLinks.Add(this.bsiFilterMethod);
+            this.rpgContractsFilter.ItemLinks.Add(this.bsiFilterValue);
+            this.rpgContractsFilter.ItemLinks.Add(this.beiFilterField);
+            this.rpgContractsFilter.ItemLinks.Add(this.beiFilterMethod);
+            this.rpgContractsFilter.ItemLinks.Add(this.beiFilterValue);
+            this.rpgContractsFilter.ItemLinks.Add(this.bbiFilter);
+            this.rpgContractsFilter.ItemLinks.Add(this.bbiFilterClear);
+            this.rpgContractsFilter.ItemLinks.Add(this.bbiFilterCreator);
+            this.rpgContractsFilter.Name = "rpgContractsFilter";
+            this.rpgContractsFilter.ShowCaptionButton = false;
+            this.rpgContractsFilter.Text = "Фильтр";
+            // 
+            // rpgContractsSort
+            // 
+            this.rpgContractsSort.ItemLinks.Add(this.bsiSortField);
+            this.rpgContractsSort.ItemLinks.Add(this.bsiSortMethod);
+            this.rpgContractsSort.ItemLinks.Add(this.beiSortField);
+            this.rpgContractsSort.ItemLinks.Add(this.beiSortMethod);
+            this.rpgContractsSort.ItemLinks.Add(this.bbiSort);
+            this.rpgContractsSort.ItemLinks.Add(this.bbiRemoveSort);
+            this.rpgContractsSort.ItemsLayout = DevExpress.XtraBars.Ribbon.RibbonPageGroupItemsLayout.TwoRows;
+            this.rpgContractsSort.Name = "rpgContractsSort";
+            this.rpgContractsSort.ShowCaptionButton = false;
+            this.rpgContractsSort.Text = "Сортировка";
+            // 
+            // rpgContractsSettings
+            // 
+            this.rpgContractsSettings.ItemLinks.Add(this.bbiAutoWidth);
+            this.rpgContractsSettings.ItemLinks.Add(this.bciFindString);
+            this.rpgContractsSettings.ItemLinks.Add(this.bciAutoFilterPanel);
+            this.rpgContractsSettings.Name = "rpgContractsSettings";
+            this.rpgContractsSettings.Text = "Дополнительно";
             // 
             // rpgContractWork
             // 
@@ -402,7 +695,9 @@ namespace Contract
             this.rpgContractWork.ItemLinks.Add(this.bbtnConnectedDocs);
             this.rpgContractWork.ItemLinks.Add(this.bbtnAttachments);
             this.rpgContractWork.Name = "rpgContractWork";
+            this.rpgContractWork.ShowCaptionButton = false;
             this.rpgContractWork.Text = "Текущий договор";
+            this.rpgContractWork.Visible = false;
             // 
             // rpContractors
             // 
@@ -426,6 +721,29 @@ namespace Contract
             this.rpgContractorWork.Name = "rpgContractorWork";
             this.rpgContractorWork.Text = "Текущий контрагент";
             // 
+            // repositoryItemLueSortParam
+            // 
+            this.repositoryItemLueSortParam.AutoHeight = false;
+            this.repositoryItemLueSortParam.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
+            this.repositoryItemLueSortParam.Name = "repositoryItemLueSortParam";
+            this.repositoryItemLueSortParam.NullText = "";
+            // 
+            // repositoryItemRgSortParam
+            // 
+            this.repositoryItemRgSortParam.AllowFocused = false;
+            this.repositoryItemRgSortParam.Appearance.BackColor = System.Drawing.Color.Transparent;
+            this.repositoryItemRgSortParam.Appearance.Options.UseBackColor = true;
+            this.repositoryItemRgSortParam.AppearanceFocused.BackColor = System.Drawing.Color.Transparent;
+            this.repositoryItemRgSortParam.AppearanceFocused.Options.UseBackColor = true;
+            this.repositoryItemRgSortParam.BorderStyle = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.repositoryItemRgSortParam.Columns = 1;
+            this.repositoryItemRgSortParam.GlyphAlignment = DevExpress.Utils.HorzAlignment.Default;
+            this.repositoryItemRgSortParam.Items.AddRange(new DevExpress.XtraEditors.Controls.RadioGroupItem[] {
+            new DevExpress.XtraEditors.Controls.RadioGroupItem(null, "По возрастанию"),
+            new DevExpress.XtraEditors.Controls.RadioGroupItem(null, "По убыванию")});
+            this.repositoryItemRgSortParam.Name = "repositoryItemRgSortParam";
+            // 
             // workspaceManager1
             // 
             this.workspaceManager1.TargetControl = this;
@@ -440,11 +758,19 @@ namespace Contract
             this.barButtonItem5.Name = "barButtonItem5";
             this.barButtonItem5.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.SmallWithText;
             // 
+            // barEditItem2
+            // 
+            this.barEditItem2.Edit = this.repositoryItemRgSortParam;
+            this.barEditItem2.EditHeight = 40;
+            this.barEditItem2.EditWidth = 100;
+            this.barEditItem2.Id = 64;
+            this.barEditItem2.Name = "barEditItem2";
+            // 
             // ParentForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1322, 570);
+            this.ClientSize = new System.Drawing.Size(1270, 570);
             this.Controls.Add(this.ribbonControl1);
             this.Controls.Add(this.ribbonStatusBar1);
             this.IsMdiContainer = true;
@@ -454,6 +780,13 @@ namespace Contract
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabbedMdiManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ribbonControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemImageEdit1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLueFilterField)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLueFilterMethod)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemTextEdit1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLueSortMethod)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLueSortField)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemLueSortParam)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.repositoryItemRgSortParam)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -469,7 +802,7 @@ namespace Contract
         private DevExpress.XtraBars.BarButtonItem bbtnAnexes;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup1;
         private DevExpress.XtraBars.BarButtonItem bbtnDisAgreements;
-        private DevExpress.XtraBars.BarStaticItem barStaticItem1;
+        private DevExpress.XtraBars.BarStaticItem bsiSpace;
         private DevExpress.XtraBars.Ribbon.RibbonPage rpContractWork;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup rpgContracts;
         private DevExpress.XtraBars.BarButtonItem bbtnContractors;
@@ -477,7 +810,6 @@ namespace Contract
         private DevExpress.XtraBars.BarButtonItem bbtnActivityKind;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup rbgCats;
         private DevExpress.XtraBars.BarButtonItem barButtonItem5;
-        private DevExpress.XtraBars.BarStaticItem barStaticItem2;
         public DevExpress.XtraTabbedMdi.XtraTabbedMdiManager xtraTabbedMdiManager1;
         private DevExpress.XtraBars.BarButtonItem bbtnNewContract;
         private DevExpress.XtraBars.BarButtonItem bbtnSendToSigning;
@@ -497,5 +829,36 @@ namespace Contract
         private RibbonPageGroup rpgContractorWork;
         private DevExpress.XtraBars.BarButtonItem bbtnRemoveContractor;
         public DevExpress.XtraBars.BarButtonItem bbtnSaveContractor;
+        private DevExpress.XtraBars.BarButtonItem bbtnUpdateContracts;
+        private DevExpress.XtraBars.BarButtonItem bbtnOpenContract;
+        private RibbonPageGroup rpgContractsFilter;
+        private RibbonPageGroup rpgContractsSort;
+        private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit repositoryItemLueSortParam;
+        private DevExpress.XtraEditors.Repository.RepositoryItemRadioGroup repositoryItemRgSortParam;
+        private DevExpress.XtraBars.BarEditItem barEditItem2;
+        private DevExpress.XtraBars.BarEditItem beiFilterField;
+        private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit repositoryItemLueFilterField;
+        private DevExpress.XtraBars.BarEditItem beiFilterMethod;
+        private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit repositoryItemLueFilterMethod;
+        private DevExpress.XtraBars.BarStaticItem bsiFilterField;
+        private DevExpress.XtraBars.BarStaticItem bsiFilterMethod;
+        private DevExpress.XtraBars.BarStaticItem bsiFilterValue;
+        private DevExpress.XtraBars.BarButtonItem bbiFilter;
+        private DevExpress.XtraBars.BarButtonItem bbiFilterClear;
+        private DevExpress.XtraBars.BarEditItem beiFilterValue;
+        private DevExpress.XtraEditors.Repository.RepositoryItemTextEdit repositoryItemTextEdit1;
+        private DevExpress.XtraBars.BarButtonItem bbiFilterCreator;
+        private DevExpress.XtraBars.BarStaticItem bsiSortField;
+        private DevExpress.XtraBars.BarButtonItem bbiSort;
+        private DevExpress.XtraBars.BarStaticItem bsiSortMethod;
+        private DevExpress.XtraBars.BarEditItem beiSortMethod;
+        private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit repositoryItemLueSortField;
+        private DevExpress.XtraBars.BarEditItem beiSortField;
+        private DevExpress.XtraEditors.Repository.RepositoryItemLookUpEdit repositoryItemLueSortMethod;
+        private DevExpress.XtraBars.BarButtonItem bbiRemoveSort;
+        private DevExpress.XtraBars.BarButtonItem bbiAutoWidth;
+        private DevExpress.XtraBars.BarCheckItem bciFindString;
+        private RibbonPageGroup rpgContractsSettings;
+        private DevExpress.XtraBars.BarCheckItem bciAutoFilterPanel;
     }
 }

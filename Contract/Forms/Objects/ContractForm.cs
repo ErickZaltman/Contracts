@@ -82,7 +82,7 @@ namespace Contract.Forms
 
             isLoaded = true;
         }
-
+        //adfasdf
         #region  LookUpEdits
 
         private void fillControls()

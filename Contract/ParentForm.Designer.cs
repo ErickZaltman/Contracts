@@ -686,6 +686,7 @@ namespace Contract
             this.rpgContractsSettings.ItemLinks.Add(this.bciFindString);
             this.rpgContractsSettings.ItemLinks.Add(this.bciAutoFilterPanel);
             this.rpgContractsSettings.Name = "rpgContractsSettings";
+            this.rpgContractsSettings.ShowCaptionButton = false;
             this.rpgContractsSettings.Text = "Дополнительно";
             // 
             // rpgContractWork

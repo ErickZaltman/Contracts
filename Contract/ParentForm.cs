@@ -201,6 +201,7 @@ namespace Contract
                     rpgContractsFilter.Visible = false;
                     rpgContractsSort.Visible = false;
                     rpgContractWork.Visible = true;
+                    rpgContractsSettings.Visible = false;
                     if ((xtraTabbedMdiManager1.SelectedPage.MdiChild as Forms.ContractForm).currentID == 0 || (xtraTabbedMdiManager1.SelectedPage.MdiChild as Forms.ContractForm).DataChanged() == false)
                         bbtnSave.Enabled = true;
                     else
@@ -212,6 +213,7 @@ namespace Contract
                     rpgContractsFilter.Visible = true;
                     rpgContractsSort.Visible = true;
                     rpgContractWork.Visible = false;
+                    rpgContractsSettings.Visible = true;
                 }
             }
             else
@@ -240,7 +242,13 @@ namespace Contract
                 rpContractors.Visible = false;
 
             if (xtraTabbedMdiManager1.Pages.Count > 0) barButtonItem1.Visibility = DevExpress.XtraBars.BarItemVisibility.Always;
-        }     
+        }
+
+        #region Ribbon Current Contract Page
+
+
+
+        #endregion
 
         private void bbtnRemoveContract_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
@@ -532,7 +540,7 @@ namespace Contract
             else
                 childForm.gvList.OptionsView.ShowAutoFilterRow = false;
         }
-    }
-    
+
+    }  
 }
 

@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using DevExpress.XtraEditors;
 using Contract.DB;
 using System.Configuration;
+using DevExpress.XtraGrid.Columns;
 
 namespace Contract
 {
@@ -38,8 +39,6 @@ namespace Contract
 
             documentManager = new DocumentFormsContainer();
             bsiUserName.Caption = dbContext.getFullUserName.First(x => x.ID == Properties.Settings.CurrentUserID).FullName;
-
-
         }
         public ParentForm(int id)
         {
@@ -50,6 +49,12 @@ namespace Contract
             documentManager = new DocumentFormsContainer();
 
             bsiUserName.Caption = dbContext.getFullUserName.First(x => x.ID == Properties.Settings.CurrentUserID).FullName;
+
+            repositoryItemLueFilterField.DataSource = new List<string> { "Номер договора" };
+            repositoryItemLueFilterMethod.DataSource = new List<string> { "Равно", "Не равно", "Содержит" };
+            repositoryItemLueSortField.DataSource = new List<string> { "Номер договора" };
+            repositoryItemLueSortMethod.DataSource = new List<string> { "По возрастанию", "По убыванию" };
+
 
         }
 
@@ -192,11 +197,11 @@ namespace Contract
                 rpContractWork.Visible = true;
                 if ((xtraTabbedMdiManager1.SelectedPage.MdiChild.GetType() == typeof(Forms.ContractForm)))
                 {
-                    bbtnNewContract.Enabled = false;
-                    bbtnRemoveContract.Enabled = false;
-                    bbtnSendToSigning.Enabled = true;
-                    bbtnConnectedDocs.Enabled = true;
-                    bbtnAttachments.Enabled = true;
+                    rpgContracts.Visible = false;
+                    rpgContractsFilter.Visible = false;
+                    rpgContractsSort.Visible = false;
+                    rpgContractWork.Visible = true;
+                    rpgContractsSettings.Visible = false;
                     if ((xtraTabbedMdiManager1.SelectedPage.MdiChild as Forms.ContractForm).currentID == 0 || (xtraTabbedMdiManager1.SelectedPage.MdiChild as Forms.ContractForm).DataChanged() == false)
                         bbtnSave.Enabled = true;
                     else
@@ -204,11 +209,11 @@ namespace Contract
                 }
                 else
                 {
-                    bbtnNewContract.Enabled = true;
-                    bbtnRemoveContract.Enabled = true;
-                    bbtnSendToSigning.Enabled = false;
-                    bbtnConnectedDocs.Enabled = false;
-                    bbtnAttachments.Enabled = false;
+                    rpgContracts.Visible = true;
+                    rpgContractsFilter.Visible = true;
+                    rpgContractsSort.Visible = true;
+                    rpgContractWork.Visible = false;
+                    rpgContractsSettings.Visible = true;
                 }
             }
             else
@@ -219,8 +224,9 @@ namespace Contract
                 rpContractors.Visible = true;
                 if ((xtraTabbedMdiManager1.SelectedPage.MdiChild.GetType() == typeof(Forms.ContractorForm)))
                 {
-                    bbtnNewContractor.Enabled = false;
-                    bbtnRemoveContractor.Enabled = false;
+                    rpgContractor.Visible = false;
+                    rpgContractorWork.Visible = true;
+
                     if ((xtraTabbedMdiManager1.SelectedPage.MdiChild as Forms.ContractorForm).currentID == 0 || (xtraTabbedMdiManager1.SelectedPage.MdiChild as Forms.ContractorForm).DataChanged() == false)
                         bbtnSaveContractor.Enabled = true;
                     else
@@ -228,16 +234,21 @@ namespace Contract
                 }
                 else
                 {
-                    bbtnNewContractor.Enabled = true;
-                    bbtnRemoveContractor.Enabled = true;
-                    bbtnSaveContractor.Enabled = false;
+                    rpgContractor.Visible = true;
+                    rpgContractorWork.Visible = false;
                 }
             }
             else
                 rpContractors.Visible = false;
 
             if (xtraTabbedMdiManager1.Pages.Count > 0) barButtonItem1.Visibility = DevExpress.XtraBars.BarItemVisibility.Always;
-        }     
+        }
+
+        #region Ribbon Current Contract Page
+
+
+
+        #endregion
 
         private void bbtnRemoveContract_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
@@ -349,6 +360,187 @@ namespace Contract
         {
             MessageBox.Show(Application.OpenForms.Count.ToString());
         }
-    }
-    
+
+        private void bbtnOpenContract_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            Forms.ContractSelectForm childForm = (xtraTabbedMdiManager1.SelectedPage.MdiChild as Forms.ContractSelectForm);
+            int rowIndex = childForm.gvList.GetSelectedRows()[0];
+            int id = Convert.ToInt32(childForm.gvList.GetRowCellValue(rowIndex, "ID"));
+            Forms.ContractForm form = new Forms.ContractForm(id);
+            form.MdiParent = this;
+            form.Show();
+        }
+
+        private void bbtnUpdateContracts_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            updateContracts();
+        }
+
+        private void bbiFilter_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            FilterContracts();
+        }
+
+        private void FilterContracts()
+        {
+            if (beiFilterValue.EditValue != null && beiFilterField.EditValue != null && beiFilterMethod.EditValue != null)
+            {
+                Forms.ContractSelectForm childForm = new Forms.ContractSelectForm();
+                foreach (var item in this.MdiChildren)
+                {
+                    if (item is Forms.ContractSelectForm)
+                    {
+                        childForm = item as Forms.ContractSelectForm;
+                        break;
+                    }
+                }
+                string filterString = string.Empty;
+                string filterField = string.Empty;
+                string filterValue = beiFilterValue.EditValue.ToString();
+                switch (beiFilterField.EditValue.ToString())
+                {
+                    case "Номер договора": filterField = "Number"; break;
+                }
+
+                switch (beiFilterMethod.EditValue.ToString())
+                {
+                    case "Содержит": filterString = "Contains([" + filterField + "], '" + filterValue + "')"; break;
+                    case "Равно": filterString = "[" + filterField + "]='" + filterValue + "'"; break;
+                    case "Не равно": filterString = "[" + filterField + "]!='" + filterValue + "'"; break;
+                }
+
+
+                childForm.gvList.ActiveFilterString = filterString;
+                childForm.gvList.ApplyColumnsFilter();
+            }
+        }
+
+        private void bbiFilterClear_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            Forms.ContractSelectForm childForm = new Forms.ContractSelectForm();
+            foreach (var item in this.MdiChildren)
+            {
+                if (item is Forms.ContractSelectForm)
+                {
+                    childForm = item as Forms.ContractSelectForm;
+                    break;
+                }
+            }
+            childForm.gvList.ClearColumnsFilter();
+        }
+
+        private void bbiFilterCreator_ItemClick_1(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            Forms.ContractSelectForm childForm = new Forms.ContractSelectForm();
+            foreach (var item in this.MdiChildren)
+            {
+                if (item is Forms.ContractSelectForm)
+                {
+                    childForm = item as Forms.ContractSelectForm;
+                    break;
+                }
+            }
+            childForm.gvList.ShowFilterEditor(null);
+        }
+
+        private void bbiSort_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            SortContracts();
+        }
+
+        public void SortContracts()
+        {
+            if (beiSortField.EditValue != null && beiSortMethod.EditValue != null)
+            {
+                Forms.ContractSelectForm childForm = new Forms.ContractSelectForm();
+                foreach (var item in this.MdiChildren)
+                {
+                    if (item is Forms.ContractSelectForm)
+                    {
+                        childForm = item as Forms.ContractSelectForm;
+                        break;
+                    }
+                }
+
+                string sortField = string.Empty;
+                DevExpress.Data.ColumnSortOrder method = new DevExpress.Data.ColumnSortOrder();
+                if (beiSortMethod.EditValue.ToString() == "По возрастанию")
+                    method = DevExpress.Data.ColumnSortOrder.Ascending;
+                else
+                    method = DevExpress.Data.ColumnSortOrder.Descending;
+                switch (beiSortField.EditValue.ToString())
+                {
+                    case "Номер договора": sortField = "Number"; break;
+                }
+                childForm.gvList.SortInfo.ClearAndAddRange(new[] {
+                    new GridColumnSortInfo(childForm.gvList.Columns[sortField], method)
+                });
+
+            }
+        }
+
+        private void bbiRemoveSort_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            Forms.ContractSelectForm childForm = new Forms.ContractSelectForm();
+            foreach (var item in this.MdiChildren)
+            {
+                if (item is Forms.ContractSelectForm)
+                {
+                    childForm = item as Forms.ContractSelectForm;
+                    break;
+                }
+            }
+            childForm.gvList.ClearSorting();
+        }
+
+        private void bbiAutoWidth_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            Forms.ContractSelectForm childForm = new Forms.ContractSelectForm();
+            foreach (var item in this.MdiChildren)
+            {
+                if (item is Forms.ContractSelectForm)
+                {
+                    childForm = item as Forms.ContractSelectForm;
+                    break;
+                }
+            }
+            childForm.gvList.BestFitColumns();
+        }
+
+        private void bciFindString_CheckedChanged(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            Forms.ContractSelectForm childForm = new Forms.ContractSelectForm();
+            foreach (var item in this.MdiChildren)
+            {
+                if (item is Forms.ContractSelectForm)
+                {
+                    childForm = item as Forms.ContractSelectForm;
+                    break;
+                }
+            }
+            if (bciFindString.Checked)
+                childForm.gvList.ShowFindPanel();
+            else
+                childForm.gvList.HideFindPanel();
+        }
+
+        private void bciAutoFilterPanel_CheckedChanged(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            Forms.ContractSelectForm childForm = new Forms.ContractSelectForm();
+            foreach (var item in this.MdiChildren)
+            {
+                if (item is Forms.ContractSelectForm)
+                {
+                    childForm = item as Forms.ContractSelectForm;
+                    break;
+                }
+            }
+            if (bciAutoFilterPanel.Checked)
+                childForm.gvList.OptionsView.ShowAutoFilterRow = true;
+            else
+                childForm.gvList.OptionsView.ShowAutoFilterRow = false;
+        }
+
+    }  
 }
+

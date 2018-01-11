@@ -16,7 +16,6 @@ namespace Contract.DB
         public virtual DbSet<AgreementSignList> AgreementSignList { get; set; }
         public virtual DbSet<AnnexTypes> AnnexTypes { get; set; }
         public virtual DbSet<Const> Const { get; set; }
-        public virtual DbSet<Contract> Contract { get; set; }
         public virtual DbSet<ContractAnnex> ContractAnnex { get; set; }
         public virtual DbSet<ContractCategory> ContractCategory { get; set; }
         public virtual DbSet<ContractMovements> ContractMovements { get; set; }
@@ -25,6 +24,7 @@ namespace Contract.DB
         public virtual DbSet<ContractorType> ContractorType { get; set; }
         public virtual DbSet<ContractRenewal> ContractRenewal { get; set; }
         public virtual DbSet<ContractRenewalPeriod> ContractRenewalPeriod { get; set; }
+        public virtual DbSet<Contracts> Contracts { get; set; }
         public virtual DbSet<Departments> Departments { get; set; }
         public virtual DbSet<DocumentTypes> DocumentTypes { get; set; }
         public virtual DbSet<Files> Files { get; set; }
@@ -39,10 +39,8 @@ namespace Contract.DB
         public virtual DbSet<SupAgreement> SupAgreement { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<TaxesType> TaxesType { get; set; }
-        public virtual DbSet<testtable> testtable { get; set; }
         public virtual DbSet<UserPermissions> UserPermissions { get; set; }
         public virtual DbSet<Users> Users { get; set; }
-        public virtual DbSet<Test2test> Test2test { get; set; }
         public virtual DbSet<getFullUserName> getFullUserName { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
@@ -56,33 +54,63 @@ namespace Contract.DB
                 .Property(e => e.Value)
                 .IsFixedLength();
 
-            modelBuilder.Entity<Contract>()
-                .HasMany(e => e.HistoryChanges)
-                .WithOptional(e => e.Contract)
-                .HasForeignKey(e => e.DocumentID);
-
             modelBuilder.Entity<ContractCategory>()
-                .HasMany(e => e.Contract)
+                .HasMany(e => e.Contracts)
                 .WithOptional(e => e.ContractCategory)
                 .HasForeignKey(e => e.CategoryID);
 
-            modelBuilder.Entity<Contractors>()
-                .HasMany(e => e.Contract)
-                .WithOptional(e => e.Contractors)
-                .HasForeignKey(e => e.ContractorID);
+            modelBuilder.Entity<ContractorGroups>()
+                .HasMany(e => e.Contractors)
+                .WithOptional(e => e.ContractorGroups)
+                .HasForeignKey(e => e.GroupID);
 
             modelBuilder.Entity<Contractors>()
                 .HasMany(e => e.ContractAnnex)
                 .WithOptional(e => e.Contractors)
                 .HasForeignKey(e => e.ContractorID);
 
+            modelBuilder.Entity<Contractors>()
+                .HasMany(e => e.Contracts)
+                .WithOptional(e => e.Contractors)
+                .HasForeignKey(e => e.ContractorID);
+
             modelBuilder.Entity<ContractRenewalPeriod>()
-                .HasMany(e => e.Contract)
+                .HasMany(e => e.Contracts)
                 .WithOptional(e => e.ContractRenewalPeriod)
                 .HasForeignKey(e => e.ContractRenewalTimeID);
 
+            modelBuilder.Entity<Contracts>()
+                .HasMany(e => e.ContractAnnex)
+                .WithOptional(e => e.Contracts)
+                .HasForeignKey(e => e.ContractID);
+
+            modelBuilder.Entity<Contracts>()
+                .HasMany(e => e.ContractMovements)
+                .WithOptional(e => e.Contracts)
+                .HasForeignKey(e => e.ContractID);
+
+            modelBuilder.Entity<Contracts>()
+                .HasMany(e => e.Files)
+                .WithOptional(e => e.Contracts)
+                .HasForeignKey(e => e.ContractID);
+
+            modelBuilder.Entity<Contracts>()
+                .HasMany(e => e.HistoryChanges)
+                .WithOptional(e => e.Contracts)
+                .HasForeignKey(e => e.DocumentID);
+
+            modelBuilder.Entity<Contracts>()
+                .HasMany(e => e.Signing)
+                .WithOptional(e => e.Contracts)
+                .HasForeignKey(e => e.ContractID);
+
+            modelBuilder.Entity<Contracts>()
+                .HasMany(e => e.SupAgreement)
+                .WithOptional(e => e.Contracts)
+                .HasForeignKey(e => e.ContractID);
+
             modelBuilder.Entity<Departments>()
-                .HasMany(e => e.Contract)
+                .HasMany(e => e.Contracts)
                 .WithOptional(e => e.Departments)
                 .HasForeignKey(e => e.DepartmentID);
 
@@ -122,16 +150,6 @@ namespace Contract.DB
                 .HasForeignKey(e => e.UserID);
 
             modelBuilder.Entity<Users>()
-                .HasMany(e => e.Contract)
-                .WithOptional(e => e.Users)
-                .HasForeignKey(e => e.AuthorID);
-
-            modelBuilder.Entity<Users>()
-                .HasMany(e => e.Contract1)
-                .WithOptional(e => e.Users1)
-                .HasForeignKey(e => e.ContractualID);
-
-            modelBuilder.Entity<Users>()
                 .HasMany(e => e.ContractAnnex)
                 .WithOptional(e => e.Users)
                 .HasForeignKey(e => e.AuthorID);
@@ -145,6 +163,16 @@ namespace Contract.DB
                 .HasMany(e => e.ContractMovements)
                 .WithOptional(e => e.Users)
                 .HasForeignKey(e => e.AuthorID);
+
+            modelBuilder.Entity<Users>()
+                .HasMany(e => e.Contracts)
+                .WithOptional(e => e.Users)
+                .HasForeignKey(e => e.AuthorID);
+
+            modelBuilder.Entity<Users>()
+                .HasMany(e => e.Contracts1)
+                .WithOptional(e => e.Users1)
+                .HasForeignKey(e => e.ContractualID);
 
             modelBuilder.Entity<Users>()
                 .HasMany(e => e.Departments)

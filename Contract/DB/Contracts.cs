@@ -6,11 +6,10 @@ namespace Contract.DB
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    [Table("Contract")]
-    public partial class Contract
+    public partial class Contracts
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Contract()
+        public Contracts()
         {
             ContractAnnex = new HashSet<ContractAnnex>();
             ContractMovements = new HashSet<ContractMovements>();
@@ -20,18 +19,19 @@ namespace Contract.DB
             SupAgreement = new HashSet<SupAgreement>();
         }
 
+        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int ID { get; set; }
 
         public int? ContractorID { get; set; }
 
-        [StringLength(50)]
+        [StringLength(100)]
         public string Number { get; set; }
 
         public int? AuthorID { get; set; }
 
         public double? Summ { get; set; }
 
-        [StringLength(250)]
+        [StringLength(1250)]
         public string Theme { get; set; }
 
         public DateTime? StartDate { get; set; }
@@ -50,7 +50,7 @@ namespace Contract.DB
 
         public int? ContractRenewalTimeID { get; set; }
 
-        [StringLength(50)]
+        [StringLength(150)]
         public string Note { get; set; }
 
         public DateTime? Date { get; set; }
@@ -63,25 +63,25 @@ namespace Contract.DB
 
         public virtual ActivityKind ActivityKind { get; set; }
 
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ContractAnnex> ContractAnnex { get; set; }
+
         public virtual ContractCategory ContractCategory { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ContractMovements> ContractMovements { get; set; }
+
+        public virtual Contractors Contractors { get; set; }
 
         public virtual ContractRenewal ContractRenewal { get; set; }
 
         public virtual ContractRenewalPeriod ContractRenewalPeriod { get; set; }
 
-        public virtual Contractors Contractors { get; set; }
-
-        public virtual Departments Departments { get; set; }
-
         public virtual Users Users { get; set; }
 
         public virtual Users Users1 { get; set; }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ContractAnnex> ContractAnnex { get; set; }
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ContractMovements> ContractMovements { get; set; }
+        public virtual Departments Departments { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Files> Files { get; set; }

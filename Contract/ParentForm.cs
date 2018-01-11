@@ -69,7 +69,7 @@ namespace Contract
             childForm.gridControl1.DataSource = null;
             childForm.gridControl1.MainView = childForm.gvList;
 
-            var contractsBindingSource = dbContext.Contract.Where(y => y.IsRemoved != true).Join(dbContext.getFullUserName, e => e.AuthorID, x => x.ID, (e, x) => new
+            var contractsBindingSource = dbContext.Contracts.Where(y => y.IsRemoved != true).Join(dbContext.getFullUserName, e => e.AuthorID, x => x.ID, (e, x) => new
             {
                 e.ID,
                 e.Number,

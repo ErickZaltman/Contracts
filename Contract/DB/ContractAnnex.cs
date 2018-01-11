@@ -34,7 +34,7 @@ namespace Contract.DB
 
         public virtual AnnexTypes AnnexTypes { get; set; }
 
-        public virtual Contract Contract { get; set; }
+        public virtual Contracts Contracts { get; set; }
 
         public virtual Contractors Contractors { get; set; }
 

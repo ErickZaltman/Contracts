@@ -34,15 +34,18 @@ namespace Contract.Forms
 
         private void fillGV()
         {
-            gridControl1.DataSource = dbContext.Contract.Where(y => y.IsRemoved != true).Join(dbContext.getFullUserName, e => e.AuthorID, x => x.ID, (e, x) => new
+            //gridControl1.DataSource = dbContext.Contracts.Where(y => y.IsRemoved != true).Join(dbContext.getFullUserName, e => e.AuthorID, x => x.ID, (e, x) => new
+            gridControl1.DataSource = dbContext.Contracts.Join(dbContext.getFullUserName, e => e.AuthorID, x => x.ID, (e, x) => new
             {
                 e.ID,
                 e.Number,
                 Category = e.ContractCategory.Name,
                 e.Theme,
                 e.Summ,
-                Name = x.FullName
+                //Name = x.FullName
+                Name = e.AuthorID
             }).ToList();
+
 
             gvList.Columns["ID"].Visible = false;
 
@@ -55,7 +58,7 @@ namespace Contract.Forms
         
         public void RemoveContract (int id)
         {
-            DB.Contract currContract = dbContext.Contract.First(x => x.ID == id);
+            DB.Contracts currContract = dbContext.Contracts.First(x => x.ID == id);
             currContract.IsRemoved = true;
             dbContext.SaveChanges();
         }
@@ -140,7 +143,7 @@ namespace Contract.Forms
             {
 
                 e.ID,
-                e.Contract.Number,
+                e.Contracts.Number,
                 Name = x.FullName,
                 e.IsAgreed
             }).ToList();

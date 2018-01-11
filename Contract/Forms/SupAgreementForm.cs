@@ -31,7 +31,7 @@ namespace Contract.Forms
         {
             lueContract.Properties.DisplayMember = "Text";
             lueContract.Properties.ValueMember = "Value";
-            lueContract.Properties.DataSource = dbContext.Contract.Select(x => new { Value = x.ID, Text = x.Number  }).ToList();
+            lueContract.Properties.DataSource = dbContext.Contracts.Select(x => new { Value = x.ID, Text = x.Number  }).ToList();
         }
         public void fillExisting()
         {

@@ -92,7 +92,6 @@
     <Compile Include="DB\AgreementSignList.cs" />
     <Compile Include="DB\AnnexTypes.cs" />
     <Compile Include="DB\Const.cs" />
-    <Compile Include="DB\Contract.cs" />
     <Compile Include="DB\ContractAnnex.cs" />
     <Compile Include="DB\ContractCategory.cs" />
     <Compile Include="DB\ContractMovements.cs" />
@@ -101,6 +100,7 @@
     <Compile Include="DB\ContractorType.cs" />
     <Compile Include="DB\ContractRenewal.cs" />
     <Compile Include="DB\ContractRenewalPeriod.cs" />
+    <Compile Include="DB\Contracts.cs" />
     <Compile Include="DB\DBModel.cs" />
     <Compile Include="DB\Departments.cs" />
     <Compile Include="DB\DocumentTypes.cs" />
@@ -117,8 +117,6 @@
     <Compile Include="DB\SupAgreement.cs" />
     <Compile Include="DB\sysdiagrams.cs" />
     <Compile Include="DB\TaxesType.cs" />
-    <Compile Include="DB\Test2test.cs" />
-    <Compile Include="DB\testtable.cs" />
     <Compile Include="DB\UserPermissions.cs" />
     <Compile Include="DB\Users.cs" />
     <Compile Include="Forms\Objects\ContractAnnexForm.cs">
@@ -296,6 +294,7 @@
   <ItemGroup>
     <None Include="Resources\Image1.bmp" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.

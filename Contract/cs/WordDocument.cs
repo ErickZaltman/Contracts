@@ -136,7 +136,7 @@ namespace Contract
         }
 
 
-        public void makeNewWordContract(Contract.DB.Contract currentContract)
+        public void makeNewWordContract(Contract.DB.Contracts currentContract)
         {
             _application = new Word.Application();
 

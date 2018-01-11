@@ -9,6 +9,12 @@ namespace Contract.DB
     [Table("Region")]
     public partial class Region
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Region()
+        {
+            Contractors = new HashSet<Contractors>();
+        }
+
         public int ID { get; set; }
 
         public int? ParentID { get; set; }
@@ -19,5 +25,10 @@ namespace Contract.DB
         public int? Code { get; set; }
 
         public int? RegionGroupID { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Contractors> Contractors { get; set; }
+
+        public virtual RegionGroup RegionGroup { get; set; }
     }
 }

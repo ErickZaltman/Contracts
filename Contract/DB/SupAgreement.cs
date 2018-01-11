@@ -20,7 +20,7 @@ namespace Contract.DB
         [StringLength(50)]
         public string Number { get; set; }
 
-        public virtual Contract Contract { get; set; }
+        public virtual Contracts Contracts { get; set; }
 
         public virtual Users Users { get; set; }
     }

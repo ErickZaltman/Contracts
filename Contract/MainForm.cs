@@ -44,7 +44,7 @@ namespace Contract
             gcMain.DataSource = null;
             gcMain.MainView = gvContracts;
 
-            var contractsBindingSource = dbContext.Contract.Select(x => new
+            var contractsBindingSource = dbContext.Contracts.Select(x => new
             {
                 x.ID,
                 x.Number,
@@ -106,9 +106,9 @@ namespace Contract
             var contractsBindingSource = dbContext.Signing.Where(x => x.UserID == Properties.Settings.CurrentUserID).Select(x => new {
                 x.ID,
                 x.ContractID,
-                x.Contract.Number,
-                x.Contract.Theme,
-                Name = x.Contract.Users.Surname + " " + x.Contract.Users.FirstName.Substring(0, 1) + "." + x.Contract.Users.SecondName.Substring(0, 1) + ".",
+                x.Contracts.Number,
+                x.Contracts.Theme,
+                Name = x.Contracts.Users.Surname + " " + x.Contracts.Users.FirstName.Substring(0, 1) + "." + x.Contracts.Users.SecondName.Substring(0, 1) + ".",
                 x.IsAgreed
             }).ToList();
             gcMain.DataSource = contractsBindingSource;
@@ -128,9 +128,9 @@ namespace Contract
             var contractsBindingSource = dbContext.SupAgreement.Select(x => new {
                 x.ID,
                 x.ContractID,
-                x.Contract.Number,
-                x.Contract.Theme,
-                Name = x.Contract.Users.Surname + " " + x.Contract.Users.FirstName.Substring(0, 1) + "." + x.Contract.Users.SecondName.Substring(0, 1) + "."
+                x.Contracts.Number,
+                x.Contracts.Theme,
+                Name = x.Contracts.Users.Surname + " " + x.Contracts.Users.FirstName.Substring(0, 1) + "." + x.Contracts.Users.SecondName.Substring(0, 1) + "."
             }).ToList();
             gcMain.DataSource = contractsBindingSource;
 
@@ -148,11 +148,11 @@ namespace Contract
             var contractsBindingSource = dbContext.ContractAnnex.Select(x => new {
                 x.ID,
                 x.ContractID,
-                x.Contract.Number,
-                x.Contract.Theme,
+                x.Contracts.Number,
+                x.Contracts.Theme,
                 annexType = x.AnnexTypes.Name,
                 x.ActionDate,
-                Name = x.Contract.Users.Surname + " " + x.Contract.Users.FirstName.Substring(0, 1) + "." + x.Contract.Users.SecondName.Substring(0, 1) + "."
+                Name = x.Contracts.Users.Surname + " " + x.Contracts.Users.FirstName.Substring(0, 1) + "." + x.Contracts.Users.SecondName.Substring(0, 1) + "."
             }).ToList();
             gcMain.DataSource = contractsBindingSource;
 

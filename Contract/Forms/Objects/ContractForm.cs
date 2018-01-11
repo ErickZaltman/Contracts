@@ -19,7 +19,7 @@ namespace Contract.Forms
         public int currentID;
         private bool isLoaded = false;
 
-        public DB.Contract currContract;
+        public DB.Contracts currContract;
 
         public ContractForm(int contractID)
         {
@@ -32,7 +32,7 @@ namespace Contract.Forms
             this.UserName = dbContext.getFullUserName.Where(x => x.ID == Properties.Settings.CurrentUserID).ToList()[0].ToString();
             fillControls();
 
-            currContract = new DB.Contract();
+            currContract = new DB.Contracts();
 
             if (contractID != 0)
             {
@@ -49,7 +49,7 @@ namespace Contract.Forms
 
         private void fillExistingContract(int id)
         {
-            currContract = dbContext.Contract.Where(x => x.ID == id).ToList()[0];
+            currContract = dbContext.Contracts.Where(x => x.ID == id).ToList()[0];
 
             teContractNumber.Text = currContract.Number;
             teContractNote.Text = currContract.Note;
@@ -222,7 +222,7 @@ namespace Contract.Forms
             if (month.Length == 1) month = "0" + month;
             string year = currContract.Date.Value.Year.ToString();
             year = year.Substring(2);
-            int today_number = dbContext.Contract.Where(x => x.Date == DateTime.Today).Count() + 1;
+            int today_number = dbContext.Contracts.Where(x => x.Date == DateTime.Today).Count() + 1;
             string prefix = dbContext.Departments.Where(x => x.ID == currContract.DepartmentID).Select(y => y.Prefix).ToList()[0].ToString();
             string nomenclature = "8";
             string department_index = "?";
@@ -237,7 +237,7 @@ namespace Contract.Forms
 
             if (this.currentID == 0)
             {
-                dbContext.Contract.Add(currContract);
+                dbContext.Contracts.Add(currContract);
                 Text = "Договор № " + currContract.Number + " от " + String.Format("{0:dd/MM/yyyy}", currContract.Date);
                 movements.MovementTypeID = 1;
             }

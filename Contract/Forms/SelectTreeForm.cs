@@ -54,16 +54,16 @@ namespace Contract.Forms
 
         private void gridView1_RowClick(object sender, DevExpress.XtraGrid.Views.Grid.RowClickEventArgs e)
         {
-            if (e.Clicks > 1)
-            {
-                if (isSelection)
-                {
-                    d((int)gvList.GetRowCellValue(e.RowHandle, "ID"), Table);
-                    Close();
-                    return;
-                }
-                openDocForm((int)gvList.GetRowCellValue(e.RowHandle, "ID"));
-            }
+            //if (e.Clicks > 1)
+            //{
+            //    if (isSelection)
+            //    {
+            //        d((int)gvList.GetRowCellValue(e.RowHandle, "ID"), Table);
+            //        Close();
+            //        return;
+            //    }
+            //    openDocForm((int)gvList.GetRowCellValue(e.RowHandle, "ID"));
+            //}
         }
         protected void openDocForm(int id)
         {

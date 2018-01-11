@@ -11,18 +11,20 @@ namespace Contract.DB
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Contractors()
         {
-            Contract = new HashSet<Contract>();
             ContractAnnex = new HashSet<ContractAnnex>();
+            Contracts = new HashSet<Contracts>();
         }
 
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int ID { get; set; }
 
-        [StringLength(50)]
+        [StringLength(300)]
         public string Name { get; set; }
 
-        [StringLength(200)]
+        [StringLength(350)]
         public string FullName { get; set; }
+
+        public int? TaxTypeID { get; set; }
 
         public int? ContractorTypeID { get; set; }
 
@@ -34,8 +36,6 @@ namespace Contract.DB
 
         [StringLength(350)]
         public string ActualAddress { get; set; }
-
-        public int? TaxTypeID { get; set; }
 
         [StringLength(150)]
         public string PhoneNumber { get; set; }
@@ -77,12 +77,18 @@ namespace Contract.DB
         public bool? IsRemoved { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Contract> Contract { get; set; }
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ContractAnnex> ContractAnnex { get; set; }
 
+        public virtual ContractorGroups ContractorGroups { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Contracts> Contracts { get; set; }
+
         public virtual ContractorType ContractorType { get; set; }
+
+        public virtual Industry Industry { get; set; }
+
+        public virtual Region Region { get; set; }
 
         public virtual TaxesType TaxesType { get; set; }
     }

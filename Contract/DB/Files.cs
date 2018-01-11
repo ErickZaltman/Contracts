@@ -18,6 +18,6 @@ namespace Contract.DB
         [StringLength(50)]
         public string FileName { get; set; }
 
-        public virtual Contract Contract { get; set; }
+        public virtual Contracts Contracts { get; set; }
     }
 }

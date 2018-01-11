@@ -24,7 +24,7 @@ namespace Contract.DB
 
         public DateTime? DeadlineTime { get; set; }
 
-        public virtual Contract Contract { get; set; }
+        public virtual Contracts Contracts { get; set; }
 
         public virtual Users Users { get; set; }
     }

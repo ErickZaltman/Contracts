@@ -21,7 +21,7 @@ namespace Contract.DB
 
         public int? AuthorID { get; set; }
 
-        public virtual Contract Contract { get; set; }
+        public virtual Contracts Contracts { get; set; }
 
         public virtual MovementTypes MovementTypes { get; set; }
 

@@ -12,7 +12,7 @@ namespace Contract.DB
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public ContractRenewalPeriod()
         {
-            Contract = new HashSet<Contract>();
+            Contracts = new HashSet<Contracts>();
         }
 
         public int ID { get; set; }
@@ -21,6 +21,6 @@ namespace Contract.DB
         public string Name { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Contract> Contract { get; set; }
+        public virtual ICollection<Contracts> Contracts { get; set; }
     }
 }

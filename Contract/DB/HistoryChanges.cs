@@ -27,7 +27,7 @@ namespace Contract.DB
 
         public DateTime? Date { get; set; }
 
-        public virtual Contract Contract { get; set; }
+        public virtual Contracts Contracts { get; set; }
 
         public virtual DocumentTypes DocumentTypes { get; set; }
 
